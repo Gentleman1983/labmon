@@ -1,0 +1,11 @@
+dependencies {
+    api "${project.ext.'gav.lib.junit.junit'}"
+    api "${project.ext.'gav.lib.org.hamcrest.hamcrest-library'}"
+    api "${project.ext.'gav.lib.org.mockito.mockito-core'}"
+    api "${project.ext.'gav.lib.org.mockito.mockito-junit-jupiter'}"
+
+    implementation "${project.ext.'gav.lib.org.junit.jupiter.junit-jupiter-api'}"
+
+    runtimeOnly "${project.ext.'gav.lib.org.junit.jupiter.junit-jupiter-engine'}"
+    runtimeOnly "${project.ext.'gav.lib.org.junit.vintage.junit-vintage-engine'}"
+}

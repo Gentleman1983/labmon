@@ -1,0 +1,6 @@
+dependencies {
+    api project( ':labmon_model_api' )
+
+    testImplementation project( path:':labmon_model_api', configuration:'testArtifacts')
+    testImplementation project( ':labmon_testutils' )
+}

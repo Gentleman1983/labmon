@@ -1,1 +1,11 @@
 rootProject.name = 'labmon'
+
+include 'labmon_gui'
+include 'labmon_model_api'
+include 'labmon_model_impl'
+include 'labmon_persistence_api'
+include 'labmon_persistence_impl'
+include 'labmon_service_api'
+include 'labmon_service_impl'
+include 'labmon_testutils'
+include 'labmon_webclient'
