@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2021 [haVox] Design
- * Created by The_G
+ * Created by  Christian Otto
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,13 +25,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 
-import net.havox.labmon.testutils.junit.ExtendedRunner;
-import net.havox.labmon.testutils.junit.Repeat;
+import net.havox.labmon.testutils.junit.junit4.ExtendedJunit4Runner;
+import net.havox.labmon.testutils.junit.junit4.Repeat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(ExtendedRunner.class)
+@RunWith(ExtendedJunit4Runner.class)
 public class ModelRandomGeneratorTest {
 
     private static final SecureRandom RANDOM = new SecureRandom();

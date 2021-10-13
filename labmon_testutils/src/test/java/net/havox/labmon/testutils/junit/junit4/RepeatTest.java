@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2021 [haVox] Design
- * Created by The_G
+ * Created by  Christian Otto
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,14 +15,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package net.havox.labmon.testutils.junit;
+package net.havox.labmon.testutils.junit.junit4;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith( ExtendedRunner.class )
+@RunWith( ExtendedJunit4Runner.class )
 public class RepeatTest
 {
   @Test
@@ -37,6 +37,6 @@ public class RepeatTest
   }
   
   private void runTest() {
-    assertTrue( "This is a dummy test to check repeated test excecution.", true);
+    assertTrue( "This is a dummy test to check repeated test execution.", true);
   }
 }

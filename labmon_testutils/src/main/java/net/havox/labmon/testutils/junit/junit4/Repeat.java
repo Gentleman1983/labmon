@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2021 [haVox] Design
- * Created by The_G
+ * Created by  Christian Otto
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,20 +15,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package net.havox.labmon.testutils.junit;
+package net.havox.labmon.testutils.junit.junit4;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Retention( RetentionPolicy.RUNTIME )
-@Target( 
-{
-  ElementType.METHOD
-} )
-public @interface Repeat
-{
+/**
+ * Simple annotation to pass a value how often to repeat a given method.
+ */
+@Retention(RetentionPolicy.RUNTIME)
+@Target(
+        {
+                ElementType.METHOD
+        })
+public @interface Repeat {
 
-  int value();
+    int value();
 }
