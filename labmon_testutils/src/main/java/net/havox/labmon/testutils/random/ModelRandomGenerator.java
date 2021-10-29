@@ -22,7 +22,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.ZoneOffset;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Simple utility class providing some randomized test data.
@@ -200,7 +199,7 @@ public class ModelRandomGenerator {
     public static LocalDate randomLocalDate(LocalDate min, LocalDate max) {
         long minDay = min.toEpochDay();
         long maxDay = max.toEpochDay();
-        long randomDay = ThreadLocalRandom.current().nextLong(minDay, maxDay);
+        long randomDay = RANDOM.nextLong(minDay, maxDay);
 
         return LocalDate.ofEpochDay(randomDay);
     }
@@ -224,7 +223,7 @@ public class ModelRandomGenerator {
     public static LocalDateTime randomLocalDateTime(LocalDateTime min, LocalDateTime max) {
         long minSecond = min.toEpochSecond(ZoneOffset.UTC);
         long maxSecond = max.toEpochSecond(ZoneOffset.UTC);
-        long randomSecond = ThreadLocalRandom.current().nextLong(minSecond, maxSecond);
+        long randomSecond = RANDOM.nextLong(minSecond, maxSecond);
 
         return LocalDateTime.ofEpochSecond(randomSecond, 0, ZoneOffset.UTC);
     }
