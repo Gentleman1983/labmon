@@ -42,20 +42,12 @@ class ModelRandomGeneratorTest {
     @Test
     void testIsAlphanumericStringAlphanumeric() {
         String regexString = "[A-Za-z0-9]*";
-        assertTrue(ModelRandomGenerator.ALPHANUMERIC_STRING.matches(regexString),
+        String alphabet = ModelRandomGenerator.ALPHANUMERIC_STRING;
+        assertTrue(alphabet.matches(regexString),
                 "An alphanumeric string should match the regex '" + regexString + "'.");
-        for (char alphabet = 'a'; alphabet <= 'z'; alphabet++) {
-            assertTrue(ModelRandomGenerator.ALPHANUMERIC_STRING.contains(Character.toString(alphabet)),
-                    "Expected alphanumeric alphabet to contain letter '" + alphabet + "'.");
-        }
-        for (char alphabet = 'A'; alphabet <= 'Z'; alphabet++) {
-            assertTrue(ModelRandomGenerator.ALPHANUMERIC_STRING.contains(Character.toString(alphabet)),
-                    "Expected alphanumeric alphabet to contain letter '" + alphabet + "'.");
-        }
-        for (char alphabet = '0'; alphabet <= '9'; alphabet++) {
-            assertTrue(ModelRandomGenerator.ALPHANUMERIC_STRING.contains(Character.toString(alphabet)),
-                    "Expected alphanumeric alphabet to contain letter '" + alphabet + "'.");
-        }
+        checkAlphabetConsistsOfAllLettersBetweenChars(alphabet, 'a', 'z');
+        checkAlphabetConsistsOfAllLettersBetweenChars(alphabet, 'A', 'Z');
+        checkAlphabetConsistsOfAllLettersBetweenChars(alphabet, '0', '9');
     }
 
     /**
@@ -66,15 +58,26 @@ class ModelRandomGeneratorTest {
     @Test
     void testIsAlphabeticStringAlphabetic() {
         String regexString = "[A-Za-z]*";
-        assertTrue(ModelRandomGenerator.ALPHABETIC_STRING.matches(regexString),
+        String alphabet = ModelRandomGenerator.ALPHABETIC_STRING;
+        assertTrue(alphabet.matches(regexString),
                 "An alphabetic string should match the regex '" + regexString + "'.");
-        for (char alphabet = 'a'; alphabet <= 'z'; alphabet++) {
-            assertTrue(ModelRandomGenerator.ALPHABETIC_STRING.contains(Character.toString(alphabet)),
-                    "Expected alphabetic alphabet to contain letter '" + alphabet + "'.");
-        }
-        for (char alphabet = 'A'; alphabet <= 'Z'; alphabet++) {
-            assertTrue(ModelRandomGenerator.ALPHABETIC_STRING.contains(Character.toString(alphabet)),
-                    "Expected alphabetic alphabet to contain letter '" + alphabet + "'.");
+        checkAlphabetConsistsOfAllLettersBetweenChars(alphabet, 'a', 'z');
+        checkAlphabetConsistsOfAllLettersBetweenChars(alphabet, 'A', 'Z');
+    }
+
+    /**
+     * Checks if a given alphabet consists of all letters in a given {@link Character} range.
+     *
+     * @param alphabet  the alphabet
+     * @param lowerChar the lower character
+     * @param upperChar the upper character
+     */
+    private void checkAlphabetConsistsOfAllLettersBetweenChars(String alphabet, char lowerChar, char upperChar) {
+        assertTrue(lowerChar <= upperChar);
+
+        for (char letter = lowerChar; letter <= upperChar; letter++) {
+            assertTrue(alphabet.contains(Character.toString(letter)),
+                    "Expected alphabet to contain letter '" + letter + "'.");
         }
     }
 
@@ -188,7 +191,7 @@ class ModelRandomGeneratorTest {
     /**
      * Checks if a random {@link Integer} value is between a given minimal and maximal value.
      *
-     * @param randomInt the random value
+     * @param randomInt        the random value
      * @param expectedMinValue the expected minimal value
      * @param expectedMaxValue the expected maximal value
      */
@@ -258,7 +261,7 @@ class ModelRandomGeneratorTest {
     /**
      * Checks if a random {@link Long} value is between a given minimal and maximal value.
      *
-     * @param randomLong the random value
+     * @param randomLong       the random value
      * @param expectedMinValue the expected minimal value
      * @param expectedMaxValue the expected maximal value
      */
@@ -304,7 +307,7 @@ class ModelRandomGeneratorTest {
     /**
      * Checks if a random {@link Float} value is between a given minimal and maximal value.
      *
-     * @param randomFloat the random value
+     * @param randomFloat      the random value
      * @param expectedMinValue the expected minimal value
      * @param expectedMaxValue the expected maximal value
      */
@@ -337,7 +340,7 @@ class ModelRandomGeneratorTest {
     /**
      * Checks if a random {@link Double} value is between a given minimal and maximal value.
      *
-     * @param randomDouble the random value
+     * @param randomDouble     the random value
      * @param expectedMinValue the expected minimal value
      * @param expectedMaxValue the expected maximal value
      */
@@ -387,7 +390,7 @@ class ModelRandomGeneratorTest {
     /**
      * Checks if a random {@link LocalDate} value is between a given dates value.
      *
-     * @param randomLocalDate a random date
+     * @param randomLocalDate      a random date
      * @param expectedMinLocalDate a start date
      * @param expectedMaxLocalDate an end date
      */
@@ -440,7 +443,7 @@ class ModelRandomGeneratorTest {
     /**
      * Checks if a random {@link LocalDateTime} value is between two given {@link LocalDateTime}s.
      *
-     * @param randomLocalDateTime a random date time
+     * @param randomLocalDateTime      a random date time
      * @param expectedMinLocalDateTime a start date time
      * @param expectedMaxLocalDateTime an end date time
      */
