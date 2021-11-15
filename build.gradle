@@ -81,6 +81,21 @@ allprojects {
 		toolVersion = project.ext.'util.org.jacoco.jacoco.version'
 	}
 
+	jacocoTestReport {
+		reports {
+			html.required.set( true )
+			xml.required.set( true )
+			xml.outputLocation.set( file("${buildDir}/reports/jacoco.xml") )
+		}
+	}
+
+	sonarqube {
+		properties {
+			property "sonar.java.coveragePlugin", "jacoco"
+			property "sonar.coverage.jacoco.xmlReportPath", "${buildDir}/reports/jacoco.xml"
+		}
+	}
+
 	String mavenArtifactId = name
 	group = project.ext.mavenGroupId
 	version = project.ext.mavenVersion
@@ -90,17 +105,17 @@ allprojects {
 	}
 
 	task sourcesJar( type: Jar, dependsOn: classes, description: 'Creates a jar from the source files.' ) {
-		archiveClassifier = 'sources'
+		archiveClassifier.set( 'sources' )
 		from sourceSets.main.allSource
 	}
 
 	task javadocJar( type: Jar, dependsOn: 'javadoc', description: 'Creates a jar from the JavaDoc files.' ) {
 		from javadoc.destinationDir
-		archiveClassifier = 'javadoc'
+		archiveClassifier.set( 'javadoc' )
 	}
 
 	task testJar(type: Jar, dependsOn: 'jar', description: 'Creates a test jar file.') {
-		archiveClassifier = 'test'
+		archiveClassifier.set( 'test' )
 		from sourceSets.test.output
 	}
 
