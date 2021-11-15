@@ -45,6 +45,7 @@ allprojects {
 		if ( project.hasProperty( 'artifactRepositoryUrl' ) && project.ext.artifactRepositoryUrl != null && project.ext.artifactRepositoryUrl.trim() != '' ) {
 			maven {
 				url "${project.ext.'artifactRepositoryUrl'}/${project.ext.'artifactRepositoryPathPublic'}"
+				allowInsecureProtocol true
 				credentials {
 					username = "${project.ext.'artifactRepositoryDeploymentUser'}"
 					password = "${project.ext.'artifactRepositoryDeploymentUserPassword'}"
