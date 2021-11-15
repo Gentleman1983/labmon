@@ -7,6 +7,7 @@ buildscript {
 		if ( project.hasProperty( 'artifactRepositoryUrl' ) && project.ext.artifactRepositoryUrl != null && project.ext.artifactRepositoryUrl.trim() != '' ) {
 			maven {
 				url "${artifactRepositoryUrl}/${artifactRepositoryPathPublic}"
+				allowInsecureProtocol true
 				credentials {
 					username = "${artifactRepositoryDeploymentUser}"
 					password = "${artifactRepositoryDeploymentUserPassword}"
@@ -150,6 +151,7 @@ allprojects {
 						} else if (project.ext.typeOfRelease.equalsIgnoreCase('RELEASE')) {
 							url "${project.ext.'artifactRepositoryUrl'}/${project.ext.'artifactRepositoryPathReleases'}"
 						}
+						allowInsecureProtocol true
 					}
 				}
 			}
