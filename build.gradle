@@ -95,13 +95,6 @@ allprojects {
 		}
 	}
 
-	sonarqube {
-		properties {
-			//property "sonar.java.coveragePlugin", "jacoco"
-			//property "sonar.coverage.jacoco.xmlReportPath", "${buildDir}/reports/jacoco.xml"
-		}
-	}
-
 	String mavenArtifactId = name
 	group = project.ext.mavenGroupId
 	version = project.ext.mavenVersion
@@ -182,6 +175,15 @@ allprojects {
 				srcDir.mkdirs()
 			}
 		}
+	}
+}
+
+sonarqube {
+	properties {
+		property "sonar.java.coveragePlugin", "jacoco"
+		def jacocoPaths = '${buildDir}/reports/jacoco.xml'
+		subprojects.each {Project p -> jacocoPaths += ",${p.buildDir}/reports/jacoco.xml"}
+		property "sonar.coverage.jacoco.xmlReportPath", jacocoPaths
 	}
 }
 
