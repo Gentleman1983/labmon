@@ -97,8 +97,8 @@ allprojects {
 
 	sonarqube {
 		properties {
-			property "sonar.java.coveragePlugin", "jacoco"
-			property "sonar.coverage.jacoco.xmlReportPath", "${buildDir}/reports/jacoco.xml"
+			//property "sonar.java.coveragePlugin", "jacoco"
+			//property "sonar.coverage.jacoco.xmlReportPath", "${buildDir}/reports/jacoco.xml"
 		}
 	}
 
