@@ -99,6 +99,13 @@ allprojects {
 
 	check.dependsOn( jacocoTestReport )
 
+	sonarqube {
+		properties {
+			property "sonar.java.coveragePlugin", "jacoco"
+			property "sonar.coverage.jacoco.xmlReportPath", "${buildDir}/jacoco/jacoco.xml"
+		}
+	}
+
 	String mavenArtifactId = name
 	group = project.ext.mavenGroupId
 	version = project.ext.mavenVersion
@@ -182,14 +189,14 @@ allprojects {
 	}
 }
 
-sonarqube {
-	properties {
-		property "sonar.java.coveragePlugin", "jacoco"
-		def jacocoPaths = '${buildDir}/jacoco/jacoco.xml'
-		subprojects.each {Project p -> jacocoPaths += ",${p.buildDir}/jacoco/jacoco.xml"}
-		property "sonar.coverage.jacoco.xmlReportPath", jacocoPaths
-	}
-}
+//sonarqube {
+//	properties {
+//		property "sonar.java.coveragePlugin", "jacoco"
+//		def jacocoPaths = "${buildDir}/jacoco/jacoco.xml"
+//		subprojects.each {Project p -> jacocoPaths += ",${p.buildDir}/jacoco/jacoco.xml"}
+//		property "sonar.coverage.jacoco.xmlReportPath", jacocoPaths
+//	}
+//}
 
 // Print build information...
 println '***********************************************************'
