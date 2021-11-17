@@ -189,15 +189,6 @@ allprojects {
 	}
 }
 
-//sonarqube {
-//	properties {
-//		property "sonar.java.coveragePlugin", "jacoco"
-//		def jacocoPaths = "${buildDir}/jacoco/jacoco.xml"
-//		subprojects.each {Project p -> jacocoPaths += ",${p.buildDir}/jacoco/jacoco.xml"}
-//		property "sonar.coverage.jacoco.xmlReportPath", jacocoPaths
-//	}
-//}
-
 // Print build information...
 println '***********************************************************'
 println '* Build environment information:'
