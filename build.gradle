@@ -63,7 +63,6 @@ allprojects {
 
 	dependencies {
 		// Adding dependencies here will add the dependencies to each subproject.
-		testImplementation "${project.ext.'gav.lib.junit.junit'}"
 		testImplementation "${project.ext.'gav.lib.nl.jqno.equalsverifier.equalsverifier'}"
 		testImplementation "${project.ext.'gav.lib.org.hamcrest.hamcrest-library'}"
 		testImplementation "${project.ext.'gav.lib.org.junit.jupiter.junit-jupiter-api'}"
@@ -106,7 +105,6 @@ allprojects {
 		}
 	}
 
-	String mavenArtifactId = name
 	group = project.ext.mavenGroupId
 	version = project.ext.mavenVersion
 	// Append suffix '-SNAPSHOT' if it is a snapshot release...
@@ -172,9 +170,9 @@ allprojects {
 			mavenJava( MavenPublication ) {
 				from components.java
 
-				artifact sourcesJar
-				artifact javadocJar
-				artifact testJar
+				artifact source: sourcesJar, classifier: 'sources', extension: 'zip'
+				artifact source: javadocJar, classifier: 'javadoc', extension: 'zip'
+				artifact source: testJar, classifier: 'test', extension: 'jar'
 			}
 		}
 	}

@@ -1,0 +1,61 @@
+def gradleOptsSonar = "-Dsonar.host.url=${sonarHostUrl} -Dsonar.organization=${sonarOrganizationKey} -Dsonar.login=${sonarLoginToken}"
+def gradleOptsNexus = "-PartifactRepositoryUrl=${nexusHostUrl} -PartifactRepositoryInsecureMode=${nexusInsecureMode} -PartifactRepositoryPathPublic=${nexusPublicRepository} -PartifactRepositoryPathReleases=${nexusReleasesRepository} -PartifactRepositoryPathSnapshots=${nexusSnapshotsRepository} -PartifactRepositoryDeploymentUser=${nexusDeploymentUser} -PartifactRepositoryDeploymentUserPassword=${nexusDeploymentUserPassword}"
+def gradleOpts = "-PtypeOfRelease=${typeOfRelease} ${gradleOptsNexus}"
+
+stage('Prepare Build') {
+    node {
+        echo 'Preparing workspace...'
+        properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '25')), parameters([choice(choices: 'Snapshot\nRelease', description: 'Build Snapshot or Release?', name: 'typeOfRelease'), booleanParam(defaultValue: false, description: 'Publish the version to the MAVEN Central external repository?', name: 'publishToMavenCentralRepository')]), [$class: 'ScannerJobProperty', doNotScan: false], [$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/Gentleman1983/labmon/'], [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], [$class: 'ThrottleJobProperty', categories: [], limitOneJobWithMatchingParams: false, maxConcurrentPerNode: 0, maxConcurrentTotal: 0, paramsToUseForLimit: '', throttleEnabled: false, throttleOption: 'project'], pipelineTriggers([pollSCM('@midnight')])])
+    }
+}
+
+stage('SCM: Checkout') {
+    node {
+        echo 'Checking out remote repository and preparing gradle run...'
+        checkout([$class: 'GitSCM', branches: [[name: "${env.BRANCH_NAME}"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'eaa21a19-0a54-4bd4-ad58-d83273439587', url: 'https://github.com/Gentleman1983/labmon.git']]])
+        sh '''chmod +x ./gradlew'''
+    }
+}
+
+stage('Init') {
+    node {
+        echo 'Initializing build...'
+        def jdk = tool name: 'JDK 17', type: 'jdk'
+        env.JAVA_HOME = "${jdk}"
+        script {
+            def projectVersion = sh ( script: "./gradlew properties -q | grep \"* Version: \" | awk '{print \$3}'", returnStdout: true ).trim()
+            currentBuild.description = "Version: ${projectVersion}"
+        }
+    }
+}
+
+stage('Build Artifacts') {
+    node {
+        echo 'Building software artifacts...'
+        sh """./gradlew clean build jar ${gradleOpts} --refresh-dependencies"""
+    }
+}
+
+stage('Test: JUnit') {
+    node {
+        echo 'Triggering unit tests...'
+        sh """./gradlew test ${gradleOpts}"""
+        junit allowEmptyResults: true, keepLongStdio: true, testResults: '**/build/test-results/test/*.xml'
+    }
+}
+
+stage('Test: Sonarqube') {
+    node {
+        withSonarQubeEnv {
+            echo 'Triggering sonar analysis...'
+            sh """./gradlew sonarqube ${gradleOpts} ${gradleOptsSonar}"""
+        }
+    }
+}
+
+stage('publish') {
+    node {
+        echo 'Publishing on DevServer repository...'
+        sh """./gradlew publish ${gradleOpts}"""
+    }
+}
