@@ -5,11 +5,11 @@ def gradleOpts = ""
 stage('Prepare Build') {
     node {
         echo 'Preparing workspace...'
+        properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '25')), parameters([choice(choices: 'Snapshot\nRelease', description: 'Build Snapshot or Release?', name: 'typeOfRelease'), booleanParam(defaultValue: false, description: 'Publish the version to the MAVEN Central external repository?', name: 'publishToMavenCentralRepository')]), [$class: 'ScannerJobProperty', doNotScan: false], [$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/Gentleman1983/labmon/'], [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], [$class: 'ThrottleJobProperty', categories: [], limitOneJobWithMatchingParams: false, maxConcurrentPerNode: 0, maxConcurrentTotal: 0, paramsToUseForLimit: '', throttleEnabled: false, throttleOption: 'project'], pipelineTriggers([pollSCM('@midnight')])])
+
         gradleOptsSonar = "-Dsonar.host.url=${env.sonarHostUrl} -Dsonar.organization=${env.sonarOrganizationKey} -Dsonar.login=${env.sonarLoginToken}"
         gradleOptsNexus = "-PartifactRepositoryUrl=${env.nexusHostUrl} -PartifactRepositoryInsecureMode=${env.nexusInsecureMode} -PartifactRepositoryPathPublic=${env.nexusPublicRepository} -PartifactRepositoryPathReleases=${env.nexusReleasesRepository} -PartifactRepositoryPathSnapshots=${env.nexusSnapshotsRepository} -PartifactRepositoryDeploymentUser=${env.nexusDeploymentUser} -PartifactRepositoryDeploymentUserPassword=${env.nexusDeploymentUserPassword}"
         gradleOpts = "-PtypeOfRelease=${typeOfRelease} ${gradleOptsNexus}"
-
-        properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '25')), parameters([choice(choices: 'Snapshot\nRelease', description: 'Build Snapshot or Release?', name: 'typeOfRelease'), booleanParam(defaultValue: false, description: 'Publish the version to the MAVEN Central external repository?', name: 'publishToMavenCentralRepository')]), [$class: 'ScannerJobProperty', doNotScan: false], [$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/Gentleman1983/labmon/'], [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], [$class: 'ThrottleJobProperty', categories: [], limitOneJobWithMatchingParams: false, maxConcurrentPerNode: 0, maxConcurrentTotal: 0, paramsToUseForLimit: '', throttleEnabled: false, throttleOption: 'project'], pipelineTriggers([pollSCM('@midnight')])])
     }
 }
 
