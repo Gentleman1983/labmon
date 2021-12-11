@@ -16,7 +16,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+package net.havox.labmon.model.impl.permissions;
+
+import net.havox.labmon.model.api.permissions.Permission;
+
 /**
- * This package provides basic test utilities.
+ * The functional representation of a permission of this application.
  */
-package net.havox.labmon.testutils;
+public class PermissionImpl implements Permission {
+
+    private String name;
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Allows to set the permission name.
+     *
+     * @param name the permission name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+}

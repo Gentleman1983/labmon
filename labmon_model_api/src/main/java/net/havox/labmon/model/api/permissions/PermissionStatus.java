@@ -16,7 +16,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+package net.havox.labmon.model.api.permissions;
+
 /**
- * This package provides basic test utilities.
+ * This represents the status of a given permission. It can be allowed or denied on a given role.
  */
-package net.havox.labmon.testutils;
+public enum PermissionStatus {
+    ALLOW,
+    DENY
+}

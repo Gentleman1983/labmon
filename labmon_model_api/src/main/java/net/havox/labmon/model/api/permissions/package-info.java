@@ -17,6 +17,6 @@
  */
 
 /**
- * This package provides basic test utilities.
+ * Model elements for permission management.
  */
-package net.havox.labmon.testutils;
+package net.havox.labmon.model.api.permissions;

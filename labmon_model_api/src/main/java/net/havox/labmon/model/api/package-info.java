@@ -17,6 +17,6 @@
  */
 
 /**
- * This package provides basic test utilities.
+ * This package contains all model api data.
  */
-package net.havox.labmon.testutils;
+package net.havox.labmon.model.api;

@@ -16,7 +16,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+package net.havox.labmon.model.api.permissions;
+
 /**
- * This package provides basic test utilities.
+ * This represents a single permission on this application. It may be granted or forbidden for a given user.
  */
-package net.havox.labmon.testutils;
+public interface Permission {
+    /**
+     * Returns the name of the permission.
+     *
+     * @return the name
+     */
+    String getName();
+}

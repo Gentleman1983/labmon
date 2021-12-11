@@ -17,6 +17,6 @@
  */
 
 /**
- * This package provides basic test utilities.
+ * This package bundles the model implementations of this application.
  */
-package net.havox.labmon.testutils;
+package net.havox.labmon.model.impl;
