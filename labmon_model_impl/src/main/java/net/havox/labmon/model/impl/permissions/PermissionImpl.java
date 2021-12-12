@@ -19,11 +19,14 @@
 package net.havox.labmon.model.impl.permissions;
 
 import net.havox.labmon.model.api.permissions.Permission;
+import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 
 /**
  * The functional representation of a permission of this application.
+ *
+ * @author Christian Otto
  */
-public class PermissionImpl implements Permission {
+public class PermissionImpl extends AbstractChangeAwareClass<PermissionImpl> implements Permission {
 
     private String name;
 
@@ -32,11 +35,7 @@ public class PermissionImpl implements Permission {
         return name;
     }
 
-    /**
-     * Allows to set the permission name.
-     *
-     * @param name the permission name
-     */
+    @Override
     public void setName(String name) {
         this.name = name;
     }

@@ -21,6 +21,7 @@ package net.havox.labmon.model.impl.permissions;
 import net.havox.labmon.model.api.permissions.Permission;
 import net.havox.labmon.model.api.permissions.PermissionStatus;
 import net.havox.labmon.model.api.permissions.Role;
+import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 
 import java.util.Collections;
 import java.util.Map;
@@ -30,8 +31,10 @@ import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
  * This represents the functional entity of a permission role of this project.
+ *
+ * @author Christian Otto
  */
-public class RoleImpl implements Role {
+public class RoleImpl extends AbstractChangeAwareClass<RoleImpl> implements Role {
     private String name;
     private Set<Role> includedRoles = new ConcurrentSkipListSet<>();
     private Map<Permission, PermissionStatus> includedPermissions = new ConcurrentHashMap<>();

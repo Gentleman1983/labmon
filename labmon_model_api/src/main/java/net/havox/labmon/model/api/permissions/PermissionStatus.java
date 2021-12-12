@@ -20,6 +20,8 @@ package net.havox.labmon.model.api.permissions;
 
 /**
  * This represents the status of a given permission. It can be allowed or denied on a given role.
+ *
+ * @author Christian Otto
  */
 public enum PermissionStatus {
     ALLOW,

@@ -18,14 +18,27 @@
 
 package net.havox.labmon.model.api.permissions;
 
+import net.havox.labmon.model.api.ChangeAware;
+
+import java.io.Serializable;
+
 /**
  * This represents a single permission on this application. It may be granted or forbidden for a given user.
+ *
+ * @author Christian Otto
  */
-public interface Permission {
+public interface Permission extends ChangeAware, Serializable {
     /**
      * Returns the name of the permission.
      *
      * @return the name
      */
     String getName();
+
+    /**
+     * Allows to set the permission name.
+     *
+     * @param name the permission name
+     */
+    void setName(String name);
 }

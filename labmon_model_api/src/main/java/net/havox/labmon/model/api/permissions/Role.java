@@ -18,17 +18,21 @@
 
 package net.havox.labmon.model.api.permissions;
 
+import net.havox.labmon.model.api.ChangeAware;
+
 import static net.havox.labmon.model.api.permissions.PermissionStatus.*;
 
-import java.util.Collection;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 /**
  * This represents a role in the permission management of this application.
+ *
+ * @author Christian Otto
  */
-public interface Role {
+public interface Role extends ChangeAware, Serializable {
     /**
      * Returns the role name.
      *
