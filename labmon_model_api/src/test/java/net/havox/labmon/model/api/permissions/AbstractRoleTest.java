@@ -116,9 +116,16 @@ public abstract class AbstractRoleTest {
 
         Assertions.assertTrue( instanceUnderTest.getIncludedRoles().contains(subRole) );
 
-        instanceUnderTest.removeRole( subRole );
+        boolean removalResult = instanceUnderTest.removeRole( subRole );
 
         Assertions.assertFalse( instanceUnderTest.getIncludedRoles().contains(subRole) );
+        Assertions.assertTrue( removalResult );
+
+        // Deleting another time should not change anything...
+        removalResult = instanceUnderTest.removeRole( subRole );
+
+        Assertions.assertFalse( instanceUnderTest.getIncludedRoles().contains(subRole) );
+        Assertions.assertTrue( removalResult );
     }
 
     /**
@@ -168,9 +175,16 @@ public abstract class AbstractRoleTest {
         Assertions.assertTrue( instanceUnderTest.getIncludedPermissions().containsKey(subPermission) );
         Assertions.assertEquals( permissionStatus, instanceUnderTest.getIncludedPermissions().get(subPermission));
 
-        instanceUnderTest.removePermission(subPermission);
+        boolean removalResult = instanceUnderTest.removePermission(subPermission);
 
         Assertions.assertFalse( instanceUnderTest.getIncludedPermissions().containsKey(subPermission) );
+        Assertions.assertTrue( removalResult );
+
+        // Deleting another time should not change anything...
+        removalResult = instanceUnderTest.removePermission(subPermission);
+
+        Assertions.assertFalse( instanceUnderTest.getIncludedPermissions().containsKey(subPermission) );
+        Assertions.assertTrue( removalResult );
     }
 
     /**
@@ -232,16 +246,37 @@ public abstract class AbstractRoleTest {
      */
     @Test
     public void testGetActivePermissionsForRoleNotContainsTransitiveDenyPermissions() throws Exception {
-        // Create role with sub role that contains an ALLOW permission.
+        // Create role with sub role that contains an DENY permission.
         Permission permission = getRandomPermission();
         Role subRole = getRole();
         subRole.addPermission(permission, PermissionStatus.DENY);
         Role instanceUnderTest = getRole();
         instanceUnderTest.addRole(subRole);
 
-        // This permission should be contained in the result set.
+        // This permission should not be contained in the result set.
         Set<Permission> includedPermissions = instanceUnderTest.getActivePermissionsForRole();
         Assertions.assertFalse( includedPermissions.contains(permission) );
+    }
+
+    /**
+     * Test if a loop in {@link Role} dependencies results in never ending recursion on
+     * {@link Role#getActivePermissionsForRole()}.
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetActivePermissionsForRoleCheckRecursionLoops() throws Exception {
+        // Create role with sub role that contains an ALLOW permission.
+        Permission permission = getRandomPermission();
+        Role subRole = getRole();
+        subRole.addPermission(permission, PermissionStatus.ALLOW);
+        Role instanceUnderTest = getRole();
+        instanceUnderTest.addRole(subRole);
+        subRole.addRole(instanceUnderTest);
+
+        // This permission should be contained in the result set.
+        Set<Permission> includedPermissions = instanceUnderTest.getActivePermissionsForRole();
+        Assertions.assertTrue( includedPermissions.contains(permission) );
     }
 
     /**
