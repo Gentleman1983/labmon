@@ -100,13 +100,24 @@ public interface Role extends ChangeAware, Serializable {
      * @return the active permissions
      */
     default Set<Permission> getActivePermissionsForRole() {
+        return getActivePermissionsForRole(new HashSet<>());
+    }
+
+    /**
+     * Returns the active permissions for this role and sub roles.
+     *
+     * @param visitedRoles a {@link Set} of visited roles to avoid never ending recursion
+     * @return the active permissions
+     */
+    private Set<Permission> getActivePermissionsForRole(Set<Role> visitedRoles) {
         Set<Permission> allPermissions = new HashSet<>();
+        visitedRoles.add(this);
 
         for (Role role : getIncludedRoles()) {
-            if(this.equals(role)) {
+            if(visitedRoles.contains(role)) {
                 continue;
             }
-            allPermissions.addAll(role.getActivePermissionsForRole());
+            allPermissions.addAll(role.getActivePermissionsForRole(visitedRoles));
         }
 
         getIncludedPermissions().forEach((key, value) -> {
