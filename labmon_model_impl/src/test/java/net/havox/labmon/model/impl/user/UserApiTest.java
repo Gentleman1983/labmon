@@ -20,6 +20,7 @@ package net.havox.labmon.model.impl.user;
 
 import net.havox.labmon.model.api.address.Address;
 import net.havox.labmon.model.api.user.AbstractUserTest;
+import net.havox.labmon.model.api.user.Credentials;
 import net.havox.labmon.model.api.user.User;
 import net.havox.labmon.model.impl.address.AddressImpl;
 
@@ -37,5 +38,10 @@ public class UserApiTest extends AbstractUserTest { // NOSONAR API test is only 
     @Override
     public Address getAddress() {
         return new AddressImpl();
+    }
+
+    @Override
+    public Credentials getCredentials() {
+        return new CredentialsImpl();
     }
 }

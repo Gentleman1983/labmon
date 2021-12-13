@@ -19,6 +19,7 @@
 package net.havox.labmon.model.basic.user;
 
 import net.havox.labmon.model.api.address.Address;
+import net.havox.labmon.model.api.user.Credentials;
 import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
 import net.havox.labmon.model.api.user.User;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -34,6 +35,7 @@ public class BasicUser extends AbstractChangeAwareAndIdentifiableClass implement
     private String middleName;
     private String lastName;
     private Address address;
+    private Credentials credentials;
 
     @Override
     public String getFirstName() {
@@ -76,14 +78,26 @@ public class BasicUser extends AbstractChangeAwareAndIdentifiableClass implement
     }
 
     @Override
-    public String toString() {
-        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE );
+    public Credentials getCredentials() {
+        return credentials;
+    }
 
-        builder.append( "id", getId() );
-        builder.append( "firstName", getFirstName() );
-        builder.append( "middleName", getMiddleName());
-        builder.append( "lastName", getLastName());
-        builder.append( "version", getVersion() );
+    @Override
+    public void setCredentials(Credentials credentials) {
+        this.credentials = credentials;
+    }
+
+    @Override
+    public String toString() {
+        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE);
+
+        builder.append("id", getId());
+        builder.append("firstName", getFirstName());
+        builder.append("middleName", getMiddleName());
+        builder.append("lastName", getLastName());
+        builder.append("address", getAddress());
+        builder.append("credentials", getCredentials());
+        builder.append("version", getVersion());
 
         return builder.build();
     }

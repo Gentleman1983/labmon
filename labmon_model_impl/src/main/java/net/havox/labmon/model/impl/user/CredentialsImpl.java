@@ -16,31 +16,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.utils.validation.user;
+package net.havox.labmon.model.impl.user;
 
+import net.havox.labmon.model.api.user.AuthenticationMethod;
 import net.havox.labmon.model.api.user.Credentials;
-import net.havox.labmon.model.api.user.User;
-import net.havox.labmon.model.basic.user.BasicCredentials;
-import net.havox.labmon.model.basic.user.BasicUser;
+import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 
 /**
- * Basic implementation of {@link AbstractUserValidationTest}.
+ * This represents the functional entity of an {@link Credentials}.
  *
  * @author Christian Otto
  */
-public class BasicUserValidationTest extends AbstractUserValidationTest {
+public class CredentialsImpl extends AbstractChangeAwareClass<CredentialsImpl> implements Credentials {
+    private String userName;
+    private AuthenticationMethod authentication;
+
     @Override
-    public User getUser() {
-        return new BasicUser();
+    public String getUserName() {
+        return userName;
     }
 
     @Override
-    public UserValidator getValidator() {
-        return new BasicUserValidator();
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     @Override
-    public Credentials getCredentials() {
-        return new BasicCredentials();
+    public AuthenticationMethod getAuthentication() {
+        return authentication;
+    }
+
+    @Override
+    public void setAuthentication(AuthenticationMethod authentication) {
+        this.authentication = authentication;
     }
 }

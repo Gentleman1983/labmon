@@ -84,4 +84,18 @@ public interface User extends ChangeAware, Serializable {
      * @param address the address
      */
     void setAddress(Address address);
+
+    /**
+     * Returns the credentials.
+     *
+     * @return the credentials
+     */
+    Credentials getCredentials();
+
+    /**
+     * Sets the credentials.
+     *
+     * @param credentials the credentials
+     */
+    void setCredentials(Credentials credentials);
 }

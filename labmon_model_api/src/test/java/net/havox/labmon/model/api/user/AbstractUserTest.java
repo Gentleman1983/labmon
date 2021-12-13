@@ -46,6 +46,14 @@ public abstract class AbstractUserTest {
     public abstract Address getAddress() throws Exception;
 
     /**
+     * Provides an {@link Credentials} entity.
+     *
+     * @return the entity
+     * @throws Exception
+     */
+    public abstract Credentials getCredentials() throws Exception;
+
+    /**
      * Tests if changes on the first name property work properly.
      *
      * @throws Exception
@@ -121,7 +129,7 @@ public abstract class AbstractUserTest {
     }
 
     /**
-     * User Story BM015 acceptance criteria 01 ("An employer has a name, address and contact options.").
+     * Tests if changes on the address property work properly.
      *
      * @throws Exception
      */
@@ -133,5 +141,20 @@ public abstract class AbstractUserTest {
         User objectUnderTest = getUser();
         objectUnderTest.setAddress( address );
         Assertions.assertEquals( address, objectUnderTest.getAddress() );
+    }
+
+    /**
+     * Tests if changes on the credentials property work properly.
+     *
+     * @throws Exception
+     */
+    @RepeatedTest( 25 )
+    public void testModifyCredentials() throws Exception
+    {
+        Credentials credentials = getCredentials();
+
+        User objectUnderTest = getUser();
+        objectUnderTest.setCredentials(credentials);
+        Assertions.assertEquals( credentials, objectUnderTest.getCredentials() );
     }
 }

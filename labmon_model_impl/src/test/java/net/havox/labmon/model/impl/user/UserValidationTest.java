@@ -18,6 +18,7 @@
 
 package net.havox.labmon.model.impl.user;
 
+import net.havox.labmon.model.api.user.Credentials;
 import net.havox.labmon.model.api.user.User;
 import net.havox.labmon.model.utils.validation.user.AbstractUserValidationTest;
 import net.havox.labmon.model.utils.validation.user.UserImplValidator;
@@ -36,5 +37,10 @@ public class UserValidationTest extends AbstractUserValidationTest { // NOSONAR 
     @Override
     public UserImplValidator getValidator() {
         return new UserImplValidator();
+    }
+
+    @Override
+    public Credentials getCredentials() {
+        return new CredentialsImpl();
     }
 }

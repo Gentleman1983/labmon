@@ -16,31 +16,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.utils.validation.user;
+package net.havox.labmon.model.api.user;
 
-import net.havox.labmon.model.api.user.Credentials;
-import net.havox.labmon.model.api.user.User;
-import net.havox.labmon.model.basic.user.BasicCredentials;
-import net.havox.labmon.model.basic.user.BasicUser;
+import net.havox.labmon.model.basic.user.BasicPasswordAuthentication;
 
 /**
- * Basic implementation of {@link AbstractUserValidationTest}.
+ * Basic implementation of {@link AbstractPasswordAuthenticationTest}.
  *
  * @author Christian Otto
  */
-public class BasicUserValidationTest extends AbstractUserValidationTest {
+public class BasicPasswordAuthenticationTest extends AbstractPasswordAuthenticationTest {
     @Override
-    public User getUser() {
-        return new BasicUser();
-    }
-
-    @Override
-    public UserValidator getValidator() {
-        return new BasicUserValidator();
-    }
-
-    @Override
-    public Credentials getCredentials() {
-        return new BasicCredentials();
+    public PasswordAuthentication getPasswordAuthentication() {
+        return new BasicPasswordAuthentication();
     }
 }

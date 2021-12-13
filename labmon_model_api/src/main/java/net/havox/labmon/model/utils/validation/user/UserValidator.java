@@ -28,6 +28,7 @@ import java.util.List;
  * Specifications for a given user entity:
  * - firstName has not to be empty
  * - lastName has not to be empty
+ * - a credential must be set
  *
  * @author Christian Otto
  */

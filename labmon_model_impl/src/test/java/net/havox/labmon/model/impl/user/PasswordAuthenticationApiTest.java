@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2021 [haVox] Design
- * Created by Christian Otto
+ * Created by The_G
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,31 +16,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.utils.validation.user;
+package net.havox.labmon.model.impl.user;
 
-import net.havox.labmon.model.api.user.Credentials;
-import net.havox.labmon.model.api.user.User;
-import net.havox.labmon.model.basic.user.BasicCredentials;
-import net.havox.labmon.model.basic.user.BasicUser;
+import net.havox.labmon.model.api.user.AbstractPasswordAuthenticationTest;
+import net.havox.labmon.model.api.user.PasswordAuthentication;
 
 /**
- * Basic implementation of {@link AbstractUserValidationTest}.
+ * API specific test for {@link PasswordAuthentication}.
  *
  * @author Christian Otto
  */
-public class BasicUserValidationTest extends AbstractUserValidationTest {
+public class PasswordAuthenticationApiTest extends AbstractPasswordAuthenticationTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
-    public User getUser() {
-        return new BasicUser();
-    }
-
-    @Override
-    public UserValidator getValidator() {
-        return new BasicUserValidator();
-    }
-
-    @Override
-    public Credentials getCredentials() {
-        return new BasicCredentials();
+    public PasswordAuthentication getPasswordAuthentication() {
+        return new PasswordAuthenticationImpl();
     }
 }

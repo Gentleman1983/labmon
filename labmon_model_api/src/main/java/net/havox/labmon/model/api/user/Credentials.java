@@ -18,29 +18,41 @@
 
 package net.havox.labmon.model.api.user;
 
-import net.havox.labmon.model.api.address.Address;
-import net.havox.labmon.model.basic.address.BasicAddress;
-import net.havox.labmon.model.basic.user.BasicCredentials;
-import net.havox.labmon.model.basic.user.BasicUser;
+import net.havox.labmon.model.api.ChangeAware;
+
+import java.io.Serializable;
 
 /**
- * Basic implementation of {@link AbstractUserTest}.
+ * This represents an user credential of this application.
  *
  * @author Christian Otto
  */
-public class BasicUserTest extends AbstractUserTest {
-    @Override
-    public User getUser() {
-        return new BasicUser();
-    }
+public interface Credentials extends ChangeAware, Serializable {
+    /**
+     * Returns the username.
+     *
+     * @return the username
+     */
+    String getUserName();
 
-    @Override
-    public Address getAddress() throws Exception {
-        return new BasicAddress();
-    }
+    /**
+     * Sets the username.
+     *
+     * @param userName the username
+     */
+    void setUserName(String userName);
 
-    @Override
-    public Credentials getCredentials() throws Exception {
-        return new BasicCredentials();
-    }
+    /**
+     * Returns the authentication method.
+     *
+     * @return the authentication method
+     */
+    AuthenticationMethod getAuthentication();
+
+    /**
+     * Sets the authentication method.
+     *
+     * @param authentication the authentication method
+     */
+    void setAuthentication(AuthenticationMethod authentication);
 }

@@ -37,6 +37,7 @@ public class BasicUserValidator implements UserValidator {
         if (!checkIsNullInstance(instanceUnderValidation, validationErrors)) {
             checkForValidFirstName(instanceUnderValidation, validationErrors);
             checkForValidLastName(instanceUnderValidation, validationErrors);
+            checkIfCredentialsIsSet(instanceUnderValidation, validationErrors);
         }
 
         return validationErrors;
@@ -86,6 +87,18 @@ public class BasicUserValidator implements UserValidator {
 
         checkStringIsNull(name, propertyName, validationErrors);
         checkStringIsEmpty(name, propertyName, validationErrors);
+    }
+
+    /**
+     * Checks if the credentials of the {@link User} is set.
+     *
+     * @param instance         the instance
+     * @param validationErrors the {@link List} of validation errors
+     */
+    private void checkIfCredentialsIsSet(User instance, List<String> validationErrors) {
+        if (null == instance.getCredentials()) {
+            validationErrors.add("The property 'credentials' has to be not NULL.");
+        }
     }
 
     /**

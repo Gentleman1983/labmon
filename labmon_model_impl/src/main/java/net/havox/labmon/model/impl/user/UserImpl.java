@@ -19,6 +19,7 @@
 package net.havox.labmon.model.impl.user;
 
 import net.havox.labmon.model.api.address.Address;
+import net.havox.labmon.model.api.user.Credentials;
 import net.havox.labmon.model.api.user.User;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 
@@ -32,6 +33,7 @@ public class UserImpl extends AbstractChangeAwareClass<UserImpl> implements User
     private String middleName;
     private String lastName;
     private Address address;
+    private Credentials credentials;
 
     @Override
     public String getFirstName() {
@@ -71,5 +73,15 @@ public class UserImpl extends AbstractChangeAwareClass<UserImpl> implements User
     @Override
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @Override
+    public Credentials getCredentials() {
+        return credentials;
+    }
+
+    @Override
+    public void setCredentials(Credentials credentials) {
+        this.credentials = credentials;
     }
 }

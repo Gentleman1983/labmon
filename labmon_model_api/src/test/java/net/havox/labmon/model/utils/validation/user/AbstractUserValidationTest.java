@@ -18,6 +18,7 @@
 
 package net.havox.labmon.model.utils.validation.user;
 
+import net.havox.labmon.model.api.user.Credentials;
 import net.havox.labmon.model.api.user.User;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
@@ -45,6 +46,14 @@ public abstract class AbstractUserValidationTest {
      * @throws Exception
      */
     public abstract UserValidator getValidator() throws Exception;
+
+    /**
+     * Provides an {@link Credentials} entity.
+     *
+     * @return the entity
+     * @throws Exception
+     */
+    public abstract Credentials getCredentials() throws Exception;
 
     /**
      * Tests if a valid {@link User} entity is valid.
@@ -124,6 +133,20 @@ public abstract class AbstractUserValidationTest {
     }
 
     /**
+     * Tests if a {@link User} entity with {@code null} credentials is invalid.
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testUserWithNullCredentialsIsInvalid() throws Exception {
+        User instanceUnderTest = getValidUser();
+
+        instanceUnderTest.setCredentials(null);
+
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
      * Checks if an {@link User} instance has the expected validation status.
      *
      * @param instanceUnderTest the instance
@@ -149,6 +172,7 @@ public abstract class AbstractUserValidationTest {
 
         user.setFirstName(getRandomName(1, 50));
         user.setLastName(getRandomName(1, 50));
+        user.setCredentials(getCredentials());
 
         return user;
     }
