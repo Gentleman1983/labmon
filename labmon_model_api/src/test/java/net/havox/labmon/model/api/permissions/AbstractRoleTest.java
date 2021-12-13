@@ -21,6 +21,7 @@ package net.havox.labmon.model.api.permissions;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
@@ -201,6 +202,46 @@ public abstract class AbstractRoleTest {
         instanceUnderTest.addPermission(subPermission, PermissionStatus.ALLOW);
         includedPermissions = instanceUnderTest.getActivePermissionsForRole();
         Assertions.assertTrue( includedPermissions.contains(subPermission) );
+    }
+
+    /**
+     * Test if an {@link PermissionStatus#ALLOW} {@link Permission} on a sub {@link Role} results in an entry in the
+     * active permissions.
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetActivePermissionsForRoleContainsTransitiveAllowPermissions() throws Exception {
+        // Create role with sub role that contains an ALLOW permission.
+        Permission permission = getRandomPermission();
+        Role subRole = getRole();
+        subRole.addPermission(permission, PermissionStatus.ALLOW);
+        Role instanceUnderTest = getRole();
+        instanceUnderTest.addRole(subRole);
+
+        // This permission should be contained in the result set.
+        Set<Permission> includedPermissions = instanceUnderTest.getActivePermissionsForRole();
+        Assertions.assertTrue( includedPermissions.contains(permission) );
+    }
+
+    /**
+     * Test if an {@link PermissionStatus#DENY} {@link Permission} on a sub {@link Role} does not result in an entry in
+     * the active permissions.
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetActivePermissionsForRoleNotContainsTransitiveDenyPermissions() throws Exception {
+        // Create role with sub role that contains an ALLOW permission.
+        Permission permission = getRandomPermission();
+        Role subRole = getRole();
+        subRole.addPermission(permission, PermissionStatus.DENY);
+        Role instanceUnderTest = getRole();
+        instanceUnderTest.addRole(subRole);
+
+        // This permission should be contained in the result set.
+        Set<Permission> includedPermissions = instanceUnderTest.getActivePermissionsForRole();
+        Assertions.assertFalse( includedPermissions.contains(permission) );
     }
 
     /**
