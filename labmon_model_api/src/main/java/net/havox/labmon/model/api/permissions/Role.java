@@ -103,6 +103,9 @@ public interface Role extends ChangeAware, Serializable {
         Set<Permission> allPermissions = new HashSet<>();
 
         for (Role role : getIncludedRoles()) {
+            if(this.equals(role)) {
+                continue;
+            }
             allPermissions.addAll(role.getActivePermissionsForRole());
         }
 
