@@ -29,12 +29,12 @@ import net.havox.labmon.model.api.permissions.Role;
  */
 public class RoleApiTest extends AbstractRoleTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
-    public Permission getPermission() throws Exception {
+    public Permission getPermission() {
         return new PermissionImpl();
     }
 
     @Override
-    public Role getRole() throws Exception {
+    public Role getRole() {
         return new RoleImpl();
     }
 }

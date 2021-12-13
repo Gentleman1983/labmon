@@ -25,6 +25,8 @@ import java.time.ZoneOffset;
 
 /**
  * Simple utility class providing some randomized test data.
+ *
+ * @author Christian Otto
  */
 public class ModelRandomGenerator {
 

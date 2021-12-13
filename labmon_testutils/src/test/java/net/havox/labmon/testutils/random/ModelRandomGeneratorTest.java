@@ -28,6 +28,11 @@ import java.time.Month;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test class for {@link ModelRandomGenerator} functionality.
+ *
+ * @author Christian Otto
+ */
 class ModelRandomGeneratorTest {
     /**
      * The pseudo random generator for this test class.

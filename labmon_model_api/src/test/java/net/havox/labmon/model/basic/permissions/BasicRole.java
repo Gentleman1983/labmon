@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2021 [haVox] Design
- * Created by The_G
+ * Created by Christian Otto
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,9 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.api.basic.permissions;
+package net.havox.labmon.model.basic.permissions;
 
-import net.havox.labmon.model.api.basic.AbstractChangeAwareAndIdentifiableClass;
+import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
 import net.havox.labmon.model.api.permissions.Permission;
 import net.havox.labmon.model.api.permissions.PermissionStatus;
 import net.havox.labmon.model.api.permissions.Role;
@@ -32,6 +32,8 @@ import java.util.Set;
 
 /**
  * Basic implementation of {@link Role} interface.
+ *
+ * @author Christian Otto
  */
 public class BasicRole extends AbstractChangeAwareAndIdentifiableClass implements Role {
     private String name;

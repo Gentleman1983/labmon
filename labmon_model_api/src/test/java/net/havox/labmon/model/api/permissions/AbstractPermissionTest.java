@@ -31,7 +31,7 @@ import org.junit.jupiter.api.RepeatedTest;
 public abstract class AbstractPermissionTest {
 
     /**
-     * Provides a permission entity.
+     * Provides a {@link Permission} entity.
      *
      * @return the entity
      * @throws Exception

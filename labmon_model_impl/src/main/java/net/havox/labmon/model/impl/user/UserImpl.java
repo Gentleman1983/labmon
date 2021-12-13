@@ -16,27 +16,48 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.impl.permissions;
+package net.havox.labmon.model.impl.user;
 
-import net.havox.labmon.model.api.permissions.Permission;
+import net.havox.labmon.model.api.user.User;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 
 /**
- * The functional representation of a {@link Permission} of this application.
+ * This represents the functional entity of an {@link User}.
  *
  * @author Christian Otto
  */
-public class PermissionImpl extends AbstractChangeAwareClass<PermissionImpl> implements Permission {
-
-    private String name;
+public class UserImpl extends AbstractChangeAwareClass<UserImpl> implements User {
+    private String firstName;
+    private String middleName;
+    private String lastName;
 
     @Override
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
     @Override
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Override
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    @Override
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    @Override
+    public String getLastName() {
+        return lastName;
+    }
+
+    @Override
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

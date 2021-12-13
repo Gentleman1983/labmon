@@ -18,7 +18,7 @@
 
 package net.havox.labmon.model.api.permissions;
 
-import net.havox.labmon.model.api.basic.permissions.BasicPermission;
+import net.havox.labmon.model.basic.permissions.BasicPermission;
 
 /**
  * Basic implementation of {@link AbstractPermissionTest}.
@@ -26,10 +26,8 @@ import net.havox.labmon.model.api.basic.permissions.BasicPermission;
  * @author Christian Otto
  */
 public class BasicPermissionTest extends AbstractPermissionTest {
-    Long currentId = 1l;
-
     @Override
-    public Permission getPermission() throws Exception {
+    public Permission getPermission() {
         return new BasicPermission();
     }
 }

@@ -30,10 +30,10 @@ import java.util.Set;
  * @author Christian Otto
  */
 public abstract class AbstractRoleTest {
-    private long currentId = 1l;
+    private long currentId = 1;
 
     /**
-     * Provides a permission entity.
+     * Provides a {@link Permission} entity.
      *
      * @return the entity
      * @throws Exception
@@ -41,7 +41,7 @@ public abstract class AbstractRoleTest {
     public abstract Permission getPermission() throws Exception;
 
     /**
-     * Provides a role entity.
+     * Provides a {@link Role} entity.
      *
      * @return the entity
      * @throws Exception

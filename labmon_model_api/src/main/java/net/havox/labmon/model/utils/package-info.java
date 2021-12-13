@@ -16,19 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.impl.permissions;
-
-import net.havox.labmon.model.api.permissions.AbstractPermissionTest;
-import net.havox.labmon.model.api.permissions.Permission;
-
 /**
- * API specific test of {@link PermissionImpl}.
- *
- * @author Christian Otto
+ * This package contains utilities to use for the data model.
  */
-public class PermissionApiTest extends AbstractPermissionTest { // NOSONAR API test is only inherited, so only derived test cases.
-    @Override
-    public Permission getPermission() {
-        return new PermissionImpl();
-    }
-}
+package net.havox.labmon.model.utils;

@@ -18,8 +18,8 @@
 
 package net.havox.labmon.model.api.permissions;
 
-import net.havox.labmon.model.api.basic.permissions.BasicPermission;
-import net.havox.labmon.model.api.basic.permissions.BasicRole;
+import net.havox.labmon.model.basic.permissions.BasicPermission;
+import net.havox.labmon.model.basic.permissions.BasicRole;
 
 /**
  * Basic implementation of {@link AbstractRoleTest}.
@@ -28,12 +28,12 @@ import net.havox.labmon.model.api.basic.permissions.BasicRole;
  */
 public class BasicRoleTest extends AbstractRoleTest {
     @Override
-    public Permission getPermission() throws Exception {
+    public Permission getPermission() {
         return new BasicPermission();
     }
 
     @Override
-    public Role getRole() throws Exception {
+    public Role getRole() {
         return new BasicRole();
     }
 }

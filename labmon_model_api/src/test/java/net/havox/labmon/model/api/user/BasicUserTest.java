@@ -16,19 +16,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.impl.permissions;
+package net.havox.labmon.model.api.user;
 
-import net.havox.labmon.model.api.permissions.AbstractPermissionTest;
-import net.havox.labmon.model.api.permissions.Permission;
+import net.havox.labmon.model.basic.user.BasicUser;
 
 /**
- * API specific test of {@link PermissionImpl}.
+ * Basic implementation of {@link AbstractUserTest}.
  *
  * @author Christian Otto
  */
-public class PermissionApiTest extends AbstractPermissionTest { // NOSONAR API test is only inherited, so only derived test cases.
+public class BasicUserTest extends AbstractUserTest {
     @Override
-    public Permission getPermission() {
-        return new PermissionImpl();
+    public User getUser() {
+        return new BasicUser();
     }
 }

@@ -16,19 +16,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.impl.permissions;
+package net.havox.labmon.model.impl.user;
 
-import net.havox.labmon.model.api.permissions.AbstractPermissionTest;
-import net.havox.labmon.model.api.permissions.Permission;
+import net.havox.labmon.model.api.user.User;
+import net.havox.labmon.model.utils.validation.user.AbstractUserValidationTest;
+import net.havox.labmon.model.utils.validation.user.UserImplValidator;
 
 /**
- * API specific test of {@link PermissionImpl}.
+ * Validation test for {@link UserImpl}.
  *
  * @author Christian Otto
  */
-public class PermissionApiTest extends AbstractPermissionTest { // NOSONAR API test is only inherited, so only derived test cases.
+public class UserValidationTest extends AbstractUserValidationTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
-    public Permission getPermission() {
-        return new PermissionImpl();
+    public User getUser() {
+        return new UserImpl();
+    }
+
+    @Override
+    public UserImplValidator getValidator() {
+        return new UserImplValidator();
     }
 }

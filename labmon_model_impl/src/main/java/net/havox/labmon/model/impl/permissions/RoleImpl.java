@@ -30,7 +30,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
- * This represents the functional entity of a permission role of this project.
+ * This represents the functional entity of a permission {@link Role} of this project.
  *
  * @author Christian Otto
  */
