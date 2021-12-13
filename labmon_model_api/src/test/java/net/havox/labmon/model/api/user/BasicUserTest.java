@@ -18,6 +18,8 @@
 
 package net.havox.labmon.model.api.user;
 
+import net.havox.labmon.model.api.address.Address;
+import net.havox.labmon.model.basic.address.BasicAddress;
 import net.havox.labmon.model.basic.user.BasicUser;
 
 /**
@@ -29,5 +31,10 @@ public class BasicUserTest extends AbstractUserTest {
     @Override
     public User getUser() {
         return new BasicUser();
+    }
+
+    @Override
+    public Address getAddress() throws Exception {
+        return new BasicAddress();
     }
 }

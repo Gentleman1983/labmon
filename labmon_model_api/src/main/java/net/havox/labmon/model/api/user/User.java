@@ -19,6 +19,7 @@
 package net.havox.labmon.model.api.user;
 
 import net.havox.labmon.model.api.ChangeAware;
+import net.havox.labmon.model.api.address.Address;
 
 import java.io.Serializable;
 
@@ -69,4 +70,18 @@ public interface User extends ChangeAware, Serializable {
      * @param lastName the last name
      */
     void setLastName(String lastName);
+
+    /**
+     * Returns the address.
+     *
+     * @return the address
+     */
+    Address getAddress();
+
+    /**
+     * Sets the address.
+     *
+     * @param address the address
+     */
+    void setAddress(Address address);
 }

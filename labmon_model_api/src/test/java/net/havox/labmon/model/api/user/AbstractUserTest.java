@@ -18,6 +18,7 @@
 
 package net.havox.labmon.model.api.user;
 
+import net.havox.labmon.model.api.address.Address;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
@@ -35,6 +36,14 @@ public abstract class AbstractUserTest {
      * @throws Exception
      */
     public abstract User getUser() throws Exception;
+
+    /**
+     * Provides an {@link Address} entity.
+     *
+     * @return the entity
+     * @throws Exception
+     */
+    public abstract Address getAddress() throws Exception;
 
     /**
      * Tests if changes on the first name property work properly.
@@ -109,5 +118,20 @@ public abstract class AbstractUserTest {
 
         Assertions.assertNotEquals(instanceOriginalName, instanceUnderTest.getLastName());
         Assertions.assertEquals(name, instanceUnderTest.getLastName());
+    }
+
+    /**
+     * User Story BM015 acceptance criteria 01 ("An employer has a name, address and contact options.").
+     *
+     * @throws Exception
+     */
+    @RepeatedTest( 25 )
+    public void testModifyAddress() throws Exception
+    {
+        Address address = getAddress();
+
+        User objectUnderTest = getUser();
+        objectUnderTest.setAddress( address );
+        Assertions.assertEquals( address, objectUnderTest.getAddress() );
     }
 }

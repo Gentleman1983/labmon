@@ -16,8 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.impl.permissions;
-
+package net.havox.labmon.model.impl.address;
 
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 import net.havox.labmon.model.impl.AbstractChangeAwareClassTest;
@@ -25,15 +24,15 @@ import net.havox.labmon.model.impl.AbstractChangeAwareClassTest;
 import java.lang.reflect.Field;
 
 /**
- * Implemation specific test for {@link PermissionImpl}.
+ * Implemation specific test for {@link AddressImpl}.
  *
  * @author Christian Otto
  */
-public class PermissionImplTest extends AbstractChangeAwareClassTest {
+public class AddressImplTest extends AbstractChangeAwareClassTest {
 
     @Override
     public AbstractChangeAwareClass createNewInstance(Long id, long version) throws Exception {
-        Class<?> clazz = PermissionImpl.class;
+        Class<?> clazz = AddressImpl.class;
         Object instance = clazz.getConstructor().newInstance();
 
         Field idField = instance.getClass().getSuperclass().getDeclaredField( "id" );
@@ -44,6 +43,6 @@ public class PermissionImplTest extends AbstractChangeAwareClassTest {
         versionField.setAccessible( true );
         versionField.set( instance, version );
 
-        return ( PermissionImpl ) instance;
+        return ( AddressImpl ) instance;
     }
 }

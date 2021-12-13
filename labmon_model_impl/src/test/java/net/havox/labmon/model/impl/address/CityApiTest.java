@@ -16,26 +16,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.impl.user;
+package net.havox.labmon.model.impl.address;
 
-import net.havox.labmon.model.api.address.Address;
-import net.havox.labmon.model.api.user.AbstractUserTest;
-import net.havox.labmon.model.api.user.User;
-import net.havox.labmon.model.impl.address.AddressImpl;
+import net.havox.labmon.model.api.address.AbstractCityTest;
+import net.havox.labmon.model.api.address.City;
+import net.havox.labmon.model.api.address.Country;
 
-/**
- * API specific test for {@link User}.
- *
- * @author Christian Otto
- */
-public class UserApiTest extends AbstractUserTest { // NOSONAR API test is only inherited, so only derived test cases.
+public class CityApiTest extends AbstractCityTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
-    public User getUser() {
-        return new UserImpl();
+    public City getCity() {
+        return new CityImpl();
     }
 
     @Override
-    public Address getAddress() {
-        return new AddressImpl();
+    public Country getCountry() {
+        return new CountryImpl();
     }
 }

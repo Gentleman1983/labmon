@@ -16,73 +16,62 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.basic.user;
+package net.havox.labmon.model.basic.address;
 
 import net.havox.labmon.model.api.address.Address;
+import net.havox.labmon.model.api.address.City;
 import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
-import net.havox.labmon.model.api.user.User;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
- * Basic implementation of {@link User} interface.
+ * Basic implementation of {@link Address}.
  *
  * @author Christian Otto
  */
-public class BasicUser extends AbstractChangeAwareAndIdentifiableClass implements User {
-    private String firstName;
-    private String middleName;
-    private String lastName;
-    private Address address;
+public class BasicAddress extends AbstractChangeAwareAndIdentifiableClass implements Address {
+    private String street;
+    private String houseNumber;
+    private City city;
 
     @Override
-    public String getFirstName() {
-        return firstName;
+    public String getStreet() {
+        return street;
     }
 
     @Override
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setStreet( String street ) {
+        this.street = street;
     }
 
     @Override
-    public String getMiddleName() {
-        return middleName;
+    public String getHouseNumber() {
+        return houseNumber;
     }
 
     @Override
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
+    public void setHouseNumber( String houseNumber ) {
+        this.houseNumber = houseNumber;
     }
 
     @Override
-    public String getLastName() {
-        return lastName;
+    public City getCity() {
+        return this.city;
     }
 
     @Override
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    @Override
-    public Address getAddress() {
-        return address;
-    }
-
-    @Override
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setCity( City city ) {
+        this.city = city;
     }
 
     @Override
     public String toString() {
-        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE );
+        ToStringBuilder builder = new ToStringBuilder( this, ToStringStyle.SHORT_PREFIX_STYLE );
 
         builder.append( "id", getId() );
-        builder.append( "firstName", getFirstName() );
-        builder.append( "middleName", getMiddleName());
-        builder.append( "lastName", getLastName());
+        builder.append( "street", getStreet() );
+        builder.append( "houseNumber", getHouseNumber() );
+        builder.append( "city", getCity() );
         builder.append( "version", getVersion() );
 
         return builder.build();

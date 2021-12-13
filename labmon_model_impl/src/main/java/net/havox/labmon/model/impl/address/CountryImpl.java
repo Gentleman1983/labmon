@@ -16,26 +16,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.impl.user;
+package net.havox.labmon.model.impl.address;
 
-import net.havox.labmon.model.api.address.Address;
-import net.havox.labmon.model.api.user.AbstractUserTest;
-import net.havox.labmon.model.api.user.User;
-import net.havox.labmon.model.impl.address.AddressImpl;
+import net.havox.labmon.model.api.address.Country;
+import net.havox.labmon.model.impl.AbstractChangeAwareClass;
+import net.havox.labmon.model.impl.permissions.PermissionImpl;
 
 /**
- * API specific test for {@link User}.
+ * The functional representation of a {@link Country}.
  *
  * @author Christian Otto
  */
-public class UserApiTest extends AbstractUserTest { // NOSONAR API test is only inherited, so only derived test cases.
+public class CountryImpl extends AbstractChangeAwareClass<PermissionImpl> implements Country {
+    private String name;
+
     @Override
-    public User getUser() {
-        return new UserImpl();
+    public String getName() {
+        return name;
     }
 
     @Override
-    public Address getAddress() {
-        return new AddressImpl();
+    public void setName(String name) {
+        this.name = name;
     }
 }

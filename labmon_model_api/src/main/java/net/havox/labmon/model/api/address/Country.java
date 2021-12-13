@@ -16,26 +16,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.impl.user;
+package net.havox.labmon.model.api.address;
 
-import net.havox.labmon.model.api.address.Address;
-import net.havox.labmon.model.api.user.AbstractUserTest;
-import net.havox.labmon.model.api.user.User;
-import net.havox.labmon.model.impl.address.AddressImpl;
+import net.havox.labmon.model.api.ChangeAware;
+
+import java.io.Serializable;
 
 /**
- * API specific test for {@link User}.
+ * This interface represents a country.
  *
  * @author Christian Otto
  */
-public class UserApiTest extends AbstractUserTest { // NOSONAR API test is only inherited, so only derived test cases.
-    @Override
-    public User getUser() {
-        return new UserImpl();
-    }
+public interface Country extends ChangeAware, Serializable
+{
 
-    @Override
-    public Address getAddress() {
-        return new AddressImpl();
-    }
+    /**
+     * Gets the country name.
+     *
+     * @return the country name
+     */
+    String getName();
+
+    /**
+     * Sets the country name.
+     *
+     * @param name the country name
+     */
+    void setName( String name );
 }
+
