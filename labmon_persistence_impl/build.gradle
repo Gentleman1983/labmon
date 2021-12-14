@@ -1,7 +1,7 @@
 dependencies {
-    api project( ':labmon_persistence_api' )
-    implementation project( ':labmon_model_impl' )
+    api project(':labmon_persistence_api')
+    implementation project(':labmon_model_impl')
 
-    testImplementation project( path:':labmon_persistence_api', configuration:'testArtifacts')
-    testImplementation project( ':labmon_testutils' )
+    testImplementation project(path: ':labmon_persistence_api', configuration: 'testArtifacts')
+    testImplementation project(':labmon_testutils')
 }

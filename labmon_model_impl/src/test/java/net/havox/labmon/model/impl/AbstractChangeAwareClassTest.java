@@ -34,7 +34,7 @@ import java.util.Random;
  * @author Christian Otto
  */
 public abstract class AbstractChangeAwareClassTest {
-    private static Random randomGenerator= new Random(System.nanoTime());
+    private static Random randomGenerator = new Random(System.nanoTime());
 
     public abstract AbstractChangeAwareClass createNewInstance(Long id, long version) throws Exception;
 

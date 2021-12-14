@@ -49,14 +49,14 @@ public abstract class AbstractAddressTest {
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
+    @RepeatedTest(25)
     public void testModifyStreet() throws Exception {
         String alphabet = " -" + ModelRandomGenerator.ALPHABETIC_STRING;
-        String streetName = ModelRandomGenerator.randomString( ModelRandomGenerator.randomIntInRange( 1, 50 ), alphabet );
+        String streetName = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), alphabet);
 
         Address objectUnderTest = getAddress();
-        objectUnderTest.setStreet( streetName );
-        Assertions.assertEquals( streetName, objectUnderTest.getStreet() );
+        objectUnderTest.setStreet(streetName);
+        Assertions.assertEquals(streetName, objectUnderTest.getStreet());
     }
 
     /**
@@ -64,16 +64,16 @@ public abstract class AbstractAddressTest {
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
+    @RepeatedTest(25)
     public void testModifyHouseNumber() throws Exception {
-        int number = ModelRandomGenerator.randomIntInRange( 1, 9999 );
-        String letter = ModelRandomGenerator.randomString( ModelRandomGenerator.randomIntInRange( 0, 1 ),
-                ModelRandomGenerator.ALPHABETIC_STRING );
+        int number = ModelRandomGenerator.randomIntInRange(1, 9999);
+        String letter = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(0, 1),
+                ModelRandomGenerator.ALPHABETIC_STRING);
         String houseNumber = "" + number + letter;
 
         Address objectUnderTest = getAddress();
-        objectUnderTest.setHouseNumber( houseNumber );
-        Assertions.assertEquals( houseNumber, objectUnderTest.getHouseNumber() );
+        objectUnderTest.setHouseNumber(houseNumber);
+        Assertions.assertEquals(houseNumber, objectUnderTest.getHouseNumber());
     }
 
     /**
@@ -81,12 +81,12 @@ public abstract class AbstractAddressTest {
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
+    @RepeatedTest(25)
     public void testModifyCity() throws Exception {
         City city = getCity();
 
         Address objectUnderTest = getAddress();
-        objectUnderTest.setCity( city );
-        Assertions.assertEquals( city, objectUnderTest.getCity() );
+        objectUnderTest.setCity(city);
+        Assertions.assertEquals(city, objectUnderTest.getCity());
     }
 }

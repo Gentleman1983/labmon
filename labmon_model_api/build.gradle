@@ -1,5 +1,5 @@
 dependencies {
     api "${project.ext.'gav.lib.org.apache.commons.commons-lang3'}"
 
-    testImplementation project( ':labmon_testutils')
+    testImplementation project(':labmon_testutils')
 }

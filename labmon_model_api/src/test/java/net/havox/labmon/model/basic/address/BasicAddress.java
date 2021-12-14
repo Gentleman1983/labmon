@@ -40,7 +40,7 @@ public class BasicAddress extends AbstractChangeAwareAndIdentifiableClass implem
     }
 
     @Override
-    public void setStreet( String street ) {
+    public void setStreet(String street) {
         this.street = street;
     }
 
@@ -50,7 +50,7 @@ public class BasicAddress extends AbstractChangeAwareAndIdentifiableClass implem
     }
 
     @Override
-    public void setHouseNumber( String houseNumber ) {
+    public void setHouseNumber(String houseNumber) {
         this.houseNumber = houseNumber;
     }
 
@@ -60,19 +60,19 @@ public class BasicAddress extends AbstractChangeAwareAndIdentifiableClass implem
     }
 
     @Override
-    public void setCity( City city ) {
+    public void setCity(City city) {
         this.city = city;
     }
 
     @Override
     public String toString() {
-        ToStringBuilder builder = new ToStringBuilder( this, ToStringStyle.SHORT_PREFIX_STYLE );
+        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE);
 
-        builder.append( "id", getId() );
-        builder.append( "street", getStreet() );
-        builder.append( "houseNumber", getHouseNumber() );
-        builder.append( "city", getCity() );
-        builder.append( "version", getVersion() );
+        builder.append("id", getId());
+        builder.append("street", getStreet());
+        builder.append("houseNumber", getHouseNumber());
+        builder.append("city", getCity());
+        builder.append("version", getVersion());
 
         return builder.build();
     }

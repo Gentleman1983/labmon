@@ -34,14 +34,14 @@ public class PasswordAuthenticationImplTest extends AbstractChangeAwareClassTest
         Class<?> clazz = PasswordAuthenticationImpl.class;
         Object instance = clazz.getConstructor().newInstance();
 
-        Field idField = instance.getClass().getSuperclass().getDeclaredField( "id" );
-        idField.setAccessible( true );
-        idField.set( instance, id );
+        Field idField = instance.getClass().getSuperclass().getDeclaredField("id");
+        idField.setAccessible(true);
+        idField.set(instance, id);
 
-        Field versionField = instance.getClass().getSuperclass().getDeclaredField( "version" );
-        versionField.setAccessible( true );
-        versionField.set( instance, version );
+        Field versionField = instance.getClass().getSuperclass().getDeclaredField("version");
+        versionField.setAccessible(true);
+        versionField.set(instance, version);
 
-        return ( PasswordAuthenticationImpl ) instance;
+        return (PasswordAuthenticationImpl) instance;
     }
 }

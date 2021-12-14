@@ -43,22 +43,22 @@ public abstract class AbstractPermissionTest {
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
+    @RepeatedTest(25)
     public void testModifyPermissionName() throws Exception {
         Permission instanceUnderTest = getPermission();
         String instanceOriginalName = instanceUnderTest.getName();
 
         String name;
         do {
-            name = ModelRandomGenerator.randomString( ModelRandomGenerator.randomInt( 100 ), ModelRandomGenerator.ALPHANUMERIC_STRING );
+            name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100), ModelRandomGenerator.ALPHANUMERIC_STRING);
         }
-        while( name.equals(instanceOriginalName));
+        while (name.equals(instanceOriginalName));
 
-        Assertions.assertEquals( instanceOriginalName, instanceUnderTest.getName() );
+        Assertions.assertEquals(instanceOriginalName, instanceUnderTest.getName());
 
-        instanceUnderTest.setName( name );
+        instanceUnderTest.setName(name);
 
-        Assertions.assertNotEquals( instanceOriginalName, instanceUnderTest.getName() );
-        Assertions.assertEquals( name, instanceUnderTest.getName() );
+        Assertions.assertNotEquals(instanceOriginalName, instanceUnderTest.getName());
+        Assertions.assertEquals(name, instanceUnderTest.getName());
     }
 }

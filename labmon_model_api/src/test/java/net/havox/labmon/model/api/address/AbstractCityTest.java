@@ -49,14 +49,14 @@ public abstract class AbstractCityTest {
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
+    @RepeatedTest(25)
     public void testModifyZipCode() throws Exception {
-        String zipCode = ModelRandomGenerator.randomString( ModelRandomGenerator.randomIntInRange( 4, 8 ),
-                ModelRandomGenerator.ALPHANUMERIC_STRING );
+        String zipCode = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(4, 8),
+                ModelRandomGenerator.ALPHANUMERIC_STRING);
 
         City objectUnderTest = getCity();
-        objectUnderTest.setZipCode( zipCode );
-        Assertions.assertEquals( zipCode, objectUnderTest.getZipCode() );
+        objectUnderTest.setZipCode(zipCode);
+        Assertions.assertEquals(zipCode, objectUnderTest.getZipCode());
     }
 
     /**
@@ -64,14 +64,14 @@ public abstract class AbstractCityTest {
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
+    @RepeatedTest(25)
     public void testModifyName() throws Exception {
         String alphabet = ModelRandomGenerator.ALPHABETIC_STRING + " -";
-        String name = ModelRandomGenerator.randomString( ModelRandomGenerator.randomIntInRange( 1, 50 ), alphabet );
+        String name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), alphabet);
 
         City objectUnderTest = getCity();
-        objectUnderTest.setName( name );
-        Assertions.assertEquals( name, objectUnderTest.getName() );
+        objectUnderTest.setName(name);
+        Assertions.assertEquals(name, objectUnderTest.getName());
     }
 
     /**
@@ -79,12 +79,12 @@ public abstract class AbstractCityTest {
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
+    @RepeatedTest(25)
     public void testModifyCounty() throws Exception {
         Country country = getCountry();
 
         City objectUnderTest = getCity();
-        objectUnderTest.setCountry( country );
-        Assertions.assertEquals( country, objectUnderTest.getCountry() );
+        objectUnderTest.setCountry(country);
+        Assertions.assertEquals(country, objectUnderTest.getCountry());
     }
 }

@@ -40,7 +40,7 @@ public class BasicCity extends AbstractChangeAwareAndIdentifiableClass implement
     }
 
     @Override
-    public void setZipCode( String zipCode ) {
+    public void setZipCode(String zipCode) {
         zip = zipCode;
     }
 
@@ -50,7 +50,7 @@ public class BasicCity extends AbstractChangeAwareAndIdentifiableClass implement
     }
 
     @Override
-    public void setName( String name ) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -60,19 +60,19 @@ public class BasicCity extends AbstractChangeAwareAndIdentifiableClass implement
     }
 
     @Override
-    public void setCountry( Country country ) {
+    public void setCountry(Country country) {
         this.country = country;
     }
 
     @Override
     public String toString() {
-        ToStringBuilder builder = new ToStringBuilder( this, ToStringStyle.SHORT_PREFIX_STYLE );
+        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE);
 
-        builder.append( "id", getId() );
-        builder.append( "name", getName() );
-        builder.append( "zip", getZipCode() );
-        builder.append( "country", getCountry() );
-        builder.append( "version", getVersion() );
+        builder.append("id", getId());
+        builder.append("name", getName());
+        builder.append("zip", getZipCode());
+        builder.append("country", getCountry());
+        builder.append("version", getVersion());
 
         return builder.build();
     }

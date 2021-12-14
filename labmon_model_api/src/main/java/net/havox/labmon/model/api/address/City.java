@@ -27,8 +27,7 @@ import net.havox.labmon.model.api.ChangeAware;
  *
  * @author Christian Otto
  */
-public interface City extends ChangeAware, Serializable
-{
+public interface City extends ChangeAware, Serializable {
 
     /**
      * Gets the ZIP code.
@@ -42,7 +41,7 @@ public interface City extends ChangeAware, Serializable
      *
      * @param zipCode the ZIP code
      */
-    void setZipCode( String zipCode );
+    void setZipCode(String zipCode);
 
     /**
      * Gets the city name.
@@ -56,7 +55,7 @@ public interface City extends ChangeAware, Serializable
      *
      * @param name the city name
      */
-    void setName( String name );
+    void setName(String name);
 
     /**
      * Gets the country.
@@ -70,5 +69,5 @@ public interface City extends ChangeAware, Serializable
      *
      * @param country the country
      */
-    void setCountry( Country country );
+    void setCountry(Country country);
 }

@@ -41,13 +41,13 @@ public abstract class AbstractCountryTest {
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
+    @RepeatedTest(25)
     public void testModifyName() throws Exception {
         String alphabet = ModelRandomGenerator.ALPHABETIC_STRING + " -";
-        String name = ModelRandomGenerator.randomString( ModelRandomGenerator.randomIntInRange( 1, 50 ), alphabet );
+        String name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), alphabet);
 
         Country objectUnderTest = getCountry();
-        objectUnderTest.setName( name );
-        Assertions.assertEquals( name, objectUnderTest.getName() );
+        objectUnderTest.setName(name);
+        Assertions.assertEquals(name, objectUnderTest.getName());
     }
 }

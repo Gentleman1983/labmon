@@ -36,14 +36,14 @@ public class PermissionImplTest extends AbstractChangeAwareClassTest {
         Class<?> clazz = PermissionImpl.class;
         Object instance = clazz.getConstructor().newInstance();
 
-        Field idField = instance.getClass().getSuperclass().getDeclaredField( "id" );
-        idField.setAccessible( true );
-        idField.set( instance, id );
+        Field idField = instance.getClass().getSuperclass().getDeclaredField("id");
+        idField.setAccessible(true);
+        idField.set(instance, id);
 
-        Field versionField = instance.getClass().getSuperclass().getDeclaredField( "version" );
-        versionField.setAccessible( true );
-        versionField.set( instance, version );
+        Field versionField = instance.getClass().getSuperclass().getDeclaredField("version");
+        versionField.setAccessible(true);
+        versionField.set(instance, version);
 
-        return ( PermissionImpl ) instance;
+        return (PermissionImpl) instance;
     }
 }

@@ -40,7 +40,7 @@ public interface PasswordAuthentication extends AuthenticationMethod {
 
     @Override
     default boolean authenticate(AuthenticationMethod authenticationMethod) {
-        if(authenticationMethod instanceof PasswordAuthentication auth) {
+        if (authenticationMethod instanceof PasswordAuthentication auth) {
             return getPassPhrase().equals(auth.getPassPhrase());
         }
         return false;

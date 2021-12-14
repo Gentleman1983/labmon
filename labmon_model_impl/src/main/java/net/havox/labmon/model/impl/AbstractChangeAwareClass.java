@@ -26,50 +26,42 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  * This class provides the basic functionality to provide change awareness.
  *
  * @param <T> the type of change aware class.
- *
  * @author Christian Otto
  */
 public class AbstractChangeAwareClass<T extends AbstractChangeAwareClass> implements ChangeAware, Comparable<T> {
     private Long id;
     private long version = 1l;
+
     @Override
-    public Long getId()
-    {
+    public Long getId() {
         return this.id;
     }
 
     @Override
-    public void setId( Long id )
-    {
+    public void setId(Long id) {
         this.id = id;
     }
 
     @Override
-    public long getVersion()
-    {
+    public long getVersion() {
         return this.version;
     }
 
     @Override
-    public long incrementVersion()
-    {
+    public long incrementVersion() {
         return ++this.version;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hashCode;
 
-        if ( this.getId() == null )
-        {
+        if (this.getId() == null) {
             hashCode = super.hashCode();
-        }
-        else
-        {
+        } else {
             HashCodeBuilder builder = new HashCodeBuilder();
 
-            builder.append( this.getId() );
+            builder.append(this.getId());
 
             hashCode = builder.toHashCode();
         }
@@ -78,29 +70,20 @@ public class AbstractChangeAwareClass<T extends AbstractChangeAwareClass> implem
     }
 
     @Override
-    public boolean equals( Object object )
-    {
-        if ( this == object )
-        {
+    public boolean equals(Object object) {
+        if (this == object) {
             return true;
-        }
-        else if ( object == null )
-        {
+        } else if (object == null) {
             return false;
-        }
-        else if ( this.getClass() == object.getClass() )
-        {
-            T typedObject = ( T ) object;
+        } else if (this.getClass() == object.getClass()) {
+            T typedObject = (T) object;
 
-            if ( this.getId() == null )
-            {
-                return ( this == typedObject );
-            }
-            else
-            {
+            if (this.getId() == null) {
+                return (this == typedObject);
+            } else {
                 EqualsBuilder builder = new EqualsBuilder();
 
-                builder.append( this.getId(), typedObject.getId() );
+                builder.append(this.getId(), typedObject.getId());
 
                 return builder.isEquals();
             }
@@ -110,12 +93,10 @@ public class AbstractChangeAwareClass<T extends AbstractChangeAwareClass> implem
     }
 
     @Override
-    public int compareTo( T other )
-    {
-        if ( null == this.getId() || null == other.getId() )
-        {
-            return super.hashCode() - ( ( Object ) other ).hashCode();
+    public int compareTo(T other) {
+        if (null == this.getId() || null == other.getId()) {
+            return super.hashCode() - ((Object) other).hashCode();
         }
-        return ( int ) ( this.getId() - other.getId() );
+        return (int) (this.getId() - other.getId());
     }
 }

@@ -54,23 +54,23 @@ public abstract class AbstractRoleTest {
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
+    @RepeatedTest(25)
     public void testModifyRoleName() throws Exception {
         Role instanceUnderTest = getRole();
         String instanceOriginalName = instanceUnderTest.getName();
 
         String name;
         do {
-            name = ModelRandomGenerator.randomString( ModelRandomGenerator.randomInt( 100 ), ModelRandomGenerator.ALPHANUMERIC_STRING );
+            name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100), ModelRandomGenerator.ALPHANUMERIC_STRING);
         }
-        while( name.equals(instanceOriginalName));
+        while (name.equals(instanceOriginalName));
 
-        Assertions.assertEquals( instanceOriginalName, instanceUnderTest.getName() );
+        Assertions.assertEquals(instanceOriginalName, instanceUnderTest.getName());
 
-        instanceUnderTest.setName( name );
+        instanceUnderTest.setName(name);
 
-        Assertions.assertNotEquals( instanceOriginalName, instanceUnderTest.getName() );
-        Assertions.assertEquals( name, instanceUnderTest.getName() );
+        Assertions.assertNotEquals(instanceOriginalName, instanceUnderTest.getName());
+        Assertions.assertEquals(name, instanceUnderTest.getName());
     }
 
     /**
@@ -78,7 +78,7 @@ public abstract class AbstractRoleTest {
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
+    @RepeatedTest(25)
     public void testAddRole() throws Exception {
         Role instanceUnderTest = getRandomRole();
 
@@ -86,13 +86,13 @@ public abstract class AbstractRoleTest {
         do {
             subRole = getRandomRole();
         }
-        while( instanceUnderTest.getIncludedRoles().contains(subRole));
+        while (instanceUnderTest.getIncludedRoles().contains(subRole));
 
-        Assertions.assertFalse( instanceUnderTest.getIncludedRoles().contains(subRole) );
+        Assertions.assertFalse(instanceUnderTest.getIncludedRoles().contains(subRole));
 
         instanceUnderTest.addRole(subRole);
 
-        Assertions.assertTrue( instanceUnderTest.getIncludedRoles().contains(subRole) );
+        Assertions.assertTrue(instanceUnderTest.getIncludedRoles().contains(subRole));
     }
 
     /**
@@ -100,7 +100,7 @@ public abstract class AbstractRoleTest {
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
+    @RepeatedTest(25)
     public void testRemoveRole() throws Exception {
         Role instanceUnderTest = getRandomRole();
 
@@ -108,24 +108,24 @@ public abstract class AbstractRoleTest {
         do {
             subRole = getRandomRole();
         }
-        while( instanceUnderTest.getIncludedRoles().contains(subRole));
+        while (instanceUnderTest.getIncludedRoles().contains(subRole));
 
-        Assertions.assertFalse( instanceUnderTest.getIncludedRoles().contains(subRole) );
+        Assertions.assertFalse(instanceUnderTest.getIncludedRoles().contains(subRole));
 
         instanceUnderTest.addRole(subRole);
 
-        Assertions.assertTrue( instanceUnderTest.getIncludedRoles().contains(subRole) );
+        Assertions.assertTrue(instanceUnderTest.getIncludedRoles().contains(subRole));
 
-        boolean removalResult = instanceUnderTest.removeRole( subRole );
+        boolean removalResult = instanceUnderTest.removeRole(subRole);
 
-        Assertions.assertFalse( instanceUnderTest.getIncludedRoles().contains(subRole) );
-        Assertions.assertTrue( removalResult );
+        Assertions.assertFalse(instanceUnderTest.getIncludedRoles().contains(subRole));
+        Assertions.assertTrue(removalResult);
 
         // Deleting another time should not change anything...
-        removalResult = instanceUnderTest.removeRole( subRole );
+        removalResult = instanceUnderTest.removeRole(subRole);
 
-        Assertions.assertFalse( instanceUnderTest.getIncludedRoles().contains(subRole) );
-        Assertions.assertTrue( removalResult );
+        Assertions.assertFalse(instanceUnderTest.getIncludedRoles().contains(subRole));
+        Assertions.assertTrue(removalResult);
     }
 
     /**
@@ -133,7 +133,7 @@ public abstract class AbstractRoleTest {
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
+    @RepeatedTest(25)
     public void testAddPermission() throws Exception {
         Role instanceUnderTest = getRandomRole();
 
@@ -141,15 +141,15 @@ public abstract class AbstractRoleTest {
         do {
             subPermission = getRandomPermission();
         }
-        while( instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
+        while (instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
 
-        Assertions.assertFalse( instanceUnderTest.getIncludedPermissions().containsKey(subPermission) );
+        Assertions.assertFalse(instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
 
         PermissionStatus permissionStatus = ModelRandomGenerator.randomBoolean() ? PermissionStatus.ALLOW : PermissionStatus.DENY;
         instanceUnderTest.addPermission(subPermission, permissionStatus);
 
-        Assertions.assertTrue( instanceUnderTest.getIncludedPermissions().containsKey(subPermission) );
-        Assertions.assertEquals( permissionStatus, instanceUnderTest.getIncludedPermissions().get(subPermission));
+        Assertions.assertTrue(instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
+        Assertions.assertEquals(permissionStatus, instanceUnderTest.getIncludedPermissions().get(subPermission));
     }
 
     /**
@@ -157,7 +157,7 @@ public abstract class AbstractRoleTest {
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
+    @RepeatedTest(25)
     public void testRemovePermission() throws Exception {
         Role instanceUnderTest = getRandomRole();
 
@@ -165,26 +165,26 @@ public abstract class AbstractRoleTest {
         do {
             subPermission = getRandomPermission();
         }
-        while( instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
+        while (instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
 
-        Assertions.assertFalse( instanceUnderTest.getIncludedPermissions().containsKey(subPermission) );
+        Assertions.assertFalse(instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
 
         PermissionStatus permissionStatus = ModelRandomGenerator.randomBoolean() ? PermissionStatus.ALLOW : PermissionStatus.DENY;
         instanceUnderTest.addPermission(subPermission, permissionStatus);
 
-        Assertions.assertTrue( instanceUnderTest.getIncludedPermissions().containsKey(subPermission) );
-        Assertions.assertEquals( permissionStatus, instanceUnderTest.getIncludedPermissions().get(subPermission));
+        Assertions.assertTrue(instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
+        Assertions.assertEquals(permissionStatus, instanceUnderTest.getIncludedPermissions().get(subPermission));
 
         boolean removalResult = instanceUnderTest.removePermission(subPermission);
 
-        Assertions.assertFalse( instanceUnderTest.getIncludedPermissions().containsKey(subPermission) );
-        Assertions.assertTrue( removalResult );
+        Assertions.assertFalse(instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
+        Assertions.assertTrue(removalResult);
 
         // Deleting another time should not change anything...
         removalResult = instanceUnderTest.removePermission(subPermission);
 
-        Assertions.assertFalse( instanceUnderTest.getIncludedPermissions().containsKey(subPermission) );
-        Assertions.assertTrue( removalResult );
+        Assertions.assertFalse(instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
+        Assertions.assertTrue(removalResult);
     }
 
     /**
@@ -192,7 +192,7 @@ public abstract class AbstractRoleTest {
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
+    @RepeatedTest(25)
     public void testGetActivePermissionsForRole() throws Exception {
         Role instanceUnderTest = getRandomRole();
 
@@ -200,22 +200,22 @@ public abstract class AbstractRoleTest {
         do {
             subPermission = getRandomPermission();
         }
-        while( instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
+        while (instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
 
-        Assertions.assertFalse( instanceUnderTest.getIncludedPermissions().containsKey(subPermission) );
+        Assertions.assertFalse(instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
 
         Set<Permission> includedPermissions = instanceUnderTest.getActivePermissionsForRole();
         Assertions.assertNotNull(includedPermissions);
-        Assertions.assertFalse( includedPermissions.contains(subPermission) );
+        Assertions.assertFalse(includedPermissions.contains(subPermission));
 
         instanceUnderTest.addPermission(subPermission, PermissionStatus.DENY);
         includedPermissions = instanceUnderTest.getActivePermissionsForRole();
-        Assertions.assertFalse( includedPermissions.contains(subPermission) );
+        Assertions.assertFalse(includedPermissions.contains(subPermission));
 
         instanceUnderTest.removePermission(subPermission);
         instanceUnderTest.addPermission(subPermission, PermissionStatus.ALLOW);
         includedPermissions = instanceUnderTest.getActivePermissionsForRole();
-        Assertions.assertTrue( includedPermissions.contains(subPermission) );
+        Assertions.assertTrue(includedPermissions.contains(subPermission));
     }
 
     /**
@@ -235,7 +235,7 @@ public abstract class AbstractRoleTest {
 
         // This permission should be contained in the result set.
         Set<Permission> includedPermissions = instanceUnderTest.getActivePermissionsForRole();
-        Assertions.assertTrue( includedPermissions.contains(permission) );
+        Assertions.assertTrue(includedPermissions.contains(permission));
     }
 
     /**
@@ -255,7 +255,7 @@ public abstract class AbstractRoleTest {
 
         // This permission should not be contained in the result set.
         Set<Permission> includedPermissions = instanceUnderTest.getActivePermissionsForRole();
-        Assertions.assertFalse( includedPermissions.contains(permission) );
+        Assertions.assertFalse(includedPermissions.contains(permission));
     }
 
     /**
@@ -276,30 +276,29 @@ public abstract class AbstractRoleTest {
 
         // This permission should be contained in the result set.
         Set<Permission> includedPermissions = instanceUnderTest.getActivePermissionsForRole();
-        Assertions.assertTrue( includedPermissions.contains(permission) );
+        Assertions.assertTrue(includedPermissions.contains(permission));
     }
 
     /**
      * Creates a random role instance with up to two random sub roles and up to ten permissions.
      *
      * @return the instance
-     *
      * @throws Exception
      */
     private Role getRandomRole() throws Exception {
         Role instance = getRole();
-        instance.setId( currentId++ );
-        String name = ModelRandomGenerator.randomString( ModelRandomGenerator.randomInt( 100 ), ModelRandomGenerator.ALPHANUMERIC_STRING );
-        instance.setName( name );
+        instance.setId(currentId++);
+        String name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100), ModelRandomGenerator.ALPHANUMERIC_STRING);
+        instance.setName(name);
 
-        int numberOfSubRoles = ModelRandomGenerator.randomInt( 2);
-        for( int i = 0; i < numberOfSubRoles; i++ ) {
+        int numberOfSubRoles = ModelRandomGenerator.randomInt(2);
+        for (int i = 0; i < numberOfSubRoles; i++) {
             Role subRole = getRandomRole();
-            instance.addRole( subRole );
+            instance.addRole(subRole);
         }
 
-        int numberOfPermissions = ModelRandomGenerator.randomInt( 10 );
-        for( int i = 0; i < numberOfPermissions; i++ ) {
+        int numberOfPermissions = ModelRandomGenerator.randomInt(10);
+        for (int i = 0; i < numberOfPermissions; i++) {
             Permission permission = getRandomPermission();
             PermissionStatus permissionStatus = ModelRandomGenerator.randomBoolean() ? PermissionStatus.ALLOW : PermissionStatus.DENY;
             instance.addPermission(permission, permissionStatus);
@@ -312,14 +311,13 @@ public abstract class AbstractRoleTest {
      * Creates a random permission.
      *
      * @return the instance
-     *
      * @throws Exception
      */
     private Permission getRandomPermission() throws Exception {
         Permission instance = getPermission();
-        String name = ModelRandomGenerator.randomString( ModelRandomGenerator.randomInt( 100 ), ModelRandomGenerator.ALPHANUMERIC_STRING );
-        instance.setId( currentId++ );
-        instance.setName( name );
+        String name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100), ModelRandomGenerator.ALPHANUMERIC_STRING);
+        instance.setId(currentId++);
+        instance.setName(name);
         return instance;
     }
 }

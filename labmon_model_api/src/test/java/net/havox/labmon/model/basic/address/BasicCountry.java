@@ -37,17 +37,17 @@ public class BasicCountry extends AbstractChangeAwareAndIdentifiableClass implem
     }
 
     @Override
-    public void setName( String name ) {
+    public void setName(String name) {
         this.name = name;
     }
 
     @Override
     public String toString() {
-        ToStringBuilder builder = new ToStringBuilder( this, ToStringStyle.SHORT_PREFIX_STYLE );
+        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE);
 
-        builder.append( "id", getId() );
-        builder.append( "name", getName() );
-        builder.append( "version", getVersion() );
+        builder.append("id", getId());
+        builder.append("name", getName());
+        builder.append("version", getVersion());
 
         return builder.build();
     }

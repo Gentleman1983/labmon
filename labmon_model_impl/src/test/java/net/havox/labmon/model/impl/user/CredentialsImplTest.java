@@ -34,14 +34,14 @@ public class CredentialsImplTest extends AbstractChangeAwareClassTest {
         Class<?> clazz = CredentialsImpl.class;
         Object instance = clazz.getConstructor().newInstance();
 
-        Field idField = instance.getClass().getSuperclass().getDeclaredField( "id" );
-        idField.setAccessible( true );
-        idField.set( instance, id );
+        Field idField = instance.getClass().getSuperclass().getDeclaredField("id");
+        idField.setAccessible(true);
+        idField.set(instance, id);
 
-        Field versionField = instance.getClass().getSuperclass().getDeclaredField( "version" );
-        versionField.setAccessible( true );
-        versionField.set( instance, version );
+        Field versionField = instance.getClass().getSuperclass().getDeclaredField("version");
+        versionField.setAccessible(true);
+        versionField.set(instance, version);
 
-        return ( CredentialsImpl ) instance;
+        return (CredentialsImpl) instance;
     }
 }

@@ -81,7 +81,7 @@ public interface Role extends ChangeAware, Serializable {
      * Adds a permission to the role.
      *
      * @param permission the permission
-     * @param status the permission status
+     * @param status     the permission status
      * @return true if all worked fine
      */
     boolean addPermission(Permission permission, PermissionStatus status);
@@ -114,7 +114,7 @@ public interface Role extends ChangeAware, Serializable {
         visitedRoles.add(this);
 
         for (Role role : getIncludedRoles()) {
-            if(visitedRoles.contains(role)) {
+            if (visitedRoles.contains(role)) {
                 continue;
             }
             allPermissions.addAll(role.getActivePermissionsForRole(visitedRoles));

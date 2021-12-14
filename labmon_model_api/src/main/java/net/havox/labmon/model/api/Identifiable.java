@@ -36,5 +36,5 @@ public interface Identifiable {
      *
      * @param id the identifier.
      */
-    void setId( Long id );
+    void setId(Long id);
 }

@@ -24,7 +24,7 @@ import java.util.List;
 
 /**
  * A validator for the {@link User} entities.
- *
+ * <p>
  * Specifications for a given user entity:
  * - firstName has not to be empty
  * - lastName has not to be empty

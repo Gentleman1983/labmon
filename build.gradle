@@ -1,29 +1,29 @@
-if ( !project.hasProperty( 'typeOfRelease' ) || ( !project.ext.typeOfRelease.equalsIgnoreCase( 'SNAPSHOT' ) && !project.ext.typeOfRelease.equalsIgnoreCase( 'RELEASE' ) ) ) {
-	println( "No valid type of release selected. Please add parameter 'typeOfRelease' with values 'SNAPSHOT' for snapshot release or 'RELEASE' for productive release." )
+if (!project.hasProperty('typeOfRelease') || (!project.ext.typeOfRelease.equalsIgnoreCase('SNAPSHOT') && !project.ext.typeOfRelease.equalsIgnoreCase('RELEASE'))) {
+    println("No valid type of release selected. Please add parameter 'typeOfRelease' with values 'SNAPSHOT' for snapshot release or 'RELEASE' for productive release.")
 }
 
 buildscript {
-	repositories {
-		if ( project.hasProperty( 'artifactRepositoryUrl' ) && project.ext.artifactRepositoryUrl != null && project.ext.artifactRepositoryUrl.trim() != '' ) {
-			maven {
-				url "${artifactRepositoryUrl}/${artifactRepositoryPathPublic}"
-				if ( project.hasProperty( 'artifactRepositoryInsecureMode' ) && project.ext.artifactRepositoryInsecureMode != null && project.ext.artifactRepositoryInsecureMode.trim() == 'true' ) {
-					allowInsecureProtocol true
-				}
-				credentials {
-					username = "${artifactRepositoryDeploymentUser}"
-					password = "${artifactRepositoryDeploymentUserPassword}"
+    repositories {
+        if (project.hasProperty('artifactRepositoryUrl') && project.ext.artifactRepositoryUrl != null && project.ext.artifactRepositoryUrl.trim() != '') {
+            maven {
+                url "${artifactRepositoryUrl}/${artifactRepositoryPathPublic}"
+                if (project.hasProperty('artifactRepositoryInsecureMode') && project.ext.artifactRepositoryInsecureMode != null && project.ext.artifactRepositoryInsecureMode.trim() == 'true') {
+                    allowInsecureProtocol true
+                }
+                credentials {
+                    username = "${artifactRepositoryDeploymentUser}"
+                    password = "${artifactRepositoryDeploymentUserPassword}"
 
-				}
-			}
-		}
-		mavenCentral()
-		mavenLocal()
-	}
-	dependencies {
-		classpath "${project.ext.'gav.gradlePlugin.org.liquibase.liquibase-gradle-plugin'}"
-		classpath "${project.ext.'gav.gradlePlugin.org.sonarsource.scanner.gradle.sonarqube-gradle-plugin'}"
-	}
+                }
+            }
+        }
+        mavenCentral()
+        mavenLocal()
+    }
+    dependencies {
+        classpath "${project.ext.'gav.gradlePlugin.org.liquibase.liquibase-gradle-plugin'}"
+        classpath "${project.ext.'gav.gradlePlugin.org.sonarsource.scanner.gradle.sonarqube-gradle-plugin'}"
+    }
 }
 
 apply plugin: 'base'
@@ -31,160 +31,159 @@ apply plugin: 'idea'
 apply plugin: 'org.sonarqube'
 
 allprojects {
-	configurations {
-		testArtifacts.extendsFrom testRuntime
-	}
+    configurations {
+        testArtifacts.extendsFrom testRuntime
+    }
 
-	apply plugin: 'java-library'
-	apply plugin: 'jacoco'
-	apply plugin: 'maven-publish'
+    apply plugin: 'java-library'
+    apply plugin: 'jacoco'
+    apply plugin: 'maven-publish'
 
-	sourceCompatibility = "${project.ext.'java.sourcecompatibility'}"
-	targetCompatibility = "${project.ext.'java.targetcompatibility'}"
-	[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+    sourceCompatibility = "${project.ext.'java.sourcecompatibility'}"
+    targetCompatibility = "${project.ext.'java.targetcompatibility'}"
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
-	repositories {
-		if ( project.hasProperty( 'artifactRepositoryUrl' ) && project.ext.artifactRepositoryUrl != null && project.ext.artifactRepositoryUrl.trim() != '' ) {
-			maven {
-				url "${project.ext.'artifactRepositoryUrl'}/${project.ext.'artifactRepositoryPathPublic'}"
-				if ( project.hasProperty( 'artifactRepositoryInsecureMode' ) && project.ext.artifactRepositoryInsecureMode != null && project.ext.artifactRepositoryInsecureMode.trim() == 'true' ) {
-					allowInsecureProtocol true
-				}
-				credentials {
-					username = "${project.ext.'artifactRepositoryDeploymentUser'}"
-					password = "${project.ext.'artifactRepositoryDeploymentUserPassword'}"
+    repositories {
+        if (project.hasProperty('artifactRepositoryUrl') && project.ext.artifactRepositoryUrl != null && project.ext.artifactRepositoryUrl.trim() != '') {
+            maven {
+                url "${project.ext.'artifactRepositoryUrl'}/${project.ext.'artifactRepositoryPathPublic'}"
+                if (project.hasProperty('artifactRepositoryInsecureMode') && project.ext.artifactRepositoryInsecureMode != null && project.ext.artifactRepositoryInsecureMode.trim() == 'true') {
+                    allowInsecureProtocol true
+                }
+                credentials {
+                    username = "${project.ext.'artifactRepositoryDeploymentUser'}"
+                    password = "${project.ext.'artifactRepositoryDeploymentUserPassword'}"
 
-				}
-			}
-		}
-		mavenCentral()
-		mavenLocal()
-	}
+                }
+            }
+        }
+        mavenCentral()
+        mavenLocal()
+    }
 
-	dependencies {
-		// Adding dependencies here will add the dependencies to each subproject.
-		testImplementation "${project.ext.'gav.lib.nl.jqno.equalsverifier.equalsverifier'}"
-		testImplementation "${project.ext.'gav.lib.org.hamcrest.hamcrest-library'}"
-		testImplementation "${project.ext.'gav.lib.org.junit.jupiter.junit-jupiter-api'}"
-		testImplementation "${project.ext.'gav.lib.org.mockito.mockito-core'}"
-		testImplementation "${project.ext.'gav.lib.org.mockito.mockito-junit-jupiter'}"
+    dependencies {
+        // Adding dependencies here will add the dependencies to each subproject.
+        testImplementation "${project.ext.'gav.lib.nl.jqno.equalsverifier.equalsverifier'}"
+        testImplementation "${project.ext.'gav.lib.org.hamcrest.hamcrest-library'}"
+        testImplementation "${project.ext.'gav.lib.org.junit.jupiter.junit-jupiter-api'}"
+        testImplementation "${project.ext.'gav.lib.org.mockito.mockito-core'}"
+        testImplementation "${project.ext.'gav.lib.org.mockito.mockito-junit-jupiter'}"
 
-		testRuntimeOnly "${project.ext.'gav.lib.org.junit.jupiter.junit-jupiter-engine'}"
-		testRuntimeOnly "${project.ext.'gav.lib.org.junit.vintage.junit-vintage-engine'}"
-	}
+        testRuntimeOnly "${project.ext.'gav.lib.org.junit.jupiter.junit-jupiter-engine'}"
+        testRuntimeOnly "${project.ext.'gav.lib.org.junit.vintage.junit-vintage-engine'}"
+    }
 
-	tasks.withType( Test ) {
-		useJUnitPlatform()
+    tasks.withType(Test) {
+        useJUnitPlatform()
 
-		reports {
-			junitXml.required = true
-			html.required = true
-		}
+        reports {
+            junitXml.required = true
+            html.required = true
+        }
 
-		jacocoTestReport.dependsOn( it )
-	}
+        jacocoTestReport.dependsOn(it)
+    }
 
-	jacoco {
-		toolVersion = project.ext.'util.org.jacoco.jacoco.version'
-	}
+    jacoco {
+        toolVersion = project.ext.'util.org.jacoco.jacoco.version'
+    }
 
-	jacocoTestReport {
-		reports {
-			html.required.set( true )
-			xml.required.set( true )
-			xml.outputLocation.set( file("${buildDir}/jacoco/jacoco.xml") )
-		}
-	}
+    jacocoTestReport {
+        reports {
+            html.required.set(true)
+            xml.required.set(true)
+            xml.outputLocation.set(file("${buildDir}/jacoco/jacoco.xml"))
+        }
+    }
 
-	check.dependsOn( jacocoTestReport )
+    check.dependsOn(jacocoTestReport)
 
-	sonarqube {
-		properties {
-			property "sonar.java.coveragePlugin", "jacoco"
-			property "sonar.coverage.jacoco.xmlReportPath", "${buildDir}/jacoco/jacoco.xml"
-		}
-	}
+    sonarqube {
+        properties {
+            property "sonar.java.coveragePlugin", "jacoco"
+            property "sonar.coverage.jacoco.xmlReportPath", "${buildDir}/jacoco/jacoco.xml"
+        }
+    }
 
-	group = project.ext.mavenGroupId
-	version = project.ext.mavenVersion
-	// Append suffix '-SNAPSHOT' if it is a snapshot release...
-	if ( !project.hasProperty( 'typeOfRelease' ) || project.ext.typeOfRelease.equalsIgnoreCase( 'SNAPSHOT' ) ) {
-		version += '-SNAPSHOT'
-	}
+    group = project.ext.mavenGroupId
+    version = project.ext.mavenVersion
+    // Append suffix '-SNAPSHOT' if it is a snapshot release...
+    if (!project.hasProperty('typeOfRelease') || project.ext.typeOfRelease.equalsIgnoreCase('SNAPSHOT')) {
+        version += '-SNAPSHOT'
+    }
 
-	task sourcesJar( type: Jar, dependsOn: classes, description: 'Creates a jar from the source files.' ) {
-		archiveClassifier.set( 'sources' )
-		from sourceSets.main.allSource
-	}
+    task sourcesJar(type: Jar, dependsOn: classes, description: 'Creates a jar from the source files.') {
+        archiveClassifier.set('sources')
+        from sourceSets.main.allSource
+    }
 
-	task javadocJar( type: Jar, dependsOn: 'javadoc', description: 'Creates a jar from the JavaDoc files.' ) {
-		from javadoc.destinationDir
-		archiveClassifier.set( 'javadoc' )
-	}
+    task javadocJar(type: Jar, dependsOn: 'javadoc', description: 'Creates a jar from the JavaDoc files.') {
+        from javadoc.destinationDir
+        archiveClassifier.set('javadoc')
+    }
 
-	task testJar(type: Jar, dependsOn: 'jar', description: 'Creates a test jar file.') {
-		archiveClassifier.set( 'test' )
-		from sourceSets.test.output
-	}
+    task testJar(type: Jar, dependsOn: 'jar', description: 'Creates a test jar file.') {
+        archiveClassifier.set('test')
+        from sourceSets.test.output
+    }
 
-	artifacts {
-		archives jar
-		archives javadocJar
-		archives sourcesJar
-		testArtifacts testJar
-	}
+    artifacts {
+        archives jar
+        archives javadocJar
+        archives sourcesJar
+        testArtifacts testJar
+    }
 
-	publishing {
-		def repoKey = ''
+    publishing {
+        def repoKey = ''
 
-		if ( !project.hasProperty( 'typeOfRelease' ) || project.ext.typeOfRelease.equalsIgnoreCase( 'SNAPSHOT' ) ) {
-			repoKey = 'snapshot'
-		}
-		else if ( project.ext.typeOfRelease.equalsIgnoreCase( 'RELEASE' ) ) {
-			repoKey = 'release'
-		}
+        if (!project.hasProperty('typeOfRelease') || project.ext.typeOfRelease.equalsIgnoreCase('SNAPSHOT')) {
+            repoKey = 'snapshot'
+        } else if (project.ext.typeOfRelease.equalsIgnoreCase('RELEASE')) {
+            repoKey = 'release'
+        }
 
-		if( repoKey != '' ) {
-			repositories {
-				if ( project.hasProperty( 'artifactRepositoryUrl' ) && project.ext.artifactRepositoryUrl != null && project.ext.artifactRepositoryUrl.trim() != '' ) {
-					maven {
-						name repoKey
-						credentials {
-							username "${project.ext.'artifactRepositoryDeploymentUser'}"
-							password "${project.ext.'artifactRepositoryDeploymentUserPassword'}"
-						}
-						if (!project.hasProperty('typeOfRelease') || project.ext.typeOfRelease.equalsIgnoreCase('SNAPSHOT')) {
-							url "${project.ext.'artifactRepositoryUrl'}/${project.ext.'artifactRepositoryPathSnapshots'}"
-						} else if (project.ext.typeOfRelease.equalsIgnoreCase('RELEASE')) {
-							url "${project.ext.'artifactRepositoryUrl'}/${project.ext.'artifactRepositoryPathReleases'}"
-						}
-						if ( project.hasProperty( 'artifactRepositoryInsecureMode' ) && project.ext.artifactRepositoryInsecureMode != null && project.ext.artifactRepositoryInsecureMode.trim() == 'true' ) {
-							allowInsecureProtocol true
-						}
-					}
-				}
-			}
-		}
+        if (repoKey != '') {
+            repositories {
+                if (project.hasProperty('artifactRepositoryUrl') && project.ext.artifactRepositoryUrl != null && project.ext.artifactRepositoryUrl.trim() != '') {
+                    maven {
+                        name repoKey
+                        credentials {
+                            username "${project.ext.'artifactRepositoryDeploymentUser'}"
+                            password "${project.ext.'artifactRepositoryDeploymentUserPassword'}"
+                        }
+                        if (!project.hasProperty('typeOfRelease') || project.ext.typeOfRelease.equalsIgnoreCase('SNAPSHOT')) {
+                            url "${project.ext.'artifactRepositoryUrl'}/${project.ext.'artifactRepositoryPathSnapshots'}"
+                        } else if (project.ext.typeOfRelease.equalsIgnoreCase('RELEASE')) {
+                            url "${project.ext.'artifactRepositoryUrl'}/${project.ext.'artifactRepositoryPathReleases'}"
+                        }
+                        if (project.hasProperty('artifactRepositoryInsecureMode') && project.ext.artifactRepositoryInsecureMode != null && project.ext.artifactRepositoryInsecureMode.trim() == 'true') {
+                            allowInsecureProtocol true
+                        }
+                    }
+                }
+            }
+        }
 
-		publications {
-			mavenJava( MavenPublication ) {
-				from components.java
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
 
-				artifact source: sourcesJar, classifier: 'sources', extension: 'zip'
-				artifact source: javadocJar, classifier: 'javadoc', extension: 'zip'
-				artifact source: testJar, classifier: 'test', extension: 'jar'
-			}
-		}
-	}
+                artifact source: sourcesJar, classifier: 'sources', extension: 'zip'
+                artifact source: javadocJar, classifier: 'javadoc', extension: 'zip'
+                artifact source: testJar, classifier: 'test', extension: 'jar'
+            }
+        }
+    }
 
-	task createFolders( description: 'Creates the source folders if they do not exist.' ) doLast {
-		sourceSets*.allSource*.srcDirs*.each { File srcDir ->
-			if ( !srcDir.isDirectory() ) {
-				println "Creating source folder: ${srcDir}"
-				srcDir.mkdirs()
-			}
-		}
-	}
+    task createFolders(description: 'Creates the source folders if they do not exist.') doLast {
+        sourceSets*.allSource*.srcDirs*.each { File srcDir ->
+            if (!srcDir.isDirectory()) {
+                println "Creating source folder: ${srcDir}"
+                srcDir.mkdirs()
+            }
+        }
+    }
 }
 
 // Print build information...
@@ -192,7 +191,7 @@ println '***********************************************************'
 println '* Build environment information:'
 println '* =============================='
 println "* Gradle wrapper version: ${GradleVersion.current().getVersion()}"
-println "* JDK version: ${JavaVersion.current()} (${System.getProperty( 'java.version' )})"
+println "* JDK version: ${JavaVersion.current()} (${System.getProperty('java.version')})"
 println "* Source compatibility: ${project.sourceCompatibility}"
 println "* Target compatibility: ${project.targetCompatibility}"
 println '*'

@@ -150,7 +150,7 @@ public abstract class AbstractUserValidationTest {
      * Checks if an {@link User} instance has the expected validation status.
      *
      * @param instanceUnderTest the instance
-     * @param expectedValid is the instance expected valid?
+     * @param expectedValid     is the instance expected valid?
      * @throws Exception
      */
     private void checkValidInstance(User instanceUnderTest, Boolean expectedValid) throws Exception {

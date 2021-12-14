@@ -38,7 +38,7 @@ import java.util.Set;
 public class BasicRole extends AbstractChangeAwareAndIdentifiableClass implements Role {
     private String name;
     private Set<Role> roles = new HashSet<>();
-    private Map<Permission,PermissionStatus> permissions = new HashMap<>();
+    private Map<Permission, PermissionStatus> permissions = new HashMap<>();
 
     @Override
     public String getName() {
@@ -86,13 +86,13 @@ public class BasicRole extends AbstractChangeAwareAndIdentifiableClass implement
 
     @Override
     public String toString() {
-        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE );
+        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE);
 
-        builder.append( "id", getId() );
-        builder.append( "name", getName() );
-        builder.append( "includedRoles", getIncludedRoles());
-        builder.append( "includedPermissions", getIncludedPermissions());
-        builder.append( "version", getVersion() );
+        builder.append("id", getId());
+        builder.append("name", getName());
+        builder.append("includedRoles", getIncludedRoles());
+        builder.append("includedPermissions", getIncludedPermissions());
+        builder.append("version", getVersion());
 
         return builder.build();
     }

@@ -27,8 +27,7 @@ import net.havox.labmon.model.api.ChangeAware;
  *
  * @author Christian Otto
  */
-public interface Address extends ChangeAware, Serializable
-{
+public interface Address extends ChangeAware, Serializable {
 
     /**
      * Gets the street name.
@@ -42,7 +41,7 @@ public interface Address extends ChangeAware, Serializable
      *
      * @param street the street name
      */
-    void setStreet( String street );
+    void setStreet(String street);
 
     /**
      * Gets the house number.
@@ -56,7 +55,7 @@ public interface Address extends ChangeAware, Serializable
      *
      * @param houseNumber the house number
      */
-    void setHouseNumber( String houseNumber );
+    void setHouseNumber(String houseNumber);
 
     /**
      * Gets the city.
@@ -70,5 +69,5 @@ public interface Address extends ChangeAware, Serializable
      *
      * @param city the cityS
      */
-    void setCity( City city );
+    void setCity(City city);
 }

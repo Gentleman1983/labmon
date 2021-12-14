@@ -35,14 +35,14 @@ public class AddressImplTest extends AbstractChangeAwareClassTest {
         Class<?> clazz = AddressImpl.class;
         Object instance = clazz.getConstructor().newInstance();
 
-        Field idField = instance.getClass().getSuperclass().getDeclaredField( "id" );
-        idField.setAccessible( true );
-        idField.set( instance, id );
+        Field idField = instance.getClass().getSuperclass().getDeclaredField("id");
+        idField.setAccessible(true);
+        idField.set(instance, id);
 
-        Field versionField = instance.getClass().getSuperclass().getDeclaredField( "version" );
-        versionField.setAccessible( true );
-        versionField.set( instance, version );
+        Field versionField = instance.getClass().getSuperclass().getDeclaredField("version");
+        versionField.setAccessible(true);
+        versionField.set(instance, version);
 
-        return ( AddressImpl ) instance;
+        return (AddressImpl) instance;
     }
 }

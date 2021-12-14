@@ -27,8 +27,7 @@ import java.io.Serializable;
  *
  * @author Christian Otto
  */
-public interface Country extends ChangeAware, Serializable
-{
+public interface Country extends ChangeAware, Serializable {
 
     /**
      * Gets the country name.
@@ -42,6 +41,6 @@ public interface Country extends ChangeAware, Serializable
      *
      * @param name the country name
      */
-    void setName( String name );
+    void setName(String name);
 }
 
