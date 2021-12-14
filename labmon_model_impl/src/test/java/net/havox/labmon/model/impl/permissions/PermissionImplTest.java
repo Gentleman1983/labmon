@@ -22,28 +22,14 @@ package net.havox.labmon.model.impl.permissions;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 import net.havox.labmon.model.impl.AbstractChangeAwareClassTest;
 
-import java.lang.reflect.Field;
-
 /**
  * Implemation specific test for {@link PermissionImpl}.
  *
  * @author Christian Otto
  */
-public class PermissionImplTest extends AbstractChangeAwareClassTest {
-
+public class PermissionImplTest extends AbstractChangeAwareClassTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
-    public AbstractChangeAwareClass createNewInstance(Long id, long version) throws Exception {
-        Class<?> clazz = PermissionImpl.class;
-        Object instance = clazz.getConstructor().newInstance();
-
-        Field idField = instance.getClass().getSuperclass().getDeclaredField("id");
-        idField.setAccessible(true);
-        idField.set(instance, id);
-
-        Field versionField = instance.getClass().getSuperclass().getDeclaredField("version");
-        versionField.setAccessible(true);
-        versionField.set(instance, version);
-
-        return (PermissionImpl) instance;
+    public AbstractChangeAwareClass getNewInstance() throws Exception {
+        return new PermissionImpl();
     }
 }

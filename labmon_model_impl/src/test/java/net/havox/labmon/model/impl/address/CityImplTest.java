@@ -21,28 +21,14 @@ package net.havox.labmon.model.impl.address;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 import net.havox.labmon.model.impl.AbstractChangeAwareClassTest;
 
-import java.lang.reflect.Field;
-
 /**
  * Implemation specific test for {@link CityImpl}.
  *
  * @author Christian Otto
  */
-public class CityImplTest extends AbstractChangeAwareClassTest {
-
+public class CityImplTest extends AbstractChangeAwareClassTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
-    public AbstractChangeAwareClass createNewInstance(Long id, long version) throws Exception {
-        Class<?> clazz = CityImpl.class;
-        Object instance = clazz.getConstructor().newInstance();
-
-        Field idField = instance.getClass().getSuperclass().getDeclaredField("id");
-        idField.setAccessible(true);
-        idField.set(instance, id);
-
-        Field versionField = instance.getClass().getSuperclass().getDeclaredField("version");
-        versionField.setAccessible(true);
-        versionField.set(instance, version);
-
-        return (CityImpl) instance;
+    public AbstractChangeAwareClass getNewInstance() throws Exception {
+        return new CityImpl();
     }
 }

@@ -21,27 +21,14 @@ package net.havox.labmon.model.impl.user;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 import net.havox.labmon.model.impl.AbstractChangeAwareClassTest;
 
-import java.lang.reflect.Field;
-
 /**
  * Implementation specific test for {@link UserImpl}.
  *
  * @author Christian Otto
  */
-public class UserImplTest extends AbstractChangeAwareClassTest {
+public class UserImplTest extends AbstractChangeAwareClassTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
-    public AbstractChangeAwareClass createNewInstance(Long id, long version) throws Exception {
-        Class<?> clazz = UserImpl.class;
-        Object instance = clazz.getConstructor().newInstance();
-
-        Field idField = instance.getClass().getSuperclass().getDeclaredField("id");
-        idField.setAccessible(true);
-        idField.set(instance, id);
-
-        Field versionField = instance.getClass().getSuperclass().getDeclaredField("version");
-        versionField.setAccessible(true);
-        versionField.set(instance, version);
-
-        return (UserImpl) instance;
+    public AbstractChangeAwareClass getNewInstance() throws Exception {
+        return new UserImpl();
     }
 }
