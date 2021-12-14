@@ -48,6 +48,7 @@ public abstract class AbstractChangeAwareClassTest {
      * Given:
      * When:
      * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest(25)
@@ -63,6 +64,7 @@ public abstract class AbstractChangeAwareClassTest {
      * Given:
      * When:
      * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -84,6 +86,7 @@ public abstract class AbstractChangeAwareClassTest {
      * Given:
      * When:
      * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -102,6 +105,7 @@ public abstract class AbstractChangeAwareClassTest {
      * Given:
      * When:
      * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -123,6 +127,7 @@ public abstract class AbstractChangeAwareClassTest {
      * Given:
      * When:
      * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -149,6 +154,7 @@ public abstract class AbstractChangeAwareClassTest {
      * Given:
      * When:
      * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -176,6 +182,7 @@ public abstract class AbstractChangeAwareClassTest {
      * Given:
      * When:
      * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -194,6 +201,7 @@ public abstract class AbstractChangeAwareClassTest {
      * Given:
      * When:
      * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -216,6 +224,7 @@ public abstract class AbstractChangeAwareClassTest {
      * Given:
      * When:
      * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -241,6 +250,7 @@ public abstract class AbstractChangeAwareClassTest {
      * Given:
      * When:
      * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -272,6 +282,7 @@ public abstract class AbstractChangeAwareClassTest {
      * Given:
      * When:
      * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -297,6 +308,7 @@ public abstract class AbstractChangeAwareClassTest {
      * Given:
      * When:
      * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -316,6 +328,7 @@ public abstract class AbstractChangeAwareClassTest {
      * Given:
      * When:
      * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -342,6 +355,7 @@ public abstract class AbstractChangeAwareClassTest {
      * Given:
      * When:
      * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -404,6 +418,7 @@ public abstract class AbstractChangeAwareClassTest {
      * Given:
      * When:
      * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -423,6 +438,7 @@ public abstract class AbstractChangeAwareClassTest {
      * Given:
      * When:
      * Then:
+     *
      * @throws Exception
      */
     @Test
