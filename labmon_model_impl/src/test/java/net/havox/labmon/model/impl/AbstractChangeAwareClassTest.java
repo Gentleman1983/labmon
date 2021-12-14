@@ -19,7 +19,6 @@
 package net.havox.labmon.model.impl;
 
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -35,12 +34,7 @@ import java.util.Random;
  * @author Christian Otto
  */
 public abstract class AbstractChangeAwareClassTest {
-    private static Random randomGenerator;
-
-    @BeforeAll
-    public static void setUpClass() {
-        randomGenerator = new Random(System.nanoTime());
-    }
+    private static Random randomGenerator= new Random(System.nanoTime());
 
     public abstract AbstractChangeAwareClass createNewInstance(Long id, long version) throws Exception;
 
@@ -49,7 +43,7 @@ public abstract class AbstractChangeAwareClassTest {
     public void testModifyName() throws Exception {
         Long newId = ModelRandomGenerator.randomBoolean() ? ModelRandomGenerator.randomLong() : null;
 
-        AbstractChangeAwareClass objectUnderTest = createNewInstance(null, 1l);
+        AbstractChangeAwareClass objectUnderTest = createNewInstance(null, 1);
         objectUnderTest.setId(newId);
         Assertions.assertEquals(newId, objectUnderTest.getId());
     }
@@ -310,7 +304,7 @@ public abstract class AbstractChangeAwareClassTest {
             // Only the superclass version will be changed.
             if (fieldName.equals("version")) {
                 Long expectedValue = (Long) elementMap.get(superclassPrefix + fieldName) + 1;
-                Assertions.assertEquals(expectedValue, (Long) fieldValue, "Field '" + fieldName + "': Expected <" + expectedValue + ">, but was <" + (Long) fieldValue + ">.");
+                Assertions.assertEquals(expectedValue, fieldValue, "Field '" + fieldName + "': Expected <" + expectedValue + ">, but was <" + fieldValue + ">.");
             } else {
                 Assertions.assertEquals(elementMap.get(superclassPrefix + fieldName), fieldValue, "Field '" + fieldName + "': Expected <" + elementMap.get(superclassPrefix + fieldName) + ">, but was <" + fieldValue + ">.");
             }
