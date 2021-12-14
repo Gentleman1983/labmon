@@ -30,8 +30,6 @@ import java.time.ZoneOffset;
  */
 public class ModelRandomGenerator {
 
-    private static final SecureRandom RANDOM = new SecureRandom();
-
     /**
      * A simple alphanumeric {@link String} containing all letters in small and capital case.
      */
@@ -40,6 +38,7 @@ public class ModelRandomGenerator {
      * A simple alphabetic {@link String} containing all letters in small and capital case.
      */
     public static final String ALPHABETIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    private static final SecureRandom RANDOM = new SecureRandom();
 
     /**
      * This class is not meant to be instantiated.
@@ -61,7 +60,7 @@ public class ModelRandomGenerator {
     /**
      * Creates a randomized {@link String} of a given length using a dedicated alphabet.
      *
-     * @param length the desired length
+     * @param length   the desired length
      * @param alphabet the desired alphabet
      * @return the string
      */
