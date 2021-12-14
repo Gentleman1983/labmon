@@ -26,7 +26,7 @@ import net.havox.labmon.model.impl.AbstractChangeAwareClassTest;
  *
  * @author Christian Otto
  */
-public class CountryImplTest extends AbstractChangeAwareClassTest { // NOSONAR API test is only inherited, so only derived test cases.
+public class CountryImplTest extends AbstractChangeAwareClassTest { // NOSONAR Impl test is only inherited, so only derived test cases.
     @Override
     public AbstractChangeAwareClass getNewInstance() throws Exception {
         return new CountryImpl();
