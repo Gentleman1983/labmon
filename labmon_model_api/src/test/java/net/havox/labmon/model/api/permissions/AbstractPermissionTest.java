@@ -41,6 +41,10 @@ public abstract class AbstractPermissionTest {
     /**
      * Tests if changes on the name property work properly.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest(25)

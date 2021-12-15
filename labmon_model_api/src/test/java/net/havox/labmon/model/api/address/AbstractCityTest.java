@@ -47,6 +47,10 @@ public abstract class AbstractCityTest {
     /**
      * Tests the modification of the ZIP code.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest(25)
@@ -62,6 +66,10 @@ public abstract class AbstractCityTest {
     /**
      * Tests the modification of the city name.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest(25)
@@ -76,6 +84,10 @@ public abstract class AbstractCityTest {
 
     /**
      * Tests the modifications of the country.
+     *
+     * Given:
+     * When:
+     * Then:
      *
      * @throws Exception
      */

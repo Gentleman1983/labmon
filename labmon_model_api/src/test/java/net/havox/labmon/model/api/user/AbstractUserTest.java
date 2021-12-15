@@ -56,6 +56,10 @@ public abstract class AbstractUserTest {
     /**
      * Tests if changes on the first name property work properly.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest(25)
@@ -80,6 +84,10 @@ public abstract class AbstractUserTest {
 
     /**
      * Tests if changes on the middle name property work properly.
+     *
+     * Given:
+     * When:
+     * Then:
      *
      * @throws Exception
      */
@@ -106,6 +114,10 @@ public abstract class AbstractUserTest {
     /**
      * Tests if changes on the last name property work properly.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest(25)
@@ -131,6 +143,10 @@ public abstract class AbstractUserTest {
     /**
      * Tests if changes on the address property work properly.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest( 25 )
@@ -145,6 +161,10 @@ public abstract class AbstractUserTest {
 
     /**
      * Tests if changes on the credentials property work properly.
+     *
+     * Given:
+     * When:
+     * Then:
      *
      * @throws Exception
      */

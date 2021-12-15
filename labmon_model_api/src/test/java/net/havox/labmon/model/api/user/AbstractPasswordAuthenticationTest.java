@@ -41,6 +41,10 @@ public abstract class AbstractPasswordAuthenticationTest {
     /**
      * Tests if changes on the pass phrase property work properly.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest(25)
@@ -66,6 +70,10 @@ public abstract class AbstractPasswordAuthenticationTest {
     /**
      * Tests if authentication fits with corresponding passwords.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -83,6 +91,10 @@ public abstract class AbstractPasswordAuthenticationTest {
     /**
      * Tests if authentication does not fit with different passwords.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -99,6 +111,10 @@ public abstract class AbstractPasswordAuthenticationTest {
 
     /**
      * Tests if authentication does not fit with different {@link AuthenticationMethod}s.
+     *
+     * Given:
+     * When:
+     * Then:
      *
      * @throws Exception
      */

@@ -52,6 +52,10 @@ public abstract class AbstractRoleTest {
     /**
      * Tests if changes on the name property work properly.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest(25)
@@ -76,6 +80,10 @@ public abstract class AbstractRoleTest {
     /**
      * Tests if a sub role can be added properly.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest(25)
@@ -97,6 +105,10 @@ public abstract class AbstractRoleTest {
 
     /**
      * Tests if a sub role can be removed properly.
+     *
+     * Given:
+     * When:
+     * Then:
      *
      * @throws Exception
      */
@@ -131,6 +143,10 @@ public abstract class AbstractRoleTest {
     /**
      * Tests if a sub permission can be added properly.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest(25)
@@ -154,6 +170,10 @@ public abstract class AbstractRoleTest {
 
     /**
      * Tests if a sub permission can be removed properly.
+     *
+     * Given:
+     * When:
+     * Then:
      *
      * @throws Exception
      */
@@ -190,6 +210,10 @@ public abstract class AbstractRoleTest {
     /**
      * Tests if changes hte permissions are provided properly.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest(25)
@@ -222,6 +246,10 @@ public abstract class AbstractRoleTest {
      * Test if an {@link PermissionStatus#ALLOW} {@link Permission} on a sub {@link Role} results in an entry in the
      * active permissions.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -242,6 +270,10 @@ public abstract class AbstractRoleTest {
      * Test if an {@link PermissionStatus#DENY} {@link Permission} on a sub {@link Role} does not result in an entry in
      * the active permissions.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -261,6 +293,10 @@ public abstract class AbstractRoleTest {
     /**
      * Test if a loop in {@link Role} dependencies results in never ending recursion on
      * {@link Role#getActivePermissionsForRole()}.
+     *
+     * Given:
+     * When:
+     * Then:
      *
      * @throws Exception
      */

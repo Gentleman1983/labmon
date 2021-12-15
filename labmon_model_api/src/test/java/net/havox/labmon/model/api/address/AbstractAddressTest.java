@@ -47,6 +47,10 @@ public abstract class AbstractAddressTest {
     /**
      * Test modification of the street.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest(25)
@@ -61,6 +65,10 @@ public abstract class AbstractAddressTest {
 
     /**
      * Tests the modification of the house number.
+     *
+     * Given:
+     * When:
+     * Then:
      *
      * @throws Exception
      */
@@ -78,6 +86,10 @@ public abstract class AbstractAddressTest {
 
     /**
      * Tests the modification of the city.
+     *
+     * Given:
+     * When:
+     * Then:
      *
      * @throws Exception
      */

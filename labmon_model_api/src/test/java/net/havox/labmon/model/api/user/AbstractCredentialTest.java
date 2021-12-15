@@ -47,6 +47,10 @@ public abstract class AbstractCredentialTest {
     /**
      * Tests if changes on the username property work properly.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest(25)
@@ -71,6 +75,10 @@ public abstract class AbstractCredentialTest {
 
     /**
      * Tests if changes on the authentication method property work properly.
+     *
+     * Given:
+     * When:
+     * Then:
      *
      * @throws Exception
      */

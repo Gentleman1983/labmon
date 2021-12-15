@@ -70,6 +70,10 @@ public abstract class AbstractUserValidationTest {
     /**
      * Tests if a {@code null} {@link User} entity is invalid.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @Test
@@ -79,6 +83,10 @@ public abstract class AbstractUserValidationTest {
 
     /**
      * Tests if a {@link User} entity missing the first name is invalid.
+     *
+     * Given:
+     * When:
+     * Then:
      *
      * @throws Exception
      */
@@ -92,6 +100,10 @@ public abstract class AbstractUserValidationTest {
 
     /**
      * Tests if a {@link User} entity with empty the first name is invalid.
+     *
+     * Given:
+     * When:
+     * Then:
      *
      * @throws Exception
      */
@@ -107,6 +119,10 @@ public abstract class AbstractUserValidationTest {
     /**
      * Tests if a {@link User} entity missing the last name is invalid.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest(5)
@@ -121,6 +137,10 @@ public abstract class AbstractUserValidationTest {
     /**
      * Tests if a {@link User} entity with empty the last name is invalid.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest(5)
@@ -134,6 +154,10 @@ public abstract class AbstractUserValidationTest {
 
     /**
      * Tests if a {@link User} entity with {@code null} credentials is invalid.
+     *
+     * Given:
+     * When:
+     * Then:
      *
      * @throws Exception
      */

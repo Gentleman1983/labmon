@@ -39,6 +39,10 @@ public abstract class AbstractCountryTest {
     /**
      * Tests the modification of the country name.
      *
+     * Given:
+     * When:
+     * Then:
+     *
      * @throws Exception
      */
     @RepeatedTest(25)

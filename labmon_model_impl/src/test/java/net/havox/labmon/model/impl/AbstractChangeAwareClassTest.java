@@ -457,7 +457,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
     /**
      * Provides an {@link AbstractChangeAwareClass} entity having a given id and version.
      *
-     * @param id the id
+     * @param id      the id
      * @param version the version
      * @return the entity
      * @throws Exception
