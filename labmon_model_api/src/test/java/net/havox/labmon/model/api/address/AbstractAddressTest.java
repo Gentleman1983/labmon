@@ -46,10 +46,10 @@ public abstract class AbstractAddressTest {
 
     /**
      * Test modification of the street.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: An {@link Address} instance
+     * When: modifying the street attribute ({@link Address#setStreet(String)})
+     * Then: than the street attribute ({@link Address#getStreet()}) should contain the new value
      *
      * @throws Exception
      */
@@ -59,16 +59,24 @@ public abstract class AbstractAddressTest {
         String streetName = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), alphabet);
 
         Address objectUnderTest = getAddress();
+        String oldStreet = objectUnderTest.getStreet();
+
+        while (streetName.equals(oldStreet)) {
+            streetName = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), alphabet);
+        }
+        Assertions.assertNotEquals(streetName, oldStreet);
+
         objectUnderTest.setStreet(streetName);
         Assertions.assertEquals(streetName, objectUnderTest.getStreet());
+        Assertions.assertNotEquals(oldStreet, objectUnderTest.getStreet());
     }
 
     /**
      * Tests the modification of the house number.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: An {@link Address} instance
+     * When: modifying the house number attribute ({@link Address#setHouseNumber(String)})
+     * Then: than the street attribute ({@link Address#getHouseNumber()}) should contain the new value
      *
      * @throws Exception
      */
@@ -80,16 +88,27 @@ public abstract class AbstractAddressTest {
         String houseNumber = "" + number + letter;
 
         Address objectUnderTest = getAddress();
+        String oldHouseNumber = objectUnderTest.getHouseNumber();
+
+        while (houseNumber.equals(oldHouseNumber)) {
+            number = ModelRandomGenerator.randomIntInRange(1, 9999);
+            letter = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(0, 1),
+                    ModelRandomGenerator.ALPHABETIC_STRING);
+            houseNumber = "" + number + letter;
+        }
+        Assertions.assertNotEquals(oldHouseNumber, houseNumber);
+
         objectUnderTest.setHouseNumber(houseNumber);
         Assertions.assertEquals(houseNumber, objectUnderTest.getHouseNumber());
+        Assertions.assertNotEquals(oldHouseNumber, objectUnderTest.getHouseNumber());
     }
 
     /**
      * Tests the modification of the city.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: An {@link Address} instance
+     * When: modifying the house number attribute ({@link Address#setCity(City)})
+     * Then: than the street attribute ({@link Address#getCity()}) should contain the new value
      *
      * @throws Exception
      */
@@ -98,7 +117,14 @@ public abstract class AbstractAddressTest {
         City city = getCity();
 
         Address objectUnderTest = getAddress();
+        City oldCity = objectUnderTest.getCity();
+        while (city.equals(oldCity)) {
+            city = getCity();
+        }
+        Assertions.assertNotEquals(oldCity, city);
+
         objectUnderTest.setCity(city);
         Assertions.assertEquals(city, objectUnderTest.getCity());
+        Assertions.assertNotEquals(oldCity, objectUnderTest.getCity());
     }
 }
