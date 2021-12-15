@@ -46,10 +46,10 @@ public abstract class AbstractCredentialTest {
 
     /**
      * Tests if changes on the username property work properly.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link Credentials} instance
+     * When: modifying the username attribute ({@link Credentials#setUserName(String)})
+     * Then: than the username attribute ({@link Credentials#getUserName()}) should contain the new value
      *
      * @throws Exception
      */
@@ -75,20 +75,27 @@ public abstract class AbstractCredentialTest {
 
     /**
      * Tests if changes on the authentication method property work properly.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link Credentials} instance
+     * When: modifying the authentication method attribute ({@link Credentials#setAuthentication(AuthenticationMethod)})
+     * Then: than the authentication method attribute ({@link Credentials#getAuthentication()}) should contain the new value
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
-    public void testModifyAuthenticationMethod() throws Exception
-    {
+    @RepeatedTest(25)
+    public void testModifyAuthenticationMethod() throws Exception {
         AuthenticationMethod auth = getPasswordAuthentication();
 
         Credentials objectUnderTest = getCredentials();
+        AuthenticationMethod oldAuth = objectUnderTest.getAuthentication();
+
+        while (auth.equals(oldAuth)) {
+            auth = getPasswordAuthentication();
+        }
+        Assertions.assertNotEquals(oldAuth, auth);
+
         objectUnderTest.setAuthentication(auth);
-        Assertions.assertEquals( auth, objectUnderTest.getAuthentication() );
+        Assertions.assertEquals(auth, objectUnderTest.getAuthentication());
+        Assertions.assertNotEquals(oldAuth, objectUnderTest.getAuthentication());
     }
 }
