@@ -47,7 +47,7 @@ public abstract class AbstractCityTest {
     /**
      * Tests the modification of the ZIP code.
      * <p>
-     * Given: An {@link City} instance
+     * Given: A {@link City} instance
      * When: modifying the ZIP code attribute ({@link City#setZipCode(String)})
      * Then: than the ZIP code attribute ({@link City#getZipCode()}) should contain the new value
      *
@@ -75,7 +75,7 @@ public abstract class AbstractCityTest {
     /**
      * Tests the modification of the city name.
      * <p>
-     * Given: An {@link City} instance
+     * Given: A {@link City} instance
      * When: modifying the name attribute ({@link City#setName(String)})
      * Then: than the name attribute ({@link City#getName()}) should contain the new value
      *
@@ -102,7 +102,7 @@ public abstract class AbstractCityTest {
     /**
      * Tests the modifications of the country.
      * <p>
-     * Given: An {@link City} instance
+     * Given: A {@link City} instance
      * When: modifying the country attribute ({@link City#setCountry(Country)})
      * Then: than the country attribute ({@link City#getCountry()}) should contain the new value
      *

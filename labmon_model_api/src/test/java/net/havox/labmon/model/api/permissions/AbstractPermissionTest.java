@@ -18,7 +18,6 @@
 
 package net.havox.labmon.model.api.permissions;
 
-
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
@@ -40,10 +39,10 @@ public abstract class AbstractPermissionTest {
 
     /**
      * Tests if changes on the name property work properly.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link Permission} instance
+     * When: modifying the name attribute ({@link Permission#setName(String)})
+     * Then: than the name attribute ({@link Permission#getName()}) should contain the new value
      *
      * @throws Exception
      */

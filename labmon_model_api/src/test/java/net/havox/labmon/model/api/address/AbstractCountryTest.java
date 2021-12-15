@@ -39,7 +39,7 @@ public abstract class AbstractCountryTest {
     /**
      * Tests the modification of the country name.
      * <p>
-     * Given: An {@link Country} instance
+     * Given: A {@link Country} instance
      * When: modifying the name attribute ({@link Country#setName(String)})
      * Then: than the name attribute ({@link Country#getName()}) should contain the new value
      *

@@ -51,10 +51,10 @@ public abstract class AbstractRoleTest {
 
     /**
      * Tests if changes on the name property work properly.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link Role} instance
+     * When: modifying the name attribute ({@link Role#setName(String)})
+     * Then: than the name attribute ({@link Role#getName()}) should contain the new value
      *
      * @throws Exception
      */
@@ -79,10 +79,10 @@ public abstract class AbstractRoleTest {
 
     /**
      * Tests if a sub role can be added properly.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link Role} instance
+     * When: adding a sub role ({@link Role#addRole(Role)})
+     * Then: than the sub roles ({@link Role#getIncludedRoles()}) should contain the new value
      *
      * @throws Exception
      */
@@ -106,9 +106,11 @@ public abstract class AbstractRoleTest {
     /**
      * Tests if a sub role can be removed properly.
      *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link Role} instance
+     * And: containing a sub {@link Role}
+     * When: removing the sub role ({@link Role#removeRole(Role)})
+     * Then: than the roles ({@link Role#getIncludedRoles()}) should not contain the value
      *
      * @throws Exception
      */
@@ -142,10 +144,10 @@ public abstract class AbstractRoleTest {
 
     /**
      * Tests if a sub permission can be added properly.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link Role} instance
+     * When: adding a permission ({@link Role#addPermission(Permission, PermissionStatus)})
+     * Then: than the permission ({@link Role#getIncludedPermissions()}) should contain the new value
      *
      * @throws Exception
      */
@@ -170,10 +172,11 @@ public abstract class AbstractRoleTest {
 
     /**
      * Tests if a sub permission can be removed properly.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link Role} instance
+     * And: containing a {@link Permission}
+     * When: removing the permission ({@link Role#removePermission(Permission)})
+     * Then: than the permissions ({@link Role#getIncludedPermissions()} ) should contain not the new value
      *
      * @throws Exception
      */
@@ -208,11 +211,11 @@ public abstract class AbstractRoleTest {
     }
 
     /**
-     * Tests if changes hte permissions are provided properly.
-     *
-     * Given:
-     * When:
-     * Then:
+     * Tests if changes to the permissions are provided properly.
+     * <p>
+     * Given: A {@link Role} instance
+     * When: modifying a {@link Permission} or changing the {@link PermissionStatus}
+     * Then: the changes shall be correctly mapped to the permissions ({@link Role#getIncludedPermissions()})
      *
      * @throws Exception
      */
@@ -245,10 +248,11 @@ public abstract class AbstractRoleTest {
     /**
      * Test if an {@link PermissionStatus#ALLOW} {@link Permission} on a sub {@link Role} results in an entry in the
      * active permissions.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link Role} instance
+     * And: containing a sub role having {@link Permission}s in status {@link PermissionStatus#ALLOW}
+     * When: calling the active permissions ({@link Role#getActivePermissionsForRole()})
+     * Then: than the transitive permissions in status {@link PermissionStatus#ALLOW} shall be contained in the result
      *
      * @throws Exception
      */
@@ -269,10 +273,11 @@ public abstract class AbstractRoleTest {
     /**
      * Test if an {@link PermissionStatus#DENY} {@link Permission} on a sub {@link Role} does not result in an entry in
      * the active permissions.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link Role} instance
+     * And: containing a sub role having {@link Permission}s in status {@link PermissionStatus#DENY}
+     * When: calling the active permissions ({@link Role#getActivePermissionsForRole()})
+     * Then: than the transitive permissions in status {@link PermissionStatus#DENY} shall not be contained in the result
      *
      * @throws Exception
      */
@@ -293,10 +298,11 @@ public abstract class AbstractRoleTest {
     /**
      * Test if a loop in {@link Role} dependencies results in never ending recursion on
      * {@link Role#getActivePermissionsForRole()}.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link Role} instance
+     * And: loops in the graph resulting from the included roles ({@link Role#getIncludedRoles()})
+     * When: calling the active permissions ({@link Role#getActivePermissionsForRole()})
+     * Then: the call should not result in a never ending recursion
      *
      * @throws Exception
      */
