@@ -55,10 +55,10 @@ public abstract class AbstractUserTest {
 
     /**
      * Tests if changes on the first name property work properly.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link User} instance
+     * When: modifying the first name attribute ({@link User#setFirstName(String)})
+     * Then: than the first name attribute ({@link User#getFirstName()}) should contain the new value
      *
      * @throws Exception
      */
@@ -84,10 +84,10 @@ public abstract class AbstractUserTest {
 
     /**
      * Tests if changes on the middle name property work properly.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link User} instance
+     * When: modifying the middle name attribute ({@link User#setMiddleName(String)})
+     * Then: than the middle name attribute ({@link User#getMiddleName()}) should contain the new value
      *
      * @throws Exception
      */
@@ -113,10 +113,10 @@ public abstract class AbstractUserTest {
 
     /**
      * Tests if changes on the last name property work properly.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link User} instance
+     * When: modifying the last name attribute ({@link User#setLastName(String)})
+     * Then: than the last name attribute ({@link User#getLastName()}) should contain the new value
      *
      * @throws Exception
      */
@@ -142,39 +142,37 @@ public abstract class AbstractUserTest {
 
     /**
      * Tests if changes on the address property work properly.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link User} instance
+     * When: modifying the address attribute ({@link User#setAddress(Address)})
+     * Then: than the address attribute ({@link User#getAddress()}) should contain the new value
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
-    public void testModifyAddress() throws Exception
-    {
+    @RepeatedTest(25)
+    public void testModifyAddress() throws Exception {
         Address address = getAddress();
 
         User objectUnderTest = getUser();
-        objectUnderTest.setAddress( address );
-        Assertions.assertEquals( address, objectUnderTest.getAddress() );
+        objectUnderTest.setAddress(address);
+        Assertions.assertEquals(address, objectUnderTest.getAddress());
     }
 
     /**
      * Tests if changes on the credentials property work properly.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link User} instance
+     * When: modifying the credentials attribute ({@link User#setCredentials(Credentials)})
+     * Then: than the credentials attribute ({@link User#getCredentials()}) should contain the new value
      *
      * @throws Exception
      */
-    @RepeatedTest( 25 )
-    public void testModifyCredentials() throws Exception
-    {
+    @RepeatedTest(25)
+    public void testModifyCredentials() throws Exception {
         Credentials credentials = getCredentials();
 
         User objectUnderTest = getUser();
         objectUnderTest.setCredentials(credentials);
-        Assertions.assertEquals( credentials, objectUnderTest.getCredentials() );
+        Assertions.assertEquals(credentials, objectUnderTest.getCredentials());
     }
 }
