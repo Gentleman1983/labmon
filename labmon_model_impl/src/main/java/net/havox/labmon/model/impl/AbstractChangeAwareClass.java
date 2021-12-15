@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2021 [haVox] Design
- * Created by The_G
+ * Created by Christian Otto
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,9 +28,9 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  * @param <T> the type of change aware class.
  * @author Christian Otto
  */
-public class AbstractChangeAwareClass<T extends AbstractChangeAwareClass> implements ChangeAware, Comparable<T> {
+public class AbstractChangeAwareClass<T extends AbstractChangeAwareClass<T>> implements ChangeAware, Comparable<T> {
     private Long id;
-    private long version = 1l;
+    private long version = 1;
 
     @Override
     public Long getId() {
@@ -76,6 +76,7 @@ public class AbstractChangeAwareClass<T extends AbstractChangeAwareClass> implem
         } else if (object == null) {
             return false;
         } else if (this.getClass() == object.getClass()) {
+            @SuppressWarnings("unchecked")
             T typedObject = (T) object;
 
             if (this.getId() == null) {
