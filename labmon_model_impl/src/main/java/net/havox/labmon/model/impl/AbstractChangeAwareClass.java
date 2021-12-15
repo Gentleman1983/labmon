@@ -29,7 +29,14 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  * @author Christian Otto
  */
 public class AbstractChangeAwareClass<T extends AbstractChangeAwareClass<T>> implements ChangeAware, Comparable<T> {
+    /**
+     * The object identifier.
+     */
     private Long id;
+
+    /**
+     * The version of the entity.
+     */
     private long version = 1;
 
     @Override

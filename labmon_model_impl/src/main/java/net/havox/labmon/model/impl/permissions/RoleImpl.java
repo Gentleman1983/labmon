@@ -35,8 +35,19 @@ import java.util.concurrent.ConcurrentSkipListSet;
  * @author Christian Otto
  */
 public class RoleImpl extends AbstractChangeAwareClass<RoleImpl> implements Role {
+    /**
+     * The role name.
+     */
     private String name;
+
+    /**
+     * The included roles. The permissions of these sub roles are derived in this role.
+     */
     private Set<Role> includedRoles = new ConcurrentSkipListSet<>();
+
+    /**
+     * The direct permissions for this role.
+     */
     private Map<Permission, PermissionStatus> includedPermissions = new ConcurrentHashMap<>();
 
     @Override

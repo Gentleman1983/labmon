@@ -27,6 +27,9 @@ import net.havox.labmon.model.impl.AbstractChangeAwareClass;
  * @author Christian Otto
  */
 public class PasswordAuthenticationImpl extends AbstractChangeAwareClass<PasswordAuthenticationImpl> implements PasswordAuthentication {
+    /**
+     * The pass phrase used for authentication.
+     */
     String passPhrase;
 
     @Override

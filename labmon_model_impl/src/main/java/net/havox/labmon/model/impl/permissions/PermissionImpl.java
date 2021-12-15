@@ -27,7 +27,9 @@ import net.havox.labmon.model.impl.AbstractChangeAwareClass;
  * @author Christian Otto
  */
 public class PermissionImpl extends AbstractChangeAwareClass<PermissionImpl> implements Permission {
-
+    /**
+     * The permission name.
+     */
     private String name;
 
     @Override

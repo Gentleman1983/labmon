@@ -28,8 +28,19 @@ import net.havox.labmon.model.impl.AbstractChangeAwareClass;
  * @author Christian Otto
  */
 public class CityImpl extends AbstractChangeAwareClass<CityImpl> implements City {
+    /**
+     * The city's name.
+     */
     private String name;
+
+    /**
+     * The city's ZIP code.
+     */
     private String zipCode;
+
+    /**
+     * The city's country.
+     */
     private Country country;
 
     @Override

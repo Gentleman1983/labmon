@@ -29,10 +29,29 @@ import net.havox.labmon.model.impl.AbstractChangeAwareClass;
  * @author Christian Otto
  */
 public class UserImpl extends AbstractChangeAwareClass<UserImpl> implements User {
+    /**
+     * The user's first name.
+     */
     private String firstName;
+
+    /**
+     * The user's middle name(s).
+     */
     private String middleName;
+
+    /**
+     * The user's last name.
+     */
     private String lastName;
+
+    /**
+     * The user's address.
+     */
     private Address address;
+
+    /**
+     * The user's credentials.
+     */
     private Credentials credentials;
 
     @Override

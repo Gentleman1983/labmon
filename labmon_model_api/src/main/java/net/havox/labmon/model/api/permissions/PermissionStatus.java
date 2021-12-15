@@ -24,6 +24,12 @@ package net.havox.labmon.model.api.permissions;
  * @author Christian Otto
  */
 public enum PermissionStatus {
+    /**
+     * Allow permission.
+     */
     ALLOW,
+    /**
+     * Deny permission.
+     */
     DENY
 }

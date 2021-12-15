@@ -28,7 +28,14 @@ import net.havox.labmon.model.impl.AbstractChangeAwareClass;
  * @author Christian Otto
  */
 public class CredentialsImpl extends AbstractChangeAwareClass<CredentialsImpl> implements Credentials {
+    /**
+     * The technical username for login.
+     */
     private String userName;
+
+    /**
+     * The authentication method for this credential.
+     */
     private AuthenticationMethod authentication;
 
     @Override

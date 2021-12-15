@@ -27,6 +27,9 @@ import net.havox.labmon.model.impl.AbstractChangeAwareClass;
  * @author Christian Otto
  */
 public class CountryImpl extends AbstractChangeAwareClass<CountryImpl> implements Country {
+    /**
+     * The country name.
+     */
     private String name;
 
     @Override

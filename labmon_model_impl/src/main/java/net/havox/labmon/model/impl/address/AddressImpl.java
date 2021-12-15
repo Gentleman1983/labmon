@@ -28,8 +28,19 @@ import net.havox.labmon.model.impl.AbstractChangeAwareClass;
  * @author Christian Otto
  */
 public class AddressImpl extends AbstractChangeAwareClass<AddressImpl> implements Address {
+    /**
+     * The street.
+     */
     private String street;
+
+    /**
+     * The house number.
+     */
     private String houseNumber;
+
+    /**
+     * The city.
+     */
     private City city;
 
     @Override
