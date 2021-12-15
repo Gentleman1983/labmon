@@ -38,10 +38,10 @@ public abstract class AbstractCountryTest {
 
     /**
      * Tests the modification of the country name.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: An {@link Country} instance
+     * When: modifying the name attribute ({@link Country#setName(String)})
+     * Then: than the name attribute ({@link Country#getName()}) should contain the new value
      *
      * @throws Exception
      */
@@ -51,7 +51,15 @@ public abstract class AbstractCountryTest {
         String name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), alphabet);
 
         Country objectUnderTest = getCountry();
+        String oldName = objectUnderTest.getName();
+
+        while (name.equals(oldName)) {
+            name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), alphabet);
+        }
+        Assertions.assertNotEquals(oldName, name);
+
         objectUnderTest.setName(name);
         Assertions.assertEquals(name, objectUnderTest.getName());
+        Assertions.assertNotEquals(oldName, objectUnderTest.getName());
     }
 }
