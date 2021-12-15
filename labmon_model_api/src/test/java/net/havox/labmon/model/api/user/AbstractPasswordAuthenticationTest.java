@@ -40,15 +40,15 @@ public abstract class AbstractPasswordAuthenticationTest {
 
     /**
      * Tests if changes on the pass phrase property work properly.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link PasswordAuthentication} instance
+     * When: modifying the pass phrase attribute ({@link PasswordAuthentication#setPassPhrase(String)})
+     * Then: than the pass phrase attribute ({@link PasswordAuthentication#getPassPhrase()}) should contain the new value
      *
      * @throws Exception
      */
     @RepeatedTest(25)
-    public void testModifyUserFirstName() throws Exception {
+    public void testModifyUserPassPhrase() throws Exception {
         PasswordAuthentication instanceUnderTest = getPasswordAuthentication();
         String instanceOriginalPassPhrase = instanceUnderTest.getPassPhrase();
 
@@ -69,10 +69,11 @@ public abstract class AbstractPasswordAuthenticationTest {
 
     /**
      * Tests if authentication fits with corresponding passwords.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link PasswordAuthentication} instance
+     * And: using a valid authentication
+     * When: trying to authenticate ({@link PasswordAuthentication#authenticate(AuthenticationMethod)})
+     * Then: than the authentication request shall be valid
      *
      * @throws Exception
      */
@@ -90,10 +91,11 @@ public abstract class AbstractPasswordAuthenticationTest {
 
     /**
      * Tests if authentication does not fit with different passwords.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link PasswordAuthentication} instance
+     * And: using an invalid authentication
+     * When: trying to authenticate ({@link PasswordAuthentication#authenticate(AuthenticationMethod)})
+     * Then: than the authentication request shall be invalid
      *
      * @throws Exception
      */
@@ -111,10 +113,11 @@ public abstract class AbstractPasswordAuthenticationTest {
 
     /**
      * Tests if authentication does not fit with different {@link AuthenticationMethod}s.
-     *
-     * Given:
-     * When:
-     * Then:
+     * <p>
+     * Given: A {@link PasswordAuthentication} instance
+     * And: using a wrong {@link AuthenticationMethod}
+     * When: trying to authenticate ({@link PasswordAuthentication#authenticate(AuthenticationMethod)})
+     * Then: than the authentication request shall be invalid
      *
      * @throws Exception
      */
