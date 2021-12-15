@@ -19,7 +19,6 @@
 package net.havox.labmon.model.impl.permissions;
 
 
-import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 import net.havox.labmon.model.impl.AbstractChangeAwareClassTest;
 
 /**
@@ -27,9 +26,9 @@ import net.havox.labmon.model.impl.AbstractChangeAwareClassTest;
  *
  * @author Christian Otto
  */
-public class PermissionImplTest extends AbstractChangeAwareClassTest { // NOSONAR Impl test is only inherited, so only derived test cases.
+public class PermissionImplTest extends AbstractChangeAwareClassTest<PermissionImpl> { // NOSONAR Impl test is only inherited, so only derived test cases.
     @Override
-    public AbstractChangeAwareClass getNewInstance() throws Exception {
+    public PermissionImpl getNewInstance() throws Exception {
         return new PermissionImpl();
     }
 }

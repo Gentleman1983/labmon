@@ -33,16 +33,16 @@ import java.util.Random;
  *
  * @author Christian Otto
  */
-public abstract class AbstractChangeAwareClassTest {
-    private static Random randomGenerator = new Random(System.nanoTime());
+public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAwareClass<T>> {
+    private static final Random randomGenerator = new Random(System.nanoTime());
 
     /**
-     * Provides an {@link AbstractChangeAwareClass} entity having a given id and version.
+     * Provides an {@link AbstractChangeAwareClass<T>} entity having a given id and version.
      *
      * @return the entity
      * @throws Exception
      */
-    public abstract AbstractChangeAwareClass getNewInstance() throws Exception;
+    public abstract T getNewInstance() throws Exception;
 
     /**
      * Given:
@@ -55,7 +55,7 @@ public abstract class AbstractChangeAwareClassTest {
     public void testModifyName() throws Exception {
         Long newId = ModelRandomGenerator.randomBoolean() ? ModelRandomGenerator.randomLong() : null;
 
-        AbstractChangeAwareClass objectUnderTest = getNewInstance(null, 1);
+        T objectUnderTest = getNewInstance(null, 1);
         objectUnderTest.setId(newId);
         Assertions.assertEquals(newId, objectUnderTest.getId());
     }
@@ -69,9 +69,9 @@ public abstract class AbstractChangeAwareClassTest {
      */
     @Test
     public void testEqualsReflexive() throws Exception {
-        AbstractChangeAwareClass instance1 = getNewInstance(1L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance2 = getNewInstance(2L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance3 = getNewInstance(null, randomGenerator.nextLong());
+        T instance1 = getNewInstance(1L, randomGenerator.nextLong());
+        T instance2 = getNewInstance(2L, randomGenerator.nextLong());
+        T instance3 = getNewInstance(null, randomGenerator.nextLong());
 
         Assertions.assertNotNull(instance1);
         Assertions.assertNotNull(instance2);
@@ -91,8 +91,8 @@ public abstract class AbstractChangeAwareClassTest {
      */
     @Test
     public void testEqualsSymmetric() throws Exception {
-        AbstractChangeAwareClass instance1 = getNewInstance(1L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance2 = getNewInstance(1L, randomGenerator.nextLong());
+        T instance1 = getNewInstance(1L, randomGenerator.nextLong());
+        T instance2 = getNewInstance(1L, randomGenerator.nextLong());
 
         Assertions.assertNotNull(instance1);
         Assertions.assertNotNull(instance2);
@@ -110,9 +110,9 @@ public abstract class AbstractChangeAwareClassTest {
      */
     @Test
     public void testEqualsTransitive() throws Exception {
-        AbstractChangeAwareClass instance1 = getNewInstance(1L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance2 = getNewInstance(1L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance3 = getNewInstance(1L, randomGenerator.nextLong());
+        T instance1 = getNewInstance(1L, randomGenerator.nextLong());
+        T instance2 = getNewInstance(1L, randomGenerator.nextLong());
+        T instance3 = getNewInstance(1L, randomGenerator.nextLong());
 
         Assertions.assertNotNull(instance1);
         Assertions.assertNotNull(instance2);
@@ -132,8 +132,8 @@ public abstract class AbstractChangeAwareClassTest {
      */
     @Test
     public void testEqualsConsistence() throws Exception {
-        AbstractChangeAwareClass instance1 = getNewInstance(1L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance2 = getNewInstance(2L, randomGenerator.nextLong());
+        T instance1 = getNewInstance(1L, randomGenerator.nextLong());
+        T instance2 = getNewInstance(2L, randomGenerator.nextLong());
 
         Assertions.assertNotNull(instance1);
         Assertions.assertNotNull(instance2);
@@ -159,10 +159,10 @@ public abstract class AbstractChangeAwareClassTest {
      */
     @Test
     public void testEqualsNotEqualsNull() throws Exception {
-        AbstractChangeAwareClass instance1 = getNewInstance(1L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance2 = getNewInstance(2L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance3 = getNewInstance(null, randomGenerator.nextLong());
-        AbstractChangeAwareClass nullInstance = null;
+        T instance1 = getNewInstance(1L, randomGenerator.nextLong());
+        T instance2 = getNewInstance(2L, randomGenerator.nextLong());
+        T instance3 = getNewInstance(null, randomGenerator.nextLong());
+        T nullInstance = null;
 
         Assertions.assertNotNull(instance1);
         Assertions.assertNotNull(instance2);
@@ -187,8 +187,8 @@ public abstract class AbstractChangeAwareClassTest {
      */
     @Test
     public void testEqualsNoIdInequality() throws Exception {
-        AbstractChangeAwareClass instance1 = getNewInstance(1L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance2 = getNewInstance(null, randomGenerator.nextLong());
+        T instance1 = getNewInstance(1L, randomGenerator.nextLong());
+        T instance2 = getNewInstance(null, randomGenerator.nextLong());
 
         Assertions.assertNotNull(instance1);
         Assertions.assertNotNull(instance2);
@@ -206,7 +206,7 @@ public abstract class AbstractChangeAwareClassTest {
      */
     @Test
     public void testEqualsNewObject() throws Exception {
-        AbstractChangeAwareClass instance = getNewInstance(1L, randomGenerator.nextLong());
+        T instance = getNewInstance(1L, randomGenerator.nextLong());
 
         Assertions.assertNotNull(instance);
 
@@ -229,9 +229,9 @@ public abstract class AbstractChangeAwareClassTest {
      */
     @Test
     public void testHashCode() throws Exception {
-        AbstractChangeAwareClass instance1 = getNewInstance(1L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance2 = getNewInstance(2L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance3 = getNewInstance(null, randomGenerator.nextLong());
+        T instance1 = getNewInstance(1L, randomGenerator.nextLong());
+        T instance2 = getNewInstance(2L, randomGenerator.nextLong());
+        T instance3 = getNewInstance(null, randomGenerator.nextLong());
 
         Assertions.assertNotNull(instance1);
         Assertions.assertNotNull(instance2);
@@ -255,9 +255,9 @@ public abstract class AbstractChangeAwareClassTest {
      */
     @Test
     public void testHashCodeConsistency() throws Exception {
-        AbstractChangeAwareClass instance1 = getNewInstance(1L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance2 = getNewInstance(2L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance3 = getNewInstance(null, randomGenerator.nextLong());
+        T instance1 = getNewInstance(1L, randomGenerator.nextLong());
+        T instance2 = getNewInstance(2L, randomGenerator.nextLong());
+        T instance3 = getNewInstance(null, randomGenerator.nextLong());
 
         Assertions.assertNotNull(instance1);
         Assertions.assertNotNull(instance2);
@@ -287,8 +287,8 @@ public abstract class AbstractChangeAwareClassTest {
      */
     @Test
     public void testHashCodeEqualObjects() throws Exception {
-        AbstractChangeAwareClass instance1 = getNewInstance(1L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance2 = getNewInstance(1L, randomGenerator.nextLong());
+        T instance1 = getNewInstance(1L, randomGenerator.nextLong());
+        T instance2 = getNewInstance(1L, randomGenerator.nextLong());
 
         Assertions.assertNotNull(instance1);
         Assertions.assertNotNull(instance2);
@@ -313,7 +313,7 @@ public abstract class AbstractChangeAwareClassTest {
      */
     @Test
     public void testIncrementVersion() throws Exception {
-        AbstractChangeAwareClass instance = getNewInstance(randomGenerator.nextLong(), randomGenerator.nextLong());
+        T instance = getNewInstance(randomGenerator.nextLong(), randomGenerator.nextLong());
 
         Assertions.assertNotNull(instance);
 
@@ -333,8 +333,8 @@ public abstract class AbstractChangeAwareClassTest {
      */
     @Test
     public void testIncrementVersionConsistence() throws Exception {
-        AbstractChangeAwareClass instance1 = getNewInstance(randomGenerator.nextLong(), randomGenerator.nextLong());
-        AbstractChangeAwareClass instance2 = getNewInstance(randomGenerator.nextLong(), randomGenerator.nextLong());
+        T instance1 = getNewInstance(randomGenerator.nextLong(), randomGenerator.nextLong());
+        T instance2 = getNewInstance(randomGenerator.nextLong(), randomGenerator.nextLong());
 
         Assertions.assertNotNull(instance1);
         Assertions.assertNotNull(instance2);
@@ -360,7 +360,7 @@ public abstract class AbstractChangeAwareClassTest {
      */
     @Test
     public void testIncrementVersionSinglePointOfChange() throws Exception {
-        AbstractChangeAwareClass instance = getNewInstance(randomGenerator.nextLong(), randomGenerator.nextLong());
+        T instance = getNewInstance(randomGenerator.nextLong(), randomGenerator.nextLong());
 
         Assertions.assertNotNull(instance);
 
@@ -423,9 +423,9 @@ public abstract class AbstractChangeAwareClassTest {
      */
     @Test
     public void testToStringNoExceptionTest() throws Exception {
-        AbstractChangeAwareClass instance1 = getNewInstance(1L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance2 = getNewInstance(2L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance3 = getNewInstance(null, randomGenerator.nextLong());
+        T instance1 = getNewInstance(1L, randomGenerator.nextLong());
+        T instance2 = getNewInstance(2L, randomGenerator.nextLong());
+        T instance3 = getNewInstance(null, randomGenerator.nextLong());
 
         instance1.toString();
         instance2.toString();
@@ -443,8 +443,8 @@ public abstract class AbstractChangeAwareClassTest {
      */
     @Test
     public void testCompareToTest() throws Exception {
-        AbstractChangeAwareClass instance1 = getNewInstance(1L, randomGenerator.nextLong());
-        AbstractChangeAwareClass instance2 = getNewInstance(2L, randomGenerator.nextLong());
+        T instance1 = getNewInstance(1L, randomGenerator.nextLong());
+        T instance2 = getNewInstance(2L, randomGenerator.nextLong());
 
         Assertions.assertEquals(instance1, instance1); // NOSONAR This self-assertion is intended.
         Assertions.assertEquals(0, instance1.compareTo(instance1), "An instance should always be equal to itself.");
@@ -462,8 +462,8 @@ public abstract class AbstractChangeAwareClassTest {
      * @return the entity
      * @throws Exception
      */
-    private AbstractChangeAwareClass getNewInstance(Long id, long version) throws Exception {
-        AbstractChangeAwareClass clazz = getNewInstance();
+    private T getNewInstance(Long id, long version) throws Exception {
+        T clazz = getNewInstance();
 
         clazz.setId(id);
 

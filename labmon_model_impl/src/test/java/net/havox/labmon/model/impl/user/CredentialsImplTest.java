@@ -18,7 +18,6 @@
 
 package net.havox.labmon.model.impl.user;
 
-import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 import net.havox.labmon.model.impl.AbstractChangeAwareClassTest;
 
 /**
@@ -26,9 +25,9 @@ import net.havox.labmon.model.impl.AbstractChangeAwareClassTest;
  *
  * @author Christian Otto
  */
-public class CredentialsImplTest extends AbstractChangeAwareClassTest { // NOSONAR Impl test is only inherited, so only derived test cases.
+public class CredentialsImplTest extends AbstractChangeAwareClassTest<CredentialsImpl> { // NOSONAR Impl test is only inherited, so only derived test cases.
     @Override
-    public AbstractChangeAwareClass getNewInstance() throws Exception {
+    public CredentialsImpl getNewInstance() throws Exception {
         return new CredentialsImpl();
     }
 }

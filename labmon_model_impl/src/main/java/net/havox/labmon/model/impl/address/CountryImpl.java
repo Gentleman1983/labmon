@@ -20,14 +20,13 @@ package net.havox.labmon.model.impl.address;
 
 import net.havox.labmon.model.api.address.Country;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
-import net.havox.labmon.model.impl.permissions.PermissionImpl;
 
 /**
  * The functional representation of a {@link Country}.
  *
  * @author Christian Otto
  */
-public class CountryImpl extends AbstractChangeAwareClass<PermissionImpl> implements Country {
+public class CountryImpl extends AbstractChangeAwareClass<CountryImpl> implements Country {
     private String name;
 
     @Override

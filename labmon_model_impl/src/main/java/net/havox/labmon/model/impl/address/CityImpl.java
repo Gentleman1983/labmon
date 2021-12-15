@@ -21,14 +21,13 @@ package net.havox.labmon.model.impl.address;
 import net.havox.labmon.model.api.address.City;
 import net.havox.labmon.model.api.address.Country;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
-import net.havox.labmon.model.impl.permissions.PermissionImpl;
 
 /**
  * The functional representation of a {@link City}.
  *
  * @author Christian Otto
  */
-public class CityImpl extends AbstractChangeAwareClass<PermissionImpl> implements City {
+public class CityImpl extends AbstractChangeAwareClass<CityImpl> implements City {
     private String name;
     private String zipCode;
     private Country country;
