@@ -45,25 +45,35 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
     public abstract T getNewInstance() throws Exception;
 
     /**
-     * Given:
-     * When:
-     * Then:
+     * Given: A {@link AbstractChangeAwareClass}
+     * And: having {@code null} id attribute
+     * And: having 1 version attribute
+     * When: modifying the id attribute ({@link AbstractChangeAwareClass#setId(Long)})
+     * Then: the new id shall be set ({@link AbstractChangeAwareClass#getId()})
      *
      * @throws Exception
      */
     @RepeatedTest(25)
-    public void testModifyName() throws Exception {
+    public void testModifyId() throws Exception {
         Long newId = ModelRandomGenerator.randomBoolean() ? ModelRandomGenerator.randomLong() : null;
 
         T objectUnderTest = getNewInstance(null, 1);
+        Long oldId = objectUnderTest.getId();
+        boolean newIdMatchesOldId = (newId == oldId);
+
         objectUnderTest.setId(newId);
         Assertions.assertEquals(newId, objectUnderTest.getId());
+        if (newIdMatchesOldId) {
+            Assertions.assertEquals(oldId, objectUnderTest.getId());
+        } else {
+            Assertions.assertNotEquals(oldId, objectUnderTest.getId());
+        }
     }
 
     /**
-     * Given:
-     * When:
-     * Then:
+     * Given: Several {@link AbstractChangeAwareClass} entities
+     * When: checking for equality on the entities
+     * Then: reflexive equality shall be given
      *
      * @throws Exception
      */
@@ -83,9 +93,9 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
     }
 
     /**
-     * Given:
-     * When:
-     * Then:
+     * Given: Several {@link AbstractChangeAwareClass} entities
+     * When: checking for equality on the entities
+     * Then: symmetric equality shall be given
      *
      * @throws Exception
      */
@@ -102,9 +112,9 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
     }
 
     /**
-     * Given:
-     * When:
-     * Then:
+     * Given: Several {@link AbstractChangeAwareClass} entities
+     * When: checking for equality on the entities
+     * Then: transitive equality shall be given
      *
      * @throws Exception
      */
@@ -124,9 +134,9 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
     }
 
     /**
-     * Given:
-     * When:
-     * Then:
+     * Given: Several {@link AbstractChangeAwareClass} entities
+     * When: checking repeatedly for equality on the entities
+     * Then: there shall be no changes in equality
      *
      * @throws Exception
      */
@@ -151,9 +161,10 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
     }
 
     /**
-     * Given:
-     * When:
-     * Then:
+     * Given: Several {@link AbstractChangeAwareClass} entities
+     * And: a {@code null} entity
+     * When: checking for equality against {@code null entity}
+     * Then: equality shall not be given
      *
      * @throws Exception
      */
@@ -179,9 +190,10 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
     }
 
     /**
-     * Given:
-     * When:
-     * Then:
+     * Given: Several {@link AbstractChangeAwareClass} entities
+     * When: checking for equality on the entities
+     * And: one entity has {@code null} id value and the other not {@code null} value
+     * Then: equality shall not be given
      *
      * @throws Exception
      */
@@ -198,9 +210,10 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
     }
 
     /**
-     * Given:
-     * When:
-     * Then:
+     * Given: An {@link AbstractChangeAwareClass} entity
+     * And: an {@link Object} entity
+     * When: checking for equality on the entities
+     * Then: equality shall not be given
      *
      * @throws Exception
      */
@@ -221,9 +234,9 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
     }
 
     /**
-     * Given:
-     * When:
-     * Then:
+     * Given: Several {@link AbstractChangeAwareClass} entities
+     * When: checking hash code ({@link AbstractChangeAwareClass#hashCode()})
+     * Then: a hash code shall be generated
      *
      * @throws Exception
      */
@@ -247,9 +260,9 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
     }
 
     /**
-     * Given:
-     * When:
-     * Then:
+     * Given: Several {@link AbstractChangeAwareClass} entities
+     * When: checking repeatedly hash code ({@link AbstractChangeAwareClass#hashCode()})
+     * Then: the hash code shall not change
      *
      * @throws Exception
      */
@@ -279,9 +292,9 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
     }
 
     /**
-     * Given:
-     * When:
-     * Then:
+     * Given: Several equal {@link AbstractChangeAwareClass} entities
+     * When: checking hash code ({@link AbstractChangeAwareClass#hashCode()})
+     * Then: the same hash code shall be generated
      *
      * @throws Exception
      */
@@ -305,9 +318,9 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
     }
 
     /**
-     * Given:
-     * When:
-     * Then:
+     * Given: An {@link AbstractChangeAwareClass} entity
+     * When: incrementing the version attribute ({@link AbstractChangeAwareClass#incrementVersion()})
+     * Then: the version attribute shall be incremented by 1
      *
      * @throws Exception
      */
@@ -325,9 +338,9 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
     }
 
     /**
-     * Given:
-     * When:
-     * Then:
+     * Given: Several {@link AbstractChangeAwareClass} entities
+     * When: repeatedly incrementing the version attribute ({@link AbstractChangeAwareClass#incrementVersion()})
+     * Then: the version attribute shall be incremented by 1 per increment
      *
      * @throws Exception
      */
@@ -352,9 +365,9 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
     }
 
     /**
-     * Given:
-     * When:
-     * Then:
+     * Given: An {@link AbstractChangeAwareClass} entity
+     * When: incrementing the version attribute ({@link AbstractChangeAwareClass#incrementVersion()})
+     * Then: No changes on class attributes occur except the version attribute
      *
      * @throws Exception
      */
@@ -415,9 +428,9 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
     }
 
     /**
-     * Given:
-     * When:
-     * Then:
+     * Given: Several {@link AbstractChangeAwareClass} entities
+     * When: calling {@link AbstractChangeAwareClass#toString()} method
+     * Then: this shall not result in an {@link Exception}
      *
      * @throws Exception
      */
@@ -435,9 +448,9 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
     }
 
     /**
-     * Given:
-     * When:
-     * Then:
+     * Given: Several {@link AbstractChangeAwareClass} entities
+     * When: comparing entities ({@link AbstractChangeAwareClass#compareTo(AbstractChangeAwareClass)})
+     * Then: the result shall match expectations (check on id attribute value)
      *
      * @throws Exception
      */
