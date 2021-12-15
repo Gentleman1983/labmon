@@ -19,11 +19,17 @@
 package net.havox.labmon.model.basic.user;
 
 import net.havox.labmon.model.api.address.Address;
+import net.havox.labmon.model.api.contact.ContactOption;
 import net.havox.labmon.model.api.user.Credentials;
 import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
 import net.havox.labmon.model.api.user.User;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Basic implementation of {@link User} interface.
@@ -36,6 +42,7 @@ public class BasicUser extends AbstractChangeAwareAndIdentifiableClass implement
     private String lastName;
     private Address address;
     private Credentials credentials;
+    private Set<ContactOption<?>> contactOptions = new HashSet<>();
 
     @Override
     public String getFirstName() {
@@ -88,6 +95,23 @@ public class BasicUser extends AbstractChangeAwareAndIdentifiableClass implement
     }
 
     @Override
+    public Set<ContactOption<?>> getContactOptions() {
+        return Collections.unmodifiableSet(contactOptions);
+    }
+
+    @Override
+    public boolean addContactOptions(Collection<ContactOption<?>> options) {
+        contactOptions.addAll(options);
+        return true;
+    }
+
+    @Override
+    public boolean removeContactOptions(Collection<ContactOption<?>> options) {
+        contactOptions.removeAll(options);
+        return true;
+    }
+
+    @Override
     public String toString() {
         ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE);
 
@@ -98,6 +122,7 @@ public class BasicUser extends AbstractChangeAwareAndIdentifiableClass implement
         builder.append("address", getAddress());
         builder.append("credentials", getCredentials());
         builder.append("version", getVersion());
+        builder.append("contactOptions", getContactOptions());
 
         return builder.build();
     }

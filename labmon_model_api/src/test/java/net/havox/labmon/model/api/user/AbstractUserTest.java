@@ -19,9 +19,13 @@
 package net.havox.labmon.model.api.user;
 
 import net.havox.labmon.model.api.address.Address;
+import net.havox.labmon.model.api.contact.ContactOption;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * Abstract implementation of API test of {@link User}.
@@ -52,6 +56,14 @@ public abstract class AbstractUserTest {
      * @throws Exception
      */
     public abstract Credentials getCredentials() throws Exception;
+
+    /**
+     * Provides a {@link ContactOption} entity.
+     *
+     * @return the entity
+     * @throws Exception
+     */
+    public abstract ContactOption getContactOption() throws Exception;
 
     /**
      * Tests if changes on the first name property work properly.
@@ -174,5 +186,200 @@ public abstract class AbstractUserTest {
         User objectUnderTest = getUser();
         objectUnderTest.setCredentials(credentials);
         Assertions.assertEquals(credentials, objectUnderTest.getCredentials());
+    }
+
+    /**
+     * Tests if a sub role can be added properly.
+     * <p>
+     * Given: A {@link User} instance
+     * When: adding a contact option ({@link User#addContactOption(ContactOption)})
+     * Then: than the contact options ({@link User#getContactOptions()}) should contain the new value
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(25)
+    public void testAddContactOption() throws Exception {
+        User instanceUnderTest = getUser();
+
+        ContactOption<?> option;
+        do {
+            option = getContactOption();
+        }
+        while (instanceUnderTest.getContactOptions().contains(option));
+
+        Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
+
+        instanceUnderTest.addContactOption(option);
+
+        Assertions.assertTrue(instanceUnderTest.getContactOptions().contains(option));
+    }
+
+    /**
+     * Tests if a sub role can be added properly.
+     * <p>
+     * Given: A {@link User} instance
+     * When: adding a contact option ({@link User#addContactOptions(ContactOption[])})
+     * Then: than the contact options ({@link User#getContactOptions()}) should contain the new value
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(25)
+    public void testAddContactOptionsArray() throws Exception {
+        User instanceUnderTest = getUser();
+
+        ContactOption<?> option = getContactOption();
+        do {
+            option = getContactOption();
+        }
+        while (instanceUnderTest.getContactOptions().contains(option));
+
+        Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
+
+        instanceUnderTest.addContactOptions(option);
+
+        Assertions.assertTrue(instanceUnderTest.getContactOptions().contains(option));
+    }
+
+    /**
+     * Tests if a sub role can be added properly.
+     * <p>
+     * Given: A {@link User} instance
+     * When: adding a contact option ({@link User#addContactOptions(Collection)})
+     * Then: than the contact options ({@link User#getContactOptions()}) should contain the new value
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(25)
+    public void testAddContactOptionsCollection() throws Exception {
+        User instanceUnderTest = getUser();
+
+        ContactOption<?> option = getContactOption();
+        do {
+            option = getContactOption();
+        }
+        while (instanceUnderTest.getContactOptions().contains(option));
+
+        Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
+
+        instanceUnderTest.addContactOptions(Arrays.asList(option));
+
+        Assertions.assertTrue(instanceUnderTest.getContactOptions().contains(option));
+    }
+
+    /**
+     * Tests if a sub role can be removed properly.
+     *
+     * <p>
+     * Given: A {@link User} instance
+     * And: containing a {@link ContactOption}
+     * When: removing the contact option ({@link User#removeContactOption(ContactOption)})
+     * Then: than the contact options ({@link User#getContactOptions()}) should not contain the value
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(25)
+    public void testRemoveContactOption() throws Exception {
+        User instanceUnderTest = getUser();
+
+        ContactOption<?> option;
+        do {
+            option = getContactOption();
+        }
+        while (instanceUnderTest.getContactOptions().contains(option));
+
+        Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
+
+        instanceUnderTest.addContactOption(option);
+
+        Assertions.assertTrue(instanceUnderTest.getContactOptions().contains(option));
+
+        boolean removalResult = instanceUnderTest.removeContactOption(option);
+
+        Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
+        Assertions.assertTrue(removalResult);
+
+        // Deleting another time should not change anything...
+        removalResult = instanceUnderTest.removeContactOption(option);
+
+        Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
+        Assertions.assertTrue(removalResult);
+    }
+
+    /**
+     * Tests if a sub role can be removed properly.
+     *
+     * <p>
+     * Given: A {@link User} instance
+     * And: containing a {@link ContactOption}
+     * When: removing the contact option ({@link User#removeContactOptions(ContactOption[])})
+     * Then: than the contact options ({@link User#getContactOptions()}) should not contain the value
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(25)
+    public void testRemoveContactOptionsArray() throws Exception {
+        User instanceUnderTest = getUser();
+
+        ContactOption<?> option;
+        do {
+            option = getContactOption();
+        }
+        while (instanceUnderTest.getContactOptions().contains(option));
+
+        Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
+
+        instanceUnderTest.addContactOption(option);
+
+        Assertions.assertTrue(instanceUnderTest.getContactOptions().contains(option));
+
+        boolean removalResult = instanceUnderTest.removeContactOptions(option);
+
+        Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
+        Assertions.assertTrue(removalResult);
+
+        // Deleting another time should not change anything...
+        removalResult = instanceUnderTest.removeContactOptions(option);
+
+        Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
+        Assertions.assertTrue(removalResult);
+    }
+
+    /**
+     * Tests if a sub role can be removed properly.
+     *
+     * <p>
+     * Given: A {@link User} instance
+     * And: containing a {@link ContactOption}
+     * When: removing the contact option ({@link User#removeContactOptions(Collection)})
+     * Then: than the contact options ({@link User#getContactOptions()}) should not contain the value
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(25)
+    public void testRemoveContactOptionsCollection() throws Exception {
+        User instanceUnderTest = getUser();
+
+        ContactOption<?> option;
+        do {
+            option = getContactOption();
+        }
+        while (instanceUnderTest.getContactOptions().contains(option));
+
+        Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
+
+        instanceUnderTest.addContactOption(option);
+
+        Assertions.assertTrue(instanceUnderTest.getContactOptions().contains(option));
+
+        boolean removalResult = instanceUnderTest.removeContactOptions(Arrays.asList(option));
+
+        Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
+        Assertions.assertTrue(removalResult);
+
+        // Deleting another time should not change anything...
+        removalResult = instanceUnderTest.removeContactOptions(Arrays.asList(option));
+
+        Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
+        Assertions.assertTrue(removalResult);
     }
 }

@@ -19,10 +19,19 @@
 package net.havox.labmon.model.impl.user;
 
 import net.havox.labmon.model.api.address.Address;
+import net.havox.labmon.model.api.contact.ContactOption;
 import net.havox.labmon.model.api.user.AbstractUserTest;
 import net.havox.labmon.model.api.user.Credentials;
 import net.havox.labmon.model.api.user.User;
 import net.havox.labmon.model.impl.address.AddressImpl;
+import net.havox.labmon.model.impl.contact.EMailAddressImpl;
+import net.havox.labmon.model.impl.contact.FaxImpl;
+import net.havox.labmon.model.impl.contact.MailAddressImpl;
+import net.havox.labmon.model.impl.contact.PhoneImpl;
+import net.havox.labmon.model.impl.contact.messenger.SkypeImpl;
+import net.havox.labmon.model.impl.contact.messenger.ThreemaImpl;
+import net.havox.labmon.model.impl.contact.socialmedia.TwitterImpl;
+import net.havox.labmon.testutils.random.ModelRandomGenerator;
 
 /**
  * API specific test for {@link User}.
@@ -43,5 +52,32 @@ public class UserApiTest extends AbstractUserTest { // NOSONAR API test is only 
     @Override
     public Credentials getCredentials() {
         return new CredentialsImpl();
+    }
+
+    @Override
+    public ContactOption<?> getContactOption() throws Exception {
+        return randomContactOption();
+    }
+
+    private ContactOption<?> randomContactOption() {
+        int selection = ModelRandomGenerator.randomInt(10);
+
+        switch (selection) {
+            case 0:
+                return new EMailAddressImpl();
+            case 1:
+                return new MailAddressImpl();
+            case 2:
+                return new FaxImpl();
+            case 3:
+                return new PhoneImpl();
+            case 4:
+                return new SkypeImpl();
+            case 5:
+                return new ThreemaImpl();
+            case 6:
+            default:
+                return new TwitterImpl();
+        }
     }
 }

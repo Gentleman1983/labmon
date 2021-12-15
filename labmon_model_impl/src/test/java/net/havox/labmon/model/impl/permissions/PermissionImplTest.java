@@ -22,7 +22,7 @@ package net.havox.labmon.model.impl.permissions;
 import net.havox.labmon.model.impl.AbstractChangeAwareClassTest;
 
 /**
- * Implemation specific test for {@link PermissionImpl}.
+ * Implementation specific test for {@link PermissionImpl}.
  *
  * @author Christian Otto
  */

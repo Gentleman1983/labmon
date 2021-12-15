@@ -19,9 +19,15 @@
 package net.havox.labmon.model.impl.user;
 
 import net.havox.labmon.model.api.address.Address;
+import net.havox.labmon.model.api.contact.ContactOption;
 import net.havox.labmon.model.api.user.Credentials;
 import net.havox.labmon.model.api.user.User;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
  * This represents the functional entity of an {@link User}.
@@ -53,6 +59,11 @@ public class UserImpl extends AbstractChangeAwareClass<UserImpl> implements User
      * The user's credentials.
      */
     private Credentials credentials;
+
+    /**
+     * The user's contact options.
+     */
+    private Set<ContactOption<?>> contactOptions = new CopyOnWriteArraySet<>();
 
     @Override
     public String getFirstName() {
@@ -102,5 +113,22 @@ public class UserImpl extends AbstractChangeAwareClass<UserImpl> implements User
     @Override
     public void setCredentials(Credentials credentials) {
         this.credentials = credentials;
+    }
+
+    @Override
+    public Set<ContactOption<?>> getContactOptions() {
+        return Collections.unmodifiableSet(contactOptions);
+    }
+
+    @Override
+    public boolean addContactOptions(Collection<ContactOption<?>> options) {
+        contactOptions.addAll(options);
+        return true;
+    }
+
+    @Override
+    public boolean removeContactOptions(Collection<ContactOption<?>> options) {
+        contactOptions.removeAll(options);
+        return true;
     }
 }

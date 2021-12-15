@@ -28,7 +28,7 @@ import net.havox.labmon.model.utils.validation.user.UserImplValidator;
  *
  * @author Christian Otto
  */
-public class UserValidationTest extends AbstractUserValidationTest { // NOSONAR API test is only inherited, so only derived test cases.
+public class UserValidationTest extends AbstractUserValidationTest { // NOSONAR Validation test is only inherited, so only derived test cases.
     @Override
     public User getUser() {
         return new UserImpl();

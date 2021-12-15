@@ -20,8 +20,12 @@ package net.havox.labmon.model.api.user;
 
 import net.havox.labmon.model.api.ChangeAware;
 import net.havox.labmon.model.api.address.Address;
+import net.havox.labmon.model.api.contact.ContactOption;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Set;
 
 /**
  * This represents a user of this application.
@@ -98,4 +102,68 @@ public interface User extends ChangeAware, Serializable {
      * @param credentials the credentials
      */
     void setCredentials(Credentials credentials);
+
+    /**
+     * Returns the {@link ContactOption}s.
+     *
+     * @return the contact options
+     */
+    Set<ContactOption<?>> getContactOptions();
+
+    /**
+     * Adds a {@link ContactOption}.
+     *
+     * @param option the option
+     * @return true if all worked properly
+     */
+    default boolean addContactOption(ContactOption<?> option) {
+        return addContactOptions(Arrays.asList(option));
+    }
+
+    /**
+     * Adds several {@link ContactOption}s.
+     *
+     * @param options the options
+     * @return true if all worked properly
+     */
+    default boolean addContactOptions(ContactOption<?>... options) {
+        return addContactOptions(Arrays.asList(options));
+    }
+
+    /**
+     * Adds several {@link ContactOption}s.
+     *
+     * @param options the options
+     * @return true if all worked properly
+     */
+    boolean addContactOptions(Collection<ContactOption<?>> options);
+
+    /**
+     * Removes a {@link ContactOption}.
+     *
+     * @param option the option
+     * @return true if all worked properly
+     */
+    default boolean removeContactOption(ContactOption<?> option) {
+        return removeContactOptions(Arrays.asList(option));
+    }
+
+    /**
+     * Removes several {@link ContactOption}s.
+     *
+     * @param options the options
+     * @return true if all worked properly
+     */
+    default boolean removeContactOptions(ContactOption<?>... options) {
+        return removeContactOptions(Arrays.asList(options));
+    }
+
+    /**
+     * Removes several {@link ContactOption}s.
+     *
+     * @param options the options
+     * @return true if all worked properly
+     */
+    boolean removeContactOptions(Collection<ContactOption<?>> options);
+
 }

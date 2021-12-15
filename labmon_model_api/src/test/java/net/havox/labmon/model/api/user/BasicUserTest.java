@@ -19,7 +19,9 @@
 package net.havox.labmon.model.api.user;
 
 import net.havox.labmon.model.api.address.Address;
+import net.havox.labmon.model.api.contact.ContactOption;
 import net.havox.labmon.model.basic.address.BasicAddress;
+import net.havox.labmon.model.basic.contact.BasicEMailAddress;
 import net.havox.labmon.model.basic.user.BasicCredentials;
 import net.havox.labmon.model.basic.user.BasicUser;
 
@@ -42,5 +44,10 @@ public class BasicUserTest extends AbstractUserTest {
     @Override
     public Credentials getCredentials() throws Exception {
         return new BasicCredentials();
+    }
+
+    @Override
+    public ContactOption getContactOption() throws Exception {
+        return new BasicEMailAddress();
     }
 }
