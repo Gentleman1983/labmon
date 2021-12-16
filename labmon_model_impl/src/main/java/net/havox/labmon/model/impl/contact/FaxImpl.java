@@ -18,8 +18,8 @@
 
 package net.havox.labmon.model.impl.contact;
 
+import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import net.havox.labmon.model.api.contact.Fax;
-import net.havox.labmon.model.api.contact.PhoneNumber;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 import net.havox.labmon.model.utils.validation.contact.ContactOptionValidator;
 

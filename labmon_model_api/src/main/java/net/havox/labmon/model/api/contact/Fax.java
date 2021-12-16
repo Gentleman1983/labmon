@@ -18,6 +18,8 @@
 
 package net.havox.labmon.model.api.contact;
 
+import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+
 public interface Fax extends ContactOption {
     PhoneNumber getPhoneNumber();
 
