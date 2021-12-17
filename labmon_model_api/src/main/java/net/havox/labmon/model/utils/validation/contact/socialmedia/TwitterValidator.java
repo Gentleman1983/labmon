@@ -21,17 +21,41 @@ package net.havox.labmon.model.utils.validation.contact.socialmedia;
 import net.havox.labmon.model.api.contact.socialmedia.Twitter;
 import net.havox.labmon.model.utils.validation.contact.ContactOptionValidator;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * A validator for the {@link Twitter} entities.
  * <p>
  * Specifications for a given user entity:
- * - ...
+ * - Twitter usernames are 1 to 15 letters
+ * - They consist of alphanumeric letters and underscores
  *
  * @author Christian Otto
  */
 public interface TwitterValidator extends ContactOptionValidator<Twitter> {
+    /**
+     * The {@link Twitter} username validation regular expression.
+     */
+    static final String TWITTER_USER_REGEX = "^[A-Za-z0-9_]{1,15}$";
+
     @Override
-    default boolean validate(Twitter validationTarget) {
-        return false;
+    default List<String> validate(Twitter validationTarget) {
+        List<String> validationErrors = new ArrayList<>();
+
+        if (validationTarget.getUserName().length() < 1) {
+            validationErrors.add("Expected the username to be at least 1 letter.");
+        }
+
+        if (validationTarget.getUserName().length() > 15) {
+            validationErrors.add("Expected the username to be at maximum 15 letter.");
+        }
+
+        if (!validationTarget.getUserName().matches(TWITTER_USER_REGEX)) {
+            validationErrors.add("Expected the username to consist only of alphanumeric letters and underscores [A-Z0-9_].");
+        }
+
+        return Collections.unmodifiableList(validationErrors);
     }
 }

@@ -20,14 +20,29 @@ package net.havox.labmon.model.utils.validation.contact;
 
 import net.havox.labmon.model.api.contact.ContactOption;
 
+import java.util.List;
+
 /**
  * A validator for the {@link ContactOption} entities.
- * <p>
- * Specifications for a given user entity:
- * - ...
  *
  * @author Christian Otto
  */
 public interface ContactOptionValidator<T extends ContactOption> {
-    boolean validate(T validationTarget);
+    /**
+     * Validates a {@link ContactOption} entity.
+     *
+     * @param validationTarget the contact option entity
+     * @return the validation errors
+     */
+    List<String> validate(T validationTarget);
+
+    /**
+     * Validates a {@link ContactOption} entity.
+     *
+     * @param validationTarget the contact option entity
+     * @return true, if no errors occured on validation
+     */
+    default boolean isValid(T validationTarget) {
+        return validate(validationTarget).isEmpty();
+    }
 }

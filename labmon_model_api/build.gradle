@@ -1,5 +1,6 @@
 dependencies {
-    api "${project.ext.'gav.com.googlecode.libphonenumber.libphonenumber'}"
+    api "${project.ext.'gav.lib.commons-validator.commons-validator'}"
+    api "${project.ext.'gav.lib.com.googlecode.libphonenumber.libphonenumber'}"
     api "${project.ext.'gav.lib.org.apache.commons.commons-lang3'}"
 
     testImplementation project(':labmon_testutils')

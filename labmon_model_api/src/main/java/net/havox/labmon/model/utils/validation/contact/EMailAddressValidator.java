@@ -19,18 +19,35 @@
 package net.havox.labmon.model.utils.validation.contact;
 
 import net.havox.labmon.model.api.contact.EMailAddress;
+import org.apache.commons.validator.routines.DomainValidator;
+import org.apache.commons.validator.routines.EmailValidator;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * A validator for the {@link EMailAddress} entities.
  * <p>
  * Specifications for a given user entity:
- * - ...
+ * - a valid email address
  *
  * @author Christian Otto
  */
 public interface EMailAddressValidator extends ContactOptionValidator<EMailAddress> {
     @Override
-    default boolean validate(EMailAddress validationTarget) {
-        return false;
+    default List<String> validate(EMailAddress validationTarget) {
+        List<String> validationErrors = new ArrayList<>();
+
+        boolean allowLocalDomains = false;
+        boolean allowTopLevelDomains = false;
+        DomainValidator domainValidator = DomainValidator.getInstance(allowLocalDomains);
+        EmailValidator emailValidator = new EmailValidator(allowLocalDomains, allowTopLevelDomains, domainValidator);
+
+        if (emailValidator.isValid(validationTarget.getEMailAddress())) {
+            validationErrors.add("EMail address is not a valid address.");
+        }
+
+        return Collections.unmodifiableList(validationErrors);
     }
 }

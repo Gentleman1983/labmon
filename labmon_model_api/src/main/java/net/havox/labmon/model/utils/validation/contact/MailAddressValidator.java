@@ -20,6 +20,10 @@ package net.havox.labmon.model.utils.validation.contact;
 
 import net.havox.labmon.model.api.contact.MailAddress;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * A validator for the {@link MailAddress} entities.
  * <p>
@@ -30,7 +34,9 @@ import net.havox.labmon.model.api.contact.MailAddress;
  */
 public interface MailAddressValidator extends ContactOptionValidator<MailAddress> {
     @Override
-    default boolean validate(MailAddress validationTarget) {
-        return false;
+    default List<String> validate(MailAddress validationTarget) {
+        List<String> validationErrors = new ArrayList<>();
+
+        return Collections.unmodifiableList(validationErrors);
     }
 }

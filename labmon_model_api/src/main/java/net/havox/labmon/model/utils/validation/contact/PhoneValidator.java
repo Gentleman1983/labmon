@@ -18,19 +18,30 @@
 
 package net.havox.labmon.model.utils.validation.contact;
 
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import net.havox.labmon.model.api.contact.Phone;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * A validator for the {@link Phone} entities.
  * <p>
  * Specifications for a given user entity:
- * - ...
+ * - A valid phone number
  *
  * @author Christian Otto
  */
 public interface PhoneValidator extends ContactOptionValidator<Phone> {
     @Override
-    default boolean validate(Phone validationTarget) {
-        return false;
+    default List<String> validate(Phone validationTarget) {
+        List<String> validationErrors = new ArrayList<>();
+
+        if(!PhoneNumberUtil.getInstance().isValidNumber(validationTarget.getPhoneNumber())) {
+            validationErrors.add("Expected an valid phone number.");
+        }
+
+        return Collections.unmodifiableList(validationErrors);
     }
 }

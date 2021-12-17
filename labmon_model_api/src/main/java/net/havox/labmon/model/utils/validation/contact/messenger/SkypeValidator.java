@@ -21,17 +21,34 @@ package net.havox.labmon.model.utils.validation.contact.messenger;
 import net.havox.labmon.model.api.contact.messenger.Skype;
 import net.havox.labmon.model.utils.validation.contact.ContactOptionValidator;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * A validator for the {@link Skype} entities.
  * <p>
  * Specifications for a given user entity:
- * - ...
+ * - A skype username consists of 6 to 22 characters
+ * - It starts with a letter
  *
  * @author Christian Otto
  */
 public interface SkypeValidator extends ContactOptionValidator<Skype> {
     @Override
-    default boolean validate(Skype validationTarget) {
-        return false;
+    default List<String> validate(Skype validationTarget) {
+        List<String> validationErrors = new ArrayList<>();
+
+        if (validationTarget.getUserName().length() < 6) {
+            validationErrors.add("Expected username to be at least 6 characters.");
+        }
+        if (validationTarget.getUserName().length() > 22) {
+            validationErrors.add("Expected username to be at maximum 22 characters.");
+        }
+        if (Character.isLetter(validationTarget.getUserName().charAt(0))) {
+            validationErrors.add("Expected the username to start with a letter.");
+        }
+
+        return Collections.unmodifiableList(validationErrors);
     }
 }

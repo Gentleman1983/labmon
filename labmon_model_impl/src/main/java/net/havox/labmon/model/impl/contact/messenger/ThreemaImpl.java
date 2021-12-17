@@ -29,18 +29,18 @@ import net.havox.labmon.model.utils.validation.contact.messenger.ThreemaImplVali
  */
 public class ThreemaImpl extends AbstractChangeAwareClass<ThreemaImpl> implements Threema {
     /**
-     * The username.
+     * The Threema Id.
      */
-    private String userName;
+    private String threemaId;
 
     @Override
-    public String getUserName() {
-        return userName;
+    public String getThreemaId() {
+        return threemaId;
     }
 
     @Override
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setThreemaId(String threemaId) {
+        this.threemaId = threemaId;
     }
 
     @Override
@@ -50,6 +50,6 @@ public class ThreemaImpl extends AbstractChangeAwareClass<ThreemaImpl> implement
 
     @Override
     public boolean isValid() {
-        return getContactOptionValidator().validate(this);
+        return getContactOptionValidator().isValid(this);
     }
 }

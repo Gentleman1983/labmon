@@ -20,18 +20,33 @@ package net.havox.labmon.model.utils.validation.contact.messenger;
 
 import net.havox.labmon.model.api.contact.messenger.Threema;
 import net.havox.labmon.model.utils.validation.contact.ContactOptionValidator;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * A validator for the {@link Threema} entities.
  * <p>
  * Specifications for a given user entity:
- * - ...
+ * - A Threema Id is an 8-digit alphanumeric string
  *
  * @author Christian Otto
  */
 public interface ThreemaValidator extends ContactOptionValidator<Threema> {
     @Override
-    default boolean validate(Threema validationTarget) {
-        return false;
+    default List<String> validate(Threema validationTarget) {
+        List<String> validationErrors = new ArrayList<>();
+
+        if (validationTarget.getThreemaId().length() != 8) {
+            validationErrors.add("Expected the Threema Id to be exactly 8 digits.");
+        }
+
+        if (StringUtils.isAlphanumeric(validationTarget.getThreemaId())) {
+            validationErrors.add("Expected the Threema Id to be alphanumeric (A-Z0-9).");
+        }
+
+        return Collections.unmodifiableList(validationErrors);
     }
 }

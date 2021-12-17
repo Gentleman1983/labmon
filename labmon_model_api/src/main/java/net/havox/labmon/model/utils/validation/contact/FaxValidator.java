@@ -18,19 +18,30 @@
 
 package net.havox.labmon.model.utils.validation.contact;
 
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import net.havox.labmon.model.api.contact.Fax;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * A validator for the {@link Fax} entities.
  * <p>
  * Specifications for a given user entity:
- * - ...
+ * - a valid phone number
  *
  * @author Christian Otto
  */
 public interface FaxValidator extends ContactOptionValidator<Fax> {
     @Override
-    default boolean validate(Fax validationTarget) {
-        return false;
+    default List<String> validate(Fax validationTarget) {
+        List<String> validationErrors = new ArrayList<>();
+
+        if(!PhoneNumberUtil.getInstance().isValidNumber(validationTarget.getPhoneNumber())) {
+            validationErrors.add("Expected an valid phone number.");
+        }
+
+        return Collections.unmodifiableList(validationErrors);
     }
 }
