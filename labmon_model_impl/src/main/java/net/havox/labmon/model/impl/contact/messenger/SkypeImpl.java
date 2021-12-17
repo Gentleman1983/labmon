@@ -20,29 +20,36 @@ package net.havox.labmon.model.impl.contact.messenger;
 
 import net.havox.labmon.model.api.contact.messenger.Skype;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
-import net.havox.labmon.model.utils.validation.contact.ContactOptionValidator;
+import net.havox.labmon.model.utils.validation.contact.messenger.SkypeImplValidator;
 
 /**
+ * The functional representation of a {@link Skype} account.
+ *
  * @author Christian Otto
  */
 public class SkypeImpl extends AbstractChangeAwareClass<SkypeImpl> implements Skype {
-    @Override
-    public ContactOptionValidator getContactOptionValidator() {
-        return null;
-    }
-
-    @Override
-    public boolean isValid() {
-        return false;
-    }
+    /**
+     * The username.
+     */
+    private String userName;
 
     @Override
     public String getUserName() {
-        return null;
+        return userName;
     }
 
     @Override
     public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
+    @Override
+    public SkypeImplValidator getContactOptionValidator() {
+        return new SkypeImplValidator();
+    }
+
+    @Override
+    public boolean isValid() {
+        return getContactOptionValidator().validate(this);
     }
 }

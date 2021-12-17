@@ -20,29 +20,36 @@ package net.havox.labmon.model.impl.contact.messenger;
 
 import net.havox.labmon.model.api.contact.messenger.Threema;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
-import net.havox.labmon.model.utils.validation.contact.ContactOptionValidator;
+import net.havox.labmon.model.utils.validation.contact.messenger.ThreemaImplValidator;
 
 /**
+ * The functional representation of a {@link Threema} account.
+ *
  * @author Christian Otto
  */
 public class ThreemaImpl extends AbstractChangeAwareClass<ThreemaImpl> implements Threema {
-    @Override
-    public ContactOptionValidator getContactOptionValidator() {
-        return null;
-    }
-
-    @Override
-    public boolean isValid() {
-        return false;
-    }
+    /**
+     * The username.
+     */
+    private String userName;
 
     @Override
     public String getUserName() {
-        return null;
+        return userName;
     }
 
     @Override
     public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
+    @Override
+    public ThreemaImplValidator getContactOptionValidator() {
+        return new ThreemaImplValidator();
+    }
+
+    @Override
+    public boolean isValid() {
+        return getContactOptionValidator().validate(this);
     }
 }

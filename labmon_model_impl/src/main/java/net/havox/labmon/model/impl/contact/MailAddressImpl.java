@@ -21,39 +21,51 @@ package net.havox.labmon.model.impl.contact;
 import net.havox.labmon.model.api.address.Address;
 import net.havox.labmon.model.api.contact.MailAddress;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
-import net.havox.labmon.model.utils.validation.contact.ContactOptionValidator;
+import net.havox.labmon.model.utils.validation.contact.MailAddressImplValidator;
 
 /**
+ * The functional representation of a {@link MailAddress}.
+ *
  * @author Christian Otto
  */
 public class MailAddressImpl extends AbstractChangeAwareClass<MailAddressImpl> implements MailAddress {
-    @Override
-    public ContactOptionValidator getContactOptionValidator() {
-        return null;
-    }
+    /**
+     * The receiver.
+     */
+    private String receiver;
 
-    @Override
-    public boolean isValid() {
-        return false;
-    }
+    /**
+     * The receiver's address.
+     */
+    private Address address;
 
     @Override
     public String getReceiver() {
-        return null;
+        return receiver;
     }
 
     @Override
     public void setReceiver(String receiver) {
-
+        this.receiver = receiver;
     }
 
     @Override
     public Address getAddress() {
-        return null;
+        return address;
     }
 
     @Override
     public void setAddress(Address address) {
+        this.address = address;
+    }
 
+    @Override
+    public MailAddressImplValidator getContactOptionValidator() {
+        return new MailAddressImplValidator();
+    }
+
+    @Override
+    public boolean isValid() {
+        return getContactOptionValidator().validate(this);
     }
 }

@@ -21,29 +21,36 @@ package net.havox.labmon.model.impl.contact;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import net.havox.labmon.model.api.contact.Phone;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
-import net.havox.labmon.model.utils.validation.contact.ContactOptionValidator;
+import net.havox.labmon.model.utils.validation.contact.PhoneImplValidator;
 
 /**
+ * The functional representation of a {@link Phone} number.
+ *
  * @author Christian Otto
  */
 public class PhoneImpl extends AbstractChangeAwareClass<PhoneImpl> implements Phone {
-    @Override
-    public ContactOptionValidator getContactOptionValidator() {
-        return null;
-    }
-
-    @Override
-    public boolean isValid() {
-        return false;
-    }
+    /**
+     * The phone number.
+     */
+    private PhoneNumber phoneNumber;
 
     @Override
     public PhoneNumber getPhoneNumber() {
-        return null;
+        return phoneNumber;
     }
 
     @Override
     public void setPhoneNumber(PhoneNumber phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
+    @Override
+    public PhoneImplValidator getContactOptionValidator() {
+        return new PhoneImplValidator();
+    }
+
+    @Override
+    public boolean isValid() {
+        return getContactOptionValidator().validate(this);
     }
 }

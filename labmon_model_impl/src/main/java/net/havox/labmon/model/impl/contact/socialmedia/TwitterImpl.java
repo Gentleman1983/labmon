@@ -20,29 +20,36 @@ package net.havox.labmon.model.impl.contact.socialmedia;
 
 import net.havox.labmon.model.api.contact.socialmedia.Twitter;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
-import net.havox.labmon.model.utils.validation.contact.ContactOptionValidator;
+import net.havox.labmon.model.utils.validation.contact.socialmedia.TwitterImplValidator;
 
 /**
+ * The functional representation of a {@link Twitter} profile.
+ *
  * @author Christian Otto
  */
 public class TwitterImpl extends AbstractChangeAwareClass<TwitterImpl> implements Twitter {
-    @Override
-    public ContactOptionValidator getContactOptionValidator() {
-        return null;
-    }
-
-    @Override
-    public boolean isValid() {
-        return false;
-    }
+    /**
+     * The username.
+     */
+    private String username;
 
     @Override
     public String getUserName() {
-        return null;
+        return username;
     }
 
     @Override
     public void setUserName(String userName) {
+        this.username = userName;
+    }
 
+    @Override
+    public TwitterImplValidator getContactOptionValidator() {
+        return new TwitterImplValidator();
+    }
+
+    @Override
+    public boolean isValid() {
+        return getContactOptionValidator().validate(this);
     }
 }
