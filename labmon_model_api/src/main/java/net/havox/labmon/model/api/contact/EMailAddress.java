@@ -18,6 +18,9 @@
 
 package net.havox.labmon.model.api.contact;
 
+/**
+ * @author Christian Otto
+ */
 public interface EMailAddress extends ContactOption {
     String getEMailAddress();
 

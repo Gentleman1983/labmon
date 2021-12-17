@@ -22,6 +22,9 @@ import net.havox.labmon.model.api.contact.messenger.Skype;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 import net.havox.labmon.model.utils.validation.contact.ContactOptionValidator;
 
+/**
+ * @author Christian Otto
+ */
 public class SkypeImpl extends AbstractChangeAwareClass<SkypeImpl> implements Skype {
     @Override
     public ContactOptionValidator getContactOptionValidator() {

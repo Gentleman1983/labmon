@@ -24,6 +24,9 @@ import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 
 import java.util.Set;
 
+/**
+ * @author Christian Otto
+ */
 public class CountryCodeImpl extends AbstractChangeAwareClass<CountryCodeImpl> implements CountryCode {
     @Override
     public Country getCountryName() {

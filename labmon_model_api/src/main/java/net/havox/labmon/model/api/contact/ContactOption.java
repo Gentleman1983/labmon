@@ -23,6 +23,12 @@ import net.havox.labmon.model.utils.validation.contact.ContactOptionValidator;
 
 import java.io.Serializable;
 
+/**
+ * This interface represents a contact option.
+ *
+ * @param <T> The type of {@link ContactOption}
+ * @author Christian Otto
+ */
 public interface ContactOption<T extends ContactOption> extends ChangeAware, Serializable {
     ContactOptionValidator<T> getContactOptionValidator();
 

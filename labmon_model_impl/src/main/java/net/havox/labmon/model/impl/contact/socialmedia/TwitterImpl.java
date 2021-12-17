@@ -22,6 +22,9 @@ import net.havox.labmon.model.api.contact.socialmedia.Twitter;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 import net.havox.labmon.model.utils.validation.contact.ContactOptionValidator;
 
+/**
+ * @author Christian Otto
+ */
 public class TwitterImpl extends AbstractChangeAwareClass<TwitterImpl> implements Twitter {
     @Override
     public ContactOptionValidator getContactOptionValidator() {

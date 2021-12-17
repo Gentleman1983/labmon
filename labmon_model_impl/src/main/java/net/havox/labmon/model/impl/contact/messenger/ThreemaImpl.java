@@ -22,6 +22,9 @@ import net.havox.labmon.model.api.contact.messenger.Threema;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 import net.havox.labmon.model.utils.validation.contact.ContactOptionValidator;
 
+/**
+ * @author Christian Otto
+ */
 public class ThreemaImpl extends AbstractChangeAwareClass<ThreemaImpl> implements Threema {
     @Override
     public ContactOptionValidator getContactOptionValidator() {

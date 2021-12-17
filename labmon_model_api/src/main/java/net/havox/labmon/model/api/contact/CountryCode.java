@@ -22,6 +22,9 @@ import net.havox.labmon.model.api.address.Country;
 
 import java.util.*;
 
+/**
+ * @author Christian Otto
+ */
 public interface CountryCode {
     public static final String COUNTRY_CODE_PREFIX = "+";
 

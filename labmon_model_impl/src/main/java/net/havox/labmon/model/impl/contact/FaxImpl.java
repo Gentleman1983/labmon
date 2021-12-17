@@ -23,6 +23,9 @@ import net.havox.labmon.model.api.contact.Fax;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 import net.havox.labmon.model.utils.validation.contact.ContactOptionValidator;
 
+/**
+ * @author Christian Otto
+ */
 public class FaxImpl extends AbstractChangeAwareClass<FaxImpl> implements Fax {
     @Override
     public ContactOptionValidator getContactOptionValidator() {

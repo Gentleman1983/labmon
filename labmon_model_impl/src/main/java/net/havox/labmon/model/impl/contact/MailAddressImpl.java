@@ -23,6 +23,9 @@ import net.havox.labmon.model.api.contact.MailAddress;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 import net.havox.labmon.model.utils.validation.contact.ContactOptionValidator;
 
+/**
+ * @author Christian Otto
+ */
 public class MailAddressImpl extends AbstractChangeAwareClass<MailAddressImpl> implements MailAddress {
     @Override
     public ContactOptionValidator getContactOptionValidator() {

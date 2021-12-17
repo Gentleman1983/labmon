@@ -20,6 +20,9 @@ package net.havox.labmon.model.api.contact;
 
 import net.havox.labmon.model.api.address.Address;
 
+/**
+ * @author Christian Otto
+ */
 public interface MailAddress extends ContactOption {
     String getReceiver();
 

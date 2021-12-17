@@ -18,6 +18,9 @@
 
 package net.havox.labmon.model.api.contact.messenger;
 
+/**
+ * @author Christian Otto
+ */
 public interface Skype extends Messenger {
     String getUserName();
 

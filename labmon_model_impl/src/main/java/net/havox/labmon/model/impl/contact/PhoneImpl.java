@@ -23,6 +23,9 @@ import net.havox.labmon.model.api.contact.Phone;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 import net.havox.labmon.model.utils.validation.contact.ContactOptionValidator;
 
+/**
+ * @author Christian Otto
+ */
 public class PhoneImpl extends AbstractChangeAwareClass<PhoneImpl> implements Phone {
     @Override
     public ContactOptionValidator getContactOptionValidator() {

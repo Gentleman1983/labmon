@@ -20,6 +20,9 @@ package net.havox.labmon.model.api.contact;
 
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
+/**
+ * @author Christian Otto
+ */
 public interface Phone extends ContactOption {
     PhoneNumber getPhoneNumber();
 

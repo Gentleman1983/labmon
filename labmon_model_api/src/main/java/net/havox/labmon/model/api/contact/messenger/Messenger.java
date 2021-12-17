@@ -20,5 +20,8 @@ package net.havox.labmon.model.api.contact.messenger;
 
 import net.havox.labmon.model.api.contact.ContactOption;
 
+/**
+ * @author Christian Otto
+ */
 public interface Messenger extends ContactOption {
 }

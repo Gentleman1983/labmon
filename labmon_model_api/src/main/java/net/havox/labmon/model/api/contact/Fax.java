@@ -18,6 +18,9 @@
 
 package net.havox.labmon.model.api.contact;
 
+/**
+ * @author Christian Otto
+ */
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
 public interface Fax extends ContactOption {
