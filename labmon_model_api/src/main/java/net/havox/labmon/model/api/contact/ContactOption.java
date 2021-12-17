@@ -30,7 +30,17 @@ import java.io.Serializable;
  * @author Christian Otto
  */
 public interface ContactOption<T extends ContactOption> extends ChangeAware, Serializable {
+    /**
+     * Returns the {@link ContactOptionValidator} corresponding to the {@link ContactOption} type.
+     *
+     * @return the validator
+     */
     ContactOptionValidator<T> getContactOptionValidator();
 
+    /**
+     * Returns the validation result of the validator.
+     *
+     * @return true, if instance is valid
+     */
     boolean isValid();
 }
