@@ -21,14 +21,36 @@ package net.havox.labmon.model.api.contact;
 import net.havox.labmon.model.api.address.Address;
 
 /**
+ * This interface represents a mail address
+ *
  * @author Christian Otto
  */
 public interface MailAddress extends ContactOption {
+    /**
+     * Returns the receiver.
+     *
+     * @return the receiver
+     */
     String getReceiver();
 
+    /**
+     * Sets the receiver.
+     *
+     * @param receiver the receiver
+     */
     void setReceiver(String receiver);
 
+    /**
+     * Returns the address of the receiver.
+     *
+     * @return the address
+     */
     Address getAddress();
 
+    /**
+     * Sets the address of the receiver.
+     *
+     * @param address the address
+     */
     void setAddress(Address address);
 }

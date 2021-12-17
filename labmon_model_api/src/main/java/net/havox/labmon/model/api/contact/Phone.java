@@ -21,10 +21,22 @@ package net.havox.labmon.model.api.contact;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
 /**
+ * This interface represents a phone number.
+ *
  * @author Christian Otto
  */
 public interface Phone extends ContactOption {
+    /**
+     * Returns the phone number.
+     *
+     * @return the phone number
+     */
     PhoneNumber getPhoneNumber();
 
+    /**
+     * Sets the phone number.
+     *
+     * @param phoneNumber the phone number
+     */
     void setPhoneNumber(PhoneNumber phoneNumber);
 }

@@ -19,10 +19,22 @@
 package net.havox.labmon.model.api.contact;
 
 /**
+ * This interface represents an email address.
+ *
  * @author Christian Otto
  */
 public interface EMailAddress extends ContactOption {
+    /**
+     * Returns the email address.
+     *
+     * @return the email address
+     */
     String getEMailAddress();
 
+    /**
+     * Sets the email address.
+     *
+     * @param eMailAddress the email address
+     */
     void setEMailAddress(String eMailAddress);
 }

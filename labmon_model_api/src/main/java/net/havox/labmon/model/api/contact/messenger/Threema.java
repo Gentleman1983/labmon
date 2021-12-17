@@ -19,10 +19,22 @@
 package net.havox.labmon.model.api.contact.messenger;
 
 /**
+ * This interface represents a Threema account.
+ *
  * @author Christian Otto
  */
 public interface Threema extends Messenger {
+    /**
+     * Returns the username.
+     *
+     * @return the username
+     */
     String getUserName();
 
+    /**
+     * Sets the username.
+     *
+     * @param userName the username
+     */
     void setUserName(String userName);
 }

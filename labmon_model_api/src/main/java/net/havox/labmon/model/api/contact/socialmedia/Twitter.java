@@ -19,15 +19,27 @@
 package net.havox.labmon.model.api.contact.socialmedia;
 
 /**
+ * This interface represents a twitter profile.
+ *
  * @author Christian Otto
  */
 public interface Twitter extends SocialMediaProfile {
+    /**
+     * Returns the username.
+     *
+     * @return the username
+     */
     String getUserName();
 
-    void setUserName();
+    /**
+     * Sets the username.
+     *
+     * @param userName the username
+     */
+    void setUserName(String userName);
 
     @Override
     default String getLinkToProfile() {
-        return null;
+        return "https://twitter.com/" + getUserName();
     }
 }

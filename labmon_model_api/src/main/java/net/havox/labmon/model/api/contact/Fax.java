@@ -18,13 +18,25 @@
 
 package net.havox.labmon.model.api.contact;
 
-/**
- * @author Christian Otto
- */
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
+/**
+ * This interface represents a telefax number.
+ *
+ * @author Christian Otto
+ */
 public interface Fax extends ContactOption {
+    /**
+     * Returns the telefax phone number.
+     *
+     * @return the phone number
+     */
     PhoneNumber getPhoneNumber();
 
+    /**
+     * Sets the telefax phone number.
+     *
+     * @param phoneNumber the phone number
+     */
     void setPhoneNumber(PhoneNumber phoneNumber);
 }

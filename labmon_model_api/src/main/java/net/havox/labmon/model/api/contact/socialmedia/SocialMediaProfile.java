@@ -21,8 +21,15 @@ package net.havox.labmon.model.api.contact.socialmedia;
 import net.havox.labmon.model.api.contact.ContactOption;
 
 /**
+ * This interface represents a social media profile.
+ *
  * @author Christian Otto
  */
 public interface SocialMediaProfile extends ContactOption {
+    /**
+     * Returns the link to the social media profile.
+     *
+     * @return the link
+     */
     String getLinkToProfile();
 }
