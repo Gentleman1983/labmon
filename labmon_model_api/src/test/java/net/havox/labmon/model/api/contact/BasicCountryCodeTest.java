@@ -18,8 +18,6 @@
 
 package net.havox.labmon.model.api.contact;
 
-import net.havox.labmon.model.basic.contact.BasicCountryCode;
-
 /**
  * Basic implementation of {@link AbstractCountryCodeTest}.
  *
