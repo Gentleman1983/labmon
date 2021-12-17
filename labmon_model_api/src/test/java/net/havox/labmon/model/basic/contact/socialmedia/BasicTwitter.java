@@ -46,7 +46,7 @@ public class BasicTwitter extends AbstractChangeAwareAndIdentifiableClass implem
     }
 
     @Override
-    public void setUserName() {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 }

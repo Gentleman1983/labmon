@@ -42,7 +42,7 @@ public class TwitterImpl extends AbstractChangeAwareClass<TwitterImpl> implement
     }
 
     @Override
-    public void setUserName() {
+    public void setUserName(String userName) {
 
     }
 }
