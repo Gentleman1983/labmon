@@ -18,9 +18,11 @@
 
 package net.havox.labmon.model.api.address;
 
+import net.havox.labmon.model.utils.validation.address.CityValidator;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 /**
  * Abstract implementation of API test of {@link City}.
@@ -123,5 +125,23 @@ public abstract class AbstractCityTest {
         objectUnderTest.setCountry(country);
         Assertions.assertEquals(country, objectUnderTest.getCountry());
         Assertions.assertNotEquals(oldCountry, objectUnderTest.getCountry());
+    }
+
+    /**
+     * Tests if a proper validator is provided.
+     *
+     * Given: A {@link City} instance
+     * When: calling {@link City#getValidator()}
+     * Then: the result is not {@code null}
+     * And: the result is of type {@link CityValidator}
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testInstanceValidator() throws Exception {
+        City objectUnderTest = getCity();
+
+        Assertions.assertNotNull(objectUnderTest.getValidator());
+        Assertions.assertTrue(objectUnderTest.getValidator() instanceof CityValidator);
     }
 }

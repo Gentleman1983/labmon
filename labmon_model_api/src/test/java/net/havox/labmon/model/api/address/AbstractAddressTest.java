@@ -18,9 +18,11 @@
 
 package net.havox.labmon.model.api.address;
 
+import net.havox.labmon.model.utils.validation.address.AddressValidator;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 /**
  * Abstract implementation of API test of {@link Address}.
@@ -126,5 +128,23 @@ public abstract class AbstractAddressTest {
         objectUnderTest.setCity(city);
         Assertions.assertEquals(city, objectUnderTest.getCity());
         Assertions.assertNotEquals(oldCity, objectUnderTest.getCity());
+    }
+
+    /**
+     * Tests if a proper validator is provided.
+     *
+     * Given: A {@link Address} instance
+     * When: calling {@link Address#getValidator()}
+     * Then: the result is not {@code null}
+     * And: the result is of type {@link AddressValidator}
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testInstanceValidator() throws Exception {
+        Address objectUnderTest = getAddress();
+
+        Assertions.assertNotNull(objectUnderTest.getValidator());
+        Assertions.assertTrue(objectUnderTest.getValidator() instanceof AddressValidator);
     }
 }

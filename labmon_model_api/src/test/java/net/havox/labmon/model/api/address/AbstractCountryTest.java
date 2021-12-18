@@ -18,9 +18,11 @@
 
 package net.havox.labmon.model.api.address;
 
+import net.havox.labmon.model.utils.validation.address.CountryValidator;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 /**
  * Abstract implementation of API test of {@link Country}.
@@ -61,5 +63,23 @@ public abstract class AbstractCountryTest {
         objectUnderTest.setName(name);
         Assertions.assertEquals(name, objectUnderTest.getName());
         Assertions.assertNotEquals(oldName, objectUnderTest.getName());
+    }
+
+    /**
+     * Tests if a proper validator is provided.
+     *
+     * Given: A {@link Country} instance
+     * When: calling {@link Country#getValidator()}
+     * Then: the result is not {@code null}
+     * And: the result is of type {@link CountryValidator}
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testInstanceValidator() throws Exception {
+        Country objectUnderTest = getCountry();
+
+        Assertions.assertNotNull(objectUnderTest.getValidator());
+        Assertions.assertTrue(objectUnderTest.getValidator() instanceof CountryValidator);
     }
 }
