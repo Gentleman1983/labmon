@@ -51,6 +51,6 @@ public class FaxImpl extends AbstractChangeAwareClass<FaxImpl> implements Fax {
 
     @Override
     public boolean isValid() {
-        return getContactOptionValidator().validate(this);
+        return getContactOptionValidator().isValid(this);
     }
 }

@@ -21,6 +21,7 @@ package net.havox.labmon.model.api.address;
 import java.io.Serializable;
 
 import net.havox.labmon.model.api.ChangeAware;
+import net.havox.labmon.model.utils.validation.address.CityValidator;
 
 /**
  * This interface represents a city.
@@ -70,4 +71,11 @@ public interface City extends ChangeAware, Serializable {
      * @param country the country
      */
     void setCountry(Country country);
+
+    /**
+     * Returns am {@link CityValidator} to validator {@link City} entities.
+     *
+     * @return the validator
+     */
+    CityValidator getValidator();
 }

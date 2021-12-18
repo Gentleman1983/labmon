@@ -21,6 +21,8 @@ package net.havox.labmon.model.basic.address;
 import net.havox.labmon.model.api.address.City;
 import net.havox.labmon.model.api.address.Country;
 import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
+import net.havox.labmon.model.utils.validation.address.BasicCityValidator;
+import net.havox.labmon.model.utils.validation.address.CityValidator;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -62,6 +64,11 @@ public class BasicCity extends AbstractChangeAwareAndIdentifiableClass implement
     @Override
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    @Override
+    public CityValidator getValidator() {
+        return new BasicCityValidator();
     }
 
     @Override

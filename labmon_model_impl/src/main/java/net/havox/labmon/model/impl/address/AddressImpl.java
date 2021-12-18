@@ -21,6 +21,8 @@ package net.havox.labmon.model.impl.address;
 import net.havox.labmon.model.api.address.Address;
 import net.havox.labmon.model.api.address.City;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
+import net.havox.labmon.model.utils.validation.address.AddressImplValidator;
+import net.havox.labmon.model.utils.validation.address.AddressValidator;
 
 /**
  * The functional representation of an {@link Address}.
@@ -71,5 +73,10 @@ public class AddressImpl extends AbstractChangeAwareClass<AddressImpl> implement
     @Override
     public void setCity(City city) {
         this.city = city;
+    }
+
+    @Override
+    public AddressValidator getValidator() {
+        return new AddressImplValidator();
     }
 }

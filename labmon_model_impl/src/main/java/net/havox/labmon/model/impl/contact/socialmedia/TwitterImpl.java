@@ -50,6 +50,6 @@ public class TwitterImpl extends AbstractChangeAwareClass<TwitterImpl> implement
 
     @Override
     public boolean isValid() {
-        return getContactOptionValidator().validate(this);
+        return getContactOptionValidator().isValid(this);
     }
 }

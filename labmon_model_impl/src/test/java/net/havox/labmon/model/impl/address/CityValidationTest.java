@@ -16,39 +16,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.api.address;
+package net.havox.labmon.model.impl.address;
 
-import net.havox.labmon.model.api.ChangeAware;
-import net.havox.labmon.model.utils.validation.address.CountryValidator;
-
-import java.io.Serializable;
+import net.havox.labmon.model.api.address.City;
+import net.havox.labmon.model.utils.validation.address.AbstractCityValidationTest;
+import net.havox.labmon.model.utils.validation.address.CityImplValidator;
+import net.havox.labmon.model.utils.validation.address.CityValidator;
 
 /**
- * This interface represents a country.
+ * Validation test for {@link CityImpl}.
  *
  * @author Christian Otto
  */
-public interface Country extends ChangeAware, Serializable {
+public class CityValidationTest extends AbstractCityValidationTest { // NOSONAR Validation test is only inherited, so only derived test cases.
+    @Override
+    public City getCity() throws Exception {
+        return new CityImpl();
+    }
 
-    /**
-     * Gets the country name.
-     *
-     * @return the country name
-     */
-    String getName();
-
-    /**
-     * Sets the country name.
-     *
-     * @param name the country name
-     */
-    void setName(String name);
-
-    /**
-     * Returns am {@link CountryValidator} to validator {@link Country} entities.
-     *
-     * @return the validator
-     */
-    CountryValidator getValidator();
+    @Override
+    public CityValidator getCityValidator() throws Exception {
+        return new CityImplValidator();
+    }
 }
-

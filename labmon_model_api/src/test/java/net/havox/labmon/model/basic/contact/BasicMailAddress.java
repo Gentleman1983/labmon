@@ -39,7 +39,7 @@ public class BasicMailAddress extends AbstractChangeAwareAndIdentifiableClass im
 
     @Override
     public boolean isValid() {
-        return getContactOptionValidator().validate(this);
+        return getContactOptionValidator().isValid(this);
     }
 
     @Override

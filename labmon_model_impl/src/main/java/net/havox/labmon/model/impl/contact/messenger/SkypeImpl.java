@@ -50,6 +50,6 @@ public class SkypeImpl extends AbstractChangeAwareClass<SkypeImpl> implements Sk
 
     @Override
     public boolean isValid() {
-        return getContactOptionValidator().validate(this);
+        return getContactOptionValidator().isValid(this);
     }
 }

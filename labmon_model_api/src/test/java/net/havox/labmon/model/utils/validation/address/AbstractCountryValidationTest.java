@@ -16,39 +16,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.api.address;
+package net.havox.labmon.model.utils.validation.address;
 
-import net.havox.labmon.model.api.ChangeAware;
-import net.havox.labmon.model.utils.validation.address.CountryValidator;
-
-import java.io.Serializable;
+import net.havox.labmon.model.api.address.Country;
 
 /**
- * This interface represents a country.
+ * Abstract implementation of {@link CountryValidator} test.
  *
  * @author Christian Otto
  */
-public interface Country extends ChangeAware, Serializable {
+public abstract class AbstractCountryValidationTest {
+    /**
+     * Provides an {@link Country} entity.
+     *
+     * @return the entity
+     * @throws Exception
+     */
+    public abstract Country getCountry() throws Exception;
 
     /**
-     * Gets the country name.
+     * Provides an {@link CountryValidator} entity.
      *
-     * @return the country name
+     * @return the entity
+     * @throws Exception
      */
-    String getName();
-
-    /**
-     * Sets the country name.
-     *
-     * @param name the country name
-     */
-    void setName(String name);
-
-    /**
-     * Returns am {@link CountryValidator} to validator {@link Country} entities.
-     *
-     * @return the validator
-     */
-    CountryValidator getValidator();
+    public abstract CountryValidator getCountryValidator() throws Exception;
 }
-

@@ -20,6 +20,8 @@ package net.havox.labmon.model.impl.address;
 
 import net.havox.labmon.model.api.address.Country;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
+import net.havox.labmon.model.utils.validation.address.CountryImplValidator;
+import net.havox.labmon.model.utils.validation.address.CountryValidator;
 
 /**
  * The functional representation of a {@link Country}.
@@ -40,5 +42,10 @@ public class CountryImpl extends AbstractChangeAwareClass<CountryImpl> implement
     @Override
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public CountryValidator getValidator() {
+        return new CountryImplValidator();
     }
 }

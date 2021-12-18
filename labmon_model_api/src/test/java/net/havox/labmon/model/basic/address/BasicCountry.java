@@ -20,6 +20,8 @@ package net.havox.labmon.model.basic.address;
 
 import net.havox.labmon.model.api.address.Country;
 import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
+import net.havox.labmon.model.utils.validation.address.BasicCountryValidator;
+import net.havox.labmon.model.utils.validation.address.CountryValidator;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -39,6 +41,11 @@ public class BasicCountry extends AbstractChangeAwareAndIdentifiableClass implem
     @Override
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public CountryValidator getValidator() {
+        return new BasicCountryValidator();
     }
 
     @Override

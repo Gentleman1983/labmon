@@ -51,6 +51,6 @@ public class PhoneImpl extends AbstractChangeAwareClass<PhoneImpl> implements Ph
 
     @Override
     public boolean isValid() {
-        return getContactOptionValidator().validate(this);
+        return getContactOptionValidator().isValid(this);
     }
 }

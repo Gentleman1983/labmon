@@ -16,39 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.api.address;
-
-import net.havox.labmon.model.api.ChangeAware;
-import net.havox.labmon.model.utils.validation.address.CountryValidator;
-
-import java.io.Serializable;
-
 /**
- * This interface represents a country.
- *
- * @author Christian Otto
+ * This package contains utilities for address model validation.
  */
-public interface Country extends ChangeAware, Serializable {
-
-    /**
-     * Gets the country name.
-     *
-     * @return the country name
-     */
-    String getName();
-
-    /**
-     * Sets the country name.
-     *
-     * @param name the country name
-     */
-    void setName(String name);
-
-    /**
-     * Returns am {@link CountryValidator} to validator {@link Country} entities.
-     *
-     * @return the validator
-     */
-    CountryValidator getValidator();
-}
-
+package net.havox.labmon.model.utils.validation.address;

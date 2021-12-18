@@ -37,7 +37,7 @@ public class BasicTwitter extends AbstractChangeAwareAndIdentifiableClass implem
 
     @Override
     public boolean isValid() {
-        return getContactOptionValidator().validate(this);
+        return getContactOptionValidator().isValid(this);
     }
 
     @Override

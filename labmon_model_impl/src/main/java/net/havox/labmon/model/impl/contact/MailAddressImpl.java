@@ -66,6 +66,6 @@ public class MailAddressImpl extends AbstractChangeAwareClass<MailAddressImpl> i
 
     @Override
     public boolean isValid() {
-        return getContactOptionValidator().validate(this);
+        return getContactOptionValidator().isValid(this);
     }
 }

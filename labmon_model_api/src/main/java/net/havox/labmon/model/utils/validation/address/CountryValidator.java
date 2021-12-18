@@ -16,10 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.utils.validation.contact;
+package net.havox.labmon.model.utils.validation.address;
 
-import net.havox.labmon.model.api.contact.MailAddress;
-import net.havox.labmon.model.utils.validation.address.AddressValidator;
+import net.havox.labmon.model.api.address.Country;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -27,33 +26,37 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * A validator for the {@link MailAddress} entities.
+ * A validator for the {@link Country} entities.
  * <p>
  * Specifications for a given user entity:
- * - Receiver is not empty nor blank
- * - Address is not empty
- * - Address is valid
+ * - The name has not to be empty nor blank
  *
  * @author Christian Otto
  */
-public interface MailAddressValidator extends ContactOptionValidator<MailAddress> {
-    @Override
-    default List<String> validate(MailAddress validationTarget) {
+public interface CountryValidator {
+    /**
+     * Validates a {@link Country} entity.
+     *
+     * @param validationTarget the contact option entity
+     * @return the validation errors
+     */
+    default List<String> validate(Country validationTarget) {
         List<String> validationErrors = new ArrayList<>();
 
-        if(StringUtils.isAllBlank(validationTarget.getReceiver())) {
-            validationErrors.add("Expected non empty or blank receiver.");
-        }
-
-        if(null == validationTarget.getAddress()) {
-            validationErrors.add("Expected to have an address.");
-        }
-
-        AddressValidator addressValidator = validationTarget.getAddress().getValidator();
-        if(!addressValidator.isValid(validationTarget.getAddress())) {
-            validationErrors.addAll(addressValidator.validate(validationTarget.getAddress()));
+        if(StringUtils.isAllBlank(validationTarget.getName())) {
+            validationErrors.add("Expected the country name not to be empty nor blank.");
         }
 
         return Collections.unmodifiableList(validationErrors);
+    }
+
+    /**
+     * Validates a {@link Country} entity.
+     *
+     * @param validationTarget the contact option entity
+     * @return true, if no errors occured on validation
+     */
+    default boolean isValid(Country validationTarget) {
+        return validate(validationTarget).isEmpty();
     }
 }
