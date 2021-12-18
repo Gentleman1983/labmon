@@ -21,6 +21,8 @@ package net.havox.labmon.model.basic.contact.socialmedia;
 import net.havox.labmon.model.api.contact.socialmedia.Twitter;
 import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
 import net.havox.labmon.model.utils.validation.contact.socialmedia.BasicTwitterValidator;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Basic implementations of {@link Twitter} interface.
@@ -48,5 +50,17 @@ public class BasicTwitter extends AbstractChangeAwareAndIdentifiableClass implem
     @Override
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    @Override
+    public String toString() {
+        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE);
+
+        builder.append("id", getId());
+        builder.append("userName", getUserName());
+        builder.append("version", getVersion());
+        builder.append("isValid", isValid());
+
+        return builder.build();
     }
 }

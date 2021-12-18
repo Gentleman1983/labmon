@@ -22,6 +22,8 @@ import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import net.havox.labmon.model.api.contact.Phone;
 import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
 import net.havox.labmon.model.utils.validation.contact.BasicPhoneValidator;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Basic implementations of {@link Phone} interface.
@@ -49,5 +51,17 @@ public class BasicPhone extends AbstractChangeAwareAndIdentifiableClass implemen
     @Override
     public void setPhoneNumber(PhoneNumber phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE);
+
+        builder.append("id", getId());
+        builder.append("phoneNumber", getPhoneNumber());
+        builder.append("version", getVersion());
+        builder.append("isValid", isValid());
+
+        return builder.build();
     }
 }

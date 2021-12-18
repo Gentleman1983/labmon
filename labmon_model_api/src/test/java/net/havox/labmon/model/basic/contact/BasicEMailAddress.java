@@ -22,6 +22,8 @@ import net.havox.labmon.model.api.contact.EMailAddress;
 import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
 import net.havox.labmon.model.utils.validation.contact.BasicEMailAddressValidator;
 import net.havox.labmon.model.utils.validation.contact.EMailAddressValidator;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Basic implementations of {@link EMailAddress} interface.
@@ -49,5 +51,17 @@ public class BasicEMailAddress extends AbstractChangeAwareAndIdentifiableClass i
     @Override
     public void setEMailAddress(String eMailAddress) {
         this.eMailAddress = eMailAddress;
+    }
+
+    @Override
+    public String toString() {
+        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE);
+
+        builder.append("id", getId());
+        builder.append("eMailAddress", getEMailAddress());
+        builder.append("version", getVersion());
+        builder.append("isValid", isValid());
+
+        return builder.build();
     }
 }

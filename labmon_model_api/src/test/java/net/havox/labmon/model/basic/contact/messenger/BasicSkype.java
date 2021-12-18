@@ -21,6 +21,8 @@ package net.havox.labmon.model.basic.contact.messenger;
 import net.havox.labmon.model.api.contact.messenger.Skype;
 import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
 import net.havox.labmon.model.utils.validation.contact.messenger.BasicSkypeValidator;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Basic implementations of {@link Skype} interface.
@@ -48,5 +50,17 @@ public class BasicSkype extends AbstractChangeAwareAndIdentifiableClass implemen
     @Override
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    @Override
+    public String toString() {
+        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE);
+
+        builder.append("id", getId());
+        builder.append("userName", getUserName());
+        builder.append("version", getVersion());
+        builder.append("isValid", isValid());
+
+        return builder.build();
     }
 }

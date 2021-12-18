@@ -21,6 +21,8 @@ package net.havox.labmon.model.basic.contact.messenger;
 import net.havox.labmon.model.api.contact.messenger.Threema;
 import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
 import net.havox.labmon.model.utils.validation.contact.messenger.BasicThreemaValidator;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Basic implementations of {@link Threema} interface.
@@ -48,5 +50,17 @@ public class BasicThreema extends AbstractChangeAwareAndIdentifiableClass implem
     @Override
     public void setThreemaId(String threemaId) {
         this.threemaId = threemaId;
+    }
+
+    @Override
+    public String toString() {
+        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE);
+
+        builder.append("id", getId());
+        builder.append("threemaId", getThreemaId());
+        builder.append("version", getVersion());
+        builder.append("isValid", isValid());
+
+        return builder.build();
     }
 }
