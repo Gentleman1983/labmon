@@ -70,7 +70,8 @@ public abstract class AbstractAddressValidationTest {
     private Address getValidAddressInstance() throws Exception {
         Address instance = getAddress();
 
-        instance.setStreet(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setStreet(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
+                ModelRandomGenerator.ALPHABETIC_STRING));
         instance.setHouseNumber(Integer.toString(ModelRandomGenerator.randomInt(9999)));
         instance.setCity(getValidCityInstance());
 
@@ -86,8 +87,9 @@ public abstract class AbstractAddressValidationTest {
     private City getValidCityInstance() throws Exception {
         City instance = getCity();
 
-        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),ModelRandomGenerator.ALPHABETIC_STRING));
-        instance.setZipCode(Integer.toString(ModelRandomGenerator.randomIntInRange(10000,99999)));
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
+                ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setZipCode(Integer.toString(ModelRandomGenerator.randomIntInRange(10000, 99999)));
         instance.setCountry(getValidCountryInstance());
 
         return instance;
@@ -102,7 +104,7 @@ public abstract class AbstractAddressValidationTest {
     private Country getValidCountryInstance() throws Exception {
         Country instance = getCountry();
 
-        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING));
 
         return instance;
     }

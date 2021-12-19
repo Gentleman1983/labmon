@@ -61,8 +61,9 @@ public abstract class AbstractCityValidationTest {
     private City getValidCityInstance() throws Exception {
         City instance = getCity();
 
-        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),ModelRandomGenerator.ALPHABETIC_STRING));
-        instance.setZipCode(Integer.toString(ModelRandomGenerator.randomIntInRange(10000,99999)));
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
+                ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setZipCode(Integer.toString(ModelRandomGenerator.randomIntInRange(10000, 99999)));
         instance.setCountry(getValidCountryInstance());
 
         return instance;
@@ -77,7 +78,8 @@ public abstract class AbstractCityValidationTest {
     private Country getValidCountryInstance() throws Exception {
         Country instance = getCountry();
 
-        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
+                ModelRandomGenerator.ALPHABETIC_STRING));
 
         return instance;
     }
