@@ -24,13 +24,19 @@ import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 /**
  * Abstract implementation of API test of {@link MailAddress}.
  *
  * @author Christian Otto
  */
+@ExtendWith(MockitoExtension.class)
 public abstract class AbstractMailAddressTest {
+    @Mock private MailAddress mockedInstance;
+
     /**
      * Provides an {@link MailAddress} entity.
      *
@@ -117,5 +123,15 @@ public abstract class AbstractMailAddressTest {
 
         Assertions.assertNotNull(objectUnderTest.getContactOptionValidator());
         Assertions.assertTrue(objectUnderTest.getContactOptionValidator() instanceof MailAddressValidator);
+    }
+
+    /**
+     * Tests if {@link MailAddress#isValid()} results in an exception.
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testIsValidDoesNotResultInErrors() throws Exception {
+        mockedInstance.isValid();
     }
 }

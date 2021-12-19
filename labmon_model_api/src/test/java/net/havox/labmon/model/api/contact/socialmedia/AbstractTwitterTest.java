@@ -23,13 +23,19 @@ import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 /**
  * Abstract implementation of API test of {@link Twitter}.
  *
  * @author Christian Otto
  */
+@ExtendWith(MockitoExtension.class)
 public abstract class AbstractTwitterTest {
+    @Mock private Twitter mockedInstance;
+
     /**
      * Provides an {@link Twitter} entity.
      *
@@ -102,5 +108,15 @@ public abstract class AbstractTwitterTest {
 
         Assertions.assertNotNull(objectUnderTest.getContactOptionValidator());
         Assertions.assertTrue(objectUnderTest.getContactOptionValidator() instanceof TwitterValidator);
+    }
+
+    /**
+     * Tests if {@link Twitter#isValid()} results in an exception.
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testIsValidDoesNotResultInErrors() throws Exception {
+        mockedInstance.isValid();
     }
 }

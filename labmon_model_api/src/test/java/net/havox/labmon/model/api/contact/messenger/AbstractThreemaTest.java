@@ -23,13 +23,19 @@ import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 /**
  * Abstract implementation of API test of {@link Threema}.
  *
  * @author Christian Otto
  */
+@ExtendWith(MockitoExtension.class)
 public abstract class AbstractThreemaTest {
+    @Mock private Threema mockedInstance;
+
     /**
      * Provides an {@link Threema} entity.
      *
@@ -81,5 +87,15 @@ public abstract class AbstractThreemaTest {
 
         Assertions.assertNotNull(objectUnderTest.getContactOptionValidator());
         Assertions.assertTrue(objectUnderTest.getContactOptionValidator() instanceof ThreemaValidator);
+    }
+
+    /**
+     * Tests if {@link Threema#isValid()} results in an exception.
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testIsValidDoesNotResultInErrors() throws Exception {
+        mockedInstance.isValid();
     }
 }

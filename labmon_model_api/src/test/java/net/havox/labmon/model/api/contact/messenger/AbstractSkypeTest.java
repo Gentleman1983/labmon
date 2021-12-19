@@ -23,13 +23,18 @@ import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 /**
  * Abstract implementation of API test of {@link Skype}.
  *
  * @author Christian Otto
  */
+@ExtendWith(MockitoExtension.class)
 public abstract class AbstractSkypeTest {
+    @Mock private Skype mockedInstance;
 
     /**
      * Provides an {@link Skype} entity.
@@ -82,5 +87,15 @@ public abstract class AbstractSkypeTest {
 
         Assertions.assertNotNull(objectUnderTest.getContactOptionValidator());
         Assertions.assertTrue(objectUnderTest.getContactOptionValidator() instanceof SkypeValidator);
+    }
+
+    /**
+     * Tests if {@link Skype#isValid()} results in an exception.
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testIsValidDoesNotResultInErrors() throws Exception {
+        mockedInstance.isValid();
     }
 }
