@@ -19,6 +19,7 @@
 package net.havox.labmon.model.utils.validation.address;
 
 import net.havox.labmon.model.api.address.Country;
+import net.havox.labmon.testutils.random.ModelRandomGenerator;
 
 /**
  * Abstract implementation of {@link CountryValidator} test.
@@ -41,4 +42,18 @@ public abstract class AbstractCountryValidationTest {
      * @throws Exception
      */
     public abstract CountryValidator getCountryValidator() throws Exception;
+
+    /**
+     * Provides a valid {@link Country} entity.
+     *
+     * @return the entity
+     * @throws Exception
+     */
+    private Country getValidCountryInstance() throws Exception {
+        Country instance = getCountry();
+
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),ModelRandomGenerator.ALPHABETIC_STRING));
+
+        return instance;
+    }
 }

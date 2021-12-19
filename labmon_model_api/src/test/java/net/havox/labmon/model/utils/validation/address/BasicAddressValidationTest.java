@@ -19,7 +19,11 @@
 package net.havox.labmon.model.utils.validation.address;
 
 import net.havox.labmon.model.api.address.Address;
+import net.havox.labmon.model.api.address.City;
+import net.havox.labmon.model.api.address.Country;
 import net.havox.labmon.model.basic.address.BasicAddress;
+import net.havox.labmon.model.basic.address.BasicCity;
+import net.havox.labmon.model.basic.address.BasicCountry;
 
 /**
  * Basic implementation of {@link AbstractAddressValidationTest}.
@@ -30,6 +34,16 @@ public class BasicAddressValidationTest extends AbstractAddressValidationTest {
     @Override
     public Address getAddress() throws Exception {
         return new BasicAddress();
+    }
+
+    @Override
+    public City getCity() throws Exception {
+        return new BasicCity();
+    }
+
+    @Override
+    public Country getCountry() throws Exception {
+        return new BasicCountry();
     }
 
     @Override

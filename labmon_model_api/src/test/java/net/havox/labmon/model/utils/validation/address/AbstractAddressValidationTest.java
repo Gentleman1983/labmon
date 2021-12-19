@@ -19,6 +19,9 @@
 package net.havox.labmon.model.utils.validation.address;
 
 import net.havox.labmon.model.api.address.Address;
+import net.havox.labmon.model.api.address.City;
+import net.havox.labmon.model.api.address.Country;
+import net.havox.labmon.testutils.random.ModelRandomGenerator;
 
 /**
  * Abstract implementation of {@link AddressValidator} test.
@@ -35,10 +38,72 @@ public abstract class AbstractAddressValidationTest {
     public abstract Address getAddress() throws Exception;
 
     /**
+     * Provides an {@link City} entity.
+     *
+     * @return the entity
+     * @throws Exception
+     */
+    public abstract City getCity() throws Exception;
+
+    /**
+     * Provides an {@link Country} entity.
+     *
+     * @return the entity
+     * @throws Exception
+     */
+    public abstract Country getCountry() throws Exception;
+
+    /**
      * Provides an {@link AddressValidator} entity.
      *
      * @return the entity
      * @throws Exception
      */
     public abstract AddressValidator getAddressValidator() throws Exception;
+
+    /**
+     * Provides a valid {@link Address} entity.
+     *
+     * @return the entity
+     * @throws Exception
+     */
+    private Address getValidAddressInstance() throws Exception {
+        Address instance = getAddress();
+
+        instance.setStreet(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setHouseNumber(Integer.toString(ModelRandomGenerator.randomInt(9999)));
+        instance.setCity(getValidCityInstance());
+
+        return instance;
+    }
+
+    /**
+     * Provides a valid {@link City} entity.
+     *
+     * @return the entity
+     * @throws Exception
+     */
+    private City getValidCityInstance() throws Exception {
+        City instance = getCity();
+
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setZipCode(Integer.toString(ModelRandomGenerator.randomIntInRange(10000,99999)));
+        instance.setCountry(getValidCountryInstance());
+
+        return instance;
+    }
+
+    /**
+     * Provides a valid {@link Country} entity.
+     *
+     * @return the entity
+     * @throws Exception
+     */
+    private Country getValidCountryInstance() throws Exception {
+        Country instance = getCountry();
+
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),ModelRandomGenerator.ALPHABETIC_STRING));
+
+        return instance;
+    }
 }

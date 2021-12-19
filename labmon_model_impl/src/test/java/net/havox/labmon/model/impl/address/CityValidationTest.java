@@ -19,6 +19,7 @@
 package net.havox.labmon.model.impl.address;
 
 import net.havox.labmon.model.api.address.City;
+import net.havox.labmon.model.api.address.Country;
 import net.havox.labmon.model.utils.validation.address.AbstractCityValidationTest;
 import net.havox.labmon.model.utils.validation.address.CityImplValidator;
 import net.havox.labmon.model.utils.validation.address.CityValidator;
@@ -32,6 +33,11 @@ public class CityValidationTest extends AbstractCityValidationTest { // NOSONAR 
     @Override
     public City getCity() throws Exception {
         return new CityImpl();
+    }
+
+    @Override
+    public Country getCountry() throws Exception {
+        return new CountryImpl();
     }
 
     @Override
