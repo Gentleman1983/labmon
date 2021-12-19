@@ -37,6 +37,10 @@ import java.util.List;
 public interface ThreemaValidator extends ContactOptionValidator<Threema> {
     @Override
     default List<String> validate(Threema validationTarget) {
+        if (null == validationTarget) {
+            return List.of("Expected threema entity not to be null.");
+        }
+
         List<String> validationErrors = new ArrayList<>();
 
         if (validationTarget.getThreemaId().length() != 8) {

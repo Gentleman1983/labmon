@@ -36,6 +36,10 @@ import java.util.List;
 public interface FaxValidator extends ContactOptionValidator<Fax> {
     @Override
     default List<String> validate(Fax validationTarget) {
+        if (null == validationTarget) {
+            return List.of("Expected fax number entity not to be null.");
+        }
+
         List<String> validationErrors = new ArrayList<>();
 
         if(!PhoneNumberUtil.getInstance().isValidNumber(validationTarget.getPhoneNumber())) {

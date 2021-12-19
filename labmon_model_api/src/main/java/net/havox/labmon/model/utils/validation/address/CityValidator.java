@@ -43,6 +43,10 @@ public interface CityValidator {
      * @return the validation errors
      */
     default List<String> validate(City validationTarget) {
+        if (null == validationTarget) {
+            return List.of("Expected city entity not to be null.");
+        }
+
         List<String> validationErrors = new ArrayList<>();
 
         if(StringUtils.isAllBlank(validationTarget.getName())) {

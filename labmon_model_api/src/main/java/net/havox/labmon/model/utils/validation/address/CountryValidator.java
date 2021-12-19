@@ -41,6 +41,10 @@ public interface CountryValidator {
      * @return the validation errors
      */
     default List<String> validate(Country validationTarget) {
+        if (null == validationTarget) {
+            return List.of("Expected country entity not to be null.");
+        }
+
         List<String> validationErrors = new ArrayList<>();
 
         if(StringUtils.isAllBlank(validationTarget.getName())) {

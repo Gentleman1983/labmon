@@ -39,6 +39,10 @@ import java.util.List;
 public interface MailAddressValidator extends ContactOptionValidator<MailAddress> {
     @Override
     default List<String> validate(MailAddress validationTarget) {
+        if (null == validationTarget) {
+            return List.of("Expected mail address entity not to be null.");
+        }
+
         List<String> validationErrors = new ArrayList<>();
 
         if(StringUtils.isAllBlank(validationTarget.getReceiver())) {

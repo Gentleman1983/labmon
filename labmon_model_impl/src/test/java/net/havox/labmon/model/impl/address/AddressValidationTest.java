@@ -21,9 +21,7 @@ package net.havox.labmon.model.impl.address;
 import net.havox.labmon.model.api.address.Address;
 import net.havox.labmon.model.api.address.City;
 import net.havox.labmon.model.api.address.Country;
-import net.havox.labmon.model.utils.validation.address.AbstractAddressValidationTest;
-import net.havox.labmon.model.utils.validation.address.AddressImplValidator;
-import net.havox.labmon.model.utils.validation.address.AddressValidator;
+import net.havox.labmon.model.utils.validation.address.*;
 
 /**
  * Validation test for {@link AddressImpl}.
@@ -49,5 +47,10 @@ public class AddressValidationTest extends AbstractAddressValidationTest { // NO
     @Override
     public AddressValidator getAddressValidator() throws Exception {
         return new AddressImplValidator();
+    }
+
+    @Override
+    public CityValidator getCityValidator() throws Exception {
+        return new CityImplValidator();
     }
 }

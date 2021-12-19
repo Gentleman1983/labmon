@@ -22,13 +22,26 @@ import net.havox.labmon.model.api.address.Address;
 import net.havox.labmon.model.api.address.City;
 import net.havox.labmon.model.api.address.Country;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.List;
 
 /**
  * Abstract implementation of {@link AddressValidator} test.
  *
  * @author Christian Otto
  */
+@ExtendWith(MockitoExtension.class)
 public abstract class AbstractAddressValidationTest {
+    @Mock private City mockedCity;
+    @Mock private CityValidator mockedCityValidator;
+
     /**
      * Provides an {@link Address} entity.
      *
@@ -60,6 +73,140 @@ public abstract class AbstractAddressValidationTest {
      * @throws Exception
      */
     public abstract AddressValidator getAddressValidator() throws Exception;
+
+    /**
+     * Provides an {@link CityValidator} entity.
+     *
+     * @return the entity
+     * @throws Exception
+     */
+    public abstract CityValidator getCityValidator() throws Exception;
+
+    /**
+     * Tests if a valid {@link Address} entity is valid.
+     * <p>
+     * Given: a randomized {@link Address} entity
+     * And: having all necessary attributes
+     * When: validating the {@link Address} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testValidAddressInstanceIsValid() throws Exception {
+        Address instanceUnderTest = getValidAddressInstance();
+
+        checkValidInstance(instanceUnderTest, true);
+    }
+
+    /**
+     * Tests if a {@code null} {@link Address} entity is invalid.
+     * <p>
+     * Given: a {@code null} {@link Address} entity
+     * When: validating the {@link Address} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testNullAddressIsInvalid() throws Exception {
+        checkValidInstance(null, false);
+    }
+
+    /**
+     * Tests if a {@link Address} entity missing the first name is invalid.
+     * <p>
+     * Given: a randomized {@link Address} entity
+     * And: missing a street attribute
+     * When: validating the {@link Address} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testAddressWithoutStreetIsInvalid() throws Exception {
+        Address instanceUnderTest = getValidAddressInstance();
+
+        instanceUnderTest.setStreet(null);
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Tests if a {@link Address} entity with empty the first name is invalid.
+     * <p>
+     * Given: a randomized {@link Address} entity
+     * And: missing an empty street attribute
+     * When: validating the {@link Address} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testAddressWithEmptyStreetIsInvalid() throws Exception {
+        Address instanceUnderTest = getValidAddressInstance();
+
+        instanceUnderTest.setStreet("");
+
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Tests if a {@link Address} entity missing the first name is invalid.
+     * <p>
+     * Given: a randomized {@link Address} entity
+     * And: missing a city attribute
+     * When: validating the {@link Address} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testAddressWithoutCityIsInvalid() throws Exception {
+        Address instanceUnderTest = getValidAddressInstance();
+
+        Mockito.when(mockedCityValidator.validate(Mockito.any())).thenReturn(getCityValidator().validate(null));
+        Mockito.when(mockedCity.getValidator()).thenReturn(mockedCityValidator);
+
+        instanceUnderTest.setCity(mockedCity);
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Tests if a {@link Address} entity with empty the first name is invalid.
+     * <p>
+     * Given: a randomized {@link Address} entity
+     * And: having an invalid city attribute
+     * When: validating the {@link Address} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testCountryWithInvalidCityIsInvalid() throws Exception {
+        Address instanceUnderTest = getValidAddressInstance();
+
+        Mockito.when(mockedCityValidator.validate(Mockito.any())).thenReturn(List.of("Mocked error validation result"));
+        Mockito.when(mockedCity.getValidator()).thenReturn(mockedCityValidator);
+
+        instanceUnderTest.setCity(mockedCity);
+
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Checks if an {@link Address} instance has the expected validation status.
+     *
+     * @param instanceUnderTest the instance
+     * @param expectedValid     is the instance expected valid?
+     * @throws Exception
+     */
+    private void checkValidInstance(Address instanceUnderTest, Boolean expectedValid) throws Exception {
+        AddressValidator validator = getAddressValidator();
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
+                "Expected the user" + (expectedValid ? "" : " not") +
+                        "to be a valid instance. The validation result was " +
+                        validator.validate(instanceUnderTest) + ".");
+    }
 
     /**
      * Provides a valid {@link Address} entity.

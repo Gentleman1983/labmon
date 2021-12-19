@@ -37,6 +37,10 @@ import java.util.List;
 public interface EMailAddressValidator extends ContactOptionValidator<EMailAddress> {
     @Override
     default List<String> validate(EMailAddress validationTarget) {
+        if (null == validationTarget) {
+            return List.of("Expected email address entity not to be null.");
+        }
+
         List<String> validationErrors = new ArrayList<>();
 
         boolean allowLocalDomains = false;

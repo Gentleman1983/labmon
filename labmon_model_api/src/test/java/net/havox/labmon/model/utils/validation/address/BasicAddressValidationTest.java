@@ -50,4 +50,9 @@ public class BasicAddressValidationTest extends AbstractAddressValidationTest {
     public AddressValidator getAddressValidator() throws Exception {
         return new BasicAddressValidator();
     }
+
+    @Override
+    public CityValidator getCityValidator() throws Exception {
+        return new BasicCityValidator();
+    }
 }

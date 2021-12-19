@@ -36,6 +36,10 @@ import java.util.List;
 public interface PhoneValidator extends ContactOptionValidator<Phone> {
     @Override
     default List<String> validate(Phone validationTarget) {
+        if (null == validationTarget) {
+            return List.of("Expected phone number entity not to be null.");
+        }
+
         List<String> validationErrors = new ArrayList<>();
 
         if(!PhoneNumberUtil.getInstance().isValidNumber(validationTarget.getPhoneNumber())) {

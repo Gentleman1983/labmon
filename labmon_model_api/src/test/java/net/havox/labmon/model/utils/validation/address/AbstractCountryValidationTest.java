@@ -20,6 +20,9 @@ package net.havox.labmon.model.utils.validation.address;
 
 import net.havox.labmon.model.api.address.Country;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 /**
  * Abstract implementation of {@link CountryValidator} test.
@@ -42,6 +45,89 @@ public abstract class AbstractCountryValidationTest {
      * @throws Exception
      */
     public abstract CountryValidator getCountryValidator() throws Exception;
+
+    /**
+     * Tests if a valid {@link Country} entity is valid.
+     * <p>
+     * Given: a randomized {@link Country} entity
+     * And: having all necessary attributes
+     * When: validating the {@link Country} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testValidCountryInstanceIsValid() throws Exception {
+        Country instanceUnderTest = getValidCountryInstance();
+
+        checkValidInstance(instanceUnderTest, true);
+    }
+
+    /**
+     * Tests if a {@code null} {@link Country} entity is invalid.
+     * <p>
+     * Given: a {@code null} {@link Country} entity
+     * When: validating the {@link Country} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testNullCountryIsInvalid() throws Exception {
+        checkValidInstance(null, false);
+    }
+
+    /**
+     * Tests if a {@link Country} entity missing the first name is invalid.
+     * <p>
+     * Given: a randomized {@link Country} entity
+     * And: missing a name attribute
+     * When: validating the {@link Country} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testCountryWithoutNameIsInvalid() throws Exception {
+        Country instanceUnderTest = getValidCountryInstance();
+
+        instanceUnderTest.setName(null);
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Tests if a {@link Country} entity with empty the first name is invalid.
+     * <p>
+     * Given: a randomized {@link Country} entity
+     * And: missing an empty name attribute
+     * When: validating the {@link Country} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testCountryWithEmptyNameIsInvalid() throws Exception {
+        Country instanceUnderTest = getValidCountryInstance();
+
+        instanceUnderTest.setName("");
+
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Checks if an {@link Country} instance has the expected validation status.
+     *
+     * @param instanceUnderTest the instance
+     * @param expectedValid     is the instance expected valid?
+     * @throws Exception
+     */
+    private void checkValidInstance(Country instanceUnderTest, Boolean expectedValid) throws Exception {
+        CountryValidator validator = getCountryValidator();
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
+                "Expected the user" + (expectedValid ? "" : " not") +
+                        "to be a valid instance. The validation result was " +
+                        validator.validate(instanceUnderTest) + ".");
+    }
 
     /**
      * Provides a valid {@link Country} entity.

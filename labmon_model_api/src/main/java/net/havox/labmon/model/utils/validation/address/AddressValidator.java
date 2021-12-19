@@ -42,14 +42,18 @@ public interface AddressValidator {
      * @return the validation errors
      */
     default List<String> validate(Address validationTarget) {
+        if (null == validationTarget) {
+            return List.of("Expected address entity not to be null.");
+        }
+
         List<String> validationErrors = new ArrayList<>();
 
-        if(StringUtils.isAllBlank(validationTarget.getStreet())) {
+        if (StringUtils.isAllBlank(validationTarget.getStreet())) {
             validationErrors.add("Expected the street not to be empty nor blank.");
         }
 
         CityValidator cityValidator = validationTarget.getCity().getValidator();
-        if(!cityValidator.isValid(validationTarget.getCity())) {
+        if (!cityValidator.isValid(validationTarget.getCity())) {
             validationErrors.addAll(cityValidator.validate(validationTarget.getCity()));
         }
 

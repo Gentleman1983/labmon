@@ -37,6 +37,10 @@ import java.util.List;
 public interface SkypeValidator extends ContactOptionValidator<Skype> {
     @Override
     default List<String> validate(Skype validationTarget) {
+        if (null == validationTarget) {
+            return List.of("Expected skype entity not to be null.");
+        }
+
         List<String> validationErrors = new ArrayList<>();
 
         if (validationTarget.getUserName().length() < 6) {
