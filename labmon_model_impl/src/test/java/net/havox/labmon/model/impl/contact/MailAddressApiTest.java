@@ -18,8 +18,10 @@
 
 package net.havox.labmon.model.impl.contact;
 
+import net.havox.labmon.model.api.address.Address;
 import net.havox.labmon.model.api.contact.AbstractMailAddressTest;
 import net.havox.labmon.model.api.contact.MailAddress;
+import net.havox.labmon.model.impl.address.AddressImpl;
 
 /**
  * API specific test of {@link MailAddressImpl}.
@@ -30,5 +32,10 @@ public class MailAddressApiTest extends AbstractMailAddressTest { // NOSONAR API
     @Override
     public MailAddress getMailAddress() throws Exception {
         return new MailAddressImpl();
+    }
+
+    @Override
+    public Address getAddress() throws Exception {
+        return new AddressImpl();
     }
 }

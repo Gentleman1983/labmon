@@ -18,6 +18,12 @@
 
 package net.havox.labmon.model.api.contact.socialmedia;
 
+import net.havox.labmon.model.utils.validation.contact.socialmedia.TwitterValidator;
+import net.havox.labmon.testutils.random.ModelRandomGenerator;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
+
 /**
  * Abstract implementation of API test of {@link Twitter}.
  *
@@ -31,4 +37,70 @@ public abstract class AbstractTwitterTest {
      * @throws Exception
      */
     public abstract Twitter getTwitter() throws Exception;
+
+    /**
+     * Test modification of the street.
+     * <p>
+     * Given: An {@link Twitter} instance
+     * When: modifying the street attribute ({@link Twitter#setUserName(String)})
+     * Then: than the street attribute ({@link Twitter#getUserName()}) should contain the new value
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(25)
+    public void testModifyUserName() throws Exception {
+        String alphabet = " -" + ModelRandomGenerator.ALPHABETIC_STRING;
+        String userName = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), alphabet);
+
+        Twitter objectUnderTest = getTwitter();
+        String oldUserName = objectUnderTest.getUserName();
+
+        while (userName.equals(oldUserName)) {
+            userName = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), alphabet);
+        }
+        Assertions.assertNotEquals(userName, oldUserName);
+
+        objectUnderTest.setUserName(userName);
+        Assertions.assertEquals(userName, objectUnderTest.getUserName());
+        Assertions.assertNotEquals(oldUserName, objectUnderTest.getUserName());
+    }
+
+    /**
+     * Test modification of the street.
+     * <p>
+     * Given: An {@link Twitter} instance
+     * And: having a username
+     * When: getting the profile link ({@link Twitter#getLinkToProfile()} )
+     * Then: than the expected link should equal "{@code https://twitter.com/$username}"
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(25)
+    public void testGetLinkToProfile() throws Exception {
+        String userName = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING);
+        Twitter objectUnderTest = getTwitter();
+        objectUnderTest.setUserName(userName);
+        Assertions.assertEquals(userName, objectUnderTest.getUserName());
+
+        String profileLink = "https://twitter.com/" + userName;
+        Assertions.assertEquals(profileLink, objectUnderTest.getLinkToProfile());
+    }
+
+    /**
+     * Tests if a proper validator is provided.
+     *
+     * Given: A {@link Twitter} instance
+     * When: calling {@link Twitter#getContactOptionValidator()}
+     * Then: the result is not {@code null}
+     * And: the result is of type {@link TwitterValidator}
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testInstanceValidator() throws Exception {
+        Twitter objectUnderTest = getTwitter();
+
+        Assertions.assertNotNull(objectUnderTest.getContactOptionValidator());
+        Assertions.assertTrue(objectUnderTest.getContactOptionValidator() instanceof TwitterValidator);
+    }
 }

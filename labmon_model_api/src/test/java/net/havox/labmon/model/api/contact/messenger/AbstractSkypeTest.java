@@ -18,12 +18,19 @@
 
 package net.havox.labmon.model.api.contact.messenger;
 
+import net.havox.labmon.model.utils.validation.contact.messenger.SkypeValidator;
+import net.havox.labmon.testutils.random.ModelRandomGenerator;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
+
 /**
  * Abstract implementation of API test of {@link Skype}.
  *
  * @author Christian Otto
  */
 public abstract class AbstractSkypeTest {
+
     /**
      * Provides an {@link Skype} entity.
      *
@@ -31,4 +38,49 @@ public abstract class AbstractSkypeTest {
      * @throws Exception
      */
     public abstract Skype getSkype() throws Exception;
+
+    /**
+     * Test modification of the street.
+     * <p>
+     * Given: An {@link Skype} instance
+     * When: modifying the street attribute ({@link Skype#setUserName(String)})
+     * Then: than the street attribute ({@link Skype#getUserName()}) should contain the new value
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(25)
+    public void testModifyUserName() throws Exception {
+        String alphabet = " -" + ModelRandomGenerator.ALPHABETIC_STRING;
+        String userName = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), alphabet);
+
+        Skype objectUnderTest = getSkype();
+        String oldUserName = objectUnderTest.getUserName();
+
+        while (userName.equals(oldUserName)) {
+            userName = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), alphabet);
+        }
+        Assertions.assertNotEquals(userName, oldUserName);
+
+        objectUnderTest.setUserName(userName);
+        Assertions.assertEquals(userName, objectUnderTest.getUserName());
+        Assertions.assertNotEquals(oldUserName, objectUnderTest.getUserName());
+    }
+
+    /**
+     * Tests if a proper validator is provided.
+     *
+     * Given: A {@link Skype} instance
+     * When: calling {@link Skype#getContactOptionValidator()}
+     * Then: the result is not {@code null}
+     * And: the result is of type {@link SkypeValidator}
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testInstanceValidator() throws Exception {
+        Skype objectUnderTest = getSkype();
+
+        Assertions.assertNotNull(objectUnderTest.getContactOptionValidator());
+        Assertions.assertTrue(objectUnderTest.getContactOptionValidator() instanceof SkypeValidator);
+    }
 }

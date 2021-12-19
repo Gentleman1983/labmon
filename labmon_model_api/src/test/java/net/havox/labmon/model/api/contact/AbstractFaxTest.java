@@ -18,6 +18,14 @@
 
 package net.havox.labmon.model.api.contact;
 
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+import net.havox.labmon.model.utils.validation.contact.FaxValidator;
+import net.havox.labmon.testutils.random.ModelRandomGenerator;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
+
 /**
  * Abstract implementation of API test of {@link Fax}.
  *
@@ -31,4 +39,49 @@ public abstract class AbstractFaxTest {
      * @throws Exception
      */
     public abstract Fax getFax() throws Exception;
+
+    /**
+     * Test modification of the street.
+     * <p>
+     * Given: An {@link Fax} instance
+     * When: modifying the street attribute ({@link Fax#setPhoneNumber(PhoneNumber)} )
+     * Then: than the street attribute ({@link Fax#getPhoneNumber()} ) should contain the new value
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(25)
+    public void testModifyPhoneNumber() throws Exception {
+        String alphabet = " -" + ModelRandomGenerator.ALPHABETIC_STRING;
+        PhoneNumber number = PhoneNumberUtil.getInstance().getExampleNumber("DE");
+
+        Fax objectUnderTest = getFax();
+        PhoneNumber oldNumber = objectUnderTest.getPhoneNumber();
+
+        while (number.equals(oldNumber)) {
+            number = PhoneNumberUtil.getInstance().getExampleNumber("DE");
+        }
+        Assertions.assertNotEquals(number, oldNumber);
+
+        objectUnderTest.setPhoneNumber(number);
+        Assertions.assertEquals(number, objectUnderTest.getPhoneNumber());
+        Assertions.assertNotEquals(oldNumber, objectUnderTest.getPhoneNumber());
+    }
+
+    /**
+     * Tests if a proper validator is provided.
+     *
+     * Given: A {@link Fax} instance
+     * When: calling {@link Fax#getContactOptionValidator()}
+     * Then: the result is not {@code null}
+     * And: the result is of type {@link FaxValidator}
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testInstanceValidator() throws Exception {
+        Fax objectUnderTest = getFax();
+
+        Assertions.assertNotNull(objectUnderTest.getContactOptionValidator());
+        Assertions.assertTrue(objectUnderTest.getContactOptionValidator() instanceof FaxValidator);
+    }
 }

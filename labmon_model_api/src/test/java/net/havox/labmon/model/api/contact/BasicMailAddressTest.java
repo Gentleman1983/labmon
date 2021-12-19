@@ -18,6 +18,8 @@
 
 package net.havox.labmon.model.api.contact;
 
+import net.havox.labmon.model.api.address.Address;
+import net.havox.labmon.model.basic.address.BasicAddress;
 import net.havox.labmon.model.basic.contact.BasicMailAddress;
 
 /**
@@ -29,5 +31,10 @@ public class BasicMailAddressTest extends AbstractMailAddressTest {
     @Override
     public MailAddress getMailAddress() throws Exception {
         return new BasicMailAddress();
+    }
+
+    @Override
+    public Address getAddress() throws Exception {
+        return new BasicAddress();
     }
 }

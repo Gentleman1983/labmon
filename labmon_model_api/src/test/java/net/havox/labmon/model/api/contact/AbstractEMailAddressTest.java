@@ -18,6 +18,12 @@
 
 package net.havox.labmon.model.api.contact;
 
+import net.havox.labmon.model.utils.validation.contact.EMailAddressValidator;
+import net.havox.labmon.testutils.random.ModelRandomGenerator;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
+
 /**
  * Abstract implementation of API test of {@link EMailAddress}.
  *
@@ -31,4 +37,49 @@ public abstract class AbstractEMailAddressTest {
      * @throws Exception
      */
     public abstract EMailAddress getEMailAddress() throws Exception;
+
+    /**
+     * Test modification of the street.
+     * <p>
+     * Given: An {@link EMailAddress} instance
+     * When: modifying the street attribute ({@link EMailAddress#setEMailAddress(String)} )
+     * Then: than the street attribute ({@link EMailAddress#getEMailAddress()} ) should contain the new value
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(25)
+    public void testModifyEMailAddress() throws Exception {
+        String alphabet = " -" + ModelRandomGenerator.ALPHABETIC_STRING;
+        String userName = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), alphabet);
+
+        EMailAddress objectUnderTest = getEMailAddress();
+        String oldUserName = objectUnderTest.getEMailAddress();
+
+        while (userName.equals(oldUserName)) {
+            userName = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), alphabet);
+        }
+        Assertions.assertNotEquals(userName, oldUserName);
+
+        objectUnderTest.setEMailAddress(userName);
+        Assertions.assertEquals(userName, objectUnderTest.getEMailAddress());
+        Assertions.assertNotEquals(oldUserName, objectUnderTest.getEMailAddress());
+    }
+
+    /**
+     * Tests if a proper validator is provided.
+     *
+     * Given: A {@link EMailAddress} instance
+     * When: calling {@link EMailAddress#getContactOptionValidator()}
+     * Then: the result is not {@code null}
+     * And: the result is of type {@link EMailAddressValidator}
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testInstanceValidator() throws Exception {
+        EMailAddress objectUnderTest = getEMailAddress();
+
+        Assertions.assertNotNull(objectUnderTest.getContactOptionValidator());
+        Assertions.assertTrue(objectUnderTest.getContactOptionValidator() instanceof EMailAddressValidator);
+    }
 }
