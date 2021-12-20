@@ -99,7 +99,7 @@ public abstract class AbstractCountryValidationTest {
      * Tests if a {@link Country} entity with empty the first name is invalid.
      * <p>
      * Given: a randomized {@link Country} entity
-     * And: missing an empty name attribute
+     * And: having an empty name attribute
      * When: validating the {@link Country} entity
      * Then: the validation result should be invalid
      *

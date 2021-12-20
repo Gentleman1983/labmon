@@ -135,7 +135,7 @@ public abstract class AbstractAddressValidationTest {
      * Tests if a {@link Address} entity with empty the first name is invalid.
      * <p>
      * Given: a randomized {@link Address} entity
-     * And: missing an empty street attribute
+     * And: having an empty street attribute
      * When: validating the {@link Address} entity
      * Then: the validation result should be invalid
      *

@@ -108,7 +108,7 @@ public abstract class AbstractUserValidationTest {
      * Tests if a {@link User} entity with empty the first name is invalid.
      * <p>
      * Given: a randomized {@link User} entity
-     * And: missing an empty first name attribute
+     * And: having an empty first name attribute
      * When: validating the {@link User} entity
      * Then: the validation result should be invalid
      *
@@ -146,7 +146,7 @@ public abstract class AbstractUserValidationTest {
      * Tests if a {@link User} entity with empty the last name is invalid.
      * <p>
      * Given: a randomized {@link User} entity
-     * And: missing an empty last name attribute
+     * And: having an empty last name attribute
      * When: validating the {@link User} entity
      * Then: the validation result should be invalid
      *

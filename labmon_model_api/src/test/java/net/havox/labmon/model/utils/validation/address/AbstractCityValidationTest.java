@@ -126,7 +126,7 @@ public abstract class AbstractCityValidationTest {
      * Tests if a {@link City} entity with empty the first name is invalid.
      * <p>
      * Given: a randomized {@link City} entity
-     * And: missing an empty name attribute
+     * And: having an empty name attribute
      * When: validating the {@link City} entity
      * Then: the validation result should be invalid
      *
@@ -163,7 +163,7 @@ public abstract class AbstractCityValidationTest {
      * Tests if a {@link City} entity with empty the first name is invalid.
      * <p>
      * Given: a randomized {@link City} entity
-     * And: missing an empty ZIP code attribute
+     * And: having an empty ZIP code attribute
      * When: validating the {@link City} entity
      * Then: the validation result should be invalid
      *
@@ -203,7 +203,7 @@ public abstract class AbstractCityValidationTest {
      * Tests if a {@link City} entity with empty the first name is invalid.
      * <p>
      * Given: a randomized {@link City} entity
-     * And: missing an invalid country attribute
+     * And: having an invalid country attribute
      * When: validating the {@link City} entity
      * Then: the validation result should be invalid
      *
