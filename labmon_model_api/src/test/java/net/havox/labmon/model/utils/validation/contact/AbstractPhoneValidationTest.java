@@ -96,6 +96,24 @@ public abstract class AbstractPhoneValidationTest {
     }
 
     /**
+     * Tests if a {@link Phone} entity missing the first name is invalid.
+     * <p>
+     * Given: a randomized {@link Phone} entity
+     * And: having a invalid phone number attribute
+     * When: validating the {@link Phone} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testPhoneWithInvalidPhoneNumberIsInvalid() throws Exception {
+        Phone instanceUnderTest = getValidPhoneInstance();
+
+        instanceUnderTest.setPhoneNumber(PhoneNumberUtil.getInstance().getInvalidExampleNumber("DE"));
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
      * Checks if an {@link Phone} instance has the expected validation status.
      *
      * @param instanceUnderTest the instance

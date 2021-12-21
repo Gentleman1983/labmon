@@ -97,6 +97,24 @@ public abstract class AbstractFaxValidationTest {
     }
 
     /**
+     * Tests if a {@link Fax} entity missing the first name is invalid.
+     * <p>
+     * Given: a randomized {@link Fax} entity
+     * And: having a invalid phone number attribute
+     * When: validating the {@link Fax} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testFaxWithInvalidPhoneNumberIsInvalid() throws Exception {
+        Fax instanceUnderTest = getValidFaxInstance();
+
+        instanceUnderTest.setPhoneNumber(PhoneNumberUtil.getInstance().getInvalidExampleNumber("DE"));
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
      * Checks if an {@link Fax} instance has the expected validation status.
      *
      * @param instanceUnderTest the instance
