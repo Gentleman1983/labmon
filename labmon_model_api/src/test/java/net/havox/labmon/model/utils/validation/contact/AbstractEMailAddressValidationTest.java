@@ -125,7 +125,7 @@ public abstract class AbstractEMailAddressValidationTest {
      * When: validating the address
      * Then: it shall be valid
      *
-     * @param emailAdress the current email address
+     * @param emailAddress the current email address
      * @throws Exception
      */
     @ParameterizedTest
@@ -144,10 +144,10 @@ public abstract class AbstractEMailAddressValidationTest {
             "email@example.co.jp",
             "firstname-lastname@example.com"
     })
-    public void testValidEMailAddresses(String emailAdress) throws Exception {
+    public void testValidEMailAddresses(String emailAddress) throws Exception {
         EMailAddress instanceUnderTest = getValidEMailAddressInstance();
 
-        instanceUnderTest.setEMailAddress(emailAdress);
+        instanceUnderTest.setEMailAddress(emailAddress);
 
         checkValidInstance(instanceUnderTest, true);
     }
@@ -159,7 +159,7 @@ public abstract class AbstractEMailAddressValidationTest {
      * When: validating the address
      * Then: it shall be invalid
      *
-     * @param emailAdress the current email address
+     * @param emailAddress the current email address
      * @throws Exception
      */
     @ParameterizedTest
@@ -181,10 +181,10 @@ public abstract class AbstractEMailAddressValidationTest {
             "email@example..com",
             "Abc..123@example.com"
     })
-    public void testInValidEMailAddresses(String emailAdress) throws Exception {
+    public void testInValidEMailAddresses(String emailAddress) throws Exception {
         EMailAddress instanceUnderTest = getValidEMailAddressInstance();
 
-        instanceUnderTest.setEMailAddress(emailAdress);
+        instanceUnderTest.setEMailAddress(emailAddress);
 
         checkValidInstance(instanceUnderTest, false);
     }
