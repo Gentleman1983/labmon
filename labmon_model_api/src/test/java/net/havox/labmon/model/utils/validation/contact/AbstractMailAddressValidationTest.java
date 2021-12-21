@@ -73,12 +73,6 @@ public abstract class AbstractMailAddressValidationTest {
      */
     public abstract MailAddressValidator getMailAddressValidator() throws Exception;
 
-/**
- * - Receiver is not empty nor blank
- *  * - Address is not empty
- *  * - Address is valid
- */
-
     /**
      * Tests if a valid {@link MailAddress} entity is valid.
      * <p>
