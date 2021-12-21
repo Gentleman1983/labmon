@@ -42,7 +42,8 @@ public interface FaxValidator extends ContactOptionValidator<Fax> {
 
         List<String> validationErrors = new ArrayList<>();
 
-        if(!PhoneNumberUtil.getInstance().isValidNumber(validationTarget.getPhoneNumber())) {
+        if (null == validationTarget.getPhoneNumber() ||
+                !PhoneNumberUtil.getInstance().isValidNumber(validationTarget.getPhoneNumber())) {
             validationErrors.add("Expected an valid phone number.");
         }
 

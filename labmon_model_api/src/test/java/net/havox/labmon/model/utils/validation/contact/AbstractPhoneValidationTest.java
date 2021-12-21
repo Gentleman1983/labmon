@@ -21,6 +21,8 @@ package net.havox.labmon.model.utils.validation.contact;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import net.havox.labmon.model.api.contact.Phone;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 /**
  * Abstract implementation of {@link PhoneValidator} test.
@@ -44,7 +46,54 @@ public abstract class AbstractPhoneValidationTest {
      */
     public abstract PhoneValidator getPhoneValidator() throws Exception;
 
+    /**
+     * Tests if a valid {@link Phone} entity is valid.
+     * <p>
+     * Given: a randomized {@link Phone} entity
+     * And: having all necessary attributes
+     * When: validating the {@link Phone} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testValidPhoneInstanceIsValid() throws Exception {
+        Phone instanceUnderTest = getValidPhoneInstance();
 
+        checkValidInstance(instanceUnderTest, true);
+    }
+
+    /**
+     * Tests if a {@code null} {@link Phone} entity is invalid.
+     * <p>
+     * Given: a {@code null} {@link Phone} entity
+     * When: validating the {@link Phone} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testNullPhoneIsInvalid() throws Exception {
+        checkValidInstance(null, false);
+    }
+
+    /**
+     * Tests if a {@link Phone} entity missing the first name is invalid.
+     * <p>
+     * Given: a randomized {@link Phone} entity
+     * And: missing a phone number attribute
+     * When: validating the {@link Phone} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testPhoneWithoutPhoneNumberIsInvalid() throws Exception {
+        Phone instanceUnderTest = getValidPhoneInstance();
+
+        instanceUnderTest.setPhoneNumber(null);
+        checkValidInstance(instanceUnderTest, false);
+    }
 
     /**
      * Checks if an {@link Phone} instance has the expected validation status.
