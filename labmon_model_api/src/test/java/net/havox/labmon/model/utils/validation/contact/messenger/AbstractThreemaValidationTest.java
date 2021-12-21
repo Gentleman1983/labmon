@@ -167,6 +167,11 @@ public abstract class AbstractThreemaValidationTest {
                 "Expected the user" + (expectedValid ? "" : " not") +
                         "to be a valid instance. The validation result was " +
                         validator.validate(instanceUnderTest) + ".");
+        if (null != instanceUnderTest) {
+            Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(),
+                    "Expected the user" + (expectedValid ? "" : " not") +
+                            "to be a valid instance.");
+        }
     }
 
     /**
