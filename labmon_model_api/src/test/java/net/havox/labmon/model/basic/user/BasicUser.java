@@ -95,7 +95,7 @@ public class BasicUser extends AbstractChangeAwareAndIdentifiableClass implement
     }
 
     @Override
-    public Set<ContactOption<? extends ContactOption>> getContactOptions() {
+    public Set<ContactOption<?>> getContactOptions() { // NOSONAR This return type is as expected and no sonar issue.
         return Collections.unmodifiableSet(contactOptions);
     }
 
