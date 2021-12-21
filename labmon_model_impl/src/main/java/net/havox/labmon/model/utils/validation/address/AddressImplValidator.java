@@ -18,8 +18,6 @@
 
 package net.havox.labmon.model.utils.validation.address;
 
-import java.util.List;
-
 /**
  * Functional implementation of {@link AddressValidator}.
  *
