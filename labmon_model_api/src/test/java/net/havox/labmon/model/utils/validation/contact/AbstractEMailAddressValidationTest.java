@@ -23,6 +23,8 @@ import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.apache.commons.validator.routines.DomainValidator;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 /**
  * Abstract implementation of {@link EMailAddressValidator} test.
@@ -46,9 +48,73 @@ public abstract class AbstractEMailAddressValidationTest {
      */
     public abstract EMailAddressValidator getEMailAddressValidator() throws Exception;
 
-/**
- * - a valid email address
- */
+    /**
+     * Tests if a valid {@link EMailAddress} entity is valid.
+     * <p>
+     * Given: a randomized {@link EMailAddress} entity
+     * And: having all necessary attributes
+     * When: validating the {@link EMailAddress} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testValidEMailAddressInstanceIsValid() throws Exception {
+        EMailAddress instanceUnderTest = getValidEMailAddressInstance();
+
+        checkValidInstance(instanceUnderTest, true);
+    }
+
+    /**
+     * Tests if a {@code null} {@link EMailAddress} entity is invalid.
+     * <p>
+     * Given: a {@code null} {@link EMailAddress} entity
+     * When: validating the {@link EMailAddress} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testNullEMailAddressIsInvalid() throws Exception {
+        checkValidInstance(null, false);
+    }
+
+    /**
+     * Tests if a {@link EMailAddress} entity missing the first name is invalid.
+     * <p>
+     * Given: a randomized {@link EMailAddress} entity
+     * And: missing a email address attribute
+     * When: validating the {@link EMailAddress} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testEMailAddressWithoutEmailAddressIsInvalid() throws Exception {
+        EMailAddress instanceUnderTest = getValidEMailAddressInstance();
+
+        instanceUnderTest.setEMailAddress(null);
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Tests if a {@link EMailAddress} entity with empty the first name is invalid.
+     * <p>
+     * Given: a randomized {@link EMailAddress} entity
+     * And: having an empty email address attribute
+     * When: validating the {@link EMailAddress} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testEMailAddressWithEmptyEmailAddressIsInvalid() throws Exception {
+        EMailAddress instanceUnderTest = getValidEMailAddressInstance();
+
+        instanceUnderTest.setEMailAddress("");
+
+        checkValidInstance(instanceUnderTest, false);
+    }
 
     /**
      * Checks if an {@link EMailAddress} instance has the expected validation status.

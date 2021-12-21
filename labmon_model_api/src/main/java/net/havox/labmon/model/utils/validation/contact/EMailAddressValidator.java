@@ -48,7 +48,7 @@ public interface EMailAddressValidator extends ContactOptionValidator<EMailAddre
         DomainValidator domainValidator = DomainValidator.getInstance(allowLocalDomains);
         EmailValidator emailValidator = new EmailValidator(allowLocalDomains, allowTopLevelDomains, domainValidator);
 
-        if (emailValidator.isValid(validationTarget.getEMailAddress())) {
+        if (!emailValidator.isValid(validationTarget.getEMailAddress())) {
             validationErrors.add("EMail address is not a valid address.");
         }
 
