@@ -48,11 +48,6 @@ public abstract class AbstractTwitterValidationTest {
      */
     public abstract TwitterValidator getTwitterValidator() throws Exception;
 
-/**
- * - Twitter usernames are 1 to 15 letters
- *  * - They consist of alphanumeric letters and underscores
- */
-
     /**
      * Tests if a valid {@link Twitter} entity is valid.
      * <p>
