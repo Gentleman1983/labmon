@@ -20,7 +20,10 @@ package net.havox.labmon.model.utils.validation.contact;
 
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import net.havox.labmon.model.api.contact.Fax;
+import net.havox.labmon.model.api.contact.Phone;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 /**
  * Abstract implementation of {@link FaxValidator} test.
@@ -44,7 +47,54 @@ public abstract class AbstractFaxValidationTest {
      */
     public abstract FaxValidator getFaxValidator() throws Exception;
 
+    /**
+     * Tests if a valid {@link Fax} entity is valid.
+     * <p>
+     * Given: a randomized {@link Fax} entity
+     * And: having all necessary attributes
+     * When: validating the {@link Fax} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testValidFaxInstanceIsValid() throws Exception {
+        Fax instanceUnderTest = getValidFaxInstance();
 
+        checkValidInstance(instanceUnderTest, true);
+    }
+
+    /**
+     * Tests if a {@code null} {@link Fax} entity is invalid.
+     * <p>
+     * Given: a {@code null} {@link Fax} entity
+     * When: validating the {@link Fax} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testNullFaxIsInvalid() throws Exception {
+        checkValidInstance(null, false);
+    }
+
+    /**
+     * Tests if a {@link Fax} entity missing the first name is invalid.
+     * <p>
+     * Given: a randomized {@link Fax} entity
+     * And: missing a phone number attribute
+     * When: validating the {@link Fax} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testFaxWithoutPhoneNumberIsInvalid() throws Exception {
+        Fax instanceUnderTest = getValidFaxInstance();
+
+        instanceUnderTest.setPhoneNumber(null);
+        checkValidInstance(instanceUnderTest, false);
+    }
 
     /**
      * Checks if an {@link Fax} instance has the expected validation status.
