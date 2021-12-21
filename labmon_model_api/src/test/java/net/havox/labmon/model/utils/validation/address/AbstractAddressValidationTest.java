@@ -203,9 +203,9 @@ public abstract class AbstractAddressValidationTest {
     private void checkValidInstance(Address instanceUnderTest, Boolean expectedValid) throws Exception {
         AddressValidator validator = getAddressValidator();
         Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the user" + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " +
-                        validator.validate(instanceUnderTest) + ".");
+                "Expected the address '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
+                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
+                        ".");
     }
 
     /**

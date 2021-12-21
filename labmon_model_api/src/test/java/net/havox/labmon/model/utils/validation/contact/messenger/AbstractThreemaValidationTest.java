@@ -164,13 +164,13 @@ public abstract class AbstractThreemaValidationTest {
     private void checkValidInstance(Threema instanceUnderTest, Boolean expectedValid) throws Exception {
         ThreemaValidator validator = getThreemaValidator();
         Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the user" + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " +
-                        validator.validate(instanceUnderTest) + ".");
+                "Expected the threema account '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
+                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
+                        ".");
         if (null != instanceUnderTest) {
             Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(),
-                    "Expected the user" + (expectedValid ? "" : " not") +
-                            "to be a valid instance.");
+                    "Expected the threema account '" + instanceUnderTest + "' " +
+                            (expectedValid ? "" : " not") + "to be a valid instance.");
         }
     }
 

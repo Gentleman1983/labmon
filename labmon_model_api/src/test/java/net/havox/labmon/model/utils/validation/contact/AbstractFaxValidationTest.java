@@ -124,12 +124,12 @@ public abstract class AbstractFaxValidationTest {
     private void checkValidInstance(Fax instanceUnderTest, Boolean expectedValid) throws Exception {
         FaxValidator validator = getFaxValidator();
         Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the user" + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " +
-                        validator.validate(instanceUnderTest) + ".");
+                "Expected the fax '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
+                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
+                        ".");
         if (null != instanceUnderTest) {
             Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(),
-                    "Expected the user" + (expectedValid ? "" : " not") +
+                    "Expected the fax '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
                             "to be a valid instance.");
         }
     }

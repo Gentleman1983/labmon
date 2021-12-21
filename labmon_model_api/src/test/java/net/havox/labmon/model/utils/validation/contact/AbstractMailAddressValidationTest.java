@@ -191,12 +191,12 @@ public abstract class AbstractMailAddressValidationTest {
     private void checkValidInstance(MailAddress instanceUnderTest, Boolean expectedValid) throws Exception {
         MailAddressValidator validator = getMailAddressValidator();
         Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the user" + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " +
-                        validator.validate(instanceUnderTest) + ".");
+                "Expected the mail address '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
+                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
+                        ".");
         if (null != instanceUnderTest) {
             Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(),
-                    "Expected the user" + (expectedValid ? "" : " not") +
+                    "Expected the mail address '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
                             "to be a valid instance.");
         }
     }

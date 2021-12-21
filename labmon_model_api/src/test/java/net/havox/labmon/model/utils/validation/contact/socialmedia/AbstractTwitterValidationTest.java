@@ -145,13 +145,13 @@ public abstract class AbstractTwitterValidationTest {
     private void checkValidInstance(Twitter instanceUnderTest, Boolean expectedValid) throws Exception {
         TwitterValidator validator = getTwitterValidator();
         Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the user" + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " +
-                        validator.validate(instanceUnderTest) + ".");
+                "Expected the twitter account '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
+                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
+                        ".");
         if (null != instanceUnderTest) {
             Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(),
-                    "Expected the user" + (expectedValid ? "" : " not") +
-                            "to be a valid instance.");
+                    "Expected the twitter account '" + instanceUnderTest + "' " +
+                            (expectedValid ? "" : " not") + "to be a valid instance.");
         }
     }
 

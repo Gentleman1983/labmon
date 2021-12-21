@@ -124,9 +124,9 @@ public abstract class AbstractCountryValidationTest {
     private void checkValidInstance(Country instanceUnderTest, Boolean expectedValid) throws Exception {
         CountryValidator validator = getCountryValidator();
         Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the user" + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " +
-                        validator.validate(instanceUnderTest) + ".");
+                "Expected the country '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
+                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
+                        ".");
     }
 
     /**

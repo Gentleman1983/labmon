@@ -231,9 +231,9 @@ public abstract class AbstractCityValidationTest {
     private void checkValidInstance(City instanceUnderTest, Boolean expectedValid) throws Exception {
         CityValidator validator = getCityValidator();
         Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the user" + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " +
-                        validator.validate(instanceUnderTest) + ".");
+                "Expected the city '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
+                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
+                        ".");
     }
 
     /**

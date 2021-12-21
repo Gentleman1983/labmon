@@ -190,7 +190,7 @@ public abstract class AbstractUserValidationTest {
     private void checkValidInstance(User instanceUnderTest, Boolean expectedValid) throws Exception {
         UserValidator validator = getValidator();
         Assertions.assertEquals(expectedValid, validator.isUserValid(instanceUnderTest),
-                "Expected the user" + (expectedValid ? "" : " not") +
+                "Expected the user '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
                         "to be a valid instance. The validation result was " +
                         validator.validateUser(instanceUnderTest) + ".");
     }
