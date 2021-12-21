@@ -25,7 +25,7 @@ import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
  *
  * @author Christian Otto
  */
-public interface Fax extends ContactOption {
+public interface Fax extends ContactOption<Fax> {
     /**
      * Returns the telefax phone number.
      *

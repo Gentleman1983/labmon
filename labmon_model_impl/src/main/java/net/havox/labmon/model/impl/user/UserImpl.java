@@ -116,7 +116,7 @@ public class UserImpl extends AbstractChangeAwareClass<UserImpl> implements User
     }
 
     @Override
-    public Set<ContactOption<?>> getContactOptions() {
+    public Set<ContactOption> getContactOptions() {
         return Collections.unmodifiableSet(contactOptions);
     }
 

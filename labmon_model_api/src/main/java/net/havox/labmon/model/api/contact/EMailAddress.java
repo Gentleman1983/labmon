@@ -23,7 +23,7 @@ package net.havox.labmon.model.api.contact;
  *
  * @author Christian Otto
  */
-public interface EMailAddress extends ContactOption {
+public interface EMailAddress extends ContactOption<EMailAddress> {
     /**
      * Returns the email address.
      *

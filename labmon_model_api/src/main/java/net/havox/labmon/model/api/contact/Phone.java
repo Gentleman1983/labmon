@@ -25,7 +25,7 @@ import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
  *
  * @author Christian Otto
  */
-public interface Phone extends ContactOption {
+public interface Phone extends ContactOption<Phone> {
     /**
      * Returns the phone number.
      *

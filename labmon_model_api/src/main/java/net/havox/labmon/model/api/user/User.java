@@ -108,7 +108,7 @@ public interface User extends ChangeAware, Serializable {
      *
      * @return the contact options
      */
-    Set<ContactOption<?>> getContactOptions();
+    Set<ContactOption> getContactOptions();
 
     /**
      * Adds a {@link ContactOption}.

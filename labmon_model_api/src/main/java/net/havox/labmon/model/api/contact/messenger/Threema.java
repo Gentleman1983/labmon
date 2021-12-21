@@ -23,7 +23,7 @@ package net.havox.labmon.model.api.contact.messenger;
  *
  * @author Christian Otto
  */
-public interface Threema extends Messenger {
+public interface Threema extends Messenger<Threema> {
     /**
      * Returns the threema id.
      *

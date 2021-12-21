@@ -25,7 +25,7 @@ import net.havox.labmon.model.api.address.Address;
  *
  * @author Christian Otto
  */
-public interface MailAddress extends ContactOption {
+public interface MailAddress extends ContactOption<MailAddress> {
     /**
      * Returns the receiver.
      *

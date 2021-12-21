@@ -23,7 +23,8 @@ import net.havox.labmon.model.api.contact.ContactOption;
 /**
  * This interface represents a messenger account.
  *
+ * @param <M> the messenger type
  * @author Christian Otto
  */
-public interface Messenger extends ContactOption {
+public interface Messenger<M extends Messenger> extends ContactOption<M> {
 }

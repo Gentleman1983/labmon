@@ -23,7 +23,7 @@ package net.havox.labmon.model.api.contact.messenger;
  *
  * @author Christian Otto
  */
-public interface Skype extends Messenger {
+public interface Skype extends Messenger<Skype> {
     /**
      * Returns the username.
      *
