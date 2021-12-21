@@ -47,10 +47,6 @@ public abstract class AbstractThreemaValidationTest {
     public abstract ThreemaValidator getThreemaValidator() throws Exception;
 
     /**
-     * - A Threema Id is an 8-digit alphanumeric string
-     */
-
-    /**
      * Tests if a valid {@link Threema} entity is valid.
      * <p>
      * Given: a randomized {@link Threema} entity
@@ -157,7 +153,6 @@ public abstract class AbstractThreemaValidationTest {
 
         checkValidInstance(instanceUnderTest, false);
     }
-
 
     /**
      * Checks if an {@link Threema} instance has the expected validation status.
