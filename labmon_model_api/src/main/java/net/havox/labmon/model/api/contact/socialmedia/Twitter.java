@@ -23,7 +23,7 @@ package net.havox.labmon.model.api.contact.socialmedia;
  *
  * @author Christian Otto
  */
-public interface Twitter extends SocialMediaProfile {
+public interface Twitter extends SocialMediaProfile<Twitter> {
     /**
      * Returns the username.
      *

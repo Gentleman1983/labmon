@@ -23,10 +23,10 @@ import net.havox.labmon.model.api.contact.ContactOption;
 /**
  * This interface represents a social media profile.
  *
- * @param <SM> the social media type
+ * @param <S> the social media type
  * @author Christian Otto
  */
-public interface SocialMediaProfile<SM extends SocialMediaProfile> extends ContactOption<SM> {
+public interface SocialMediaProfile<S extends SocialMediaProfile> extends ContactOption<S> {
     /**
      * Returns the link to the social media profile.
      *

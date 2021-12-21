@@ -95,7 +95,7 @@ public class BasicUser extends AbstractChangeAwareAndIdentifiableClass implement
     }
 
     @Override
-    public Set<ContactOption> getContactOptions() {
+    public Set<ContactOption<? extends ContactOption>> getContactOptions() {
         return Collections.unmodifiableSet(contactOptions);
     }
 
