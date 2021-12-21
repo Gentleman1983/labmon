@@ -25,6 +25,8 @@ import org.apache.commons.validator.routines.EmailValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * Abstract implementation of {@link EMailAddressValidator} test.
@@ -112,6 +114,77 @@ public abstract class AbstractEMailAddressValidationTest {
         EMailAddress instanceUnderTest = getValidEMailAddressInstance();
 
         instanceUnderTest.setEMailAddress("");
+
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Tests a list of valid {@link EMailAddress}es.
+     * <p>
+     * Given: a email address
+     * When: validating the address
+     * Then: it shall be valid
+     *
+     * @param emailAdress the current email address
+     * @throws Exception
+     */
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "email@example.com",
+            "firstname.lastname@example.com",
+            "email@subdomain.example.com",
+            "firstname+lastname@example.com",
+            "email@[123.123.123.123]",
+            "\"email\"@example.com",
+            "1234567890@example.com",
+            "email@example-one.com",
+            "_______@example.com",
+            "email@example.name",
+            "email@example.museum",
+            "email@example.co.jp",
+            "firstname-lastname@example.com"
+    })
+    public void testValidEMailAddresses(String emailAdress) throws Exception {
+        EMailAddress instanceUnderTest = getValidEMailAddressInstance();
+
+        instanceUnderTest.setEMailAddress(emailAdress);
+
+        checkValidInstance(instanceUnderTest, true);
+    }
+
+    /**
+     * Tests a list of invalid {@link EMailAddress}es.
+     * <p>
+     * Given: a email address
+     * When: validating the address
+     * Then: it shall be invalid
+     *
+     * @param emailAdress the current email address
+     * @throws Exception
+     */
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "plainaddress",
+            "#@%^%#$@#$@#.com",
+            "@example.com",
+            "Joe Smith <email@example.com>",
+            "email.example.com",
+            "email@example@example.com",
+            ".email@example.com",
+            "email.@example.com",
+            "email..email@example.com",
+            "email@example.com (Joe Smith)",
+            "email@example",
+            "email@-example.com",
+            "email@example.web",
+            "email@111.222.333.44444",
+            "email@example..com",
+            "Abc..123@example.com"
+    })
+    public void testInValidEMailAddresses(String emailAdress) throws Exception {
+        EMailAddress instanceUnderTest = getValidEMailAddressInstance();
+
+        instanceUnderTest.setEMailAddress(emailAdress);
 
         checkValidInstance(instanceUnderTest, false);
     }
