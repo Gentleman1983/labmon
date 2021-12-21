@@ -21,6 +21,8 @@ package net.havox.labmon.model.utils.validation.contact.messenger;
 import net.havox.labmon.model.api.contact.messenger.Threema;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 /**
  * Abstract implementation of {@link ThreemaValidator} test.
@@ -47,6 +49,114 @@ public abstract class AbstractThreemaValidationTest {
     /**
      * - A Threema Id is an 8-digit alphanumeric string
      */
+
+    /**
+     * Tests if a valid {@link Threema} entity is valid.
+     * <p>
+     * Given: a randomized {@link Threema} entity
+     * And: having all necessary attributes
+     * When: validating the {@link Threema} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testValidThreemaInstanceIsValid() throws Exception {
+        Threema instanceUnderTest = getValidThreemaInstance();
+
+        checkValidInstance(instanceUnderTest, true);
+    }
+
+    /**
+     * Tests if a {@code null} {@link Threema} entity is invalid.
+     * <p>
+     * Given: a {@code null} {@link Threema} entity
+     * When: validating the {@link Threema} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testNullThreemaIsInvalid() throws Exception {
+        checkValidInstance(null, false);
+    }
+
+    /**
+     * Tests if a {@link Threema} entity missing the threema id is invalid.
+     * <p>
+     * Given: a randomized {@link Threema} entity
+     * And: missing the threema id attribute
+     * When: validating the {@link Threema} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testThreemaWithoutThreemaIdIsInvalid() throws Exception {
+        Threema instanceUnderTest = getValidThreemaInstance();
+
+        instanceUnderTest.setThreemaId(null);
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Tests if a {@link Threema} entity with empty the threema id is invalid.
+     * <p>
+     * Given: a randomized {@link Threema} entity
+     * And: having an empty threema id attribute
+     * When: validating the {@link Threema} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testThreemaWithEmptyThreemaIdIsInvalid() throws Exception {
+        Threema instanceUnderTest = getValidThreemaInstance();
+
+        instanceUnderTest.setThreemaId("");
+
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Tests if a {@link Threema} entity with 7 digit threema id is invalid.
+     * <p>
+     * Given: a randomized {@link Threema} entity
+     * And: having an 7 digit threema id attribute
+     * When: validating the {@link Threema} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testThreemaWithSevenDigitThreemaIdIsInvalid() throws Exception {
+        Threema instanceUnderTest = getValidThreemaInstance();
+
+        instanceUnderTest.setThreemaId(ModelRandomGenerator.randomString(7,
+                ModelRandomGenerator.ALPHANUMERIC_STRING));
+
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Tests if a {@link Threema} entity with 9 digit threema id is invalid.
+     * <p>
+     * Given: a randomized {@link Threema} entity
+     * And: having an 9 digit threema id attribute
+     * When: validating the {@link Threema} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testThreemaWithNineDigitThreemaIdIsInvalid() throws Exception {
+        Threema instanceUnderTest = getValidThreemaInstance();
+
+        instanceUnderTest.setThreemaId(ModelRandomGenerator.randomString(9,
+                ModelRandomGenerator.ALPHANUMERIC_STRING));
+
+        checkValidInstance(instanceUnderTest, false);
+    }
 
 
     /**
