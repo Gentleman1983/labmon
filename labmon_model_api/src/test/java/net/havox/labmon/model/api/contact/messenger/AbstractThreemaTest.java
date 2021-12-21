@@ -96,6 +96,7 @@ public abstract class AbstractThreemaTest {
      */
     @Test
     public void testIsValidDoesNotResultInErrors() throws Exception {
+        Assertions.assertNotNull(mockedInstance);
         mockedInstance.isValid();
     }
 }

@@ -98,6 +98,7 @@ public abstract class AbstractPhoneTest {
      */
     @Test
     public void testIsValidDoesNotResultInErrors() throws Exception {
+        Assertions.assertNotNull(mockedInstance);
         mockedInstance.isValid();
     }
 }
