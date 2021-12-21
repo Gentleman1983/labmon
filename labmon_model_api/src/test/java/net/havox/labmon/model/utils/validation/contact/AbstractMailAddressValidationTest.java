@@ -24,6 +24,8 @@ import net.havox.labmon.model.api.address.Country;
 import net.havox.labmon.model.api.contact.MailAddress;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 /**
  * Abstract implementation of {@link MailAddressValidator} test.
@@ -76,6 +78,114 @@ public abstract class AbstractMailAddressValidationTest {
  *  * - Address is not empty
  *  * - Address is valid
  */
+
+    /**
+     * Tests if a valid {@link MailAddress} entity is valid.
+     * <p>
+     * Given: a randomized {@link MailAddress} entity
+     * And: having all necessary attributes
+     * When: validating the {@link MailAddress} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testValidMailAddressInstanceIsValid() throws Exception {
+        MailAddress instanceUnderTest = getValidMailAddressInstance();
+
+        checkValidInstance(instanceUnderTest, true);
+    }
+
+    /**
+     * Tests if a {@code null} {@link MailAddress} entity is invalid.
+     * <p>
+     * Given: a {@code null} {@link MailAddress} entity
+     * When: validating the {@link MailAddress} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testNullMailAddressIsInvalid() throws Exception {
+        checkValidInstance(null, false);
+    }
+
+    /**
+     * Tests if a {@link MailAddress} entity missing the first name is invalid.
+     * <p>
+     * Given: a randomized {@link MailAddress} entity
+     * And: missing a receiver attribute
+     * When: validating the {@link MailAddress} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testMailAddressWithoutReceiverIsInvalid() throws Exception {
+        MailAddress instanceUnderTest = getValidMailAddressInstance();
+
+        instanceUnderTest.setReceiver(null);
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Tests if a {@link MailAddress} entity with empty the first name is invalid.
+     * <p>
+     * Given: a randomized {@link MailAddress} entity
+     * And: having an empty receiver attribute
+     * When: validating the {@link MailAddress} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testMailAddressWithEmptyReceiverIsInvalid() throws Exception {
+        MailAddress instanceUnderTest = getValidMailAddressInstance();
+
+        instanceUnderTest.setReceiver("");
+
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Tests if a {@link MailAddress} entity missing the first name is invalid.
+     * <p>
+     * Given: a randomized {@link MailAddress} entity
+     * And: missing an address attribute
+     * When: validating the {@link MailAddress} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testMailAddressWithoutAddressIsInvalid() throws Exception {
+        MailAddress instanceUnderTest = getValidMailAddressInstance();
+
+        instanceUnderTest.setAddress(null);
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Tests if a {@link MailAddress} entity with empty the first name is invalid.
+     * <p>
+     * Given: a randomized {@link MailAddress} entity
+     * And: having an invalid address attribute
+     * When: validating the {@link MailAddress} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testMailAddressWithInvalidAddressIsInvalid() throws Exception {
+        MailAddress instanceUnderTest = getValidMailAddressInstance();
+
+        Address invalidAddress = getValidAddressInstance();
+        invalidAddress.setStreet("");
+
+        instanceUnderTest.setAddress(invalidAddress);
+
+        checkValidInstance(instanceUnderTest, false);
+    }
 
     /**
      * Checks if an {@link MailAddress} instance has the expected validation status.
@@ -151,7 +261,8 @@ public abstract class AbstractMailAddressValidationTest {
     private Country getValidCountryInstance() throws Exception {
         Country instance = getCountry();
 
-        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
+                ModelRandomGenerator.ALPHABETIC_STRING));
 
         return instance;
     }

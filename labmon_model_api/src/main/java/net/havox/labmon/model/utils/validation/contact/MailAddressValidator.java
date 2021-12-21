@@ -45,17 +45,17 @@ public interface MailAddressValidator extends ContactOptionValidator<MailAddress
 
         List<String> validationErrors = new ArrayList<>();
 
-        if(StringUtils.isAllBlank(validationTarget.getReceiver())) {
+        if (StringUtils.isAllBlank(validationTarget.getReceiver())) {
             validationErrors.add("Expected non empty or blank receiver.");
         }
 
-        if(null == validationTarget.getAddress()) {
+        if (null == validationTarget.getAddress()) {
             validationErrors.add("Expected to have an address.");
-        }
-
-        AddressValidator addressValidator = validationTarget.getAddress().getValidator();
-        if(!addressValidator.isValid(validationTarget.getAddress())) {
-            validationErrors.addAll(addressValidator.validate(validationTarget.getAddress()));
+        } else {
+            AddressValidator addressValidator = validationTarget.getAddress().getValidator();
+            if (!addressValidator.isValid(validationTarget.getAddress())) {
+                validationErrors.addAll(addressValidator.validate(validationTarget.getAddress()));
+            }
         }
 
         return Collections.unmodifiableList(validationErrors);

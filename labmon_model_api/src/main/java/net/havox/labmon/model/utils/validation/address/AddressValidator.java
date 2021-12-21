@@ -52,9 +52,13 @@ public interface AddressValidator {
             validationErrors.add("Expected the street not to be empty nor blank.");
         }
 
-        CityValidator cityValidator = validationTarget.getCity().getValidator();
-        if (!cityValidator.isValid(validationTarget.getCity())) {
-            validationErrors.addAll(cityValidator.validate(validationTarget.getCity()));
+        if (null == validationTarget.getCity()) {
+            validationErrors.add("Expected the city not to be null.");
+        } else {
+            CityValidator cityValidator = validationTarget.getCity().getValidator();
+            if (!cityValidator.isValid(validationTarget.getCity())) {
+                validationErrors.addAll(cityValidator.validate(validationTarget.getCity()));
+            }
         }
 
         return Collections.unmodifiableList(validationErrors);

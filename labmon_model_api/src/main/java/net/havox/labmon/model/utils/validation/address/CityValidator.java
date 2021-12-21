@@ -49,17 +49,21 @@ public interface CityValidator {
 
         List<String> validationErrors = new ArrayList<>();
 
-        if(StringUtils.isAllBlank(validationTarget.getName())) {
+        if (StringUtils.isAllBlank(validationTarget.getName())) {
             validationErrors.add("The city name has not to be empty nor blank.");
         }
 
-        if(StringUtils.isAllBlank(validationTarget.getZipCode())) {
+        if (StringUtils.isAllBlank(validationTarget.getZipCode())) {
             validationErrors.add("The ZIP code has not to be empty nor blank.");
         }
 
-        CountryValidator countryValidator = validationTarget.getCountry().getValidator();
-        if(!countryValidator.isValid(validationTarget.getCountry())) {
-            validationErrors.addAll(countryValidator.validate(validationTarget.getCountry()));
+        if (null == validationTarget.getCountry()) {
+            validationErrors.add("The country has not to be null.");
+        } else {
+            CountryValidator countryValidator = validationTarget.getCountry().getValidator();
+            if (!countryValidator.isValid(validationTarget.getCountry())) {
+                validationErrors.addAll(countryValidator.validate(validationTarget.getCountry()));
+            }
         }
 
         return Collections.unmodifiableList(validationErrors);
