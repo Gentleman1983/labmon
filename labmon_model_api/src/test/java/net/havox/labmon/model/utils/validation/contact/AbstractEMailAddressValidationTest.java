@@ -19,6 +19,10 @@
 package net.havox.labmon.model.utils.validation.contact;
 
 import net.havox.labmon.model.api.contact.EMailAddress;
+import net.havox.labmon.testutils.random.ModelRandomGenerator;
+import org.apache.commons.validator.routines.DomainValidator;
+import org.apache.commons.validator.routines.EmailValidator;
+import org.junit.jupiter.api.Assertions;
 
 /**
  * Abstract implementation of {@link EMailAddressValidator} test.
@@ -41,4 +45,51 @@ public abstract class AbstractEMailAddressValidationTest {
      * @throws Exception
      */
     public abstract EMailAddressValidator getEMailAddressValidator() throws Exception;
+
+/**
+ * - a valid email address
+ */
+
+    /**
+     * Checks if an {@link EMailAddress} instance has the expected validation status.
+     *
+     * @param instanceUnderTest the instance
+     * @param expectedValid     is the instance expected valid?
+     * @throws Exception
+     */
+    private void checkValidInstance(EMailAddress instanceUnderTest, Boolean expectedValid) throws Exception {
+        EMailAddressValidator validator = getEMailAddressValidator();
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
+                "Expected the user" + (expectedValid ? "" : " not") +
+                        "to be a valid instance. The validation result was " +
+                        validator.validate(instanceUnderTest) + ".");
+    }
+
+    /**
+     * Provides a valid {@link EMailAddress} entity.
+     *
+     * @return the entity
+     * @throws Exception
+     */
+    private EMailAddress getValidEMailAddressInstance() throws Exception {
+        EMailAddress instance = getEMailAddress();
+
+        String emailPrefix = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
+                ModelRandomGenerator.ALPHANUMERIC_STRING);
+        String emailSuffix = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 20),
+                ModelRandomGenerator.ALPHABETIC_STRING) + ".example.de";
+        String email = emailPrefix + "@" + emailSuffix;
+
+        boolean allowLocalDomains = false;
+        boolean allowTopLevelDomains = false;
+
+        DomainValidator domainValidator = DomainValidator.getInstance(allowLocalDomains);
+        EmailValidator emailValidator = new EmailValidator(allowLocalDomains, allowTopLevelDomains, domainValidator);
+
+        Assertions.assertTrue(emailValidator.isValid(email));
+
+        instance.setEMailAddress(email);
+
+        return instance;
+    }
 }

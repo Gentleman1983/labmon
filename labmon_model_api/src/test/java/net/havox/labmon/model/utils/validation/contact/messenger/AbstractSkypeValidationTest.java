@@ -19,6 +19,9 @@
 package net.havox.labmon.model.utils.validation.contact.messenger;
 
 import net.havox.labmon.model.api.contact.messenger.Skype;
+import net.havox.labmon.testutils.random.ModelRandomGenerator;
+import org.apache.commons.lang3.StringUtils;
+import org.junit.jupiter.api.Assertions;
 
 /**
  * Abstract implementation of {@link SkypeValidator} test.
@@ -41,4 +44,42 @@ public abstract class AbstractSkypeValidationTest {
      * @throws Exception
      */
     public abstract SkypeValidator getSkypeValidator() throws Exception;
+
+    /**
+     * - A skype username consists of 6 to 22 characters
+     *  * - It starts with a letter
+     */
+
+
+    /**
+     * Checks if an {@link Skype} instance has the expected validation status.
+     *
+     * @param instanceUnderTest the instance
+     * @param expectedValid     is the instance expected valid?
+     * @throws Exception
+     */
+    private void checkValidInstance(Skype instanceUnderTest, Boolean expectedValid) throws Exception {
+        SkypeValidator validator = getSkypeValidator();
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
+                "Expected the user" + (expectedValid ? "" : " not") +
+                        "to be a valid instance. The validation result was " +
+                        validator.validate(instanceUnderTest) + ".");
+    }
+
+    /**
+     * Provides a valid {@link Skype} entity.
+     *
+     * @return the entity
+     * @throws Exception
+     */
+    private Skype getValidSkypeInstance() throws Exception {
+        Skype instance = getSkype();
+
+        do {
+            instance.setUserName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(6, 22),
+                    ModelRandomGenerator.ALPHANUMERIC_STRING));
+        } while (StringUtils.isAlpha(instance.getUserName().substring(0, 1)));
+
+        return instance;
+    }
 }

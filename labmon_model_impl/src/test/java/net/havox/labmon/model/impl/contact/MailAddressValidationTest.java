@@ -18,7 +18,13 @@
 
 package net.havox.labmon.model.impl.contact;
 
+import net.havox.labmon.model.api.address.Address;
+import net.havox.labmon.model.api.address.City;
+import net.havox.labmon.model.api.address.Country;
 import net.havox.labmon.model.api.contact.MailAddress;
+import net.havox.labmon.model.impl.address.AddressImpl;
+import net.havox.labmon.model.impl.address.CityImpl;
+import net.havox.labmon.model.impl.address.CountryImpl;
 import net.havox.labmon.model.utils.validation.contact.AbstractMailAddressValidationTest;
 import net.havox.labmon.model.utils.validation.contact.MailAddressImplValidator;
 import net.havox.labmon.model.utils.validation.contact.MailAddressValidator;
@@ -32,6 +38,21 @@ public class MailAddressValidationTest extends AbstractMailAddressValidationTest
     @Override
     public MailAddress getMailAddress() throws Exception {
         return new MailAddressImpl();
+    }
+
+    @Override
+    public Address getAddress() throws Exception {
+        return new AddressImpl();
+    }
+
+    @Override
+    public City getCity() throws Exception {
+        return new CityImpl();
+    }
+
+    @Override
+    public Country getCountry() throws Exception {
+        return new CountryImpl();
     }
 
     @Override

@@ -18,7 +18,9 @@
 
 package net.havox.labmon.model.utils.validation.contact;
 
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import net.havox.labmon.model.api.contact.Phone;
+import org.junit.jupiter.api.Assertions;
 
 /**
  * Abstract implementation of {@link PhoneValidator} test.
@@ -41,4 +43,35 @@ public abstract class AbstractPhoneValidationTest {
      * @throws Exception
      */
     public abstract PhoneValidator getPhoneValidator() throws Exception;
+
+
+
+    /**
+     * Checks if an {@link Phone} instance has the expected validation status.
+     *
+     * @param instanceUnderTest the instance
+     * @param expectedValid     is the instance expected valid?
+     * @throws Exception
+     */
+    private void checkValidInstance(Phone instanceUnderTest, Boolean expectedValid) throws Exception {
+        PhoneValidator validator = getPhoneValidator();
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
+                "Expected the user" + (expectedValid ? "" : " not") +
+                        "to be a valid instance. The validation result was " +
+                        validator.validate(instanceUnderTest) + ".");
+    }
+
+    /**
+     * Provides a valid {@link Phone} entity.
+     *
+     * @return the entity
+     * @throws Exception
+     */
+    private Phone getValidPhoneInstance() throws Exception {
+        Phone instance = getPhone();
+
+        instance.setPhoneNumber(PhoneNumberUtil.getInstance().getExampleNumber("DE"));
+
+        return instance;
+    }
 }
