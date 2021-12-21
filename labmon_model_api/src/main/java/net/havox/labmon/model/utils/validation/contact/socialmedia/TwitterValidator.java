@@ -46,6 +46,10 @@ public interface TwitterValidator extends ContactOptionValidator<Twitter> {
             return List.of("Expected twitter entity not to be null.");
         }
 
+        if (null == validationTarget.getUserName()) {
+            return List.of("Expected username entity not to be null.");
+        }
+
         List<String> validationErrors = new ArrayList<>();
 
         if (validationTarget.getUserName().length() < 1) {

@@ -21,6 +21,8 @@ package net.havox.labmon.model.utils.validation.contact.socialmedia;
 import net.havox.labmon.model.api.contact.socialmedia.Twitter;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 /**
  * Abstract implementation of {@link TwitterValidator} test.
@@ -28,6 +30,8 @@ import org.junit.jupiter.api.Assertions;
  * @author Christian Otto
  */
 public abstract class AbstractTwitterValidationTest {
+    private final static String usernameAlphabet = ModelRandomGenerator.ALPHANUMERIC_STRING + "_";
+
     /**
      * Provides an {@link Twitter} entity.
      *
@@ -48,6 +52,93 @@ public abstract class AbstractTwitterValidationTest {
  * - Twitter usernames are 1 to 15 letters
  *  * - They consist of alphanumeric letters and underscores
  */
+
+    /**
+     * Tests if a valid {@link Twitter} entity is valid.
+     * <p>
+     * Given: a randomized {@link Twitter} entity
+     * And: having all necessary attributes
+     * When: validating the {@link Twitter} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testValidTwitterInstanceIsValid() throws Exception {
+        Twitter instanceUnderTest = getValidTwitterInstance();
+
+        checkValidInstance(instanceUnderTest, true);
+    }
+
+    /**
+     * Tests if a {@code null} {@link Twitter} entity is invalid.
+     * <p>
+     * Given: a {@code null} {@link Twitter} entity
+     * When: validating the {@link Twitter} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testNullTwitterIsInvalid() throws Exception {
+        checkValidInstance(null, false);
+    }
+
+    /**
+     * Tests if a {@link Twitter} entity missing the first name is invalid.
+     * <p>
+     * Given: a randomized {@link Twitter} entity
+     * And: missing a username attribute
+     * When: validating the {@link Twitter} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testTwitterWithoutUserNameIsInvalid() throws Exception {
+        Twitter instanceUnderTest = getValidTwitterInstance();
+
+        instanceUnderTest.setUserName(null);
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Tests if a {@link Twitter} entity with empty the first name is invalid.
+     * <p>
+     * Given: a randomized {@link Twitter} entity
+     * And: having an empty username attribute
+     * When: validating the {@link Twitter} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testTwitterWithEmptyUserNameIsInvalid() throws Exception {
+        Twitter instanceUnderTest = getValidTwitterInstance();
+
+        instanceUnderTest.setUserName("");
+
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Tests if a {@link Twitter} entity with empty the first name is invalid.
+     * <p>
+     * Given: a randomized {@link Twitter} entity
+     * And: having an sixteen letter username attribute
+     * When: validating the {@link Twitter} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @RepeatedTest(5)
+    public void testTwitterWithSixteenLetterUserNameIsInvalid() throws Exception {
+        Twitter instanceUnderTest = getValidTwitterInstance();
+
+        instanceUnderTest.setUserName(ModelRandomGenerator.randomString(16, usernameAlphabet));
+
+        checkValidInstance(instanceUnderTest, false);
+    }
 
     /**
      * Checks if an {@link Twitter} instance has the expected validation status.
@@ -73,10 +164,8 @@ public abstract class AbstractTwitterValidationTest {
     private Twitter getValidTwitterInstance() throws Exception {
         Twitter instance = getTwitter();
 
-        String twitterUserNameAlphabet = ModelRandomGenerator.ALPHABETIC_STRING + "_";
-
         instance.setUserName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 15),
-                twitterUserNameAlphabet));
+                usernameAlphabet));
 
         return instance;
     }
