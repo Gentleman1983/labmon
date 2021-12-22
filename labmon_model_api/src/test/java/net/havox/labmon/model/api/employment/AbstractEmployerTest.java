@@ -16,9 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.api.user;
+package net.havox.labmon.model.api.employment;
 
-import net.havox.labmon.model.api.address.Address;
 import net.havox.labmon.model.api.contact.ContactOption;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
@@ -30,34 +29,18 @@ import java.util.Collection;
 import java.util.Set;
 
 /**
- * Abstract implementation of API test of {@link User}.
+ * Abstract implementation of API test of {@link Employer}.
  *
  * @author Christian Otto
  */
-public abstract class AbstractUserTest {
+public abstract class AbstractEmployerTest {
     /**
-     * Provides an {@link User} entity.
+     * Provides a {@link Employer} instance.
      *
-     * @return the entity
+     * @return the instance
      * @throws Exception
      */
-    public abstract User getUser() throws Exception;
-
-    /**
-     * Provides an {@link Address} entity.
-     *
-     * @return the entity
-     * @throws Exception
-     */
-    public abstract Address getAddress() throws Exception;
-
-    /**
-     * Provides an {@link Credentials} entity.
-     *
-     * @return the entity
-     * @throws Exception
-     */
-    public abstract Credentials getCredentials() throws Exception;
+    public abstract Employer getEmployer() throws Exception;
 
     /**
      * Provides a {@link ContactOption} entity.
@@ -68,140 +51,44 @@ public abstract class AbstractUserTest {
     public abstract ContactOption getContactOption() throws Exception;
 
     /**
-     * Tests if changes on the first name property work properly.
+     * Tests the modification of the country name.
      * <p>
-     * Given: A {@link User} instance
-     * When: modifying the first name attribute ({@link User#setFirstName(String)})
-     * Then: than the first name attribute ({@link User#getFirstName()}) should contain the new value
+     * Given: A {@link Employer} instance
+     * When: modifying the name attribute ({@link Employer#setName(String)})
+     * Then: than the name attribute ({@link Employer#getName()}) should contain the new value
      *
      * @throws Exception
      */
     @RepeatedTest(25)
-    public void testModifyUserFirstName() throws Exception {
-        User instanceUnderTest = getUser();
-        String instanceOriginalName = instanceUnderTest.getFirstName();
+    public void testModifyName() throws Exception {
+        String alphabet = ModelRandomGenerator.ALPHABETIC_STRING + " -";
+        String name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), alphabet);
 
-        String name;
-        do {
-            name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100),
-                    ModelRandomGenerator.ALPHANUMERIC_STRING);
+        Employer objectUnderTest = getEmployer();
+        String oldName = objectUnderTest.getName();
+
+        while (name.equals(oldName)) {
+            name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), alphabet);
         }
-        while (name.equals(instanceOriginalName));
+        Assertions.assertNotEquals(oldName, name);
 
-        Assertions.assertEquals(instanceOriginalName, instanceUnderTest.getFirstName());
-
-        instanceUnderTest.setFirstName(name);
-
-        Assertions.assertNotEquals(instanceOriginalName, instanceUnderTest.getFirstName());
-        Assertions.assertEquals(name, instanceUnderTest.getFirstName());
-    }
-
-    /**
-     * Tests if changes on the middle name property work properly.
-     * <p>
-     * Given: A {@link User} instance
-     * When: modifying the middle name attribute ({@link User#setMiddleName(String)})
-     * Then: than the middle name attribute ({@link User#getMiddleName()}) should contain the new value
-     *
-     * @throws Exception
-     */
-    @RepeatedTest(25)
-    public void testModifyUserMiddleName() throws Exception {
-        User instanceUnderTest = getUser();
-        String instanceOriginalName = instanceUnderTest.getMiddleName();
-
-        String name;
-        do {
-            name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100),
-                    ModelRandomGenerator.ALPHANUMERIC_STRING);
-        }
-        while (name.equals(instanceOriginalName));
-
-        Assertions.assertEquals(instanceOriginalName, instanceUnderTest.getMiddleName());
-
-        instanceUnderTest.setMiddleName(name);
-
-        Assertions.assertNotEquals(instanceOriginalName, instanceUnderTest.getMiddleName());
-        Assertions.assertEquals(name, instanceUnderTest.getMiddleName());
-    }
-
-    /**
-     * Tests if changes on the last name property work properly.
-     * <p>
-     * Given: A {@link User} instance
-     * When: modifying the last name attribute ({@link User#setLastName(String)})
-     * Then: than the last name attribute ({@link User#getLastName()}) should contain the new value
-     *
-     * @throws Exception
-     */
-    @RepeatedTest(25)
-    public void testModifyUserLastName() throws Exception {
-        User instanceUnderTest = getUser();
-        String instanceOriginalName = instanceUnderTest.getLastName();
-
-        String name;
-        do {
-            name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100),
-                    ModelRandomGenerator.ALPHANUMERIC_STRING);
-        }
-        while (name.equals(instanceOriginalName));
-
-        Assertions.assertEquals(instanceOriginalName, instanceUnderTest.getLastName());
-
-        instanceUnderTest.setLastName(name);
-
-        Assertions.assertNotEquals(instanceOriginalName, instanceUnderTest.getLastName());
-        Assertions.assertEquals(name, instanceUnderTest.getLastName());
-    }
-
-    /**
-     * Tests if changes on the address property work properly.
-     * <p>
-     * Given: A {@link User} instance
-     * When: modifying the address attribute ({@link User#setAddress(Address)})
-     * Then: than the address attribute ({@link User#getAddress()}) should contain the new value
-     *
-     * @throws Exception
-     */
-    @RepeatedTest(25)
-    public void testModifyAddress() throws Exception {
-        Address address = getAddress();
-
-        User objectUnderTest = getUser();
-        objectUnderTest.setAddress(address);
-        Assertions.assertEquals(address, objectUnderTest.getAddress());
-    }
-
-    /**
-     * Tests if changes on the credentials property work properly.
-     * <p>
-     * Given: A {@link User} instance
-     * When: modifying the credentials attribute ({@link User#setCredentials(Credentials)})
-     * Then: than the credentials attribute ({@link User#getCredentials()}) should contain the new value
-     *
-     * @throws Exception
-     */
-    @RepeatedTest(25)
-    public void testModifyCredentials() throws Exception {
-        Credentials credentials = getCredentials();
-
-        User objectUnderTest = getUser();
-        objectUnderTest.setCredentials(credentials);
-        Assertions.assertEquals(credentials, objectUnderTest.getCredentials());
+        objectUnderTest.setName(name);
+        Assertions.assertEquals(name, objectUnderTest.getName());
+        Assertions.assertNotEquals(oldName, objectUnderTest.getName());
     }
 
     /**
      * Tests if the contact options can be called.
      * <p>
-     * Given: A {@link User} instance
-     * When: getting the contact options ({@link User#getContactOptions()})
+     * Given: A {@link Employer} instance
+     * When: getting the contact options ({@link Employer#getContactOptions()})
      * Then: the result {@link Set} is not {@code null}
      *
      * @throws Exception
      */
     @Test
     public void testGetContactOptions() throws Exception {
-        User instanceUnderTest = getUser();
+        Employer instanceUnderTest = getEmployer();
 
         Assertions.assertNotNull(instanceUnderTest.getContactOptions());
         Assertions.assertTrue(instanceUnderTest.getContactOptions() instanceof Set<ContactOption<?>>);
@@ -210,15 +97,15 @@ public abstract class AbstractUserTest {
     /**
      * Tests if a contact option can be added properly.
      * <p>
-     * Given: A {@link User} instance
-     * When: adding a contact option ({@link User#addContactOption(ContactOption)})
-     * Then: than the contact options ({@link User#getContactOptions()}) should contain the new value
+     * Given: A {@link Employer} instance
+     * When: adding a contact option ({@link Employer#addContactOption(ContactOption)})
+     * Then: than the contact options ({@link Employer#getContactOptions()}) should contain the new value
      *
      * @throws Exception
      */
     @RepeatedTest(25)
     public void testAddContactOption() throws Exception {
-        User instanceUnderTest = getUser();
+        Employer instanceUnderTest = getEmployer();
 
         ContactOption<?> option;
         do {
@@ -236,15 +123,15 @@ public abstract class AbstractUserTest {
     /**
      * Tests if a contact option can be added properly.
      * <p>
-     * Given: A {@link User} instance
-     * When: adding a contact option ({@link User#addContactOptions(ContactOption[])})
-     * Then: than the contact options ({@link User#getContactOptions()}) should contain the new value
+     * Given: A {@link Employer} instance
+     * When: adding a contact option ({@link Employer#addContactOptions(ContactOption[])})
+     * Then: than the contact options ({@link Employer#getContactOptions()}) should contain the new value
      *
      * @throws Exception
      */
     @RepeatedTest(25)
     public void testAddContactOptionsArray() throws Exception {
-        User instanceUnderTest = getUser();
+        Employer instanceUnderTest = getEmployer();
 
         ContactOption<?> option = getContactOption();
         do {
@@ -262,15 +149,15 @@ public abstract class AbstractUserTest {
     /**
      * Tests if a contact option can be added properly.
      * <p>
-     * Given: A {@link User} instance
-     * When: adding a contact option ({@link User#addContactOptions(Collection)})
-     * Then: than the contact options ({@link User#getContactOptions()}) should contain the new value
+     * Given: A {@link Employer} instance
+     * When: adding a contact option ({@link Employer#addContactOptions(Collection)})
+     * Then: than the contact options ({@link Employer#getContactOptions()}) should contain the new value
      *
      * @throws Exception
      */
     @RepeatedTest(25)
     public void testAddContactOptionsCollection() throws Exception {
-        User instanceUnderTest = getUser();
+        Employer instanceUnderTest = getEmployer();
 
         ContactOption<?> option = getContactOption();
         do {
@@ -289,16 +176,16 @@ public abstract class AbstractUserTest {
      * Tests if a contact option can be removed properly.
      *
      * <p>
-     * Given: A {@link User} instance
+     * Given: A {@link Employer} instance
      * And: containing a {@link ContactOption}
-     * When: removing the contact option ({@link User#removeContactOption(ContactOption)})
-     * Then: than the contact options ({@link User#getContactOptions()}) should not contain the value
+     * When: removing the contact option ({@link Employer#removeContactOption(ContactOption)})
+     * Then: than the contact options ({@link Employer#getContactOptions()}) should not contain the value
      *
      * @throws Exception
      */
     @RepeatedTest(25)
     public void testRemoveContactOption() throws Exception {
-        User instanceUnderTest = getUser();
+        Employer instanceUnderTest = getEmployer();
 
         ContactOption<?> option;
         do {
@@ -328,16 +215,16 @@ public abstract class AbstractUserTest {
      * Tests if a contact option can be removed properly.
      *
      * <p>
-     * Given: A {@link User} instance
+     * Given: A {@link Employer} instance
      * And: containing a {@link ContactOption}
-     * When: removing the contact option ({@link User#removeContactOptions(ContactOption[])})
-     * Then: than the contact options ({@link User#getContactOptions()}) should not contain the value
+     * When: removing the contact option ({@link Employer#removeContactOptions(ContactOption[])})
+     * Then: than the contact options ({@link Employer#getContactOptions()}) should not contain the value
      *
      * @throws Exception
      */
     @RepeatedTest(25)
     public void testRemoveContactOptionsArray() throws Exception {
-        User instanceUnderTest = getUser();
+        Employer instanceUnderTest = getEmployer();
 
         ContactOption<?> option;
         do {
@@ -367,16 +254,16 @@ public abstract class AbstractUserTest {
      * Tests if a contact option can be removed properly.
      *
      * <p>
-     * Given: A {@link User} instance
+     * Given: A {@link Employer} instance
      * And: containing a {@link ContactOption}
-     * When: removing the contact option ({@link User#removeContactOptions(Collection)})
-     * Then: than the contact options ({@link User#getContactOptions()}) should not contain the value
+     * When: removing the contact option ({@link Employer#removeContactOptions(Collection)})
+     * Then: than the contact options ({@link Employer#getContactOptions()}) should not contain the value
      *
      * @throws Exception
      */
     @RepeatedTest(25)
     public void testRemoveContactOptionsCollection() throws Exception {
-        User instanceUnderTest = getUser();
+        Employer instanceUnderTest = getEmployer();
 
         ContactOption<?> option;
         do {
