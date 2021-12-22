@@ -267,7 +267,7 @@ public abstract class AbstractEmploymentValidationTest {
     private void checkValidInstance(Employment instanceUnderTest, Boolean expectedValid) throws Exception {
         EmploymentValidator validator = getEmploymentValidator();
         Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the employer '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
+                "Expected the employment '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
                         "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
                         ".");
     }
