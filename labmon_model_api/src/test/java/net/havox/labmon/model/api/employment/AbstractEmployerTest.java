@@ -19,6 +19,7 @@
 package net.havox.labmon.model.api.employment;
 
 import net.havox.labmon.model.api.contact.ContactOption;
+import net.havox.labmon.model.utils.validation.employment.EmployerValidator;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
@@ -287,5 +288,23 @@ public abstract class AbstractEmployerTest {
 
         Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
         Assertions.assertTrue(removalResult);
+    }
+
+    /**
+     * Test if the validator is properly provided.
+     * <p>
+     * Given: A {@link Employer} instance
+     * When: getting the validator ({@link Employer#getValidator()}
+     * Then: the validator shall be instantiated
+     * And: the validator shall be of type {@link EmployerValidator}
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetValidator() throws Exception {
+        Employer instanceUnderTest = getEmployer();
+
+        Assertions.assertNotNull(instanceUnderTest.getValidator());
+        Assertions.assertTrue(instanceUnderTest.getValidator() instanceof EmployerValidator);
     }
 }
