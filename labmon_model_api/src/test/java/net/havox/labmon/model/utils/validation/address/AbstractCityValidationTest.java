@@ -18,7 +18,6 @@
 
 package net.havox.labmon.model.utils.validation.address;
 
-import net.havox.labmon.model.api.address.Address;
 import net.havox.labmon.model.api.address.City;
 import net.havox.labmon.model.api.address.Country;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
