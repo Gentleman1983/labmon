@@ -123,10 +123,7 @@ public abstract class AbstractCountryValidationTest {
      */
     private void checkValidInstance(Country instanceUnderTest, Boolean expectedValid) throws Exception {
         CountryValidator validator = getCountryValidator();
-        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the country '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
-                        ".");
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest), "Expected the country '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) + ".");
     }
 
     /**
@@ -138,8 +135,7 @@ public abstract class AbstractCountryValidationTest {
     private Country getValidCountryInstance() throws Exception {
         Country instance = getCountry();
 
-        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
-                ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING));
 
         return instance;
     }

@@ -106,8 +106,7 @@ public class ModelRandomGenerator {
         } else { // Bound calculation caused int overflow.
             do {
                 result = randomInt();
-            }
-            while (result < min || result > max);
+            } while (result < min || result > max);
         }
 
         return result;
@@ -147,8 +146,7 @@ public class ModelRandomGenerator {
         } else { // Bound calculation caused int overflow.
             do {
                 result = randomLong();
-            }
-            while (result < min || result > max);
+            } while (result < min || result > max);
         }
 
         return result;

@@ -55,24 +55,19 @@ public interface EmploymentValidator {
             validationErrors.add("Expected user not to be null.");
         } else if (!instanceUnderValidation.getUser().getValidator().isUserValid(instanceUnderValidation.getUser())) {
             validationErrors.add("Expected user not to be valid.");
-            validationErrors.addAll(prefixValidationMessages(
-                    instanceUnderValidation.getUser().getValidator().validateUser(instanceUnderValidation.getUser()),
-                    "User"));
+            validationErrors.addAll(prefixValidationMessages(instanceUnderValidation.getUser().getValidator().validateUser(instanceUnderValidation.getUser()), "User"));
         }
 
         if (null == instanceUnderValidation.getEmployer()) {
             validationErrors.add("Expected employer not to be null.");
         } else if (!instanceUnderValidation.getEmployer().getValidator().isValid(instanceUnderValidation.getEmployer())) {
             validationErrors.add("Expected employer not to be valid.");
-            validationErrors.addAll(prefixValidationMessages(
-                    instanceUnderValidation.getEmployer().getValidator().validate(instanceUnderValidation.getEmployer()),
-                    "Employer"));
+            validationErrors.addAll(prefixValidationMessages(instanceUnderValidation.getEmployer().getValidator().validate(instanceUnderValidation.getEmployer()), "Employer"));
         }
 
-        if (null == instanceUnderValidation.getEmploymentStartDate()) {
+        if (null == instanceUnderValidation.getStartDate()) {
             validationErrors.add("Expected start date not to be null.");
-        } else if (null != instanceUnderValidation.getEmploymentEndDate() &&
-                instanceUnderValidation.getEmploymentStartDate().isAfter(instanceUnderValidation.getEmploymentEndDate())) {
+        } else if (null != instanceUnderValidation.getEndDate() && instanceUnderValidation.getStartDate().isAfter(instanceUnderValidation.getEndDate())) {
             validationErrors.add("Expected the start date before or equal to the end date.");
         }
 

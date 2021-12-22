@@ -38,8 +38,10 @@ import java.util.List;
  */
 @ExtendWith(MockitoExtension.class)
 public abstract class AbstractCityValidationTest {
-    @Mock private Country mockedCountry;
-    @Mock private CountryValidator mockedCountryValidator;
+    @Mock
+    private Country mockedCountry;
+    @Mock
+    private CountryValidator mockedCountryValidator;
 
     /**
      * Provides an {@link City} entity.
@@ -249,10 +251,7 @@ public abstract class AbstractCityValidationTest {
      */
     private void checkValidInstance(City instanceUnderTest, Boolean expectedValid) throws Exception {
         CityValidator validator = getCityValidator();
-        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the city '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
-                        ".");
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest), "Expected the city '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) + ".");
     }
 
     /**
@@ -264,8 +263,7 @@ public abstract class AbstractCityValidationTest {
     private City getValidCityInstance() throws Exception {
         City instance = getCity();
 
-        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
-                ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING));
         instance.setZipCode(Integer.toString(ModelRandomGenerator.randomIntInRange(10000, 99999)));
         instance.setCountry(getValidCountryInstance());
 
@@ -281,8 +279,7 @@ public abstract class AbstractCityValidationTest {
     private Country getValidCountryInstance() throws Exception {
         Country instance = getCountry();
 
-        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
-                ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING));
 
         return instance;
     }

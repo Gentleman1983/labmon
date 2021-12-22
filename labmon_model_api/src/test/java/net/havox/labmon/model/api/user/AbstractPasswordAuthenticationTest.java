@@ -54,10 +54,8 @@ public abstract class AbstractPasswordAuthenticationTest {
 
         String newPassPhrase;
         do {
-            newPassPhrase = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100),
-                    ModelRandomGenerator.ALPHANUMERIC_STRING);
-        }
-        while (newPassPhrase.equals(instanceOriginalPassPhrase));
+            newPassPhrase = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100), ModelRandomGenerator.ALPHANUMERIC_STRING);
+        } while (newPassPhrase.equals(instanceOriginalPassPhrase));
 
         Assertions.assertEquals(instanceOriginalPassPhrase, instanceUnderTest.getPassPhrase());
 
@@ -138,8 +136,7 @@ public abstract class AbstractPasswordAuthenticationTest {
     private PasswordAuthentication getRandomPassphraseAuthentication() throws Exception {
         PasswordAuthentication instance = getPasswordAuthentication();
 
-        instance.setPassPhrase(ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100),
-                ModelRandomGenerator.ALPHANUMERIC_STRING));
+        instance.setPassPhrase(ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100), ModelRandomGenerator.ALPHANUMERIC_STRING));
 
         return instance;
     }

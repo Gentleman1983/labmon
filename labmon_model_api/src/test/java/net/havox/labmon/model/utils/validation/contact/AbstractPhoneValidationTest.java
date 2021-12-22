@@ -122,14 +122,9 @@ public abstract class AbstractPhoneValidationTest {
      */
     private void checkValidInstance(Phone instanceUnderTest, Boolean expectedValid) throws Exception {
         PhoneValidator validator = getPhoneValidator();
-        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the phone '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
-                        ".");
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest), "Expected the phone '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) + ".");
         if (null != instanceUnderTest) {
-            Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(),
-                    "Expected the phone '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                            "to be a valid instance.");
+            Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(), "Expected the phone '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance.");
         }
     }
 

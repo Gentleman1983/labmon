@@ -39,8 +39,10 @@ import java.util.List;
  */
 @ExtendWith(MockitoExtension.class)
 public abstract class AbstractAddressValidationTest {
-    @Mock private City mockedCity;
-    @Mock private CityValidator mockedCityValidator;
+    @Mock
+    private City mockedCity;
+    @Mock
+    private CityValidator mockedCityValidator;
 
     /**
      * Provides an {@link Address} entity.
@@ -221,10 +223,7 @@ public abstract class AbstractAddressValidationTest {
      */
     private void checkValidInstance(Address instanceUnderTest, Boolean expectedValid) throws Exception {
         AddressValidator validator = getAddressValidator();
-        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the address '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
-                        ".");
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest), "Expected the address '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) + ".");
     }
 
     /**
@@ -236,8 +235,7 @@ public abstract class AbstractAddressValidationTest {
     private Address getValidAddressInstance() throws Exception {
         Address instance = getAddress();
 
-        instance.setStreet(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
-                ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setStreet(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING));
         instance.setHouseNumber(Integer.toString(ModelRandomGenerator.randomInt(9999)));
         instance.setCity(getValidCityInstance());
 
@@ -253,8 +251,7 @@ public abstract class AbstractAddressValidationTest {
     private City getValidCityInstance() throws Exception {
         City instance = getCity();
 
-        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
-                ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING));
         instance.setZipCode(Integer.toString(ModelRandomGenerator.randomIntInRange(10000, 99999)));
         instance.setCountry(getValidCountryInstance());
 

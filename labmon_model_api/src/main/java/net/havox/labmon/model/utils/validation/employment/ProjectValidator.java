@@ -98,19 +98,15 @@ public interface ProjectValidator {
         } else {
             if (!instanceUnderValidation.getEmployment().getValidator().isValid(instanceUnderValidation.getEmployment())) {
                 validationErrors.add("Expected employment not to be valid.");
-                validationErrors.addAll(prefixValidationMessages(
-                        instanceUnderValidation.getEmployment().getValidator().validate(instanceUnderValidation.getEmployment()),
-                        "Employment"));
+                validationErrors.addAll(prefixValidationMessages(instanceUnderValidation.getEmployment().getValidator().validate(instanceUnderValidation.getEmployment()), "Employment"));
             }
 
-            if (null != instanceUnderValidation.getEmployment().getEmploymentEndDate()) {
-                if (null != instanceUnderValidation.getStartDate() &&
-                        instanceUnderValidation.getStartDate().isAfter(instanceUnderValidation.getEmployment().getEmploymentEndDate())) {
+            if (null != instanceUnderValidation.getEmployment().getEndDate()) {
+                if (null != instanceUnderValidation.getStartDate() && instanceUnderValidation.getStartDate().isAfter(instanceUnderValidation.getEmployment().getEndDate())) {
                     validationErrors.add("Expected the start date not to be after the employment end date.");
                 }
 
-                if (null != instanceUnderValidation.getEndDate() &&
-                        instanceUnderValidation.getEndDate().isAfter(instanceUnderValidation.getEmployment().getEmploymentEndDate())) {
+                if (null != instanceUnderValidation.getEndDate() && instanceUnderValidation.getEndDate().isAfter(instanceUnderValidation.getEmployment().getEndDate())) {
                     validationErrors.add("Expected the end date not to be after the employment end date.");
                 }
             }
@@ -127,14 +123,11 @@ public interface ProjectValidator {
         if (null == instanceUnderValidation.getStartDate()) {
             validationErrors.add("Expected start date not to be null.");
         } else {
-            if (null != instanceUnderValidation.getEndDate() &&
-                    instanceUnderValidation.getStartDate().isAfter(instanceUnderValidation.getEndDate())) {
+            if (null != instanceUnderValidation.getEndDate() && instanceUnderValidation.getStartDate().isAfter(instanceUnderValidation.getEndDate())) {
                 validationErrors.add("Expected the start date before or equal to the end date.");
             }
 
-            if (null != instanceUnderValidation.getEmployment() &&
-                    null != instanceUnderValidation.getEmployment().getEmploymentStartDate() &&
-                    instanceUnderValidation.getStartDate().isBefore(instanceUnderValidation.getEmployment().getEmploymentStartDate())) {
+            if (null != instanceUnderValidation.getEmployment() && null != instanceUnderValidation.getEmployment().getStartDate() && instanceUnderValidation.getStartDate().isBefore(instanceUnderValidation.getEmployment().getStartDate())) {
                 validationErrors.add("The start date has not to be before the employment start date.");
             }
         }

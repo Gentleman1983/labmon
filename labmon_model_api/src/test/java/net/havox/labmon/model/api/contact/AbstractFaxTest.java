@@ -35,7 +35,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
  */
 @ExtendWith(MockitoExtension.class)
 public abstract class AbstractFaxTest {
-    @Mock private Fax mockedInstance;
+    @Mock
+    private Fax mockedInstance;
 
     /**
      * Provides an {@link Fax} entity.
@@ -73,7 +74,7 @@ public abstract class AbstractFaxTest {
 
     /**
      * Tests if a proper validator is provided.
-     *
+     * <p>
      * Given: A {@link Fax} instance
      * When: calling {@link Fax#getContactOptionValidator()}
      * Then: the result is not {@code null}

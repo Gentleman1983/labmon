@@ -35,7 +35,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
  */
 @ExtendWith(MockitoExtension.class)
 public abstract class AbstractPhoneTest {
-    @Mock private Phone mockedInstance;
+    @Mock
+    private Phone mockedInstance;
 
     /**
      * Provides an {@link Phone} entity.
@@ -73,7 +74,7 @@ public abstract class AbstractPhoneTest {
 
     /**
      * Tests if a proper validator is provided.
-     *
+     * <p>
      * Given: A {@link Phone} instance
      * When: calling {@link Phone#getContactOptionValidator()}
      * Then: the result is not {@code null}

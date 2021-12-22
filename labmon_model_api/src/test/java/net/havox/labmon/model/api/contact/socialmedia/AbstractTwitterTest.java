@@ -34,7 +34,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
  */
 @ExtendWith(MockitoExtension.class)
 public abstract class AbstractTwitterTest {
-    @Mock private Twitter mockedInstance;
+    @Mock
+    private Twitter mockedInstance;
 
     /**
      * Provides an {@link Twitter} entity.
@@ -94,7 +95,7 @@ public abstract class AbstractTwitterTest {
 
     /**
      * Tests if a proper validator is provided.
-     *
+     * <p>
      * Given: A {@link Twitter} instance
      * When: calling {@link Twitter#getContactOptionValidator()}
      * Then: the result is not {@code null}

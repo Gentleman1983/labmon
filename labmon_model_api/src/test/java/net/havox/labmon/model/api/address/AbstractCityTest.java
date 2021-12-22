@@ -57,15 +57,13 @@ public abstract class AbstractCityTest {
      */
     @RepeatedTest(25)
     public void testModifyZipCode() throws Exception {
-        String zipCode = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(4, 8),
-                ModelRandomGenerator.ALPHANUMERIC_STRING);
+        String zipCode = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(4, 8), ModelRandomGenerator.ALPHANUMERIC_STRING);
 
         City objectUnderTest = getCity();
         String oldZipCode = objectUnderTest.getZipCode();
 
         while (zipCode.equals(oldZipCode)) {
-            zipCode = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(4, 8),
-                    ModelRandomGenerator.ALPHANUMERIC_STRING);
+            zipCode = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(4, 8), ModelRandomGenerator.ALPHANUMERIC_STRING);
         }
         Assertions.assertNotEquals(oldZipCode, zipCode);
 
@@ -129,7 +127,7 @@ public abstract class AbstractCityTest {
 
     /**
      * Tests if a proper validator is provided.
-     *
+     * <p>
      * Given: A {@link City} instance
      * When: calling {@link City#getValidator()}
      * Then: the result is not {@code null}

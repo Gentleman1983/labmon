@@ -123,10 +123,7 @@ public abstract class AbstractEmployerValidationTest {
      */
     private void checkValidInstance(Employer instanceUnderTest, Boolean expectedValid) throws Exception {
         EmployerValidator validator = getEmployerValidator();
-        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the employer '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
-                        ".");
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest), "Expected the employer '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) + ".");
     }
 
     /**
@@ -138,8 +135,7 @@ public abstract class AbstractEmployerValidationTest {
     private Employer getValidEmployerInstance() throws Exception {
         Employer instance = getEmployer();
 
-        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
-                ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING));
 
         return instance;
     }

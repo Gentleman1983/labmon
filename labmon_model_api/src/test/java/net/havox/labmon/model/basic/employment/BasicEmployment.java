@@ -24,6 +24,8 @@ import net.havox.labmon.model.api.user.User;
 import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
 import net.havox.labmon.model.utils.validation.employment.BasicEmploymentValidator;
 import net.havox.labmon.model.utils.validation.employment.EmploymentValidator;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.time.LocalDate;
 
@@ -70,27 +72,41 @@ public class BasicEmployment extends AbstractChangeAwareAndIdentifiableClass imp
     }
 
     @Override
-    public LocalDate getEmploymentStartDate() {
+    public LocalDate getStartDate() {
         return start;
     }
 
     @Override
-    public void setEmploymentStartDate(LocalDate startDate) {
+    public void setStartDate(LocalDate startDate) {
         start = startDate;
     }
 
     @Override
-    public LocalDate getEmploymentEndDate() {
+    public LocalDate getEndDate() {
         return end;
     }
 
     @Override
-    public void setEmploymentEndDate(LocalDate endDate) {
+    public void setEndDate(LocalDate endDate) {
         end = endDate;
     }
 
     @Override
     public EmploymentValidator getValidator() {
         return new BasicEmploymentValidator();
+    }
+
+    @Override
+    public String toString() {
+        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE);
+
+        builder.append("id", getId());
+        builder.append("user", getUser());
+        builder.append("employer", getEmployer());
+        builder.append("description", getDescription());
+        builder.append("startDate", getStartDate());
+        builder.append("endDate", getEndDate());
+
+        return builder.build();
     }
 }

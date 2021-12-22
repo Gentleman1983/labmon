@@ -39,12 +39,12 @@ import java.util.Set;
  * @author Christian Otto
  */
 public class BasicUser extends AbstractChangeAwareAndIdentifiableClass implements User {
+    private final Set<ContactOption<?>> contactOptions = new HashSet<>();
     private String firstName;
     private String middleName;
     private String lastName;
     private Address address;
     private Credentials credentials;
-    private final Set<ContactOption<?>> contactOptions = new HashSet<>();
 
     @Override
     public String getFirstName() {

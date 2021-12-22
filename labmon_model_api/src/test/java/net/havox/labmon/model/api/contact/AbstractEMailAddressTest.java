@@ -34,7 +34,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
  */
 @ExtendWith(MockitoExtension.class)
 public abstract class AbstractEMailAddressTest {
-    @Mock private EMailAddress mockedInstance;
+    @Mock
+    private EMailAddress mockedInstance;
 
     /**
      * Provides an {@link EMailAddress} entity.
@@ -73,7 +74,7 @@ public abstract class AbstractEMailAddressTest {
 
     /**
      * Tests if a proper validator is provided.
-     *
+     * <p>
      * Given: A {@link EMailAddress} instance
      * When: calling {@link EMailAddress#getContactOptionValidator()}
      * Then: the result is not {@code null}
@@ -93,7 +94,7 @@ public abstract class AbstractEMailAddressTest {
      * Tests if {@link EMailAddress#isValid()} results in an exception.
      */
     @Test
-    public void testIsValidDoesNotResultInErrors(){
+    public void testIsValidDoesNotResultInErrors() {
         Assertions.assertNotNull(mockedInstance);
         mockedInstance.isValid();
     }

@@ -47,7 +47,7 @@ public interface CountryValidator {
 
         List<String> validationErrors = new ArrayList<>();
 
-        if(StringUtils.isAllBlank(validationTarget.getName())) {
+        if (StringUtils.isAllBlank(validationTarget.getName())) {
             validationErrors.add("Expected the country name not to be empty nor blank.");
         }
 

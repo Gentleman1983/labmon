@@ -128,8 +128,7 @@ public abstract class AbstractThreemaValidationTest {
     public void testThreemaWithSevenDigitThreemaIdIsInvalid() throws Exception {
         Threema instanceUnderTest = getValidThreemaInstance();
 
-        instanceUnderTest.setThreemaId(ModelRandomGenerator.randomString(7,
-                ModelRandomGenerator.ALPHANUMERIC_STRING));
+        instanceUnderTest.setThreemaId(ModelRandomGenerator.randomString(7, ModelRandomGenerator.ALPHANUMERIC_STRING));
 
         checkValidInstance(instanceUnderTest, false);
     }
@@ -148,8 +147,7 @@ public abstract class AbstractThreemaValidationTest {
     public void testThreemaWithNineDigitThreemaIdIsInvalid() throws Exception {
         Threema instanceUnderTest = getValidThreemaInstance();
 
-        instanceUnderTest.setThreemaId(ModelRandomGenerator.randomString(9,
-                ModelRandomGenerator.ALPHANUMERIC_STRING));
+        instanceUnderTest.setThreemaId(ModelRandomGenerator.randomString(9, ModelRandomGenerator.ALPHANUMERIC_STRING));
 
         checkValidInstance(instanceUnderTest, false);
     }
@@ -163,14 +161,9 @@ public abstract class AbstractThreemaValidationTest {
      */
     private void checkValidInstance(Threema instanceUnderTest, Boolean expectedValid) throws Exception {
         ThreemaValidator validator = getThreemaValidator();
-        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the Threema account '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
-                        ".");
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest), "Expected the Threema account '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) + ".");
         if (null != instanceUnderTest) {
-            Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(),
-                    "Expected the Threema account '" + instanceUnderTest + "' " +
-                            (expectedValid ? "" : " not") + "to be a valid instance.");
+            Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(), "Expected the Threema account '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance.");
         }
     }
 

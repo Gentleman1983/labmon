@@ -189,10 +189,7 @@ public abstract class AbstractUserValidationTest {
      */
     private void checkValidInstance(User instanceUnderTest, Boolean expectedValid) throws Exception {
         UserValidator validator = getValidator();
-        Assertions.assertEquals(expectedValid, validator.isUserValid(instanceUnderTest),
-                "Expected the user '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " +
-                        validator.validateUser(instanceUnderTest) + ".");
+        Assertions.assertEquals(expectedValid, validator.isUserValid(instanceUnderTest), "Expected the user '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance. The validation result was " + validator.validateUser(instanceUnderTest) + ".");
     }
 
     /**
@@ -219,7 +216,6 @@ public abstract class AbstractUserValidationTest {
      * @return the name
      */
     private String getRandomName(int minLength, int maxLength) {
-        return ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(minLength, maxLength),
-                ModelRandomGenerator.ALPHABETIC_STRING);
+        return ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(minLength, maxLength), ModelRandomGenerator.ALPHABETIC_STRING);
     }
 }

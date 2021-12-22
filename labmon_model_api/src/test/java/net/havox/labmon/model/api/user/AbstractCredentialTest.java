@@ -60,10 +60,8 @@ public abstract class AbstractCredentialTest {
 
         String name;
         do {
-            name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100),
-                    ModelRandomGenerator.ALPHANUMERIC_STRING);
-        }
-        while (name.equals(instanceOriginalName));
+            name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100), ModelRandomGenerator.ALPHANUMERIC_STRING);
+        } while (name.equals(instanceOriginalName));
 
         Assertions.assertEquals(instanceOriginalName, instanceUnderTest.getUserName());
 

@@ -111,8 +111,7 @@ public abstract class AbstractEmployerTest {
         ContactOption<?> option;
         do {
             option = getContactOption();
-        }
-        while (instanceUnderTest.getContactOptions().contains(option));
+        } while (instanceUnderTest.getContactOptions().contains(option));
 
         Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
 
@@ -189,8 +188,7 @@ public abstract class AbstractEmployerTest {
         ContactOption<?> option;
         do {
             option = getContactOption();
-        }
-        while (instanceUnderTest.getContactOptions().contains(option));
+        } while (instanceUnderTest.getContactOptions().contains(option));
 
         Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
 
@@ -228,8 +226,7 @@ public abstract class AbstractEmployerTest {
         ContactOption<?> option;
         do {
             option = getContactOption();
-        }
-        while (instanceUnderTest.getContactOptions().contains(option));
+        } while (instanceUnderTest.getContactOptions().contains(option));
 
         Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
 
@@ -267,8 +264,7 @@ public abstract class AbstractEmployerTest {
         ContactOption<?> option;
         do {
             option = getContactOption();
-        }
-        while (instanceUnderTest.getContactOptions().contains(option));
+        } while (instanceUnderTest.getContactOptions().contains(option));
 
         Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
 

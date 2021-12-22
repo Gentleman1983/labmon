@@ -34,7 +34,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
  */
 @ExtendWith(MockitoExtension.class)
 public abstract class AbstractThreemaTest {
-    @Mock private Threema mockedInstance;
+    @Mock
+    private Threema mockedInstance;
 
     /**
      * Provides an {@link Threema} entity.
@@ -73,7 +74,7 @@ public abstract class AbstractThreemaTest {
 
     /**
      * Tests if a proper validator is provided.
-     *
+     * <p>
      * Given: A {@link Threema} instance
      * When: calling {@link Threema#getContactOptionValidator()}
      * Then: the result is not {@code null}

@@ -203,7 +203,7 @@ public abstract class AbstractEmploymentValidationTest {
     public void testEmploymentWithoutStartDateIsInvalid() throws Exception {
         Employment instanceUnderTest = getValidEmploymentInstance();
 
-        instanceUnderTest.setEmploymentStartDate(null);
+        instanceUnderTest.setStartDate(null);
         checkValidInstance(instanceUnderTest, false);
     }
 
@@ -226,8 +226,8 @@ public abstract class AbstractEmploymentValidationTest {
         LocalDate endDate = startDate.minusDays(1);
         Assertions.assertTrue(endDate.isBefore(startDate));
 
-        instanceUnderTest.setEmploymentStartDate(startDate);
-        instanceUnderTest.setEmploymentEndDate(endDate);
+        instanceUnderTest.setStartDate(startDate);
+        instanceUnderTest.setEndDate(endDate);
 
         checkValidInstance(instanceUnderTest, false);
     }
@@ -251,8 +251,8 @@ public abstract class AbstractEmploymentValidationTest {
         LocalDate endDate = startDate.minusDays(ModelRandomGenerator.randomLongInRange(1, 255));
         Assertions.assertTrue(endDate.isBefore(startDate));
 
-        instanceUnderTest.setEmploymentStartDate(startDate);
-        instanceUnderTest.setEmploymentEndDate(endDate);
+        instanceUnderTest.setStartDate(startDate);
+        instanceUnderTest.setEndDate(endDate);
 
         checkValidInstance(instanceUnderTest, false);
     }
@@ -266,10 +266,7 @@ public abstract class AbstractEmploymentValidationTest {
      */
     private void checkValidInstance(Employment instanceUnderTest, Boolean expectedValid) throws Exception {
         EmploymentValidator validator = getEmploymentValidator();
-        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the employment '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
-                        ".");
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest), "Expected the employment '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) + ".");
     }
 
     /**
@@ -283,9 +280,8 @@ public abstract class AbstractEmploymentValidationTest {
 
         instance.setUser(getValidUserInstance());
         instance.setEmployer(getValidEmployerInstance());
-        instance.setDescription(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
-                ModelRandomGenerator.ALPHABETIC_STRING));
-        instance.setEmploymentStartDate(ModelRandomGenerator.randomLocalDate());
+        instance.setDescription(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setStartDate(ModelRandomGenerator.randomLocalDate());
 
         return instance;
     }
@@ -299,8 +295,7 @@ public abstract class AbstractEmploymentValidationTest {
     private Employer getValidEmployerInstance() throws Exception {
         Employer instance = getEmployer();
 
-        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
-                ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING));
 
         return instance;
     }
@@ -329,7 +324,6 @@ public abstract class AbstractEmploymentValidationTest {
      * @return the name
      */
     private String getRandomName(int minLength, int maxLength) {
-        return ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(minLength, maxLength),
-                ModelRandomGenerator.ALPHABETIC_STRING);
+        return ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(minLength, maxLength), ModelRandomGenerator.ALPHABETIC_STRING);
     }
 }

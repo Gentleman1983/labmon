@@ -83,8 +83,7 @@ public class AbstractChangeAwareClass<T extends AbstractChangeAwareClass<T>> imp
         } else if (object == null) {
             return false;
         } else if (this.getClass() == object.getClass()) {
-            @SuppressWarnings("unchecked")
-            T typedObject = (T) object;
+            @SuppressWarnings("unchecked") T typedObject = (T) object;
 
             if (this.getId() == null) {
                 return (this == typedObject);

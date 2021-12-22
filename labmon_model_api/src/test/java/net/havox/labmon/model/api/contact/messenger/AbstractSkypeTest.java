@@ -34,7 +34,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
  */
 @ExtendWith(MockitoExtension.class)
 public abstract class AbstractSkypeTest {
-    @Mock private Skype mockedInstance;
+    @Mock
+    private Skype mockedInstance;
 
     /**
      * Provides an {@link Skype} entity.
@@ -73,7 +74,7 @@ public abstract class AbstractSkypeTest {
 
     /**
      * Tests if a proper validator is provided.
-     *
+     * <p>
      * Given: A {@link Skype} instance
      * When: calling {@link Skype#getContactOptionValidator()}
      * Then: the result is not {@code null}

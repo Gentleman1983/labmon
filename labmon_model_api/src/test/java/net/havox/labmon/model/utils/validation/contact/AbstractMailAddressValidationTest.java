@@ -190,14 +190,9 @@ public abstract class AbstractMailAddressValidationTest {
      */
     private void checkValidInstance(MailAddress instanceUnderTest, Boolean expectedValid) throws Exception {
         MailAddressValidator validator = getMailAddressValidator();
-        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the mail address '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
-                        ".");
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest), "Expected the mail address '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) + ".");
         if (null != instanceUnderTest) {
-            Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(),
-                    "Expected the mail address '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                            "to be a valid instance.");
+            Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(), "Expected the mail address '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance.");
         }
     }
 
@@ -210,8 +205,7 @@ public abstract class AbstractMailAddressValidationTest {
     private MailAddress getValidMailAddressInstance() throws Exception {
         MailAddress instance = getMailAddress();
 
-        instance.setReceiver(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
-                ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setReceiver(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING));
         instance.setAddress(getValidAddressInstance());
 
         return instance;
@@ -226,8 +220,7 @@ public abstract class AbstractMailAddressValidationTest {
     private Address getValidAddressInstance() throws Exception {
         Address instance = getAddress();
 
-        instance.setStreet(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
-                ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setStreet(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING));
         instance.setHouseNumber(Integer.toString(ModelRandomGenerator.randomInt(9999)));
         instance.setCity(getValidCityInstance());
 
@@ -243,8 +236,7 @@ public abstract class AbstractMailAddressValidationTest {
     private City getValidCityInstance() throws Exception {
         City instance = getCity();
 
-        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
-                ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING));
         instance.setZipCode(Integer.toString(ModelRandomGenerator.randomIntInRange(10000, 99999)));
         instance.setCountry(getValidCountryInstance());
 
@@ -260,8 +252,7 @@ public abstract class AbstractMailAddressValidationTest {
     private Country getValidCountryInstance() throws Exception {
         Country instance = getCountry();
 
-        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
-                ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING));
 
         return instance;
     }

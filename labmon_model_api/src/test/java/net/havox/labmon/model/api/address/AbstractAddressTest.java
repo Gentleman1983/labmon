@@ -85,8 +85,7 @@ public abstract class AbstractAddressTest {
     @RepeatedTest(25)
     public void testModifyHouseNumber() throws Exception {
         int number = ModelRandomGenerator.randomIntInRange(1, 9999);
-        String letter = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(0, 1),
-                ModelRandomGenerator.ALPHABETIC_STRING);
+        String letter = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(0, 1), ModelRandomGenerator.ALPHABETIC_STRING);
         String houseNumber = "" + number + letter;
 
         Address objectUnderTest = getAddress();
@@ -94,8 +93,7 @@ public abstract class AbstractAddressTest {
 
         while (houseNumber.equals(oldHouseNumber)) {
             number = ModelRandomGenerator.randomIntInRange(1, 9999);
-            letter = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(0, 1),
-                    ModelRandomGenerator.ALPHABETIC_STRING);
+            letter = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(0, 1), ModelRandomGenerator.ALPHABETIC_STRING);
             houseNumber = "" + number + letter;
         }
         Assertions.assertNotEquals(oldHouseNumber, houseNumber);
@@ -132,7 +130,7 @@ public abstract class AbstractAddressTest {
 
     /**
      * Tests if a proper validator is provided.
-     *
+     * <p>
      * Given: A {@link Address} instance
      * When: calling {@link Address#getValidator()}
      * Then: the result is not {@code null}

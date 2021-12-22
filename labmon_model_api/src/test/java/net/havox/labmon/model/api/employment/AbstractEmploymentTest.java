@@ -140,8 +140,8 @@ public abstract class AbstractEmploymentTest {
      * Tests the modification of the start date.
      * <p>
      * Given: A {@link Employment} instance
-     * When: modifying the name attribute ({@link Employment#setEmploymentStartDate(LocalDate)})
-     * Then: than the name attribute ({@link Employment#getEmploymentStartDate()}) should contain the new value
+     * When: modifying the name attribute ({@link Employment#setStartDate(LocalDate)})
+     * Then: than the name attribute ({@link Employment#getStartDate()}) should contain the new value
      *
      * @throws Exception in case of an exception
      */
@@ -150,24 +150,24 @@ public abstract class AbstractEmploymentTest {
         LocalDate startDate = ModelRandomGenerator.randomLocalDate();
 
         Employment objectUnderTest = getEmployment();
-        LocalDate oldDate = objectUnderTest.getEmploymentStartDate();
+        LocalDate oldDate = objectUnderTest.getStartDate();
 
         while (startDate.equals(oldDate)) {
             startDate = ModelRandomGenerator.randomLocalDate();
         }
         Assertions.assertNotEquals(oldDate, startDate);
 
-        objectUnderTest.setEmploymentStartDate(startDate);
-        Assertions.assertEquals(startDate, objectUnderTest.getEmploymentStartDate());
-        Assertions.assertNotEquals(oldDate, objectUnderTest.getEmploymentStartDate());
+        objectUnderTest.setStartDate(startDate);
+        Assertions.assertEquals(startDate, objectUnderTest.getStartDate());
+        Assertions.assertNotEquals(oldDate, objectUnderTest.getStartDate());
     }
 
     /**
      * Tests the modification of the end date.
      * <p>
      * Given: A {@link Employment} instance
-     * When: modifying the name attribute ({@link Employment#setEmploymentEndDate(LocalDate)})
-     * Then: than the name attribute ({@link Employment#getEmploymentEndDate()}) should contain the new value
+     * When: modifying the name attribute ({@link Employment#setEndDate(LocalDate)})
+     * Then: than the name attribute ({@link Employment#getEndDate()}) should contain the new value
      *
      * @throws Exception in case of an exception
      */
@@ -176,16 +176,16 @@ public abstract class AbstractEmploymentTest {
         LocalDate endDate = ModelRandomGenerator.randomLocalDate();
 
         Employment objectUnderTest = getEmployment();
-        LocalDate oldDate = objectUnderTest.getEmploymentEndDate();
+        LocalDate oldDate = objectUnderTest.getEndDate();
 
         while (endDate.equals(oldDate)) {
             endDate = ModelRandomGenerator.randomLocalDate();
         }
         Assertions.assertNotEquals(oldDate, endDate);
 
-        objectUnderTest.setEmploymentEndDate(endDate);
-        Assertions.assertEquals(endDate, objectUnderTest.getEmploymentEndDate());
-        Assertions.assertNotEquals(oldDate, objectUnderTest.getEmploymentEndDate());
+        objectUnderTest.setEndDate(endDate);
+        Assertions.assertEquals(endDate, objectUnderTest.getEndDate());
+        Assertions.assertNotEquals(oldDate, objectUnderTest.getEndDate());
     }
 
     /**

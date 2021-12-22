@@ -23,6 +23,8 @@ import net.havox.labmon.model.api.employment.Project;
 import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
 import net.havox.labmon.model.utils.validation.employment.BasicProjectValidator;
 import net.havox.labmon.model.utils.validation.employment.ProjectValidator;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.time.LocalDate;
 
@@ -80,5 +82,18 @@ public class BasicProject extends AbstractChangeAwareAndIdentifiableClass implem
     @Override
     public ProjectValidator getValidator() {
         return new BasicProjectValidator();
+    }
+
+    @Override
+    public String toString() {
+        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE);
+
+        builder.append("id", getId());
+        builder.append("name", getName());
+        builder.append("employment", getEmployment());
+        builder.append("startDate", getStartDate());
+        builder.append("endDate", getEndDate());
+
+        return builder.build();
     }
 }

@@ -66,8 +66,7 @@ public abstract class AbstractRoleTest {
         String name;
         do {
             name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100), ModelRandomGenerator.ALPHANUMERIC_STRING);
-        }
-        while (name.equals(instanceOriginalName));
+        } while (name.equals(instanceOriginalName));
 
         Assertions.assertEquals(instanceOriginalName, instanceUnderTest.getName());
 
@@ -93,8 +92,7 @@ public abstract class AbstractRoleTest {
         Role subRole;
         do {
             subRole = getRandomRole();
-        }
-        while (instanceUnderTest.getIncludedRoles().contains(subRole));
+        } while (instanceUnderTest.getIncludedRoles().contains(subRole));
 
         Assertions.assertFalse(instanceUnderTest.getIncludedRoles().contains(subRole));
 
@@ -121,8 +119,7 @@ public abstract class AbstractRoleTest {
         Role subRole;
         do {
             subRole = getRandomRole();
-        }
-        while (instanceUnderTest.getIncludedRoles().contains(subRole));
+        } while (instanceUnderTest.getIncludedRoles().contains(subRole));
 
         Assertions.assertFalse(instanceUnderTest.getIncludedRoles().contains(subRole));
 
@@ -158,8 +155,7 @@ public abstract class AbstractRoleTest {
         Permission subPermission;
         do {
             subPermission = getRandomPermission();
-        }
-        while (instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
+        } while (instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
 
         Assertions.assertFalse(instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
 
@@ -187,8 +183,7 @@ public abstract class AbstractRoleTest {
         Permission subPermission;
         do {
             subPermission = getRandomPermission();
-        }
-        while (instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
+        } while (instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
 
         Assertions.assertFalse(instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
 
@@ -226,8 +221,7 @@ public abstract class AbstractRoleTest {
         Permission subPermission;
         do {
             subPermission = getRandomPermission();
-        }
-        while (instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
+        } while (instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
 
         Assertions.assertFalse(instanceUnderTest.getIncludedPermissions().containsKey(subPermission));
 

@@ -67,7 +67,7 @@ public abstract class AbstractCountryTest {
 
     /**
      * Tests if a proper validator is provided.
-     *
+     * <p>
      * Given: A {@link Country} instance
      * When: calling {@link Country#getValidator()}
      * Then: the result is not {@code null}

@@ -23,6 +23,8 @@ import net.havox.labmon.model.api.employment.Employer;
 import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
 import net.havox.labmon.model.utils.validation.employment.BasicEmployerValidator;
 import net.havox.labmon.model.utils.validation.employment.EmployerValidator;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -35,8 +37,8 @@ import java.util.Set;
  * @author Christian Otto
  */
 public class BasicEmployer extends AbstractChangeAwareAndIdentifiableClass implements Employer {
-    private String name;
     private final Set<ContactOption<?>> contactOptions = new HashSet<>();
+    private String name;
 
     @Override
     public String getName() {
@@ -70,5 +72,16 @@ public class BasicEmployer extends AbstractChangeAwareAndIdentifiableClass imple
     @Override
     public EmployerValidator getValidator() {
         return new BasicEmployerValidator();
+    }
+
+    @Override
+    public String toString() {
+        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE);
+
+        builder.append("id", getId());
+        builder.append("name", getName());
+        builder.append("contactOptions", getContactOptions());
+
+        return builder.build();
     }
 }

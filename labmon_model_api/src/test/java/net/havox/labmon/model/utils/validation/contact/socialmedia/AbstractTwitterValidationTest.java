@@ -144,14 +144,9 @@ public abstract class AbstractTwitterValidationTest {
      */
     private void checkValidInstance(Twitter instanceUnderTest, Boolean expectedValid) throws Exception {
         TwitterValidator validator = getTwitterValidator();
-        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the twitter account '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
-                        ".");
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest), "Expected the twitter account '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) + ".");
         if (null != instanceUnderTest) {
-            Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(),
-                    "Expected the twitter account '" + instanceUnderTest + "' " +
-                            (expectedValid ? "" : " not") + "to be a valid instance.");
+            Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(), "Expected the twitter account '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance.");
         }
     }
 
@@ -164,8 +159,7 @@ public abstract class AbstractTwitterValidationTest {
     private Twitter getValidTwitterInstance() throws Exception {
         Twitter instance = getTwitter();
 
-        instance.setUserName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 15),
-                usernameAlphabet));
+        instance.setUserName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 15), usernameAlphabet));
 
         return instance;
     }

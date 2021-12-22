@@ -129,8 +129,7 @@ public abstract class AbstractSkypeValidationTest {
     public void testSkypeWithFiveLetterUserNameIsInvalid() throws Exception {
         Skype instanceUnderTest = getValidSkypeInstance();
 
-        String userName = ModelRandomGenerator.randomString(1, ModelRandomGenerator.ALPHABETIC_STRING) +
-                ModelRandomGenerator.randomString(4, ModelRandomGenerator.ALPHANUMERIC_STRING);
+        String userName = ModelRandomGenerator.randomString(1, ModelRandomGenerator.ALPHABETIC_STRING) + ModelRandomGenerator.randomString(4, ModelRandomGenerator.ALPHANUMERIC_STRING);
         Assertions.assertEquals(5, userName.length());
 
         instanceUnderTest.setUserName(userName);
@@ -152,8 +151,7 @@ public abstract class AbstractSkypeValidationTest {
     public void testSkypeWithTwentyThreeLetterUserNameIsInvalid() throws Exception {
         Skype instanceUnderTest = getValidSkypeInstance();
 
-        String userName = ModelRandomGenerator.randomString(1, ModelRandomGenerator.ALPHABETIC_STRING) +
-                ModelRandomGenerator.randomString(22, ModelRandomGenerator.ALPHANUMERIC_STRING);
+        String userName = ModelRandomGenerator.randomString(1, ModelRandomGenerator.ALPHABETIC_STRING) + ModelRandomGenerator.randomString(22, ModelRandomGenerator.ALPHANUMERIC_STRING);
         Assertions.assertEquals(23, userName.length());
 
         instanceUnderTest.setUserName(userName);
@@ -176,9 +174,7 @@ public abstract class AbstractSkypeValidationTest {
         Skype instanceUnderTest = getValidSkypeInstance();
 
         String numbers = "0123456789";
-        String userName = ModelRandomGenerator.randomString(1, numbers) +
-                ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(5, 21),
-                        ModelRandomGenerator.ALPHANUMERIC_STRING);
+        String userName = ModelRandomGenerator.randomString(1, numbers) + ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(5, 21), ModelRandomGenerator.ALPHANUMERIC_STRING);
 
         instanceUnderTest.setUserName(userName);
 
@@ -194,14 +190,9 @@ public abstract class AbstractSkypeValidationTest {
      */
     private void checkValidInstance(Skype instanceUnderTest, Boolean expectedValid) throws Exception {
         SkypeValidator validator = getSkypeValidator();
-        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the skype account '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
-                        ".");
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest), "Expected the skype account '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) + ".");
         if (null != instanceUnderTest) {
-            Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(),
-                    "Expected the skype account '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                            "to be a valid instance.");
+            Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(), "Expected the skype account '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance.");
         }
     }
 
@@ -215,9 +206,7 @@ public abstract class AbstractSkypeValidationTest {
         Skype instance = getSkype();
 
         do {
-            String userName = ModelRandomGenerator.randomString(1, ModelRandomGenerator.ALPHABETIC_STRING) +
-                    ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(5, 21),
-                            ModelRandomGenerator.ALPHANUMERIC_STRING);
+            String userName = ModelRandomGenerator.randomString(1, ModelRandomGenerator.ALPHABETIC_STRING) + ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(5, 21), ModelRandomGenerator.ALPHANUMERIC_STRING);
             instance.setUserName(userName);
         } while (!StringUtils.isAlpha(instance.getUserName().substring(0, 1)));
 

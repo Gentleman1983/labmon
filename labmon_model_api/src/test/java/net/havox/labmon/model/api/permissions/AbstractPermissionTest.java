@@ -54,8 +54,7 @@ public abstract class AbstractPermissionTest {
         String name;
         do {
             name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100), ModelRandomGenerator.ALPHANUMERIC_STRING);
-        }
-        while (name.equals(instanceOriginalName));
+        } while (name.equals(instanceOriginalName));
 
         Assertions.assertEquals(instanceOriginalName, instanceUnderTest.getName());
 

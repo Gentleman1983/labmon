@@ -78,28 +78,28 @@ public interface Employment extends ChangeAware, Serializable {
      *
      * @return the date
      */
-    LocalDate getEmploymentStartDate();
+    LocalDate getStartDate();
 
     /**
      * Sets the employment start date.
      *
      * @param startDate the date
      */
-    void setEmploymentStartDate(LocalDate startDate);
+    void setStartDate(LocalDate startDate);
 
     /**
      * Returns the employment end date.
      *
      * @return the date
      */
-    LocalDate getEmploymentEndDate();
+    LocalDate getEndDate();
 
     /**
      * Sets the employment end date.
      *
      * @param endDate the date
      */
-    void setEmploymentEndDate(LocalDate endDate);
+    void setEndDate(LocalDate endDate);
 
     /**
      * Returns the entity validator.

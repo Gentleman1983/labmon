@@ -41,7 +41,7 @@ public interface SkypeValidator extends ContactOptionValidator<Skype> {
             return List.of("Expected skype entity not to be null.");
         }
 
-        if( null == validationTarget.getUserName()) {
+        if (null == validationTarget.getUserName()) {
             return List.of("Expected username entity not to be null.");
         }
 
@@ -53,8 +53,7 @@ public interface SkypeValidator extends ContactOptionValidator<Skype> {
         if (validationTarget.getUserName().length() > 22) {
             validationErrors.add("Expected username to be at maximum 22 characters.");
         }
-        if (validationTarget.getUserName().length() == 0 ||
-                !Character.isLetter(validationTarget.getUserName().charAt(0))) {
+        if (validationTarget.getUserName().length() == 0 || !Character.isLetter(validationTarget.getUserName().charAt(0))) {
             validationErrors.add("Expected the username to start with a letter.");
         }
 

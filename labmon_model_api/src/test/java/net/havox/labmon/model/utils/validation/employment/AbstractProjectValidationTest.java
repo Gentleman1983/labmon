@@ -186,7 +186,7 @@ public abstract class AbstractProjectValidationTest {
         Employment invalidEmployment = getValidEmploymentInstance();
         invalidEmployment.setUser(null);
         invalidEmployment.setEmployer(null);
-        invalidEmployment.setEmploymentStartDate(null);
+        invalidEmployment.setStartDate(null);
         Assertions.assertFalse(invalidEmployment.getValidator().isValid(invalidEmployment));
 
         instanceUnderTest.setEmployment(invalidEmployment);
@@ -284,7 +284,7 @@ public abstract class AbstractProjectValidationTest {
         Assertions.assertTrue(startDate.isBefore(employmentStartDate));
 
         instanceUnderTest.setStartDate(startDate);
-        instanceUnderTest.getEmployment().setEmploymentStartDate(employmentStartDate);
+        instanceUnderTest.getEmployment().setStartDate(employmentStartDate);
 
         checkValidInstance(instanceUnderTest, false);
     }
@@ -311,7 +311,7 @@ public abstract class AbstractProjectValidationTest {
         Assertions.assertTrue(startDate.isAfter(employmentEndDate));
 
         instanceUnderTest.setStartDate(startDate);
-        instanceUnderTest.getEmployment().setEmploymentEndDate(employmentEndDate);
+        instanceUnderTest.getEmployment().setEndDate(employmentEndDate);
 
         checkValidInstance(instanceUnderTest, false);
     }
@@ -338,7 +338,7 @@ public abstract class AbstractProjectValidationTest {
         Assertions.assertTrue(endDate.isAfter(employmentEndDate));
 
         instanceUnderTest.setEndDate(endDate);
-        instanceUnderTest.getEmployment().setEmploymentEndDate(employmentEndDate);
+        instanceUnderTest.getEmployment().setEndDate(employmentEndDate);
 
         checkValidInstance(instanceUnderTest, false);
     }
@@ -352,10 +352,7 @@ public abstract class AbstractProjectValidationTest {
      */
     private void checkValidInstance(Project instanceUnderTest, Boolean expectedValid) throws Exception {
         ProjectValidator validator = getProjectValidator();
-        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the project '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
-                        ".");
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest), "Expected the project '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) + ".");
     }
 
     /**
@@ -371,7 +368,7 @@ public abstract class AbstractProjectValidationTest {
         instance.setEmployment(getValidEmploymentInstance());
         do {
             instance.setStartDate(ModelRandomGenerator.randomLocalDate());
-        } while (instance.getStartDate().isBefore(instance.getEmployment().getEmploymentStartDate()));
+        } while (instance.getStartDate().isBefore(instance.getEmployment().getStartDate()));
 
         return instance;
     }
@@ -387,9 +384,8 @@ public abstract class AbstractProjectValidationTest {
 
         instance.setUser(getValidUserInstance());
         instance.setEmployer(getValidEmployerInstance());
-        instance.setDescription(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
-                ModelRandomGenerator.ALPHABETIC_STRING));
-        instance.setEmploymentStartDate(ModelRandomGenerator.randomLocalDate());
+        instance.setDescription(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setStartDate(ModelRandomGenerator.randomLocalDate());
 
         return instance;
     }
@@ -403,8 +399,7 @@ public abstract class AbstractProjectValidationTest {
     private Employer getValidEmployerInstance() throws Exception {
         Employer instance = getEmployer();
 
-        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
-                ModelRandomGenerator.ALPHABETIC_STRING));
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHABETIC_STRING));
 
         return instance;
     }
@@ -433,7 +428,6 @@ public abstract class AbstractProjectValidationTest {
      * @return the name
      */
     private String getRandomName(int minLength, int maxLength) {
-        return ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(minLength, maxLength),
-                ModelRandomGenerator.ALPHABETIC_STRING);
+        return ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(minLength, maxLength), ModelRandomGenerator.ALPHABETIC_STRING);
     }
 }

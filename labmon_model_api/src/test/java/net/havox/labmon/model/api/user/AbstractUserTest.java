@@ -84,10 +84,8 @@ public abstract class AbstractUserTest {
 
         String name;
         do {
-            name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100),
-                    ModelRandomGenerator.ALPHANUMERIC_STRING);
-        }
-        while (name.equals(instanceOriginalName));
+            name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100), ModelRandomGenerator.ALPHANUMERIC_STRING);
+        } while (name.equals(instanceOriginalName));
 
         Assertions.assertEquals(instanceOriginalName, instanceUnderTest.getFirstName());
 
@@ -113,10 +111,8 @@ public abstract class AbstractUserTest {
 
         String name;
         do {
-            name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100),
-                    ModelRandomGenerator.ALPHANUMERIC_STRING);
-        }
-        while (name.equals(instanceOriginalName));
+            name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100), ModelRandomGenerator.ALPHANUMERIC_STRING);
+        } while (name.equals(instanceOriginalName));
 
         Assertions.assertEquals(instanceOriginalName, instanceUnderTest.getMiddleName());
 
@@ -142,10 +138,8 @@ public abstract class AbstractUserTest {
 
         String name;
         do {
-            name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100),
-                    ModelRandomGenerator.ALPHANUMERIC_STRING);
-        }
-        while (name.equals(instanceOriginalName));
+            name = ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(100), ModelRandomGenerator.ALPHANUMERIC_STRING);
+        } while (name.equals(instanceOriginalName));
 
         Assertions.assertEquals(instanceOriginalName, instanceUnderTest.getLastName());
 
@@ -224,8 +218,7 @@ public abstract class AbstractUserTest {
         ContactOption<?> option;
         do {
             option = getContactOption();
-        }
-        while (instanceUnderTest.getContactOptions().contains(option));
+        } while (instanceUnderTest.getContactOptions().contains(option));
 
         Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
 
@@ -302,8 +295,7 @@ public abstract class AbstractUserTest {
         ContactOption<?> option;
         do {
             option = getContactOption();
-        }
-        while (instanceUnderTest.getContactOptions().contains(option));
+        } while (instanceUnderTest.getContactOptions().contains(option));
 
         Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
 
@@ -341,8 +333,7 @@ public abstract class AbstractUserTest {
         ContactOption<?> option;
         do {
             option = getContactOption();
-        }
-        while (instanceUnderTest.getContactOptions().contains(option));
+        } while (instanceUnderTest.getContactOptions().contains(option));
 
         Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
 
@@ -380,8 +371,7 @@ public abstract class AbstractUserTest {
         ContactOption<?> option;
         do {
             option = getContactOption();
-        }
-        while (instanceUnderTest.getContactOptions().contains(option));
+        } while (instanceUnderTest.getContactOptions().contains(option));
 
         Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
 

@@ -129,21 +129,7 @@ public abstract class AbstractEMailAddressValidationTest {
      * @throws Exception in case of an exception
      */
     @ParameterizedTest
-    @ValueSource(strings = {
-            "email@example.com",
-            "firstname.lastname@example.com",
-            "email@subdomain.example.com",
-            "firstname+lastname@example.com",
-            "email@[123.123.123.123]",
-            "\"email\"@example.com",
-            "1234567890@example.com",
-            "email@example-one.com",
-            "_______@example.com",
-            "email@example.name",
-            "email@example.museum",
-            "email@example.co.jp",
-            "firstname-lastname@example.com"
-    })
+    @ValueSource(strings = {"email@example.com", "firstname.lastname@example.com", "email@subdomain.example.com", "firstname+lastname@example.com", "email@[123.123.123.123]", "\"email\"@example.com", "1234567890@example.com", "email@example-one.com", "_______@example.com", "email@example.name", "email@example.museum", "email@example.co.jp", "firstname-lastname@example.com"})
     public void testValidEMailAddresses(String emailAddress) throws Exception {
         EMailAddress instanceUnderTest = getValidEMailAddressInstance();
 
@@ -163,24 +149,7 @@ public abstract class AbstractEMailAddressValidationTest {
      * @throws Exception in case of an exception
      */
     @ParameterizedTest
-    @ValueSource(strings = {
-            "plainaddress",
-            "#@%^%#$@#$@#.com",
-            "@example.com",
-            "Joe Smith <email@example.com>",
-            "email.example.com",
-            "email@example@example.com",
-            ".email@example.com",
-            "email.@example.com",
-            "email..email@example.com",
-            "email@example.com (Joe Smith)",
-            "email@example",
-            "email@-example.com",
-            "email@example.web",
-            "email@111.222.333.44444",
-            "email@example..com",
-            "Abc..123@example.com"
-    })
+    @ValueSource(strings = {"plainaddress", "#@%^%#$@#$@#.com", "@example.com", "Joe Smith <email@example.com>", "email.example.com", "email@example@example.com", ".email@example.com", "email.@example.com", "email..email@example.com", "email@example.com (Joe Smith)", "email@example", "email@-example.com", "email@example.web", "email@111.222.333.44444", "email@example..com", "Abc..123@example.com"})
     public void testInValidEMailAddresses(String emailAddress) throws Exception {
         EMailAddress instanceUnderTest = getValidEMailAddressInstance();
 
@@ -198,14 +167,9 @@ public abstract class AbstractEMailAddressValidationTest {
      */
     private void checkValidInstance(EMailAddress instanceUnderTest, Boolean expectedValid) throws Exception {
         EMailAddressValidator validator = getEMailAddressValidator();
-        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the email address '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                        "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
-                        ".");
+        Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest), "Expected the email address '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) + ".");
         if (null != instanceUnderTest) {
-            Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(),
-                    "Expected the email address '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
-                            "to be a valid instance.");
+            Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(), "Expected the email address '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") + "to be a valid instance.");
         }
     }
 
@@ -218,10 +182,8 @@ public abstract class AbstractEMailAddressValidationTest {
     private EMailAddress getValidEMailAddressInstance() throws Exception {
         EMailAddress instance = getEMailAddress();
 
-        String emailPrefix = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50),
-                ModelRandomGenerator.ALPHANUMERIC_STRING);
-        String emailSuffix = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 20),
-                ModelRandomGenerator.ALPHABETIC_STRING) + ".example.de";
+        String emailPrefix = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50), ModelRandomGenerator.ALPHANUMERIC_STRING);
+        String emailSuffix = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 20), ModelRandomGenerator.ALPHABETIC_STRING) + ".example.de";
         String email = emailPrefix + "@" + emailSuffix;
 
         boolean allowLocalDomains = false;

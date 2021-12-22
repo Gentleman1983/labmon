@@ -89,22 +89,22 @@ public class EmploymentImpl extends AbstractChangeAwareClass<EmploymentImpl> imp
     }
 
     @Override
-    public LocalDate getEmploymentStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
     @Override
-    public void setEmploymentStartDate(LocalDate startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
     @Override
-    public LocalDate getEmploymentEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
     @Override
-    public void setEmploymentEndDate(LocalDate endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

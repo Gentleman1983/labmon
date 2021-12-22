@@ -48,8 +48,7 @@ class ModelRandomGeneratorTest {
     void testIsAlphanumericStringAlphanumeric() {
         String regexString = "[A-Za-z0-9]*";
         String alphabet = ModelRandomGenerator.ALPHANUMERIC_STRING;
-        assertTrue(alphabet.matches(regexString),
-                "An alphanumeric string should match the regex '" + regexString + "'.");
+        assertTrue(alphabet.matches(regexString), "An alphanumeric string should match the regex '" + regexString + "'.");
         checkAlphabetConsistsOfAllLettersBetweenChars(alphabet, 'a', 'z');
         checkAlphabetConsistsOfAllLettersBetweenChars(alphabet, 'A', 'Z');
         checkAlphabetConsistsOfAllLettersBetweenChars(alphabet, '0', '9');
@@ -64,8 +63,7 @@ class ModelRandomGeneratorTest {
     void testIsAlphabeticStringAlphabetic() {
         String regexString = "[A-Za-z]*";
         String alphabet = ModelRandomGenerator.ALPHABETIC_STRING;
-        assertTrue(alphabet.matches(regexString),
-                "An alphabetic string should match the regex '" + regexString + "'.");
+        assertTrue(alphabet.matches(regexString), "An alphabetic string should match the regex '" + regexString + "'.");
         checkAlphabetConsistsOfAllLettersBetweenChars(alphabet, 'a', 'z');
         checkAlphabetConsistsOfAllLettersBetweenChars(alphabet, 'A', 'Z');
     }
@@ -81,8 +79,7 @@ class ModelRandomGeneratorTest {
         assertTrue(lowerChar <= upperChar);
 
         for (char letter = lowerChar; letter <= upperChar; letter++) {
-            assertTrue(alphabet.contains(Character.toString(letter)),
-                    "Expected alphabet to contain letter '" + letter + "'.");
+            assertTrue(alphabet.contains(Character.toString(letter)), "Expected alphabet to contain letter '" + letter + "'.");
         }
     }
 
@@ -126,17 +123,14 @@ class ModelRandomGeneratorTest {
         assertNotNull(randomString);
 
         // The string should have the correct length.
-        String msgLengthTest = "The random string '" + randomString + "' should have length " +
-                expectedLength + ". The length is " + randomString.length() + ".";
+        String msgLengthTest = "The random string '" + randomString + "' should have length " + expectedLength + ". The length is " + randomString.length() + ".";
         assertEquals(randomString.length(), expectedLength, msgLengthTest);
 
         // The string should consist of letters of a given alphabet.
         for (int i = 0; i < randomString.length(); i++) {
             CharSequence letter = String.valueOf(randomString.charAt(i));
 
-            String msgAlphabetTest = "The random string '" + randomString + "' should only consist of " +
-                    "letters of the alphabet '" + expectedAlphabet + "'. We found the letter '" +
-                    letter + "'.";
+            String msgAlphabetTest = "The random string '" + randomString + "' should only consist of " + "letters of the alphabet '" + expectedAlphabet + "'. We found the letter '" + letter + "'.";
             assertTrue(expectedAlphabet.contains(letter), msgAlphabetTest);
         }
     }
@@ -205,8 +199,7 @@ class ModelRandomGeneratorTest {
 
         // The integer value should be in a given range
         StringBuilder msg = new StringBuilder();
-        msg.append("The value should be between ").append(expectedMinValue).append(" and ")
-                .append(expectedMaxValue).append(" but was ").append(randomInt).append(".");
+        msg.append("The value should be between ").append(expectedMinValue).append(" and ").append(expectedMaxValue).append(" but was ").append(randomInt).append(".");
         assertTrue(expectedMinValue <= randomInt, msg.toString());
         assertTrue(randomInt <= expectedMaxValue, msg.toString());
     }
@@ -275,8 +268,7 @@ class ModelRandomGeneratorTest {
 
         // The long value should be in a given range
         StringBuilder msg = new StringBuilder();
-        msg.append("The value should be between ").append(expectedMinValue).append(" and ")
-                .append(expectedMaxValue).append(" but was ").append(randomLong).append(".");
+        msg.append("The value should be between ").append(expectedMinValue).append(" and ").append(expectedMaxValue).append(" but was ").append(randomLong).append(".");
         assertTrue(expectedMinValue <= randomLong, msg.toString());
         assertTrue(randomLong <= expectedMaxValue, msg.toString());
     }
@@ -321,8 +313,7 @@ class ModelRandomGeneratorTest {
 
         // The float value should be in a given range
         StringBuilder msg = new StringBuilder();
-        msg.append("The value should be between ").append(expectedMinValue).append(" and ")
-                .append(expectedMaxValue).append(" but was ").append(randomFloat).append(".");
+        msg.append("The value should be between ").append(expectedMinValue).append(" and ").append(expectedMaxValue).append(" but was ").append(randomFloat).append(".");
         assertTrue(expectedMinValue <= randomFloat, msg.toString());
         assertTrue(randomFloat < expectedMaxValue, msg.toString());
     }
@@ -354,8 +345,7 @@ class ModelRandomGeneratorTest {
 
         // The double value should be in a given range
         StringBuilder msg = new StringBuilder();
-        msg.append("The value should be between ").append(expectedMinValue).append(" and ")
-                .append(expectedMaxValue).append(" but was ").append(randomDouble).append(".");
+        msg.append("The value should be between ").append(expectedMinValue).append(" and ").append(expectedMaxValue).append(" but was ").append(randomDouble).append(".");
         assertTrue(expectedMinValue <= randomDouble, msg.toString());
         assertTrue(randomDouble < expectedMaxValue, msg.toString());
     }
@@ -398,19 +388,15 @@ class ModelRandomGeneratorTest {
      * @param expectedMinLocalDate a start date
      * @param expectedMaxLocalDate an end date
      */
-    private void checkRandomLocalDate(LocalDate randomLocalDate, LocalDate expectedMinLocalDate,
-                                      LocalDate expectedMaxLocalDate) {
+    private void checkRandomLocalDate(LocalDate randomLocalDate, LocalDate expectedMinLocalDate, LocalDate expectedMaxLocalDate) {
         // The local date value should be generated.
         assertNotNull(randomLocalDate);
 
         // The local date value should be in a given range
         StringBuilder msg = new StringBuilder();
-        msg.append("The date should be between ").append(expectedMinLocalDate).append(" and ")
-                .append(expectedMaxLocalDate).append(" but was ").append(randomLocalDate).append(".");
-        assertTrue(expectedMinLocalDate.isBefore(randomLocalDate)
-                || expectedMinLocalDate.isEqual(randomLocalDate), msg.toString());
-        assertTrue(randomLocalDate.isBefore(expectedMaxLocalDate)
-                || randomLocalDate.isEqual(expectedMaxLocalDate), msg.toString());
+        msg.append("The date should be between ").append(expectedMinLocalDate).append(" and ").append(expectedMaxLocalDate).append(" but was ").append(randomLocalDate).append(".");
+        assertTrue(expectedMinLocalDate.isBefore(randomLocalDate) || expectedMinLocalDate.isEqual(randomLocalDate), msg.toString());
+        assertTrue(randomLocalDate.isBefore(expectedMaxLocalDate) || randomLocalDate.isEqual(expectedMaxLocalDate), msg.toString());
     }
 
     /**
@@ -451,18 +437,14 @@ class ModelRandomGeneratorTest {
      * @param expectedMinLocalDateTime a start date time
      * @param expectedMaxLocalDateTime an end date time
      */
-    private void checkRandomLocalDateTime(LocalDateTime randomLocalDateTime, LocalDateTime expectedMinLocalDateTime,
-                                          LocalDateTime expectedMaxLocalDateTime) {
+    private void checkRandomLocalDateTime(LocalDateTime randomLocalDateTime, LocalDateTime expectedMinLocalDateTime, LocalDateTime expectedMaxLocalDateTime) {
         // The local date value should be generated.
         assertNotNull(randomLocalDateTime);
 
         // The local date value should be in a given range
         StringBuilder msg = new StringBuilder();
-        msg.append("The date should be between ").append(expectedMinLocalDateTime).append(" and ")
-                .append(expectedMaxLocalDateTime).append(" but was ").append(randomLocalDateTime).append(".");
-        assertTrue(expectedMinLocalDateTime.isBefore(randomLocalDateTime)
-                || expectedMinLocalDateTime.isEqual(randomLocalDateTime), msg.toString());
-        assertTrue(randomLocalDateTime.isBefore(expectedMaxLocalDateTime)
-                || randomLocalDateTime.isEqual(expectedMaxLocalDateTime), msg.toString());
+        msg.append("The date should be between ").append(expectedMinLocalDateTime).append(" and ").append(expectedMaxLocalDateTime).append(" but was ").append(randomLocalDateTime).append(".");
+        assertTrue(expectedMinLocalDateTime.isBefore(randomLocalDateTime) || expectedMinLocalDateTime.isEqual(randomLocalDateTime), msg.toString());
+        assertTrue(randomLocalDateTime.isBefore(expectedMaxLocalDateTime) || randomLocalDateTime.isEqual(expectedMaxLocalDateTime), msg.toString());
     }
 }
