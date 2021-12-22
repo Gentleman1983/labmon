@@ -61,7 +61,7 @@ public interface BookingType extends ChangeAware, Serializable {
     /**
      * Returns the entity validator.
      *
-     * @return
+     * @return the validator
      */
     BookingTypeValidator getValidator();
 }
