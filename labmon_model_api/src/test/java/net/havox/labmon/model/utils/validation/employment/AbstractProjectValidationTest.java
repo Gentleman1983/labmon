@@ -280,7 +280,7 @@ public abstract class AbstractProjectValidationTest {
         Project instanceUnderTest = getValidProjectInstance();
 
         LocalDate startDate = LocalDate.now();
-        LocalDate employmentStartDate = startDate.plusDays(ModelRandomGenerator.randomLong(255));
+        LocalDate employmentStartDate = startDate.plusDays(ModelRandomGenerator.randomLongInRange(1, 255));
         Assertions.assertTrue(startDate.isBefore(employmentStartDate));
 
         instanceUnderTest.setStartDate(startDate);
@@ -307,7 +307,7 @@ public abstract class AbstractProjectValidationTest {
         Project instanceUnderTest = getValidProjectInstance();
 
         LocalDate employmentEndDate = instanceUnderTest.getStartDate();
-        LocalDate startDate = employmentEndDate.plusDays(ModelRandomGenerator.randomLong(255));
+        LocalDate startDate = employmentEndDate.plusDays(ModelRandomGenerator.randomLongInRange(1, 255));
         Assertions.assertTrue(startDate.isAfter(employmentEndDate));
 
         instanceUnderTest.setStartDate(startDate);
@@ -333,8 +333,8 @@ public abstract class AbstractProjectValidationTest {
     public void testProjectWithEndDateAfterEmploymentEndDateIsInvalid() throws Exception {
         Project instanceUnderTest = getValidProjectInstance();
 
-        LocalDate employmentEndDate = instanceUnderTest.getStartDate().plusDays(ModelRandomGenerator.randomLong(255));
-        LocalDate endDate = employmentEndDate.plusDays(ModelRandomGenerator.randomLong(255));
+        LocalDate employmentEndDate = instanceUnderTest.getStartDate().plusDays(ModelRandomGenerator.randomLongInRange(1, 255));
+        LocalDate endDate = employmentEndDate.plusDays(ModelRandomGenerator.randomLongInRange(1, 255));
         Assertions.assertTrue(endDate.isAfter(employmentEndDate));
 
         instanceUnderTest.setEndDate(endDate);
@@ -367,7 +367,7 @@ public abstract class AbstractProjectValidationTest {
     private Project getValidProjectInstance() throws Exception {
         Project instance = getProject();
 
-        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomInt(50)));
+        instance.setName(ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(1, 50)));
         instance.setEmployment(getValidEmploymentInstance());
         do {
             instance.setStartDate(ModelRandomGenerator.randomLocalDate());
