@@ -52,7 +52,7 @@ public interface Employer extends ChangeAware, Serializable {
      *
      * @return the contact options
      */
-    Set<ContactOption<?>> getContactOptions();
+    Set<ContactOption<?>> getContactOptions(); // NOSONAR This return type is as expected and no sonar issue.
 
     /**
      * Adds a {@link ContactOption} to the contact options.
