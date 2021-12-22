@@ -20,6 +20,7 @@ package net.havox.labmon.model.api.user;
 
 import net.havox.labmon.model.api.address.Address;
 import net.havox.labmon.model.api.contact.ContactOption;
+import net.havox.labmon.model.utils.validation.user.UserValidator;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
@@ -398,5 +399,23 @@ public abstract class AbstractUserTest {
 
         Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
         Assertions.assertTrue(removalResult);
+    }
+
+    /**
+     * Test if the validator is properly provided.
+     * <p>
+     * Given: A {@link User} instance
+     * When: getting the validator ({@link User#getValidator()}
+     * Then: the validator shall be instantiated
+     * And: the validator shall be of type {@link UserValidator}
+     *
+     * @throws Exception in case of an exception
+     */
+    @Test
+    public void testGetValidator() throws Exception {
+        User instanceUnderTest = getUser();
+
+        Assertions.assertNotNull(instanceUnderTest.getValidator());
+        Assertions.assertTrue(instanceUnderTest.getValidator() instanceof UserValidator);
     }
 }

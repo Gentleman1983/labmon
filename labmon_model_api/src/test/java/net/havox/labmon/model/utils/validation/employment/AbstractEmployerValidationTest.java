@@ -78,7 +78,7 @@ public abstract class AbstractEmployerValidationTest {
     }
 
     /**
-     * Tests if a {@link Employer} entity missing the first name is invalid.
+     * Tests if a {@link Employer} entity missing the name is invalid.
      * <p>
      * Given: a randomized {@link Employer} entity
      * And: missing a name attribute
@@ -96,7 +96,7 @@ public abstract class AbstractEmployerValidationTest {
     }
 
     /**
-     * Tests if a {@link Employer} entity with empty the first name is invalid.
+     * Tests if a {@link Employer} entity with empty the name is invalid.
      * <p>
      * Given: a randomized {@link Employer} entity
      * And: having an empty name attribute

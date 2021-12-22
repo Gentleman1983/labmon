@@ -21,6 +21,7 @@ package net.havox.labmon.model.api.user;
 import net.havox.labmon.model.api.ChangeAware;
 import net.havox.labmon.model.api.address.Address;
 import net.havox.labmon.model.api.contact.ContactOption;
+import net.havox.labmon.model.utils.validation.user.UserValidator;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -166,4 +167,10 @@ public interface User extends ChangeAware, Serializable {
      */
     boolean removeContactOptions(Collection<ContactOption<?>> options);
 
+    /**
+     * Returns the entity validator.
+     *
+     * @return the validator
+     */
+    UserValidator getValidator();
 }

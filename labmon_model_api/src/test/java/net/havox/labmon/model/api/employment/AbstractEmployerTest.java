@@ -52,7 +52,7 @@ public abstract class AbstractEmployerTest {
     public abstract ContactOption getContactOption() throws Exception;
 
     /**
-     * Tests the modification of the country name.
+     * Tests the modification of the name.
      * <p>
      * Given: A {@link Employer} instance
      * When: modifying the name attribute ({@link Employer#setName(String)})

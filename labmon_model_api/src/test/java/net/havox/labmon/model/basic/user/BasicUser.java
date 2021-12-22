@@ -23,6 +23,8 @@ import net.havox.labmon.model.api.contact.ContactOption;
 import net.havox.labmon.model.api.user.Credentials;
 import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
 import net.havox.labmon.model.api.user.User;
+import net.havox.labmon.model.utils.validation.user.BasicUserValidator;
+import net.havox.labmon.model.utils.validation.user.UserValidator;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -109,6 +111,11 @@ public class BasicUser extends AbstractChangeAwareAndIdentifiableClass implement
     public boolean removeContactOptions(Collection<ContactOption<?>> options) {
         contactOptions.removeAll(options);
         return true;
+    }
+
+    @Override
+    public UserValidator getValidator() {
+        return new BasicUserValidator();
     }
 
     @Override

@@ -22,6 +22,7 @@ import net.havox.labmon.model.api.employment.Employer;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -54,7 +55,7 @@ public interface EmployerValidator {
             validationErrors.add("Expected employer name not to be blank or empty.");
         }
 
-        return validationErrors;
+        return Collections.unmodifiableList(validationErrors);
     }
 
     /**

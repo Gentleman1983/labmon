@@ -23,6 +23,8 @@ import net.havox.labmon.model.api.contact.ContactOption;
 import net.havox.labmon.model.api.user.Credentials;
 import net.havox.labmon.model.api.user.User;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
+import net.havox.labmon.model.utils.validation.user.UserImplValidator;
+import net.havox.labmon.model.utils.validation.user.UserValidator;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -130,5 +132,10 @@ public class UserImpl extends AbstractChangeAwareClass<UserImpl> implements User
     public boolean removeContactOptions(Collection<ContactOption<?>> options) {
         contactOptions.removeAll(options);
         return true;
+    }
+
+    @Override
+    public UserValidator getValidator() {
+        return new UserImplValidator();
     }
 }
