@@ -22,6 +22,11 @@ import net.havox.labmon.model.api.address.AbstractCityTest;
 import net.havox.labmon.model.api.address.City;
 import net.havox.labmon.model.api.address.Country;
 
+/**
+ * API specific test for {@link City}.
+ *
+ * @author Christian Otto
+ */
 public class CityApiTest extends AbstractCityTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
     public City getCity() {

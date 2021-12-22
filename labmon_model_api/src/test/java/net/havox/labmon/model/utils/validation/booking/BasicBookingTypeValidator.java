@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2021 [haVox] Design
- * Created by Christian Otto
+ * Created by The_G
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,25 +16,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.impl.address;
-
-import net.havox.labmon.model.api.address.AbstractAddressTest;
-import net.havox.labmon.model.api.address.Address;
-import net.havox.labmon.model.api.address.City;
+package net.havox.labmon.model.utils.validation.booking;
 
 /**
- * API specific test for {@link Address}.
+ * Basic implementation of {@link BookingTypeValidator}.
  *
  * @author Christian Otto
  */
-public class AddressApiTest extends AbstractAddressTest { // NOSONAR API test is only inherited, so only derived test cases.
-    @Override
-    public Address getAddress() {
-        return new AddressImpl();
-    }
-
-    @Override
-    public City getCity() {
-        return new CityImpl();
-    }
+public class BasicBookingTypeValidator implements BookingTypeValidator {
 }

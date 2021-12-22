@@ -21,6 +21,11 @@ package net.havox.labmon.model.impl.address;
 import net.havox.labmon.model.api.address.AbstractCountryTest;
 import net.havox.labmon.model.api.address.Country;
 
+/**
+ * API specific test for {@link Country}.
+ *
+ * @author Christian Otto
+ */
 public class CountryApiTest extends AbstractCountryTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
     public Country getCountry() {

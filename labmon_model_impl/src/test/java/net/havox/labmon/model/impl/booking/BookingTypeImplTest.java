@@ -16,25 +16,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.impl.address;
+package net.havox.labmon.model.impl.booking;
 
-import net.havox.labmon.model.api.address.AbstractAddressTest;
-import net.havox.labmon.model.api.address.Address;
-import net.havox.labmon.model.api.address.City;
+import net.havox.labmon.model.impl.AbstractChangeAwareClassTest;
 
 /**
- * API specific test for {@link Address}.
+ * Implemation specific test for {@link BookingTypeImpl}.
  *
  * @author Christian Otto
  */
-public class AddressApiTest extends AbstractAddressTest { // NOSONAR API test is only inherited, so only derived test cases.
+public class BookingTypeImplTest extends AbstractChangeAwareClassTest<BookingTypeImpl> { // NOSONAR Impl test is only inherited, so only derived test cases.
     @Override
-    public Address getAddress() {
-        return new AddressImpl();
-    }
-
-    @Override
-    public City getCity() {
-        return new CityImpl();
+    public BookingTypeImpl getNewInstance() throws Exception {
+        return new BookingTypeImpl();
     }
 }
