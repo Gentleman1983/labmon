@@ -114,7 +114,7 @@ public abstract class AbstractAddressValidationTest {
     }
 
     /**
-     * Tests if a {@link Address} entity missing the first name is invalid.
+     * Tests if a {@link Address} entity missing the street is invalid.
      * <p>
      * Given: a randomized {@link Address} entity
      * And: missing a street attribute
@@ -132,7 +132,7 @@ public abstract class AbstractAddressValidationTest {
     }
 
     /**
-     * Tests if a {@link Address} entity with empty the first name is invalid.
+     * Tests if a {@link Address} entity with empty the street is invalid.
      * <p>
      * Given: a randomized {@link Address} entity
      * And: having an empty street attribute
@@ -151,7 +151,7 @@ public abstract class AbstractAddressValidationTest {
     }
 
     /**
-     * Tests if a {@link Address} entity missing the first name is invalid.
+     * Tests if a {@link Address} entity missing the city is invalid.
      * <p>
      * Given: a randomized {@link Address} entity
      * And: missing a city attribute
@@ -172,7 +172,7 @@ public abstract class AbstractAddressValidationTest {
     }
 
     /**
-     * Tests if a {@link Address} entity with empty the first name is invalid.
+     * Tests if a {@link Address} entity with empty the city is invalid.
      * <p>
      * Given: a randomized {@link Address} entity
      * And: having an invalid city attribute
@@ -182,13 +182,32 @@ public abstract class AbstractAddressValidationTest {
      * @throws Exception
      */
     @RepeatedTest(5)
-    public void testCountryWithInvalidCityIsInvalid() throws Exception {
+    public void testAddressWithInvalidCityIsInvalid() throws Exception {
         Address instanceUnderTest = getValidAddressInstance();
 
         Mockito.when(mockedCityValidator.validate(Mockito.any())).thenReturn(List.of("Mocked error validation result"));
         Mockito.when(mockedCity.getValidator()).thenReturn(mockedCityValidator);
 
         instanceUnderTest.setCity(mockedCity);
+
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Tests if a {@link Address} entity missing the city is invalid.
+     * <p>
+     * Given: a randomized {@link Address} entity
+     * And: missing a city attribute
+     * When: validating the {@link Address} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testAddressWithNullCityIsInvalid() throws Exception {
+        Address instanceUnderTest = getValidAddressInstance();
+
+        instanceUnderTest.setCity(null);
 
         checkValidInstance(instanceUnderTest, false);
     }
