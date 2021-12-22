@@ -19,11 +19,15 @@
 package net.havox.labmon.model.api.employment;
 
 import net.havox.labmon.model.api.ChangeAware;
+import net.havox.labmon.model.api.booking.BookingType;
 import net.havox.labmon.model.api.user.User;
 import net.havox.labmon.model.utils.validation.employment.EmploymentValidator;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 /**
  * This interface represents an employment.
@@ -100,6 +104,69 @@ public interface Employment extends ChangeAware, Serializable {
      * @param endDate the date
      */
     void setEndDate(LocalDate endDate);
+
+    /**
+     * Returns the booking types.
+     *
+     * @return the booking types
+     */
+    Set<BookingType> getBookingTypes();
+
+    /**
+     * Adds a booking type.
+     *
+     * @param type the booking type
+     * @return true if everything works allright
+     */
+    default boolean addBookingType(BookingType type) {
+        return addBookingTypes(type);
+    }
+
+    /**
+     * Adds several booking types.
+     *
+     * @param types the booking types
+     * @return true if everything works allright
+     */
+    default boolean addBookingTypes(BookingType... types) {
+        return addBookingTypes(List.of(types));
+    }
+
+    /**
+     * Adds several booking types.
+     *
+     * @param types the booking types
+     * @return true if everything works allright
+     */
+    boolean addBookingTypes(Collection<BookingType> types);
+
+    /**
+     * Removes a booking type.
+     *
+     * @param type the booking type
+     * @return true if everything works allright
+     */
+    default boolean removeBookingType(BookingType type) {
+        return removeBookingTypes(type);
+    }
+
+    /**
+     * Removes several booking types.
+     *
+     * @param types the booking types
+     * @return true if everything works allright
+     */
+    default boolean removeBookingTypes(BookingType... types) {
+        return removeBookingTypes(List.of(types));
+    }
+
+    /**
+     * Removes several booking types.
+     *
+     * @param types the booking types
+     * @return true if everything works allright
+     */
+    boolean removeBookingTypes(Collection<BookingType> types);
 
     /**
      * Returns the entity validator.

@@ -18,6 +18,7 @@
 
 package net.havox.labmon.model.api.employment;
 
+import net.havox.labmon.model.api.booking.BookingType;
 import net.havox.labmon.model.utils.validation.employment.ProjectValidator;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
@@ -25,6 +26,8 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Abstract implementation of API test of {@link Project}.
@@ -47,6 +50,14 @@ public abstract class AbstractProjectTest {
      * @throws Exception in case of an exception
      */
     public abstract Employment getEmployment() throws Exception;
+
+    /**
+     * Provides a {@link BookingType} instance.
+     *
+     * @return the instance
+     * @throws Exception in case of an exception
+     */
+    public abstract BookingType getBookingType() throws Exception;
 
     /**
      * Tests the modification of the user.
@@ -150,6 +161,195 @@ public abstract class AbstractProjectTest {
         objectUnderTest.setEndDate(endDate);
         Assertions.assertEquals(endDate, objectUnderTest.getEndDate());
         Assertions.assertNotEquals(oldDate, objectUnderTest.getEndDate());
+    }
+
+    /**
+     * Tests if a booking type can be added properly.
+     * <p>
+     * Given: A {@link Project} instance
+     * When: adding a sub role ({@link Project#addBookingType(BookingType)})
+     * Then: than the sub roles ({@link Project#getBookingTypes()} ) should contain the new value
+     *
+     * @throws Exception in case of an exception
+     */
+    @RepeatedTest(25)
+    public void testAddBookingType() throws Exception {
+        Project instanceUnderTest = getProject();
+
+        BookingType bookingType;
+        do {
+            bookingType = getBookingType();
+        } while (instanceUnderTest.getBookingTypes().contains(bookingType));
+
+        Assertions.assertFalse(instanceUnderTest.getBookingTypes().contains(bookingType));
+
+        instanceUnderTest.addBookingType(bookingType);
+
+        Assertions.assertTrue(instanceUnderTest.getBookingTypes().contains(bookingType));
+    }
+
+    /**
+     * Tests if a booking type can be added properly.
+     * <p>
+     * Given: A {@link Project} instance
+     * When: adding a sub role ({@link Project#addBookingTypes(BookingType...)} )
+     * Then: than the sub roles ({@link Project#getBookingTypes()} ) should contain the new value
+     *
+     * @throws Exception in case of an exception
+     */
+    @RepeatedTest(25)
+    public void testAddBookingTypesArray() throws Exception {
+        Project instanceUnderTest = getProject();
+
+        BookingType bookingType;
+        do {
+            bookingType = getBookingType();
+        } while (instanceUnderTest.getBookingTypes().contains(bookingType));
+
+        Assertions.assertFalse(instanceUnderTest.getBookingTypes().contains(bookingType));
+
+        instanceUnderTest.addBookingTypes(bookingType);
+
+        Assertions.assertTrue(instanceUnderTest.getBookingTypes().contains(bookingType));
+    }
+
+    /**
+     * Tests if a booking type can be added properly.
+     * <p>
+     * Given: A {@link Project} instance
+     * When: adding a sub role ({@link Project#addBookingTypes(Collection)} )
+     * Then: than the sub roles ({@link Project#getBookingTypes()} ) should contain the new value
+     *
+     * @throws Exception in case of an exception
+     */
+    @RepeatedTest(25)
+    public void testAddBookingTypesCollection() throws Exception {
+        Project instanceUnderTest = getProject();
+
+        BookingType bookingType;
+        do {
+            bookingType = getBookingType();
+        } while (instanceUnderTest.getBookingTypes().contains(bookingType));
+
+        Assertions.assertFalse(instanceUnderTest.getBookingTypes().contains(bookingType));
+
+        instanceUnderTest.addBookingTypes(List.of(bookingType));
+
+        Assertions.assertTrue(instanceUnderTest.getBookingTypes().contains(bookingType));
+    }
+
+    /**
+     * Tests if a booking type can be removed properly.
+     *
+     * <p>
+     * Given: A {@link Project} instance
+     * And: containing a sub {@link Project}
+     * When: removing the sub role ({@link Project#removeBookingType(BookingType)} )
+     * Then: than the roles ({@link Project#getBookingTypes()} ) should not contain the value
+     *
+     * @throws Exception in case of an exception
+     */
+    @RepeatedTest(25)
+    public void testRemoveBookingType() throws Exception {
+        Project instanceUnderTest = getProject();
+
+        BookingType bookingType;
+        do {
+            bookingType = getBookingType();
+        } while (instanceUnderTest.getBookingTypes().contains(bookingType));
+
+        Assertions.assertFalse(instanceUnderTest.getBookingTypes().contains(bookingType));
+
+        instanceUnderTest.addBookingType(bookingType);
+
+        Assertions.assertTrue(instanceUnderTest.getBookingTypes().contains(bookingType));
+
+        boolean removalResult = instanceUnderTest.removeBookingType(bookingType);
+
+        Assertions.assertFalse(instanceUnderTest.getBookingTypes().contains(bookingType));
+        Assertions.assertTrue(removalResult);
+
+        // Deleting another time should not change anything...
+        removalResult = instanceUnderTest.removeBookingType(bookingType);
+
+        Assertions.assertFalse(instanceUnderTest.getBookingTypes().contains(bookingType));
+        Assertions.assertTrue(removalResult);
+    }
+
+    /**
+     * Tests if a booking type can be removed properly.
+     *
+     * <p>
+     * Given: A {@link Project} instance
+     * And: containing a sub {@link Project}
+     * When: removing the sub role ({@link Project#removeBookingTypes(BookingType...)}  )
+     * Then: than the roles ({@link Project#getBookingTypes()} ) should not contain the value
+     *
+     * @throws Exception in case of an exception
+     */
+    @RepeatedTest(25)
+    public void testRemoveBookingTypesArray() throws Exception {
+        Project instanceUnderTest = getProject();
+
+        BookingType bookingType;
+        do {
+            bookingType = getBookingType();
+        } while (instanceUnderTest.getBookingTypes().contains(bookingType));
+
+        Assertions.assertFalse(instanceUnderTest.getBookingTypes().contains(bookingType));
+
+        instanceUnderTest.addBookingType(bookingType);
+
+        Assertions.assertTrue(instanceUnderTest.getBookingTypes().contains(bookingType));
+
+        boolean removalResult = instanceUnderTest.removeBookingTypes(bookingType);
+
+        Assertions.assertFalse(instanceUnderTest.getBookingTypes().contains(bookingType));
+        Assertions.assertTrue(removalResult);
+
+        // Deleting another time should not change anything...
+        removalResult = instanceUnderTest.removeBookingTypes(bookingType);
+
+        Assertions.assertFalse(instanceUnderTest.getBookingTypes().contains(bookingType));
+        Assertions.assertTrue(removalResult);
+    }
+
+    /**
+     * Tests if a booking type can be removed properly.
+     *
+     * <p>
+     * Given: A {@link Project} instance
+     * And: containing a sub {@link Project}
+     * When: removing the sub role ({@link Project#removeBookingTypes(Collection)}  )
+     * Then: than the roles ({@link Project#getBookingTypes()} ) should not contain the value
+     *
+     * @throws Exception in case of an exception
+     */
+    @RepeatedTest(25)
+    public void testRemoveBookingTypesCollection() throws Exception {
+        Project instanceUnderTest = getProject();
+
+        BookingType bookingType;
+        do {
+            bookingType = getBookingType();
+        } while (instanceUnderTest.getBookingTypes().contains(bookingType));
+
+        Assertions.assertFalse(instanceUnderTest.getBookingTypes().contains(bookingType));
+
+        instanceUnderTest.addBookingType(bookingType);
+
+        Assertions.assertTrue(instanceUnderTest.getBookingTypes().contains(bookingType));
+
+        boolean removalResult = instanceUnderTest.removeBookingTypes(List.of(bookingType));
+
+        Assertions.assertFalse(instanceUnderTest.getBookingTypes().contains(bookingType));
+        Assertions.assertTrue(removalResult);
+
+        // Deleting another time should not change anything...
+        removalResult = instanceUnderTest.removeBookingTypes(bookingType);
+
+        Assertions.assertFalse(instanceUnderTest.getBookingTypes().contains(List.of(bookingType)));
+        Assertions.assertTrue(removalResult);
     }
 
     /**

@@ -18,6 +18,7 @@
 
 package net.havox.labmon.model.basic.employment;
 
+import net.havox.labmon.model.api.booking.BookingType;
 import net.havox.labmon.model.api.employment.Employment;
 import net.havox.labmon.model.api.employment.Project;
 import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
@@ -27,6 +28,10 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Basic implementation of {@link Project} interface.
@@ -34,6 +39,7 @@ import java.time.LocalDate;
  * @author Christian Otto
  */
 public class BasicProject extends AbstractChangeAwareAndIdentifiableClass implements Project {
+    private final Set<BookingType> bookingTypes = new HashSet<>();
     private String name;
     private Employment employment;
     private LocalDate startDate;
@@ -80,6 +86,25 @@ public class BasicProject extends AbstractChangeAwareAndIdentifiableClass implem
     }
 
     @Override
+    public Set<BookingType> getBookingTypes() {
+        return Collections.unmodifiableSet(bookingTypes);
+    }
+
+    @Override
+    public boolean addBookingTypes(Collection<BookingType> types) {
+        bookingTypes.addAll(types);
+
+        return true;
+    }
+
+    @Override
+    public boolean removeBookingTypes(Collection<BookingType> types) {
+        bookingTypes.removeAll(types);
+
+        return true;
+    }
+
+    @Override
     public ProjectValidator getValidator() {
         return new BasicProjectValidator();
     }
@@ -93,6 +118,7 @@ public class BasicProject extends AbstractChangeAwareAndIdentifiableClass implem
         builder.append("employment", getEmployment());
         builder.append("startDate", getStartDate());
         builder.append("endDate", getEndDate());
+        builder.append("bookingTypes", getBookingTypes());
 
         return builder.build();
     }

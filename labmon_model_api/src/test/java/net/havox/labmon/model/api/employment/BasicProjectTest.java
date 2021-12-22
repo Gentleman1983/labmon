@@ -18,6 +18,8 @@
 
 package net.havox.labmon.model.api.employment;
 
+import net.havox.labmon.model.api.booking.BookingType;
+import net.havox.labmon.model.basic.booking.BasicBookingType;
 import net.havox.labmon.model.basic.employment.BasicEmployment;
 import net.havox.labmon.model.basic.employment.BasicProject;
 
@@ -35,5 +37,10 @@ public class BasicProjectTest extends AbstractProjectTest {
     @Override
     public Employment getEmployment() throws Exception {
         return new BasicEmployment();
+    }
+
+    @Override
+    public BookingType getBookingType() throws Exception {
+        return new BasicBookingType();
     }
 }

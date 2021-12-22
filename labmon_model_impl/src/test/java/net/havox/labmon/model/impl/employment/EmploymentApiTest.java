@@ -18,10 +18,12 @@
 
 package net.havox.labmon.model.impl.employment;
 
+import net.havox.labmon.model.api.booking.BookingType;
 import net.havox.labmon.model.api.employment.AbstractEmploymentTest;
 import net.havox.labmon.model.api.employment.Employer;
 import net.havox.labmon.model.api.employment.Employment;
 import net.havox.labmon.model.api.user.User;
+import net.havox.labmon.model.impl.booking.BookingTypeImpl;
 import net.havox.labmon.model.impl.user.UserImpl;
 
 /**
@@ -43,5 +45,10 @@ public class EmploymentApiTest extends AbstractEmploymentTest { // NOSONAR API t
     @Override
     public Employer getEmployer() {
         return new EmployerImpl();
+    }
+
+    @Override
+    public BookingType getBookingType() throws Exception {
+        return new BookingTypeImpl();
     }
 }

@@ -18,9 +18,11 @@
 
 package net.havox.labmon.model.impl.employment;
 
+import net.havox.labmon.model.api.booking.BookingType;
 import net.havox.labmon.model.api.employment.AbstractProjectTest;
 import net.havox.labmon.model.api.employment.Employment;
 import net.havox.labmon.model.api.employment.Project;
+import net.havox.labmon.model.impl.booking.BookingTypeImpl;
 
 /**
  * API specific test for {@link Project}.
@@ -36,5 +38,10 @@ public class ProjectApiTest extends AbstractProjectTest { // NOSONAR API test is
     @Override
     public Employment getEmployment() {
         return new EmploymentImpl();
+    }
+
+    @Override
+    public BookingType getBookingType() throws Exception {
+        return new BookingTypeImpl();
     }
 }

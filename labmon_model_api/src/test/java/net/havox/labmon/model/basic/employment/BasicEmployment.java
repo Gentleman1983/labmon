@@ -18,6 +18,7 @@
 
 package net.havox.labmon.model.basic.employment;
 
+import net.havox.labmon.model.api.booking.BookingType;
 import net.havox.labmon.model.api.employment.Employer;
 import net.havox.labmon.model.api.employment.Employment;
 import net.havox.labmon.model.api.user.User;
@@ -28,6 +29,10 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Basic implementation of {@link Employment} interface.
@@ -35,6 +40,7 @@ import java.time.LocalDate;
  * @author Christian Otto
  */
 public class BasicEmployment extends AbstractChangeAwareAndIdentifiableClass implements Employment {
+    private final Set<BookingType> bookingTypes = new HashSet<>();
     private User user;
     private Employer employer;
     private String description;
@@ -92,6 +98,25 @@ public class BasicEmployment extends AbstractChangeAwareAndIdentifiableClass imp
     }
 
     @Override
+    public Set<BookingType> getBookingTypes() {
+        return Collections.unmodifiableSet(bookingTypes);
+    }
+
+    @Override
+    public boolean addBookingTypes(Collection<BookingType> types) {
+        bookingTypes.addAll(types);
+
+        return true;
+    }
+
+    @Override
+    public boolean removeBookingTypes(Collection<BookingType> types) {
+        bookingTypes.removeAll(types);
+
+        return true;
+    }
+
+    @Override
     public EmploymentValidator getValidator() {
         return new BasicEmploymentValidator();
     }
@@ -106,6 +131,7 @@ public class BasicEmployment extends AbstractChangeAwareAndIdentifiableClass imp
         builder.append("description", getDescription());
         builder.append("startDate", getStartDate());
         builder.append("endDate", getEndDate());
+        builder.append("bookingTypes", getBookingTypes());
 
         return builder.build();
     }

@@ -18,6 +18,7 @@
 
 package net.havox.labmon.model.impl.employment;
 
+import net.havox.labmon.model.api.booking.BookingType;
 import net.havox.labmon.model.api.employment.Employment;
 import net.havox.labmon.model.api.employment.Project;
 import net.havox.labmon.model.impl.AbstractChangeAwareClass;
@@ -25,6 +26,10 @@ import net.havox.labmon.model.utils.validation.employment.ProjectImplValidator;
 import net.havox.labmon.model.utils.validation.employment.ProjectValidator;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
  * This represents the functional entity of an {@link Project}.
@@ -33,20 +38,21 @@ import java.time.LocalDate;
  */
 public class ProjectImpl extends AbstractChangeAwareClass<ProjectImpl> implements Project {
     /**
+     * The booking types.
+     */
+    private final Set<BookingType> bookingTypes = new ConcurrentSkipListSet<>();
+    /**
      * The project name.
      */
     private String name;
-
     /**
      * The corresponding employment entity.
      */
     private Employment employment;
-
     /**
      * The start date.
      */
     private LocalDate startDate;
-
     /**
      * The end date.
      */
@@ -90,6 +96,25 @@ public class ProjectImpl extends AbstractChangeAwareClass<ProjectImpl> implement
     @Override
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    @Override
+    public Set<BookingType> getBookingTypes() {
+        return Collections.unmodifiableSet(bookingTypes);
+    }
+
+    @Override
+    public boolean addBookingTypes(Collection<BookingType> types) {
+        bookingTypes.addAll(types);
+
+        return true;
+    }
+
+    @Override
+    public boolean removeBookingTypes(Collection<BookingType> types) {
+        bookingTypes.removeAll(types);
+
+        return true;
     }
 
     @Override
