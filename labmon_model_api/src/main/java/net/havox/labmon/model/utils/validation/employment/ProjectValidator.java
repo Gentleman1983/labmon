@@ -55,12 +55,44 @@ public interface ProjectValidator {
             return List.of("Expected employment not to be null.");
         }
 
+        validateNameData(instanceUnderValidation, validationErrors);
+        validateEmploymentData(instanceUnderValidation, validationErrors);
+        validateStartDateData(instanceUnderValidation, validationErrors);
+
+        return Collections.unmodifiableList(validationErrors);
+    }
+
+    /**
+     * Simple validity check for the {@link Project} entities.
+     *
+     * @param instance the instance
+     * @return is the instance valid
+     */
+    default boolean isValid(Project instance) {
+        return validate(instance).isEmpty();
+    }
+
+    /**
+     * Validates the data corresponding to {@link Project#getName()}.
+     *
+     * @param instanceUnderValidation the {@link Project}
+     * @param validationErrors        the {@link List} of validation errors
+     */
+    private void validateNameData(Project instanceUnderValidation, List<String> validationErrors) {
         if (null == instanceUnderValidation.getName()) {
             validationErrors.add("Expected name not to be null.");
         } else if (StringUtils.isAllBlank(instanceUnderValidation.getName())) {
             validationErrors.add("Expected name not to be blank or empty.");
         }
+    }
 
+    /**
+     * Validates the data corresponding to {@link Project#getEmployment()}.
+     *
+     * @param instanceUnderValidation the {@link Project}
+     * @param validationErrors        the {@link List} of validation errors
+     */
+    private void validateEmploymentData(Project instanceUnderValidation, List<String> validationErrors) {
         if (null == instanceUnderValidation.getEmployment()) {
             validationErrors.add("Expected employment not to be null.");
         } else {
@@ -83,7 +115,15 @@ public interface ProjectValidator {
                 }
             }
         }
+    }
 
+    /**
+     * Validates the data corresponding to {@link Project#getStartDate()}.
+     *
+     * @param instanceUnderValidation the {@link Project}
+     * @param validationErrors        the {@link List} of validation errors
+     */
+    private void validateStartDateData(Project instanceUnderValidation, List<String> validationErrors) {
         if (null == instanceUnderValidation.getStartDate()) {
             validationErrors.add("Expected start date not to be null.");
         } else {
@@ -98,18 +138,6 @@ public interface ProjectValidator {
                 validationErrors.add("The start date has not to be before the employment start date.");
             }
         }
-
-        return Collections.unmodifiableList(validationErrors);
-    }
-
-    /**
-     * Simple validity check for the {@link Project} entities.
-     *
-     * @param instance the instance
-     * @return is the instance valid
-     */
-    default boolean isValid(Project instance) {
-        return validate(instance).isEmpty();
     }
 
     /**
