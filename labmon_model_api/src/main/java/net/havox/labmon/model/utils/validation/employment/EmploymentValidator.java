@@ -23,7 +23,6 @@ import net.havox.labmon.model.api.employment.Employment;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * A validator for the {@link Employment} entities.
