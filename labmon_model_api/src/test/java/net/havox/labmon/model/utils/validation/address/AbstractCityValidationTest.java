@@ -18,6 +18,7 @@
 
 package net.havox.labmon.model.utils.validation.address;
 
+import net.havox.labmon.model.api.address.Address;
 import net.havox.labmon.model.api.address.City;
 import net.havox.labmon.model.api.address.Country;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
@@ -105,7 +106,7 @@ public abstract class AbstractCityValidationTest {
     }
 
     /**
-     * Tests if a {@link City} entity missing the first name is invalid.
+     * Tests if a {@link City} entity missing the name is invalid.
      * <p>
      * Given: a randomized {@link City} entity
      * And: missing a name attribute
@@ -123,7 +124,7 @@ public abstract class AbstractCityValidationTest {
     }
 
     /**
-     * Tests if a {@link City} entity with empty the first name is invalid.
+     * Tests if a {@link City} entity with empty the name is invalid.
      * <p>
      * Given: a randomized {@link City} entity
      * And: having an empty name attribute
@@ -142,7 +143,7 @@ public abstract class AbstractCityValidationTest {
     }
 
     /**
-     * Tests if a {@link City} entity missing the first name is invalid.
+     * Tests if a {@link City} entity missing the ZIP code is invalid.
      * <p>
      * Given: a randomized {@link City} entity
      * And: missing a ZIP code attribute
@@ -160,7 +161,7 @@ public abstract class AbstractCityValidationTest {
     }
 
     /**
-     * Tests if a {@link City} entity with empty the first name is invalid.
+     * Tests if a {@link City} entity with empty the ZIP code is invalid.
      * <p>
      * Given: a randomized {@link City} entity
      * And: having an empty ZIP code attribute
@@ -179,7 +180,7 @@ public abstract class AbstractCityValidationTest {
     }
 
     /**
-     * Tests if a {@link City} entity missing the first name is invalid.
+     * Tests if a {@link City} entity missing the country is invalid.
      * <p>
      * Given: a randomized {@link City} entity
      * And: missing a country attribute
@@ -200,7 +201,7 @@ public abstract class AbstractCityValidationTest {
     }
 
     /**
-     * Tests if a {@link City} entity with empty the first name is invalid.
+     * Tests if a {@link City} entity with empty the country is invalid.
      * <p>
      * Given: a randomized {@link City} entity
      * And: having an invalid country attribute
@@ -210,13 +211,32 @@ public abstract class AbstractCityValidationTest {
      * @throws Exception
      */
     @RepeatedTest(5)
-    public void testCountryWithInvalidCountyIsInvalid() throws Exception {
+    public void testCountryWithInvalidCountryIsInvalid() throws Exception {
         City instanceUnderTest = getValidCityInstance();
 
         Mockito.when(mockedCountryValidator.validate(Mockito.any())).thenReturn(List.of("Mocked error validation result"));
         Mockito.when(mockedCountry.getValidator()).thenReturn(mockedCountryValidator);
 
         instanceUnderTest.setCountry(mockedCountry);
+
+        checkValidInstance(instanceUnderTest, false);
+    }
+
+    /**
+     * Tests if a {@link City} entity missing the country is invalid.
+     * <p>
+     * Given: a randomized {@link City} entity
+     * And: missing a country attribute
+     * When: validating the {@link City} entity
+     * Then: the validation result should be invalid
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testCityWithNullCountryIsInvalid() throws Exception {
+        City instanceUnderTest = getValidCityInstance();
+
+        instanceUnderTest.setCountry(null);
 
         checkValidInstance(instanceUnderTest, false);
     }
