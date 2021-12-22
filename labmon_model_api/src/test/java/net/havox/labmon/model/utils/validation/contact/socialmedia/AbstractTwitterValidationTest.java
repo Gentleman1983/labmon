@@ -80,7 +80,7 @@ public abstract class AbstractTwitterValidationTest {
     }
 
     /**
-     * Tests if a {@link Twitter} entity missing the first name is invalid.
+     * Tests if a {@link Twitter} entity missing the username is invalid.
      * <p>
      * Given: a randomized {@link Twitter} entity
      * And: missing a username attribute
@@ -98,7 +98,7 @@ public abstract class AbstractTwitterValidationTest {
     }
 
     /**
-     * Tests if a {@link Twitter} entity with empty the first name is invalid.
+     * Tests if a {@link Twitter} entity with empty the username is invalid.
      * <p>
      * Given: a randomized {@link Twitter} entity
      * And: having an empty username attribute
@@ -117,7 +117,7 @@ public abstract class AbstractTwitterValidationTest {
     }
 
     /**
-     * Tests if a {@link Twitter} entity with empty the first name is invalid.
+     * Tests if a {@link Twitter} entity with 16 letter username is invalid.
      * <p>
      * Given: a randomized {@link Twitter} entity
      * And: having a sixteen letter username attribute

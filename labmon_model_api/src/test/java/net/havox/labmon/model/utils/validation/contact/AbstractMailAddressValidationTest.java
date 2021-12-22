@@ -105,7 +105,7 @@ public abstract class AbstractMailAddressValidationTest {
     }
 
     /**
-     * Tests if a {@link MailAddress} entity missing the first name is invalid.
+     * Tests if a {@link MailAddress} entity missing the receiver is invalid.
      * <p>
      * Given: a randomized {@link MailAddress} entity
      * And: missing a receiver attribute
@@ -123,7 +123,7 @@ public abstract class AbstractMailAddressValidationTest {
     }
 
     /**
-     * Tests if a {@link MailAddress} entity with empty the first name is invalid.
+     * Tests if a {@link MailAddress} entity with empty the receiver is invalid.
      * <p>
      * Given: a randomized {@link MailAddress} entity
      * And: having an empty receiver attribute
@@ -142,7 +142,7 @@ public abstract class AbstractMailAddressValidationTest {
     }
 
     /**
-     * Tests if a {@link MailAddress} entity missing the first name is invalid.
+     * Tests if a {@link MailAddress} entity missing the address is invalid.
      * <p>
      * Given: a randomized {@link MailAddress} entity
      * And: missing an address attribute
@@ -160,7 +160,7 @@ public abstract class AbstractMailAddressValidationTest {
     }
 
     /**
-     * Tests if a {@link MailAddress} entity with empty the first name is invalid.
+     * Tests if a {@link MailAddress} entity with empty address is invalid.
      * <p>
      * Given: a randomized {@link MailAddress} entity
      * And: having an invalid address attribute

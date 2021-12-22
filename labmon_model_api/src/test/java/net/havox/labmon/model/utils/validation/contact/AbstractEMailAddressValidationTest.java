@@ -82,7 +82,7 @@ public abstract class AbstractEMailAddressValidationTest {
     }
 
     /**
-     * Tests if a {@link EMailAddress} entity missing the first name is invalid.
+     * Tests if a {@link EMailAddress} entity missing email address is invalid.
      * <p>
      * Given: a randomized {@link EMailAddress} entity
      * And: missing an email address attribute
@@ -100,7 +100,7 @@ public abstract class AbstractEMailAddressValidationTest {
     }
 
     /**
-     * Tests if a {@link EMailAddress} entity with empty the first name is invalid.
+     * Tests if a {@link EMailAddress} entity with empty email address is invalid.
      * <p>
      * Given: a randomized {@link EMailAddress} entity
      * And: having an empty email address attribute

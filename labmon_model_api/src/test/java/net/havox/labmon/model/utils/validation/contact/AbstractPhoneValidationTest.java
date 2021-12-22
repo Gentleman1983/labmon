@@ -78,7 +78,7 @@ public abstract class AbstractPhoneValidationTest {
     }
 
     /**
-     * Tests if a {@link Phone} entity missing the first name is invalid.
+     * Tests if a {@link Phone} entity missing the phone number is invalid.
      * <p>
      * Given: a randomized {@link Phone} entity
      * And: missing a phone number attribute
@@ -96,7 +96,7 @@ public abstract class AbstractPhoneValidationTest {
     }
 
     /**
-     * Tests if a {@link Phone} entity missing the first name is invalid.
+     * Tests if a {@link Phone} entity having an invalid phone number is invalid.
      * <p>
      * Given: a randomized {@link Phone} entity
      * And: having an invalid phone number attribute

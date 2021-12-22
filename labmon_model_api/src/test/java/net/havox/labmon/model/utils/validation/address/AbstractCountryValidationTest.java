@@ -78,7 +78,7 @@ public abstract class AbstractCountryValidationTest {
     }
 
     /**
-     * Tests if a {@link Country} entity missing the first name is invalid.
+     * Tests if a {@link Country} entity missing the name is invalid.
      * <p>
      * Given: a randomized {@link Country} entity
      * And: missing a name attribute
@@ -96,7 +96,7 @@ public abstract class AbstractCountryValidationTest {
     }
 
     /**
-     * Tests if a {@link Country} entity with empty the first name is invalid.
+     * Tests if a {@link Country} entity with empty the name is invalid.
      * <p>
      * Given: a randomized {@link Country} entity
      * And: having an empty name attribute

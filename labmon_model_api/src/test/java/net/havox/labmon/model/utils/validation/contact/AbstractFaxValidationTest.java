@@ -78,7 +78,7 @@ public abstract class AbstractFaxValidationTest {
     }
 
     /**
-     * Tests if a {@link Fax} entity missing the first name is invalid.
+     * Tests if a {@link Fax} entity missing the phone number is invalid.
      * <p>
      * Given: a randomized {@link Fax} entity
      * And: missing a phone number attribute
@@ -96,7 +96,7 @@ public abstract class AbstractFaxValidationTest {
     }
 
     /**
-     * Tests if a {@link Fax} entity missing the first name is invalid.
+     * Tests if a {@link Fax} entity having an invalid phone number is invalid.
      * <p>
      * Given: a randomized {@link Fax} entity
      * And: having an invalid phone number attribute

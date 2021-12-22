@@ -79,7 +79,7 @@ public abstract class AbstractSkypeValidationTest {
     }
 
     /**
-     * Tests if a {@link Skype} entity missing the first name is invalid.
+     * Tests if a {@link Skype} entity missing the username is invalid.
      * <p>
      * Given: a randomized {@link Skype} entity
      * And: missing a username attribute
@@ -97,7 +97,7 @@ public abstract class AbstractSkypeValidationTest {
     }
 
     /**
-     * Tests if a {@link Skype} entity with empty the first name is invalid.
+     * Tests if a {@link Skype} entity with empty the username is invalid.
      * <p>
      * Given: a randomized {@link Skype} entity
      * And: having an empty username attribute
@@ -116,7 +116,7 @@ public abstract class AbstractSkypeValidationTest {
     }
 
     /**
-     * Tests if a {@link Skype} entity with empty the first name is invalid.
+     * Tests if a {@link Skype} entity with only 5 letter username is invalid.
      * <p>
      * Given: a randomized {@link Skype} entity
      * And: having an 5 letter username attribute
@@ -139,7 +139,7 @@ public abstract class AbstractSkypeValidationTest {
     }
 
     /**
-     * Tests if a {@link Skype} entity with empty the first name is invalid.
+     * Tests if a {@link Skype} entity with 23 letter username is invalid.
      * <p>
      * Given: a randomized {@link Skype} entity
      * And: having an 23 letter username attribute
@@ -162,7 +162,7 @@ public abstract class AbstractSkypeValidationTest {
     }
 
     /**
-     * Tests if a {@link Skype} entity with empty the first name is invalid.
+     * Tests if a {@link Skype} entity with username not starting with a letter is invalid.
      * <p>
      * Given: a randomized {@link Skype} entity
      * And: having no letter as first letter of the username attribute
