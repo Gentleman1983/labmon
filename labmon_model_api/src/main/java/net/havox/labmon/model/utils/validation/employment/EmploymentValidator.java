@@ -72,10 +72,9 @@ public interface EmploymentValidator {
 
         if (null == instanceUnderValidation.getEmploymentStartDate()) {
             validationErrors.add("Expected start date not to be null.");
-        } else if (null != instanceUnderValidation.getEmploymentEndDate()) {
-            if (instanceUnderValidation.getEmploymentStartDate().isAfter(instanceUnderValidation.getEmploymentEndDate())) {
-                validationErrors.add("Expected the start date before or equal to the end date.");
-            }
+        } else if (null != instanceUnderValidation.getEmploymentEndDate() &&
+                instanceUnderValidation.getEmploymentStartDate().isAfter(instanceUnderValidation.getEmploymentEndDate())) {
+            validationErrors.add("Expected the start date before or equal to the end date.");
         }
 
         return Collections.unmodifiableList(validationErrors);
@@ -99,6 +98,6 @@ public interface EmploymentValidator {
      * @return the prefixed messages
      */
     private List<String> prefixValidationMessages(List<String> messages, String prefix) {
-        return messages.stream().map(message -> prefix + ": " + message).collect(Collectors.toUnmodifiableList());
+        return messages.stream().map(message -> prefix + ": " + message).toList();
     }
 }
