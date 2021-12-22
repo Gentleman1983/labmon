@@ -28,12 +28,12 @@ import net.havox.labmon.model.basic.contact.BasicEMailAddress;
  */
 public class BasicEMailAddressValidationTest extends AbstractEMailAddressValidationTest {
     @Override
-    public EMailAddress getEMailAddress() throws Exception {
+    public EMailAddress getEMailAddress() {
         return new BasicEMailAddress();
     }
 
     @Override
-    public EMailAddressValidator getEMailAddressValidator() throws Exception {
+    public EMailAddressValidator getEMailAddressValidator() {
         return new BasicEMailAddressValidator();
     }
 }

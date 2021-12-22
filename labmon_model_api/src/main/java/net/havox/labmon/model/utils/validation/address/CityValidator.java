@@ -73,7 +73,7 @@ public interface CityValidator {
      * Validates a {@link City} entity.
      *
      * @param validationTarget the contact option entity
-     * @return true, if no errors occured on validation
+     * @return true, if no errors occurred on validation
      */
     default boolean isValid(City validationTarget) {
         return validate(validationTarget).isEmpty();

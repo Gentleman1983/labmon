@@ -35,13 +35,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
  */
 @ExtendWith(MockitoExtension.class)
 public abstract class AbstractMailAddressTest {
-    @Mock private MailAddress mockedInstance;
+    @Mock
+    private MailAddress mockedInstance;
 
     /**
      * Provides an {@link MailAddress} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract MailAddress getMailAddress() throws Exception;
 
@@ -49,7 +50,7 @@ public abstract class AbstractMailAddressTest {
      * Provides an {@link Address} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Address getAddress() throws Exception;
 
@@ -60,7 +61,7 @@ public abstract class AbstractMailAddressTest {
      * When: modifying the street attribute ({@link MailAddress#setReceiver(String)})
      * Then: than the street attribute ({@link MailAddress#getReceiver()} ) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyReceiver() throws Exception {
@@ -87,11 +88,10 @@ public abstract class AbstractMailAddressTest {
      * When: modifying the street attribute ({@link MailAddress#setAddress(Address)} )
      * Then: than the street attribute ({@link MailAddress#getAddress()} ) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyAddress() throws Exception {
-        String alphabet = " -" + ModelRandomGenerator.ALPHABETIC_STRING;
         Address address = getAddress();
 
         MailAddress objectUnderTest = getMailAddress();
@@ -109,13 +109,13 @@ public abstract class AbstractMailAddressTest {
 
     /**
      * Tests if a proper validator is provided.
-     *
+     * <p>
      * Given: A {@link MailAddress} instance
      * When: calling {@link MailAddress#getContactOptionValidator()}
      * Then: the result is not {@code null}
      * And: the result is of type {@link MailAddressValidator}
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testInstanceValidator() throws Exception {
@@ -127,11 +127,9 @@ public abstract class AbstractMailAddressTest {
 
     /**
      * Tests if {@link MailAddress#isValid()} results in an exception.
-     *
-     * @throws Exception
      */
     @Test
-    public void testIsValidDoesNotResultInErrors() throws Exception {
+    public void testIsValidDoesNotResultInErrors() {
         Assertions.assertNotNull(mockedInstance);
         mockedInstance.isValid();
     }

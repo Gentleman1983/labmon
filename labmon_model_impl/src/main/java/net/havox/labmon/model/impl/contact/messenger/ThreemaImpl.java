@@ -29,7 +29,7 @@ import net.havox.labmon.model.utils.validation.contact.messenger.ThreemaImplVali
  */
 public class ThreemaImpl extends AbstractChangeAwareClass<ThreemaImpl> implements Threema {
     /**
-     * The Threema Id.
+     * The Threema id.
      */
     private String threemaId;
 

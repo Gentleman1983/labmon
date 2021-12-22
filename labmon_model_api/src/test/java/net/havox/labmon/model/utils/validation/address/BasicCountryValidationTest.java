@@ -33,7 +33,7 @@ public class BasicCountryValidationTest extends AbstractCountryValidationTest {
     }
 
     @Override
-    public CountryValidator getCountryValidator() throws Exception {
+    public CountryValidator getCountryValidator() {
         return new BasicCountryValidator();
     }
 }

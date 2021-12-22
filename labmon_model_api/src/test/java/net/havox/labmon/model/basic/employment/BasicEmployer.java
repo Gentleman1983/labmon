@@ -36,7 +36,7 @@ import java.util.Set;
  */
 public class BasicEmployer extends AbstractChangeAwareAndIdentifiableClass implements Employer {
     private String name;
-    private Set<ContactOption<?>> contactOptions = new HashSet<>();
+    private final Set<ContactOption<?>> contactOptions = new HashSet<>();
 
     @Override
     public String getName() {

@@ -34,7 +34,7 @@ public abstract class AbstractEmployerValidationTest {
      * Provides an {@link Employer} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Employer getEmployer() throws Exception;
 
@@ -42,7 +42,7 @@ public abstract class AbstractEmployerValidationTest {
      * Provides an {@link EmployerValidator} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract EmployerValidator getEmployerValidator() throws Exception;
 
@@ -54,7 +54,7 @@ public abstract class AbstractEmployerValidationTest {
      * When: validating the {@link Employer} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testValidEmployerInstanceIsValid() throws Exception {
@@ -70,7 +70,7 @@ public abstract class AbstractEmployerValidationTest {
      * When: validating the {@link Employer} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testNullEmployerIsInvalid() throws Exception {
@@ -85,7 +85,7 @@ public abstract class AbstractEmployerValidationTest {
      * When: validating the {@link Employer} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testEmployerWithoutNameIsInvalid() throws Exception {
@@ -103,7 +103,7 @@ public abstract class AbstractEmployerValidationTest {
      * When: validating the {@link Employer} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testEmployerWithEmptyNameIsInvalid() throws Exception {
@@ -119,7 +119,7 @@ public abstract class AbstractEmployerValidationTest {
      *
      * @param instanceUnderTest the instance
      * @param expectedValid     is the instance expected valid?
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private void checkValidInstance(Employer instanceUnderTest, Boolean expectedValid) throws Exception {
         EmployerValidator validator = getEmployerValidator();
@@ -133,7 +133,7 @@ public abstract class AbstractEmployerValidationTest {
      * Provides a valid {@link Employer} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private Employer getValidEmployerInstance() throws Exception {
         Employer instance = getEmployer();

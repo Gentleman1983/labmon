@@ -43,12 +43,12 @@ public class RoleImpl extends AbstractChangeAwareClass<RoleImpl> implements Role
     /**
      * The included roles. The permissions of these sub roles are derived in this role.
      */
-    private Set<Role> includedRoles = new ConcurrentSkipListSet<>();
+    private final Set<Role> includedRoles = new ConcurrentSkipListSet<>();
 
     /**
      * The direct permissions for this role.
      */
-    private Map<Permission, PermissionStatus> includedPermissions = new ConcurrentHashMap<>();
+    private final Map<Permission, PermissionStatus> includedPermissions = new ConcurrentHashMap<>();
 
     @Override
     public String getName() {

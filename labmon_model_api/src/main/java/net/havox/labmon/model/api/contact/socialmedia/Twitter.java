@@ -19,7 +19,7 @@
 package net.havox.labmon.model.api.contact.socialmedia;
 
 /**
- * This interface represents a twitter profile.
+ * This interface represents a Twitter profile.
  *
  * @author Christian Otto
  */

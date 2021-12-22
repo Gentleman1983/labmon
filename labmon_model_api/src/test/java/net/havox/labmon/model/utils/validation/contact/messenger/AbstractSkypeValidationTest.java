@@ -35,7 +35,7 @@ public abstract class AbstractSkypeValidationTest {
      * Provides an {@link Skype} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Skype getSkype() throws Exception;
 
@@ -43,7 +43,7 @@ public abstract class AbstractSkypeValidationTest {
      * Provides an {@link SkypeValidator} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract SkypeValidator getSkypeValidator() throws Exception;
 
@@ -55,7 +55,7 @@ public abstract class AbstractSkypeValidationTest {
      * When: validating the {@link Skype} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testValidSkypeInstanceIsValid() throws Exception {
@@ -71,7 +71,7 @@ public abstract class AbstractSkypeValidationTest {
      * When: validating the {@link Skype} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testNullSkypeIsInvalid() throws Exception {
@@ -86,7 +86,7 @@ public abstract class AbstractSkypeValidationTest {
      * When: validating the {@link Skype} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testSkypeWithoutUserNameIsInvalid() throws Exception {
@@ -104,7 +104,7 @@ public abstract class AbstractSkypeValidationTest {
      * When: validating the {@link Skype} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testSkypeWithEmptyUserNameIsInvalid() throws Exception {
@@ -123,7 +123,7 @@ public abstract class AbstractSkypeValidationTest {
      * When: validating the {@link Skype} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testSkypeWithFiveLetterUserNameIsInvalid() throws Exception {
@@ -146,7 +146,7 @@ public abstract class AbstractSkypeValidationTest {
      * When: validating the {@link Skype} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testSkypeWithTwentyThreeLetterUserNameIsInvalid() throws Exception {
@@ -169,7 +169,7 @@ public abstract class AbstractSkypeValidationTest {
      * When: validating the {@link Skype} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testSkypeWithoutLetterAsFirstLetterUserNameIsInvalid() throws Exception {
@@ -190,7 +190,7 @@ public abstract class AbstractSkypeValidationTest {
      *
      * @param instanceUnderTest the instance
      * @param expectedValid     is the instance expected valid?
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private void checkValidInstance(Skype instanceUnderTest, Boolean expectedValid) throws Exception {
         SkypeValidator validator = getSkypeValidator();
@@ -209,7 +209,7 @@ public abstract class AbstractSkypeValidationTest {
      * Provides a valid {@link Skype} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private Skype getValidSkypeInstance() throws Exception {
         Skype instance = getSkype();

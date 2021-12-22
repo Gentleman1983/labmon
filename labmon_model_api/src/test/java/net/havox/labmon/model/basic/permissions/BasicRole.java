@@ -37,8 +37,8 @@ import java.util.Set;
  */
 public class BasicRole extends AbstractChangeAwareAndIdentifiableClass implements Role {
     private String name;
-    private Set<Role> roles = new HashSet<>();
-    private Map<Permission, PermissionStatus> permissions = new HashMap<>();
+    private final Set<Role> roles = new HashSet<>();
+    private final Map<Permission, PermissionStatus> permissions = new HashMap<>();
 
     @Override
     public String getName() {

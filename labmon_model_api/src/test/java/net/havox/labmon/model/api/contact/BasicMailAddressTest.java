@@ -29,12 +29,12 @@ import net.havox.labmon.model.basic.contact.BasicMailAddress;
  */
 public class BasicMailAddressTest extends AbstractMailAddressTest {
     @Override
-    public MailAddress getMailAddress() throws Exception {
+    public MailAddress getMailAddress() {
         return new BasicMailAddress();
     }
 
     @Override
-    public Address getAddress() throws Exception {
+    public Address getAddress() {
         return new BasicAddress();
     }
 }

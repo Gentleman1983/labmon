@@ -38,7 +38,7 @@ public abstract class AbstractEMailAddressValidationTest {
      * Provides an {@link EMailAddress} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract EMailAddress getEMailAddress() throws Exception;
 
@@ -46,7 +46,7 @@ public abstract class AbstractEMailAddressValidationTest {
      * Provides an {@link EMailAddressValidator} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract EMailAddressValidator getEMailAddressValidator() throws Exception;
 
@@ -58,7 +58,7 @@ public abstract class AbstractEMailAddressValidationTest {
      * When: validating the {@link EMailAddress} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testValidEMailAddressInstanceIsValid() throws Exception {
@@ -74,7 +74,7 @@ public abstract class AbstractEMailAddressValidationTest {
      * When: validating the {@link EMailAddress} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testNullEMailAddressIsInvalid() throws Exception {
@@ -85,11 +85,11 @@ public abstract class AbstractEMailAddressValidationTest {
      * Tests if a {@link EMailAddress} entity missing the first name is invalid.
      * <p>
      * Given: a randomized {@link EMailAddress} entity
-     * And: missing a email address attribute
+     * And: missing an email address attribute
      * When: validating the {@link EMailAddress} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testEMailAddressWithoutEmailAddressIsInvalid() throws Exception {
@@ -107,7 +107,7 @@ public abstract class AbstractEMailAddressValidationTest {
      * When: validating the {@link EMailAddress} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testEMailAddressWithEmptyEmailAddressIsInvalid() throws Exception {
@@ -121,12 +121,12 @@ public abstract class AbstractEMailAddressValidationTest {
     /**
      * Tests a list of valid {@link EMailAddress}es.
      * <p>
-     * Given: a email address
+     * Given: an email address
      * When: validating the address
      * Then: it shall be valid
      *
      * @param emailAddress the current email address
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @ParameterizedTest
     @ValueSource(strings = {
@@ -155,12 +155,12 @@ public abstract class AbstractEMailAddressValidationTest {
     /**
      * Tests a list of invalid {@link EMailAddress}es.
      * <p>
-     * Given: a email address
+     * Given: an email address
      * When: validating the address
      * Then: it shall be invalid
      *
      * @param emailAddress the current email address
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @ParameterizedTest
     @ValueSource(strings = {
@@ -194,7 +194,7 @@ public abstract class AbstractEMailAddressValidationTest {
      *
      * @param instanceUnderTest the instance
      * @param expectedValid     is the instance expected valid?
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private void checkValidInstance(EMailAddress instanceUnderTest, Boolean expectedValid) throws Exception {
         EMailAddressValidator validator = getEMailAddressValidator();
@@ -213,7 +213,7 @@ public abstract class AbstractEMailAddressValidationTest {
      * Provides a valid {@link EMailAddress} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private EMailAddress getValidEMailAddressInstance() throws Exception {
         EMailAddress instance = getEMailAddress();

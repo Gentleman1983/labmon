@@ -29,7 +29,7 @@ import java.util.List;
  * A validator for the {@link Skype} entities.
  * <p>
  * Specifications for a given user entity:
- * - A skype username consists of 6 to 22 characters
+ * - A Skype username consists of 6 to 22 characters
  * - It starts with a letter
  *
  * @author Christian Otto

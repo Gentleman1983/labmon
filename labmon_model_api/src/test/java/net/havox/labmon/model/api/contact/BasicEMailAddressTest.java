@@ -27,7 +27,7 @@ import net.havox.labmon.model.basic.contact.BasicEMailAddress;
  */
 public class BasicEMailAddressTest extends AbstractEMailAddressTest {
     @Override
-    public EMailAddress getEMailAddress() throws Exception {
+    public EMailAddress getEMailAddress() {
         return new BasicEMailAddress();
     }
 }

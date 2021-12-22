@@ -39,7 +39,7 @@ public abstract class AbstractUserTest {
      * Provides an {@link User} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract User getUser() throws Exception;
 
@@ -47,7 +47,7 @@ public abstract class AbstractUserTest {
      * Provides an {@link Address} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Address getAddress() throws Exception;
 
@@ -55,7 +55,7 @@ public abstract class AbstractUserTest {
      * Provides an {@link Credentials} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Credentials getCredentials() throws Exception;
 
@@ -63,7 +63,7 @@ public abstract class AbstractUserTest {
      * Provides a {@link ContactOption} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract ContactOption getContactOption() throws Exception;
 
@@ -74,7 +74,7 @@ public abstract class AbstractUserTest {
      * When: modifying the first name attribute ({@link User#setFirstName(String)})
      * Then: than the first name attribute ({@link User#getFirstName()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyUserFirstName() throws Exception {
@@ -103,7 +103,7 @@ public abstract class AbstractUserTest {
      * When: modifying the middle name attribute ({@link User#setMiddleName(String)})
      * Then: than the middle name attribute ({@link User#getMiddleName()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyUserMiddleName() throws Exception {
@@ -132,7 +132,7 @@ public abstract class AbstractUserTest {
      * When: modifying the last name attribute ({@link User#setLastName(String)})
      * Then: than the last name attribute ({@link User#getLastName()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyUserLastName() throws Exception {
@@ -161,7 +161,7 @@ public abstract class AbstractUserTest {
      * When: modifying the address attribute ({@link User#setAddress(Address)})
      * Then: than the address attribute ({@link User#getAddress()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyAddress() throws Exception {
@@ -173,13 +173,13 @@ public abstract class AbstractUserTest {
     }
 
     /**
-     * Tests if changes on the credentials property work properly.
+     * Tests if changes on the credential's property work properly.
      * <p>
      * Given: A {@link User} instance
      * When: modifying the credentials attribute ({@link User#setCredentials(Credentials)})
      * Then: than the credentials attribute ({@link User#getCredentials()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyCredentials() throws Exception {
@@ -197,7 +197,7 @@ public abstract class AbstractUserTest {
      * When: getting the contact options ({@link User#getContactOptions()})
      * Then: the result {@link Set} is not {@code null}
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testGetContactOptions() throws Exception {
@@ -214,7 +214,7 @@ public abstract class AbstractUserTest {
      * When: adding a contact option ({@link User#addContactOption(ContactOption)})
      * Then: than the contact options ({@link User#getContactOptions()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testAddContactOption() throws Exception {
@@ -240,17 +240,16 @@ public abstract class AbstractUserTest {
      * When: adding a contact option ({@link User#addContactOptions(ContactOption[])})
      * Then: than the contact options ({@link User#getContactOptions()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testAddContactOptionsArray() throws Exception {
         User instanceUnderTest = getUser();
 
         ContactOption<?> option = getContactOption();
-        do {
+        while (instanceUnderTest.getContactOptions().contains(option)) {
             option = getContactOption();
         }
-        while (instanceUnderTest.getContactOptions().contains(option));
 
         Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
 
@@ -266,17 +265,16 @@ public abstract class AbstractUserTest {
      * When: adding a contact option ({@link User#addContactOptions(Collection)})
      * Then: than the contact options ({@link User#getContactOptions()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testAddContactOptionsCollection() throws Exception {
         User instanceUnderTest = getUser();
 
         ContactOption<?> option = getContactOption();
-        do {
+        while (instanceUnderTest.getContactOptions().contains(option)) {
             option = getContactOption();
         }
-        while (instanceUnderTest.getContactOptions().contains(option));
 
         Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
 
@@ -294,7 +292,7 @@ public abstract class AbstractUserTest {
      * When: removing the contact option ({@link User#removeContactOption(ContactOption)})
      * Then: than the contact options ({@link User#getContactOptions()}) should not contain the value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testRemoveContactOption() throws Exception {
@@ -333,7 +331,7 @@ public abstract class AbstractUserTest {
      * When: removing the contact option ({@link User#removeContactOptions(ContactOption[])})
      * Then: than the contact options ({@link User#getContactOptions()}) should not contain the value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testRemoveContactOptionsArray() throws Exception {
@@ -372,7 +370,7 @@ public abstract class AbstractUserTest {
      * When: removing the contact option ({@link User#removeContactOptions(Collection)})
      * Then: than the contact options ({@link User#getContactOptions()}) should not contain the value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testRemoveContactOptionsCollection() throws Exception {

@@ -25,16 +25,16 @@ package net.havox.labmon.model.api.contact.messenger;
  */
 public interface Threema extends Messenger<Threema> {
     /**
-     * Returns the threema id.
+     * Returns the Threema id.
      *
-     * @return the threema id
+     * @return the Threema id
      */
     String getThreemaId();
 
     /**
-     * Sets the threema id.
+     * Sets the Threema id.
      *
-     * @param threemaId the threema id
+     * @param threemaId the Threema id
      */
     void setThreemaId(String threemaId);
 }

@@ -34,7 +34,7 @@ import net.havox.labmon.model.basic.contact.BasicMailAddress;
  */
 public class BasicMailAddressValidationTest extends AbstractMailAddressValidationTest {
     @Override
-    public MailAddress getMailAddress() throws Exception {
+    public MailAddress getMailAddress() {
         return new BasicMailAddress();
     }
 
@@ -54,7 +54,7 @@ public class BasicMailAddressValidationTest extends AbstractMailAddressValidatio
     }
 
     @Override
-    public MailAddressValidator getMailAddressValidator() throws Exception {
+    public MailAddressValidator getMailAddressValidator() {
         return new BasicMailAddressValidator();
     }
 }

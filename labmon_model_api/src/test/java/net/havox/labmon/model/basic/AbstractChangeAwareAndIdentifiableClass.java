@@ -30,7 +30,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  */
 public class AbstractChangeAwareAndIdentifiableClass implements ChangeAware, Identifiable, Comparable<AbstractChangeAwareAndIdentifiableClass> {
     private Long id;
-    private long version = 1l;
+    private long version = 1;
 
     @Override
     public Long getId() {

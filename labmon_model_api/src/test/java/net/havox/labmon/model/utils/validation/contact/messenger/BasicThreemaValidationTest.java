@@ -28,12 +28,12 @@ import net.havox.labmon.model.basic.contact.messenger.BasicThreema;
  */
 public class BasicThreemaValidationTest extends AbstractThreemaValidationTest {
     @Override
-    public Threema getThreema() throws Exception {
+    public Threema getThreema() {
         return new BasicThreema();
     }
 
     @Override
-    public ThreemaValidator getThreemaValidator() throws Exception {
+    public ThreemaValidator getThreemaValidator() {
         return new BasicThreemaValidator();
     }
 }

@@ -68,7 +68,7 @@ public interface AddressValidator {
      * Validates a {@link Address} entity.
      *
      * @param validationTarget the contact option entity
-     * @return true, if no errors occured on validation
+     * @return true, if no errors occurred on validation
      */
     default boolean isValid(Address validationTarget) {
         return validate(validationTarget).isEmpty();

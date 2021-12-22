@@ -30,12 +30,12 @@ import net.havox.labmon.model.utils.validation.employment.EmployerValidator;
  */
 public class EmployerValidationTest extends AbstractEmployerValidationTest { // NOSONAR Validation test is only inherited, so only derived test cases.
     @Override
-    public Employer getEmployer() throws Exception {
+    public Employer getEmployer() {
         return new EmployerImpl();
     }
 
     @Override
-    public EmployerValidator getEmployerValidator() throws Exception {
+    public EmployerValidator getEmployerValidator() {
         return new EmployerImplValidator();
     }
 }

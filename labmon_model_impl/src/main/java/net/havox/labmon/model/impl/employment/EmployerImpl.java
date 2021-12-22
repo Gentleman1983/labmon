@@ -27,7 +27,7 @@ import net.havox.labmon.model.utils.validation.employment.EmployerValidator;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
  * This represents the functional entity of an {@link Employer}.
@@ -43,7 +43,7 @@ public class EmployerImpl extends AbstractChangeAwareClass<EmployerImpl> impleme
     /**
      * The employer's contact options.
      */
-    private Set<ContactOption<?>> contactOptions = new CopyOnWriteArraySet<>();
+    private final Set<ContactOption<?>> contactOptions = new ConcurrentSkipListSet<>();
 
     @Override
     public String getName() {

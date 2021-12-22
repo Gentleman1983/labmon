@@ -29,12 +29,12 @@ import net.havox.labmon.model.basic.employment.BasicEmployer;
  */
 public class BasicEmployerTest extends AbstractEmployerTest {
     @Override
-    public Employer getEmployer() throws Exception {
+    public Employer getEmployer() {
         return new BasicEmployer();
     }
 
     @Override
-    public ContactOption getContactOption() throws Exception {
+    public ContactOption getContactOption() {
         return new BasicTwitter();
     }
 }

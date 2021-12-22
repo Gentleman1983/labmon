@@ -20,7 +20,6 @@ package net.havox.labmon.model.utils.validation.contact;
 
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import net.havox.labmon.model.api.contact.Fax;
-import net.havox.labmon.model.api.contact.Phone;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -35,7 +34,7 @@ public abstract class AbstractFaxValidationTest {
      * Provides an {@link Fax} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Fax getFax() throws Exception;
 
@@ -43,7 +42,7 @@ public abstract class AbstractFaxValidationTest {
      * Provides an {@link FaxValidator} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract FaxValidator getFaxValidator() throws Exception;
 
@@ -55,7 +54,7 @@ public abstract class AbstractFaxValidationTest {
      * When: validating the {@link Fax} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testValidFaxInstanceIsValid() throws Exception {
@@ -71,7 +70,7 @@ public abstract class AbstractFaxValidationTest {
      * When: validating the {@link Fax} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testNullFaxIsInvalid() throws Exception {
@@ -86,7 +85,7 @@ public abstract class AbstractFaxValidationTest {
      * When: validating the {@link Fax} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testFaxWithoutPhoneNumberIsInvalid() throws Exception {
@@ -100,11 +99,11 @@ public abstract class AbstractFaxValidationTest {
      * Tests if a {@link Fax} entity missing the first name is invalid.
      * <p>
      * Given: a randomized {@link Fax} entity
-     * And: having a invalid phone number attribute
+     * And: having an invalid phone number attribute
      * When: validating the {@link Fax} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testFaxWithInvalidPhoneNumberIsInvalid() throws Exception {
@@ -119,7 +118,7 @@ public abstract class AbstractFaxValidationTest {
      *
      * @param instanceUnderTest the instance
      * @param expectedValid     is the instance expected valid?
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private void checkValidInstance(Fax instanceUnderTest, Boolean expectedValid) throws Exception {
         FaxValidator validator = getFaxValidator();
@@ -138,7 +137,7 @@ public abstract class AbstractFaxValidationTest {
      * Provides a valid {@link Fax} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private Fax getValidFaxInstance() throws Exception {
         Fax instance = getFax();

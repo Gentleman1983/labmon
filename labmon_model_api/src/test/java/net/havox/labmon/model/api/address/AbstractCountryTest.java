@@ -34,7 +34,7 @@ public abstract class AbstractCountryTest {
      * Provides a {@link Country} instance.
      *
      * @return the instance
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Country getCountry() throws Exception;
 
@@ -45,7 +45,7 @@ public abstract class AbstractCountryTest {
      * When: modifying the name attribute ({@link Country#setName(String)})
      * Then: than the name attribute ({@link Country#getName()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyName() throws Exception {
@@ -73,7 +73,7 @@ public abstract class AbstractCountryTest {
      * Then: the result is not {@code null}
      * And: the result is of type {@link CountryValidator}
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testInstanceValidator() throws Exception {

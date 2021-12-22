@@ -27,7 +27,7 @@ import net.havox.labmon.model.basic.contact.socialmedia.BasicTwitter;
  */
 public class BasicTwitterTest extends AbstractTwitterTest {
     @Override
-    public Twitter getTwitter() throws Exception {
+    public Twitter getTwitter() {
         return new BasicTwitter();
     }
 }

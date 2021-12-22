@@ -27,7 +27,7 @@ import net.havox.labmon.model.basic.contact.BasicFax;
  */
 public class BasicFaxTest extends AbstractFaxTest {
     @Override
-    public Fax getFax() throws Exception {
+    public Fax getFax() {
         return new BasicFax();
     }
 }

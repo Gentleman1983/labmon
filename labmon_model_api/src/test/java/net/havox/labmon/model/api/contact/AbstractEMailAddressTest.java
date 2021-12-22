@@ -40,7 +40,7 @@ public abstract class AbstractEMailAddressTest {
      * Provides an {@link EMailAddress} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract EMailAddress getEMailAddress() throws Exception;
 
@@ -51,7 +51,7 @@ public abstract class AbstractEMailAddressTest {
      * When: modifying the street attribute ({@link EMailAddress#setEMailAddress(String)} )
      * Then: than the street attribute ({@link EMailAddress#getEMailAddress()} ) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyEMailAddress() throws Exception {
@@ -79,7 +79,7 @@ public abstract class AbstractEMailAddressTest {
      * Then: the result is not {@code null}
      * And: the result is of type {@link EMailAddressValidator}
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testInstanceValidator() throws Exception {
@@ -91,11 +91,9 @@ public abstract class AbstractEMailAddressTest {
 
     /**
      * Tests if {@link EMailAddress#isValid()} results in an exception.
-     *
-     * @throws Exception
      */
     @Test
-    public void testIsValidDoesNotResultInErrors() throws Exception {
+    public void testIsValidDoesNotResultInErrors(){
         Assertions.assertNotNull(mockedInstance);
         mockedInstance.isValid();
     }

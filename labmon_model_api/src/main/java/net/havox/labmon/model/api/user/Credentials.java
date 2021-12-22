@@ -23,7 +23,7 @@ import net.havox.labmon.model.api.ChangeAware;
 import java.io.Serializable;
 
 /**
- * This represents an user credential of this application.
+ * This represents a user credential of this application.
  *
  * @author Christian Otto
  */

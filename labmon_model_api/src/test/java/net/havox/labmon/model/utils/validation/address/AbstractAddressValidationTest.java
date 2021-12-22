@@ -46,7 +46,7 @@ public abstract class AbstractAddressValidationTest {
      * Provides an {@link Address} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Address getAddress() throws Exception;
 
@@ -54,7 +54,7 @@ public abstract class AbstractAddressValidationTest {
      * Provides an {@link City} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract City getCity() throws Exception;
 
@@ -62,7 +62,7 @@ public abstract class AbstractAddressValidationTest {
      * Provides an {@link Country} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Country getCountry() throws Exception;
 
@@ -70,7 +70,7 @@ public abstract class AbstractAddressValidationTest {
      * Provides an {@link AddressValidator} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract AddressValidator getAddressValidator() throws Exception;
 
@@ -78,7 +78,7 @@ public abstract class AbstractAddressValidationTest {
      * Provides an {@link CityValidator} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract CityValidator getCityValidator() throws Exception;
 
@@ -90,7 +90,7 @@ public abstract class AbstractAddressValidationTest {
      * When: validating the {@link Address} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testValidAddressInstanceIsValid() throws Exception {
@@ -106,7 +106,7 @@ public abstract class AbstractAddressValidationTest {
      * When: validating the {@link Address} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testNullAddressIsInvalid() throws Exception {
@@ -121,7 +121,7 @@ public abstract class AbstractAddressValidationTest {
      * When: validating the {@link Address} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testAddressWithoutStreetIsInvalid() throws Exception {
@@ -139,7 +139,7 @@ public abstract class AbstractAddressValidationTest {
      * When: validating the {@link Address} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testAddressWithEmptyStreetIsInvalid() throws Exception {
@@ -158,7 +158,7 @@ public abstract class AbstractAddressValidationTest {
      * When: validating the {@link Address} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testAddressWithoutCityIsInvalid() throws Exception {
@@ -179,7 +179,7 @@ public abstract class AbstractAddressValidationTest {
      * When: validating the {@link Address} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testAddressWithInvalidCityIsInvalid() throws Exception {
@@ -201,7 +201,7 @@ public abstract class AbstractAddressValidationTest {
      * When: validating the {@link Address} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testAddressWithNullCityIsInvalid() throws Exception {
@@ -217,7 +217,7 @@ public abstract class AbstractAddressValidationTest {
      *
      * @param instanceUnderTest the instance
      * @param expectedValid     is the instance expected valid?
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private void checkValidInstance(Address instanceUnderTest, Boolean expectedValid) throws Exception {
         AddressValidator validator = getAddressValidator();
@@ -231,7 +231,7 @@ public abstract class AbstractAddressValidationTest {
      * Provides a valid {@link Address} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private Address getValidAddressInstance() throws Exception {
         Address instance = getAddress();
@@ -248,7 +248,7 @@ public abstract class AbstractAddressValidationTest {
      * Provides a valid {@link City} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private City getValidCityInstance() throws Exception {
         City instance = getCity();
@@ -265,7 +265,7 @@ public abstract class AbstractAddressValidationTest {
      * Provides a valid {@link Country} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private Country getValidCountryInstance() throws Exception {
         Country instance = getCountry();

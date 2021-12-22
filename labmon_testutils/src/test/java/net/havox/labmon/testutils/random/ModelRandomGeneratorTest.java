@@ -163,7 +163,6 @@ class ModelRandomGeneratorTest {
     @RepeatedTest(100)
     void testRandomIntUpperBound() {
         int expectedMinValue = Integer.MIN_VALUE;
-        int maxValueLowerBoundary = 0;
         int expectedMaxValue = 0; // expected max value >= 1.
         while (expectedMaxValue <= 0) {
             expectedMaxValue = RANDOM.nextInt();

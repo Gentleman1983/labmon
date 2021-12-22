@@ -55,7 +55,7 @@ public class UserApiTest extends AbstractUserTest { // NOSONAR API test is only 
     }
 
     @Override
-    public ContactOption<?> getContactOption() throws Exception {
+    public ContactOption<?> getContactOption() {
         return randomContactOption();
     }
 

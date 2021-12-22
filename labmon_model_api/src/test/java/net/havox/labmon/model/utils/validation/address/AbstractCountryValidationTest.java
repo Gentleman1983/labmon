@@ -34,7 +34,7 @@ public abstract class AbstractCountryValidationTest {
      * Provides an {@link Country} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Country getCountry() throws Exception;
 
@@ -42,7 +42,7 @@ public abstract class AbstractCountryValidationTest {
      * Provides an {@link CountryValidator} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract CountryValidator getCountryValidator() throws Exception;
 
@@ -54,7 +54,7 @@ public abstract class AbstractCountryValidationTest {
      * When: validating the {@link Country} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testValidCountryInstanceIsValid() throws Exception {
@@ -70,7 +70,7 @@ public abstract class AbstractCountryValidationTest {
      * When: validating the {@link Country} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testNullCountryIsInvalid() throws Exception {
@@ -85,7 +85,7 @@ public abstract class AbstractCountryValidationTest {
      * When: validating the {@link Country} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testCountryWithoutNameIsInvalid() throws Exception {
@@ -103,7 +103,7 @@ public abstract class AbstractCountryValidationTest {
      * When: validating the {@link Country} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testCountryWithEmptyNameIsInvalid() throws Exception {
@@ -119,7 +119,7 @@ public abstract class AbstractCountryValidationTest {
      *
      * @param instanceUnderTest the instance
      * @param expectedValid     is the instance expected valid?
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private void checkValidInstance(Country instanceUnderTest, Boolean expectedValid) throws Exception {
         CountryValidator validator = getCountryValidator();
@@ -133,7 +133,7 @@ public abstract class AbstractCountryValidationTest {
      * Provides a valid {@link Country} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private Country getValidCountryInstance() throws Exception {
         Country instance = getCountry();

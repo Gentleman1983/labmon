@@ -37,7 +37,7 @@ public abstract class AbstractRoleTest {
      * Provides a {@link Permission} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Permission getPermission() throws Exception;
 
@@ -45,7 +45,7 @@ public abstract class AbstractRoleTest {
      * Provides a {@link Role} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Role getRole() throws Exception;
 
@@ -56,7 +56,7 @@ public abstract class AbstractRoleTest {
      * When: modifying the name attribute ({@link Role#setName(String)})
      * Then: than the name attribute ({@link Role#getName()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyRoleName() throws Exception {
@@ -84,7 +84,7 @@ public abstract class AbstractRoleTest {
      * When: adding a sub role ({@link Role#addRole(Role)})
      * Then: than the sub roles ({@link Role#getIncludedRoles()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testAddRole() throws Exception {
@@ -112,7 +112,7 @@ public abstract class AbstractRoleTest {
      * When: removing the sub role ({@link Role#removeRole(Role)})
      * Then: than the roles ({@link Role#getIncludedRoles()}) should not contain the value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testRemoveRole() throws Exception {
@@ -149,7 +149,7 @@ public abstract class AbstractRoleTest {
      * When: adding a permission ({@link Role#addPermission(Permission, PermissionStatus)})
      * Then: than the permission ({@link Role#getIncludedPermissions()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testAddPermission() throws Exception {
@@ -178,7 +178,7 @@ public abstract class AbstractRoleTest {
      * When: removing the permission ({@link Role#removePermission(Permission)})
      * Then: than the permissions ({@link Role#getIncludedPermissions()} ) should contain not the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testRemovePermission() throws Exception {
@@ -217,7 +217,7 @@ public abstract class AbstractRoleTest {
      * When: modifying a {@link Permission} or changing the {@link PermissionStatus}
      * Then: the changes shall be correctly mapped to the permissions ({@link Role#getIncludedPermissions()})
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testGetActivePermissionsForRole() throws Exception {
@@ -254,7 +254,7 @@ public abstract class AbstractRoleTest {
      * When: calling the active permissions ({@link Role#getActivePermissionsForRole()})
      * Then: than the transitive permissions in status {@link PermissionStatus#ALLOW} shall be contained in the result
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testGetActivePermissionsForRoleContainsTransitiveAllowPermissions() throws Exception {
@@ -279,7 +279,7 @@ public abstract class AbstractRoleTest {
      * When: calling the active permissions ({@link Role#getActivePermissionsForRole()})
      * Then: than the transitive permissions in status {@link PermissionStatus#DENY} shall not be contained in the result
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testGetActivePermissionsForRoleNotContainsTransitiveDenyPermissions() throws Exception {
@@ -304,7 +304,7 @@ public abstract class AbstractRoleTest {
      * When: calling the active permissions ({@link Role#getActivePermissionsForRole()})
      * Then: the call should not result in a never ending recursion
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testGetActivePermissionsForRoleCheckRecursionLoops() throws Exception {
@@ -325,7 +325,7 @@ public abstract class AbstractRoleTest {
      * Creates a random role instance with up to two random sub roles and up to ten permissions.
      *
      * @return the instance
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private Role getRandomRole() throws Exception {
         Role instance = getRole();
@@ -353,7 +353,7 @@ public abstract class AbstractRoleTest {
      * Creates a random permission.
      *
      * @return the instance
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private Permission getRandomPermission() throws Exception {
         Permission instance = getPermission();

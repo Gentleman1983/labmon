@@ -40,7 +40,7 @@ public abstract class AbstractThreemaTest {
      * Provides an {@link Threema} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Threema getThreema() throws Exception;
 
@@ -51,7 +51,7 @@ public abstract class AbstractThreemaTest {
      * When: modifying the street attribute ({@link Threema#setThreemaId(String)} )
      * Then: than the street attribute ({@link Threema#getThreemaId()} ) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyThreemaId() throws Exception {
@@ -79,7 +79,7 @@ public abstract class AbstractThreemaTest {
      * Then: the result is not {@code null}
      * And: the result is of type {@link ThreemaValidator}
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testInstanceValidator() throws Exception {
@@ -91,11 +91,9 @@ public abstract class AbstractThreemaTest {
 
     /**
      * Tests if {@link Threema#isValid()} results in an exception.
-     *
-     * @throws Exception
      */
     @Test
-    public void testIsValidDoesNotResultInErrors() throws Exception {
+    public void testIsValidDoesNotResultInErrors() {
         Assertions.assertNotNull(mockedInstance);
         mockedInstance.isValid();
     }

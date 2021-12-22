@@ -40,7 +40,7 @@ public abstract class AbstractSkypeTest {
      * Provides an {@link Skype} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Skype getSkype() throws Exception;
 
@@ -51,7 +51,7 @@ public abstract class AbstractSkypeTest {
      * When: modifying the street attribute ({@link Skype#setUserName(String)})
      * Then: than the street attribute ({@link Skype#getUserName()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyUserName() throws Exception {
@@ -79,7 +79,7 @@ public abstract class AbstractSkypeTest {
      * Then: the result is not {@code null}
      * And: the result is of type {@link SkypeValidator}
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testInstanceValidator() throws Exception {
@@ -91,11 +91,9 @@ public abstract class AbstractSkypeTest {
 
     /**
      * Tests if {@link Skype#isValid()} results in an exception.
-     *
-     * @throws Exception
      */
     @Test
-    public void testIsValidDoesNotResultInErrors() throws Exception {
+    public void testIsValidDoesNotResultInErrors() {
         Assertions.assertNotNull(mockedInstance);
         mockedInstance.isValid();
     }

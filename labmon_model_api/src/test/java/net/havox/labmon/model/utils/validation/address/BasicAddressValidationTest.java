@@ -47,12 +47,12 @@ public class BasicAddressValidationTest extends AbstractAddressValidationTest {
     }
 
     @Override
-    public AddressValidator getAddressValidator() throws Exception {
+    public AddressValidator getAddressValidator() {
         return new BasicAddressValidator();
     }
 
     @Override
-    public CityValidator getCityValidator() throws Exception {
+    public CityValidator getCityValidator() {
         return new BasicCityValidator();
     }
 }

@@ -37,7 +37,7 @@ public abstract class AbstractMailAddressValidationTest {
      * Provides an {@link MailAddress} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract MailAddress getMailAddress() throws Exception;
 
@@ -45,7 +45,7 @@ public abstract class AbstractMailAddressValidationTest {
      * Provides an {@link Address} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Address getAddress() throws Exception;
 
@@ -53,7 +53,7 @@ public abstract class AbstractMailAddressValidationTest {
      * Provides an {@link City} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract City getCity() throws Exception;
 
@@ -61,7 +61,7 @@ public abstract class AbstractMailAddressValidationTest {
      * Provides an {@link Country} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Country getCountry() throws Exception;
 
@@ -69,7 +69,7 @@ public abstract class AbstractMailAddressValidationTest {
      * Provides an {@link MailAddressValidator} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract MailAddressValidator getMailAddressValidator() throws Exception;
 
@@ -81,7 +81,7 @@ public abstract class AbstractMailAddressValidationTest {
      * When: validating the {@link MailAddress} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testValidMailAddressInstanceIsValid() throws Exception {
@@ -97,7 +97,7 @@ public abstract class AbstractMailAddressValidationTest {
      * When: validating the {@link MailAddress} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testNullMailAddressIsInvalid() throws Exception {
@@ -112,7 +112,7 @@ public abstract class AbstractMailAddressValidationTest {
      * When: validating the {@link MailAddress} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testMailAddressWithoutReceiverIsInvalid() throws Exception {
@@ -130,7 +130,7 @@ public abstract class AbstractMailAddressValidationTest {
      * When: validating the {@link MailAddress} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testMailAddressWithEmptyReceiverIsInvalid() throws Exception {
@@ -149,7 +149,7 @@ public abstract class AbstractMailAddressValidationTest {
      * When: validating the {@link MailAddress} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testMailAddressWithoutAddressIsInvalid() throws Exception {
@@ -167,7 +167,7 @@ public abstract class AbstractMailAddressValidationTest {
      * When: validating the {@link MailAddress} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testMailAddressWithInvalidAddressIsInvalid() throws Exception {
@@ -186,7 +186,7 @@ public abstract class AbstractMailAddressValidationTest {
      *
      * @param instanceUnderTest the instance
      * @param expectedValid     is the instance expected valid?
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private void checkValidInstance(MailAddress instanceUnderTest, Boolean expectedValid) throws Exception {
         MailAddressValidator validator = getMailAddressValidator();
@@ -205,7 +205,7 @@ public abstract class AbstractMailAddressValidationTest {
      * Provides a valid {@link MailAddress} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private MailAddress getValidMailAddressInstance() throws Exception {
         MailAddress instance = getMailAddress();
@@ -221,7 +221,7 @@ public abstract class AbstractMailAddressValidationTest {
      * Provides a valid {@link Address} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private Address getValidAddressInstance() throws Exception {
         Address instance = getAddress();
@@ -238,7 +238,7 @@ public abstract class AbstractMailAddressValidationTest {
      * Provides a valid {@link City} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private City getValidCityInstance() throws Exception {
         City instance = getCity();
@@ -255,7 +255,7 @@ public abstract class AbstractMailAddressValidationTest {
      * Provides a valid {@link Country} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private Country getValidCountryInstance() throws Exception {
         Country instance = getCountry();

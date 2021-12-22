@@ -28,12 +28,12 @@ import net.havox.labmon.model.basic.contact.socialmedia.BasicTwitter;
  */
 public class BasicTwitterValidationTest extends AbstractTwitterValidationTest {
     @Override
-    public Twitter getTwitter() throws Exception {
+    public Twitter getTwitter() {
         return new BasicTwitter();
     }
 
     @Override
-    public TwitterValidator getTwitterValidator() throws Exception {
+    public TwitterValidator getTwitterValidator() {
         return new BasicTwitterValidator();
     }
 }

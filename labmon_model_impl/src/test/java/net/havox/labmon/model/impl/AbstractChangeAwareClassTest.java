@@ -40,7 +40,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * Provides an {@link AbstractChangeAwareClass<T>} entity having a given id and version.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract T getNewInstance() throws Exception;
 
@@ -51,7 +51,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * When: modifying the id attribute ({@link AbstractChangeAwareClass#setId(Long)})
      * Then: the new id shall be set ({@link AbstractChangeAwareClass#getId()})
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyId() throws Exception {
@@ -75,7 +75,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * When: checking for equality on the entities
      * Then: reflexive equality shall be given
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testEqualsReflexive() throws Exception {
@@ -97,7 +97,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * When: checking for equality on the entities
      * Then: symmetric equality shall be given
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testEqualsSymmetric() throws Exception {
@@ -116,7 +116,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * When: checking for equality on the entities
      * Then: transitive equality shall be given
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testEqualsTransitive() throws Exception {
@@ -138,7 +138,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * When: checking repeatedly for equality on the entities
      * Then: there shall be no changes in equality
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testEqualsConsistence() throws Exception {
@@ -166,7 +166,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * When: checking for equality against {@code null entity}
      * Then: equality shall not be given
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testEqualsNotEqualsNull() throws Exception {
@@ -195,7 +195,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * And: one entity has {@code null} id value and the other not {@code null} value
      * Then: equality shall not be given
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testEqualsNoIdInequality() throws Exception {
@@ -215,7 +215,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * When: checking for equality on the entities
      * Then: equality shall not be given
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testEqualsNewObject() throws Exception {
@@ -238,7 +238,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * When: checking hash code ({@link AbstractChangeAwareClass#hashCode()})
      * Then: a hash code shall be generated
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testHashCode() throws Exception {
@@ -264,7 +264,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * When: checking repeatedly hash code ({@link AbstractChangeAwareClass#hashCode()})
      * Then: the hash code shall not change
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testHashCodeConsistency() throws Exception {
@@ -296,7 +296,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * When: checking hash code ({@link AbstractChangeAwareClass#hashCode()})
      * Then: the same hash code shall be generated
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testHashCodeEqualObjects() throws Exception {
@@ -322,7 +322,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * When: incrementing the version attribute ({@link AbstractChangeAwareClass#incrementVersion()})
      * Then: the version attribute shall be incremented by 1
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testIncrementVersion() throws Exception {
@@ -342,7 +342,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * When: repeatedly incrementing the version attribute ({@link AbstractChangeAwareClass#incrementVersion()})
      * Then: the version attribute shall be incremented by 1 per increment
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testIncrementVersionConsistence() throws Exception {
@@ -369,7 +369,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * When: incrementing the version attribute ({@link AbstractChangeAwareClass#incrementVersion()})
      * Then: No changes on class attributes occur except the version attribute
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testIncrementVersionSinglePointOfChange() throws Exception {
@@ -432,7 +432,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * When: calling {@link AbstractChangeAwareClass#toString()} method
      * Then: this shall not result in an {@link Exception}
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testToStringNoExceptionTest() throws Exception {
@@ -452,7 +452,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * When: comparing entities ({@link AbstractChangeAwareClass#compareTo(AbstractChangeAwareClass)})
      * Then: the result shall match expectations (check on id attribute value)
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testCompareToTest() throws Exception {
@@ -473,7 +473,7 @@ public abstract class AbstractChangeAwareClassTest<T extends AbstractChangeAware
      * @param id      the id
      * @param version the version
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private T getNewInstance(Long id, long version) throws Exception {
         T clazz = getNewInstance();

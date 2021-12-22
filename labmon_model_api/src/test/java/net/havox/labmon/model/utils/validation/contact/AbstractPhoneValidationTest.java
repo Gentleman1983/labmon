@@ -34,7 +34,7 @@ public abstract class AbstractPhoneValidationTest {
      * Provides an {@link Phone} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Phone getPhone() throws Exception;
 
@@ -42,7 +42,7 @@ public abstract class AbstractPhoneValidationTest {
      * Provides an {@link PhoneValidator} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract PhoneValidator getPhoneValidator() throws Exception;
 
@@ -54,7 +54,7 @@ public abstract class AbstractPhoneValidationTest {
      * When: validating the {@link Phone} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testValidPhoneInstanceIsValid() throws Exception {
@@ -70,7 +70,7 @@ public abstract class AbstractPhoneValidationTest {
      * When: validating the {@link Phone} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testNullPhoneIsInvalid() throws Exception {
@@ -85,7 +85,7 @@ public abstract class AbstractPhoneValidationTest {
      * When: validating the {@link Phone} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testPhoneWithoutPhoneNumberIsInvalid() throws Exception {
@@ -99,11 +99,11 @@ public abstract class AbstractPhoneValidationTest {
      * Tests if a {@link Phone} entity missing the first name is invalid.
      * <p>
      * Given: a randomized {@link Phone} entity
-     * And: having a invalid phone number attribute
+     * And: having an invalid phone number attribute
      * When: validating the {@link Phone} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testPhoneWithInvalidPhoneNumberIsInvalid() throws Exception {
@@ -118,7 +118,7 @@ public abstract class AbstractPhoneValidationTest {
      *
      * @param instanceUnderTest the instance
      * @param expectedValid     is the instance expected valid?
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private void checkValidInstance(Phone instanceUnderTest, Boolean expectedValid) throws Exception {
         PhoneValidator validator = getPhoneValidator();
@@ -137,7 +137,7 @@ public abstract class AbstractPhoneValidationTest {
      * Provides a valid {@link Phone} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private Phone getValidPhoneInstance() throws Exception {
         Phone instance = getPhone();

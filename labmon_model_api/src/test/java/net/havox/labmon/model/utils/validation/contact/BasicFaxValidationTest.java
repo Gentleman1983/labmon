@@ -28,12 +28,12 @@ import net.havox.labmon.model.basic.contact.BasicFax;
  */
 public class BasicFaxValidationTest extends AbstractFaxValidationTest {
     @Override
-    public Fax getFax() throws Exception {
+    public Fax getFax() {
         return new BasicFax();
     }
 
     @Override
-    public FaxValidator getFaxValidator() throws Exception {
+    public FaxValidator getFaxValidator() {
         return new BasicFaxValidator();
     }
 }

@@ -21,7 +21,6 @@ package net.havox.labmon.model.api.contact;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import net.havox.labmon.model.utils.validation.contact.FaxValidator;
-import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -42,7 +41,7 @@ public abstract class AbstractFaxTest {
      * Provides an {@link Fax} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Fax getFax() throws Exception;
 
@@ -53,11 +52,10 @@ public abstract class AbstractFaxTest {
      * When: modifying the street attribute ({@link Fax#setPhoneNumber(PhoneNumber)} )
      * Then: than the street attribute ({@link Fax#getPhoneNumber()} ) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyPhoneNumber() throws Exception {
-        String alphabet = " -" + ModelRandomGenerator.ALPHABETIC_STRING;
         PhoneNumber number = PhoneNumberUtil.getInstance().getExampleNumber("DE");
 
         Fax objectUnderTest = getFax();
@@ -81,7 +79,7 @@ public abstract class AbstractFaxTest {
      * Then: the result is not {@code null}
      * And: the result is of type {@link FaxValidator}
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testInstanceValidator() throws Exception {
@@ -93,11 +91,9 @@ public abstract class AbstractFaxTest {
 
     /**
      * Tests if {@link Fax#isValid()} results in an exception.
-     *
-     * @throws Exception
      */
     @Test
-    public void testIsValidDoesNotResultInErrors() throws Exception {
+    public void testIsValidDoesNotResultInErrors() {
         Assertions.assertNotNull(mockedInstance);
         mockedInstance.isValid();
     }

@@ -36,7 +36,7 @@ public abstract class AbstractTwitterValidationTest {
      * Provides an {@link Twitter} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Twitter getTwitter() throws Exception;
 
@@ -44,7 +44,7 @@ public abstract class AbstractTwitterValidationTest {
      * Provides an {@link TwitterValidator} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract TwitterValidator getTwitterValidator() throws Exception;
 
@@ -56,7 +56,7 @@ public abstract class AbstractTwitterValidationTest {
      * When: validating the {@link Twitter} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testValidTwitterInstanceIsValid() throws Exception {
@@ -72,7 +72,7 @@ public abstract class AbstractTwitterValidationTest {
      * When: validating the {@link Twitter} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testNullTwitterIsInvalid() throws Exception {
@@ -87,7 +87,7 @@ public abstract class AbstractTwitterValidationTest {
      * When: validating the {@link Twitter} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testTwitterWithoutUserNameIsInvalid() throws Exception {
@@ -105,7 +105,7 @@ public abstract class AbstractTwitterValidationTest {
      * When: validating the {@link Twitter} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testTwitterWithEmptyUserNameIsInvalid() throws Exception {
@@ -120,11 +120,11 @@ public abstract class AbstractTwitterValidationTest {
      * Tests if a {@link Twitter} entity with empty the first name is invalid.
      * <p>
      * Given: a randomized {@link Twitter} entity
-     * And: having an sixteen letter username attribute
+     * And: having a sixteen letter username attribute
      * When: validating the {@link Twitter} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testTwitterWithSixteenLetterUserNameIsInvalid() throws Exception {
@@ -140,7 +140,7 @@ public abstract class AbstractTwitterValidationTest {
      *
      * @param instanceUnderTest the instance
      * @param expectedValid     is the instance expected valid?
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private void checkValidInstance(Twitter instanceUnderTest, Boolean expectedValid) throws Exception {
         TwitterValidator validator = getTwitterValidator();
@@ -159,7 +159,7 @@ public abstract class AbstractTwitterValidationTest {
      * Provides a valid {@link Twitter} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private Twitter getValidTwitterInstance() throws Exception {
         Twitter instance = getTwitter();

@@ -27,7 +27,7 @@ import net.havox.labmon.model.basic.contact.messenger.BasicSkype;
  */
 public class BasicSkypeTest extends AbstractSkypeTest {
     @Override
-    public Skype getSkype() throws Exception {
+    public Skype getSkype() {
         return new BasicSkype();
     }
 }

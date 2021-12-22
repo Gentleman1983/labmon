@@ -28,12 +28,12 @@ import net.havox.labmon.model.basic.employment.BasicEmployer;
  */
 public class BasicEmployerValidationTest extends AbstractEmployerValidationTest {
     @Override
-    public Employer getEmployer() throws Exception {
+    public Employer getEmployer() {
         return new BasicEmployer();
     }
 
     @Override
-    public EmployerValidator getEmployerValidator() throws Exception {
+    public EmployerValidator getEmployerValidator() {
         return new BasicEmployerValidator();
     }
 }

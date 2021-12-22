@@ -45,7 +45,7 @@ public abstract class AbstractCityValidationTest {
      * Provides an {@link City} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract City getCity() throws Exception;
 
@@ -53,7 +53,7 @@ public abstract class AbstractCityValidationTest {
      * Provides an {@link CityValidator} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract CityValidator getCityValidator() throws Exception;
 
@@ -61,7 +61,7 @@ public abstract class AbstractCityValidationTest {
      * Provides an {@link CountryValidator} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract CountryValidator getCountryValidator() throws Exception;
 
@@ -69,7 +69,7 @@ public abstract class AbstractCityValidationTest {
      * Provides an {@link Country} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Country getCountry() throws Exception;
 
@@ -81,7 +81,7 @@ public abstract class AbstractCityValidationTest {
      * When: validating the {@link City} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testValidCountryInstanceIsValid() throws Exception {
@@ -97,7 +97,7 @@ public abstract class AbstractCityValidationTest {
      * When: validating the {@link City} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testNullCityIsInvalid() throws Exception {
@@ -112,7 +112,7 @@ public abstract class AbstractCityValidationTest {
      * When: validating the {@link City} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testCountryWithoutNameIsInvalid() throws Exception {
@@ -130,7 +130,7 @@ public abstract class AbstractCityValidationTest {
      * When: validating the {@link City} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testCountryWithEmptyNameIsInvalid() throws Exception {
@@ -149,7 +149,7 @@ public abstract class AbstractCityValidationTest {
      * When: validating the {@link City} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testCountryWithoutZipCodeIsInvalid() throws Exception {
@@ -167,7 +167,7 @@ public abstract class AbstractCityValidationTest {
      * When: validating the {@link City} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testCountryWithEmptyZipCodeIsInvalid() throws Exception {
@@ -186,7 +186,7 @@ public abstract class AbstractCityValidationTest {
      * When: validating the {@link City} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testCountryWithoutCountryIsInvalid() throws Exception {
@@ -207,7 +207,7 @@ public abstract class AbstractCityValidationTest {
      * When: validating the {@link City} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testCountryWithInvalidCountryIsInvalid() throws Exception {
@@ -229,7 +229,7 @@ public abstract class AbstractCityValidationTest {
      * When: validating the {@link City} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testCityWithNullCountryIsInvalid() throws Exception {
@@ -245,7 +245,7 @@ public abstract class AbstractCityValidationTest {
      *
      * @param instanceUnderTest the instance
      * @param expectedValid     is the instance expected valid?
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private void checkValidInstance(City instanceUnderTest, Boolean expectedValid) throws Exception {
         CityValidator validator = getCityValidator();
@@ -259,7 +259,7 @@ public abstract class AbstractCityValidationTest {
      * Provides a valid {@link City} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private City getValidCityInstance() throws Exception {
         City instance = getCity();
@@ -276,7 +276,7 @@ public abstract class AbstractCityValidationTest {
      * Provides a valid {@link Country} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private Country getValidCountryInstance() throws Exception {
         Country instance = getCountry();

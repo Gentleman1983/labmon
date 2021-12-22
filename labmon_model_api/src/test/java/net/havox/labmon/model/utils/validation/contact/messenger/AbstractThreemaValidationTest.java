@@ -34,7 +34,7 @@ public abstract class AbstractThreemaValidationTest {
      * Provides an {@link Threema} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Threema getThreema() throws Exception;
 
@@ -42,7 +42,7 @@ public abstract class AbstractThreemaValidationTest {
      * Provides an {@link ThreemaValidator} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract ThreemaValidator getThreemaValidator() throws Exception;
 
@@ -54,7 +54,7 @@ public abstract class AbstractThreemaValidationTest {
      * When: validating the {@link Threema} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testValidThreemaInstanceIsValid() throws Exception {
@@ -70,7 +70,7 @@ public abstract class AbstractThreemaValidationTest {
      * When: validating the {@link Threema} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testNullThreemaIsInvalid() throws Exception {
@@ -78,14 +78,14 @@ public abstract class AbstractThreemaValidationTest {
     }
 
     /**
-     * Tests if a {@link Threema} entity missing the threema id is invalid.
+     * Tests if a {@link Threema} entity missing the Threema id is invalid.
      * <p>
      * Given: a randomized {@link Threema} entity
-     * And: missing the threema id attribute
+     * And: missing the Threema id attribute
      * When: validating the {@link Threema} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testThreemaWithoutThreemaIdIsInvalid() throws Exception {
@@ -96,14 +96,14 @@ public abstract class AbstractThreemaValidationTest {
     }
 
     /**
-     * Tests if a {@link Threema} entity with empty the threema id is invalid.
+     * Tests if a {@link Threema} entity with empty the Threema id is invalid.
      * <p>
      * Given: a randomized {@link Threema} entity
-     * And: having an empty threema id attribute
+     * And: having an empty Threema id attribute
      * When: validating the {@link Threema} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testThreemaWithEmptyThreemaIdIsInvalid() throws Exception {
@@ -115,14 +115,14 @@ public abstract class AbstractThreemaValidationTest {
     }
 
     /**
-     * Tests if a {@link Threema} entity with 7 digit threema id is invalid.
+     * Tests if a {@link Threema} entity with 7 digit Threema id is invalid.
      * <p>
      * Given: a randomized {@link Threema} entity
-     * And: having an 7 digit threema id attribute
+     * And: having an 7 digit Threema id attribute
      * When: validating the {@link Threema} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testThreemaWithSevenDigitThreemaIdIsInvalid() throws Exception {
@@ -135,14 +135,14 @@ public abstract class AbstractThreemaValidationTest {
     }
 
     /**
-     * Tests if a {@link Threema} entity with 9 digit threema id is invalid.
+     * Tests if a {@link Threema} entity with 9 digit Threema id is invalid.
      * <p>
      * Given: a randomized {@link Threema} entity
-     * And: having an 9 digit threema id attribute
+     * And: having an 9 digit Threema id attribute
      * When: validating the {@link Threema} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testThreemaWithNineDigitThreemaIdIsInvalid() throws Exception {
@@ -159,17 +159,17 @@ public abstract class AbstractThreemaValidationTest {
      *
      * @param instanceUnderTest the instance
      * @param expectedValid     is the instance expected valid?
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private void checkValidInstance(Threema instanceUnderTest, Boolean expectedValid) throws Exception {
         ThreemaValidator validator = getThreemaValidator();
         Assertions.assertEquals(expectedValid, validator.isValid(instanceUnderTest),
-                "Expected the threema account '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
+                "Expected the Threema account '" + instanceUnderTest + "' " + (expectedValid ? "" : " not") +
                         "to be a valid instance. The validation result was " + validator.validate(instanceUnderTest) +
                         ".");
         if (null != instanceUnderTest) {
             Assertions.assertEquals(expectedValid, instanceUnderTest.isValid(),
-                    "Expected the threema account '" + instanceUnderTest + "' " +
+                    "Expected the Threema account '" + instanceUnderTest + "' " +
                             (expectedValid ? "" : " not") + "to be a valid instance.");
         }
     }
@@ -178,7 +178,7 @@ public abstract class AbstractThreemaValidationTest {
      * Provides a valid {@link Threema} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private Threema getValidThreemaInstance() throws Exception {
         Threema instance = getThreema();

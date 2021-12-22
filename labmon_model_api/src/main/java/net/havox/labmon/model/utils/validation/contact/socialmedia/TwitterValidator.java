@@ -38,7 +38,7 @@ public interface TwitterValidator extends ContactOptionValidator<Twitter> {
     /**
      * The {@link Twitter} username validation regular expression.
      */
-    static final String TWITTER_USER_REGEX = "^[A-Za-z0-9_]{1,15}$";
+    String TWITTER_USER_REGEX = "^[A-Za-z0-9_]{1,15}$";
 
     @Override
     default List<String> validate(Twitter validationTarget) {

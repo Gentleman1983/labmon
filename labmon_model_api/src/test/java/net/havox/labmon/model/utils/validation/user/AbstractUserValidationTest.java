@@ -35,7 +35,7 @@ public abstract class AbstractUserValidationTest {
      * Provides an {@link User} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract User getUser() throws Exception;
 
@@ -43,7 +43,7 @@ public abstract class AbstractUserValidationTest {
      * Provides an {@link UserValidator} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract UserValidator getValidator() throws Exception;
 
@@ -51,7 +51,7 @@ public abstract class AbstractUserValidationTest {
      * Provides an {@link Credentials} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Credentials getCredentials() throws Exception;
 
@@ -63,7 +63,7 @@ public abstract class AbstractUserValidationTest {
      * When: validating the {@link User} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testValidUserInstanceIsValid() throws Exception {
@@ -79,7 +79,7 @@ public abstract class AbstractUserValidationTest {
      * When: validating the {@link User} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testNullUserIsInvalid() throws Exception {
@@ -94,7 +94,7 @@ public abstract class AbstractUserValidationTest {
      * When: validating the {@link User} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testUserWithoutFirstNameIsInvalid() throws Exception {
@@ -112,7 +112,7 @@ public abstract class AbstractUserValidationTest {
      * When: validating the {@link User} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testUserWithEmptyFirstNameIsInvalid() throws Exception {
@@ -131,7 +131,7 @@ public abstract class AbstractUserValidationTest {
      * When: validating the {@link User} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testUserWithoutLastNameIsInvalid() throws Exception {
@@ -150,7 +150,7 @@ public abstract class AbstractUserValidationTest {
      * When: validating the {@link User} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testUserWithEmptyLastNameIsInvalid() throws Exception {
@@ -169,7 +169,7 @@ public abstract class AbstractUserValidationTest {
      * When: validating the {@link User} entity
      * Then: the validation result should be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(5)
     public void testUserWithNullCredentialsIsInvalid() throws Exception {
@@ -185,7 +185,7 @@ public abstract class AbstractUserValidationTest {
      *
      * @param instanceUnderTest the instance
      * @param expectedValid     is the instance expected valid?
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private void checkValidInstance(User instanceUnderTest, Boolean expectedValid) throws Exception {
         UserValidator validator = getValidator();
@@ -199,7 +199,7 @@ public abstract class AbstractUserValidationTest {
      * Provides a valid {@link User} instance.
      *
      * @return a valid instance
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private User getValidUser() throws Exception {
         User user = getUser();

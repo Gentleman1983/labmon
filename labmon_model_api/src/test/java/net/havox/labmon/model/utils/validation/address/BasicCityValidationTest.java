@@ -40,12 +40,12 @@ public class BasicCityValidationTest extends AbstractCityValidationTest {
     }
 
     @Override
-    public CityValidator getCityValidator() throws Exception {
+    public CityValidator getCityValidator() {
         return new BasicCityValidator();
     }
 
     @Override
-    public CountryValidator getCountryValidator() throws Exception {
+    public CountryValidator getCountryValidator() {
         return new BasicCountryValidator();
     }
 }

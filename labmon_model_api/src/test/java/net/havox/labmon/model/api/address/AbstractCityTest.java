@@ -34,7 +34,7 @@ public abstract class AbstractCityTest {
      * Provides a {@link City} instance.
      *
      * @return the instance
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract City getCity() throws Exception;
 
@@ -42,7 +42,7 @@ public abstract class AbstractCityTest {
      * Provides a {@link Country} instance.
      *
      * @return the instance
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Country getCountry() throws Exception;
 
@@ -53,7 +53,7 @@ public abstract class AbstractCityTest {
      * When: modifying the ZIP code attribute ({@link City#setZipCode(String)})
      * Then: than the ZIP code attribute ({@link City#getZipCode()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyZipCode() throws Exception {
@@ -81,7 +81,7 @@ public abstract class AbstractCityTest {
      * When: modifying the name attribute ({@link City#setName(String)})
      * Then: than the name attribute ({@link City#getName()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyName() throws Exception {
@@ -108,7 +108,7 @@ public abstract class AbstractCityTest {
      * When: modifying the country attribute ({@link City#setCountry(Country)})
      * Then: than the country attribute ({@link City#getCountry()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyCounty() throws Exception {
@@ -135,7 +135,7 @@ public abstract class AbstractCityTest {
      * Then: the result is not {@code null}
      * And: the result is of type {@link CityValidator}
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testInstanceValidator() throws Exception {

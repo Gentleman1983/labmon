@@ -18,7 +18,6 @@
 
 package net.havox.labmon.model.basic.user;
 
-import net.havox.labmon.model.api.user.AuthenticationMethod;
 import net.havox.labmon.model.api.user.PasswordAuthentication;
 import net.havox.labmon.model.basic.AbstractChangeAwareAndIdentifiableClass;
 import org.apache.commons.lang3.builder.ToStringBuilder;

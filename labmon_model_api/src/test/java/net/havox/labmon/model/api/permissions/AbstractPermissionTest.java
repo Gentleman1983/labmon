@@ -33,7 +33,7 @@ public abstract class AbstractPermissionTest {
      * Provides a {@link Permission} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Permission getPermission() throws Exception;
 
@@ -44,7 +44,7 @@ public abstract class AbstractPermissionTest {
      * When: modifying the name attribute ({@link Permission#setName(String)})
      * Then: than the name attribute ({@link Permission#getName()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyPermissionName() throws Exception {

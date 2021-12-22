@@ -30,12 +30,12 @@ import net.havox.labmon.model.impl.contact.socialmedia.TwitterImpl;
  */
 public class EmployerApiTest extends AbstractEmployerTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
-    public Employer getEmployer() throws Exception {
+    public Employer getEmployer() {
         return new EmployerImpl();
     }
 
     @Override
-    public ContactOption getContactOption() throws Exception {
+    public ContactOption getContactOption() {
         return new TwitterImpl();
     }
 }

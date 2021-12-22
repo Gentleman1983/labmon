@@ -32,7 +32,7 @@ public abstract class AbstractCredentialTest {
      * Provides an {@link Credentials} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Credentials getCredentials() throws Exception;
 
@@ -40,7 +40,7 @@ public abstract class AbstractCredentialTest {
      * Provides an {@link PasswordAuthentication} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract PasswordAuthentication getPasswordAuthentication() throws Exception;
 
@@ -51,7 +51,7 @@ public abstract class AbstractCredentialTest {
      * When: modifying the username attribute ({@link Credentials#setUserName(String)})
      * Then: than the username attribute ({@link Credentials#getUserName()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyUserName() throws Exception {
@@ -80,7 +80,7 @@ public abstract class AbstractCredentialTest {
      * When: modifying the authentication method attribute ({@link Credentials#setAuthentication(AuthenticationMethod)})
      * Then: than the authentication method attribute ({@link Credentials#getAuthentication()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyAuthenticationMethod() throws Exception {

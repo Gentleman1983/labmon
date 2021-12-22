@@ -40,7 +40,7 @@ public abstract class AbstractTwitterTest {
      * Provides an {@link Twitter} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Twitter getTwitter() throws Exception;
 
@@ -51,7 +51,7 @@ public abstract class AbstractTwitterTest {
      * When: modifying the street attribute ({@link Twitter#setUserName(String)})
      * Then: than the street attribute ({@link Twitter#getUserName()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyUserName() throws Exception {
@@ -79,7 +79,7 @@ public abstract class AbstractTwitterTest {
      * When: getting the profile link ({@link Twitter#getLinkToProfile()} )
      * Then: than the expected link should equal "{@code https://twitter.com/$username}"
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testGetLinkToProfile() throws Exception {
@@ -100,7 +100,7 @@ public abstract class AbstractTwitterTest {
      * Then: the result is not {@code null}
      * And: the result is of type {@link TwitterValidator}
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testInstanceValidator() throws Exception {
@@ -112,11 +112,9 @@ public abstract class AbstractTwitterTest {
 
     /**
      * Tests if {@link Twitter#isValid()} results in an exception.
-     *
-     * @throws Exception
      */
     @Test
-    public void testIsValidDoesNotResultInErrors() throws Exception {
+    public void testIsValidDoesNotResultInErrors() {
         Assertions.assertNotNull(mockedInstance);
         mockedInstance.isValid();
     }

@@ -27,7 +27,7 @@ import net.havox.labmon.model.basic.contact.BasicPhone;
  */
 public class BasicPhoneTest extends AbstractPhoneTest {
     @Override
-    public Phone getPhone() throws Exception {
+    public Phone getPhone() {
         return new BasicPhone();
     }
 }

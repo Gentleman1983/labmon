@@ -39,7 +39,7 @@ public abstract class AbstractEmployerTest {
      * Provides a {@link Employer} instance.
      *
      * @return the instance
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Employer getEmployer() throws Exception;
 
@@ -47,7 +47,7 @@ public abstract class AbstractEmployerTest {
      * Provides a {@link ContactOption} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract ContactOption getContactOption() throws Exception;
 
@@ -58,7 +58,7 @@ public abstract class AbstractEmployerTest {
      * When: modifying the name attribute ({@link Employer#setName(String)})
      * Then: than the name attribute ({@link Employer#getName()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyName() throws Exception {
@@ -85,7 +85,7 @@ public abstract class AbstractEmployerTest {
      * When: getting the contact options ({@link Employer#getContactOptions()})
      * Then: the result {@link Set} is not {@code null}
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testGetContactOptions() throws Exception {
@@ -102,7 +102,7 @@ public abstract class AbstractEmployerTest {
      * When: adding a contact option ({@link Employer#addContactOption(ContactOption)})
      * Then: than the contact options ({@link Employer#getContactOptions()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testAddContactOption() throws Exception {
@@ -128,17 +128,16 @@ public abstract class AbstractEmployerTest {
      * When: adding a contact option ({@link Employer#addContactOptions(ContactOption[])})
      * Then: than the contact options ({@link Employer#getContactOptions()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testAddContactOptionsArray() throws Exception {
         Employer instanceUnderTest = getEmployer();
 
         ContactOption<?> option = getContactOption();
-        do {
+        while (instanceUnderTest.getContactOptions().contains(option)) {
             option = getContactOption();
         }
-        while (instanceUnderTest.getContactOptions().contains(option));
 
         Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
 
@@ -154,17 +153,16 @@ public abstract class AbstractEmployerTest {
      * When: adding a contact option ({@link Employer#addContactOptions(Collection)})
      * Then: than the contact options ({@link Employer#getContactOptions()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testAddContactOptionsCollection() throws Exception {
         Employer instanceUnderTest = getEmployer();
 
         ContactOption<?> option = getContactOption();
-        do {
+        while (instanceUnderTest.getContactOptions().contains(option)) {
             option = getContactOption();
         }
-        while (instanceUnderTest.getContactOptions().contains(option));
 
         Assertions.assertFalse(instanceUnderTest.getContactOptions().contains(option));
 
@@ -182,7 +180,7 @@ public abstract class AbstractEmployerTest {
      * When: removing the contact option ({@link Employer#removeContactOption(ContactOption)})
      * Then: than the contact options ({@link Employer#getContactOptions()}) should not contain the value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testRemoveContactOption() throws Exception {
@@ -221,7 +219,7 @@ public abstract class AbstractEmployerTest {
      * When: removing the contact option ({@link Employer#removeContactOptions(ContactOption[])})
      * Then: than the contact options ({@link Employer#getContactOptions()}) should not contain the value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testRemoveContactOptionsArray() throws Exception {
@@ -260,7 +258,7 @@ public abstract class AbstractEmployerTest {
      * When: removing the contact option ({@link Employer#removeContactOptions(Collection)})
      * Then: than the contact options ({@link Employer#getContactOptions()}) should not contain the value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testRemoveContactOptionsCollection() throws Exception {
@@ -298,7 +296,7 @@ public abstract class AbstractEmployerTest {
      * Then: the validator shall be instantiated
      * And: the validator shall be of type {@link EmployerValidator}
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testGetValidator() throws Exception {

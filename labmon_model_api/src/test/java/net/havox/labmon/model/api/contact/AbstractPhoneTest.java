@@ -21,7 +21,6 @@ package net.havox.labmon.model.api.contact;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
 import net.havox.labmon.model.utils.validation.contact.PhoneValidator;
-import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -42,7 +41,7 @@ public abstract class AbstractPhoneTest {
      * Provides an {@link Phone} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Phone getPhone() throws Exception;
 
@@ -53,11 +52,10 @@ public abstract class AbstractPhoneTest {
      * When: modifying the street attribute ({@link Phone#setPhoneNumber(Phonenumber.PhoneNumber)} )
      * Then: than the street attribute ({@link Phone#getPhoneNumber()} ) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyPhoneNumber() throws Exception {
-        String alphabet = " -" + ModelRandomGenerator.ALPHABETIC_STRING;
         Phonenumber.PhoneNumber number = PhoneNumberUtil.getInstance().getExampleNumber("DE");
 
         Phone objectUnderTest = getPhone();
@@ -81,7 +79,7 @@ public abstract class AbstractPhoneTest {
      * Then: the result is not {@code null}
      * And: the result is of type {@link PhoneValidator}
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testInstanceValidator() throws Exception {
@@ -93,11 +91,9 @@ public abstract class AbstractPhoneTest {
 
     /**
      * Tests if {@link Phone#isValid()} results in an exception.
-     *
-     * @throws Exception
      */
     @Test
-    public void testIsValidDoesNotResultInErrors() throws Exception {
+    public void testIsValidDoesNotResultInErrors() {
         Assertions.assertNotNull(mockedInstance);
         mockedInstance.isValid();
     }

@@ -34,7 +34,7 @@ public abstract class AbstractAddressTest {
      * Provides an {@link Address} instance.
      *
      * @return the instance
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract Address getAddress() throws Exception;
 
@@ -42,7 +42,7 @@ public abstract class AbstractAddressTest {
      * Provides a {@link City} instance.
      *
      * @return the instance
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract City getCity() throws Exception;
 
@@ -53,7 +53,7 @@ public abstract class AbstractAddressTest {
      * When: modifying the street attribute ({@link Address#setStreet(String)})
      * Then: than the street attribute ({@link Address#getStreet()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyStreet() throws Exception {
@@ -80,7 +80,7 @@ public abstract class AbstractAddressTest {
      * When: modifying the house number attribute ({@link Address#setHouseNumber(String)})
      * Then: than the street attribute ({@link Address#getHouseNumber()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyHouseNumber() throws Exception {
@@ -112,7 +112,7 @@ public abstract class AbstractAddressTest {
      * When: modifying the house number attribute ({@link Address#setCity(City)})
      * Then: than the street attribute ({@link Address#getCity()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyCity() throws Exception {
@@ -138,7 +138,7 @@ public abstract class AbstractAddressTest {
      * Then: the result is not {@code null}
      * And: the result is of type {@link AddressValidator}
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testInstanceValidator() throws Exception {

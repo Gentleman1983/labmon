@@ -42,7 +42,7 @@ public class BasicUser extends AbstractChangeAwareAndIdentifiableClass implement
     private String lastName;
     private Address address;
     private Credentials credentials;
-    private Set<ContactOption<?>> contactOptions = new HashSet<>();
+    private final Set<ContactOption<?>> contactOptions = new HashSet<>();
 
     @Override
     public String getFirstName() {

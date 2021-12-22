@@ -27,7 +27,7 @@ import net.havox.labmon.model.basic.contact.messenger.BasicThreema;
  */
 public class BasicThreemaTest extends AbstractThreemaTest {
     @Override
-    public Threema getThreema() throws Exception {
+    public Threema getThreema() {
         return new BasicThreema();
     }
 }

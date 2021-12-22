@@ -58,7 +58,7 @@ public interface CountryValidator {
      * Validates a {@link Country} entity.
      *
      * @param validationTarget the contact option entity
-     * @return true, if no errors occured on validation
+     * @return true, if no errors occurred on validation
      */
     default boolean isValid(Country validationTarget) {
         return validate(validationTarget).isEmpty();

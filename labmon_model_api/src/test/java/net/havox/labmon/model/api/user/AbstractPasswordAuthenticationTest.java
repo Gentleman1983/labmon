@@ -34,7 +34,7 @@ public abstract class AbstractPasswordAuthenticationTest {
      * Provides an {@link PasswordAuthentication} entity.
      *
      * @return the entity
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     public abstract PasswordAuthentication getPasswordAuthentication() throws Exception;
 
@@ -45,7 +45,7 @@ public abstract class AbstractPasswordAuthenticationTest {
      * When: modifying the pass phrase attribute ({@link PasswordAuthentication#setPassPhrase(String)})
      * Then: than the pass phrase attribute ({@link PasswordAuthentication#getPassPhrase()}) should contain the new value
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @RepeatedTest(25)
     public void testModifyUserPassPhrase() throws Exception {
@@ -75,7 +75,7 @@ public abstract class AbstractPasswordAuthenticationTest {
      * When: trying to authenticate ({@link PasswordAuthentication#authenticate(AuthenticationMethod)})
      * Then: than the authentication request shall be valid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testPasswordAuthenticationValid() throws Exception {
@@ -97,7 +97,7 @@ public abstract class AbstractPasswordAuthenticationTest {
      * When: trying to authenticate ({@link PasswordAuthentication#authenticate(AuthenticationMethod)})
      * Then: than the authentication request shall be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testPasswordAuthenticationInvalid() throws Exception {
@@ -119,7 +119,7 @@ public abstract class AbstractPasswordAuthenticationTest {
      * When: trying to authenticate ({@link PasswordAuthentication#authenticate(AuthenticationMethod)})
      * Then: than the authentication request shall be invalid
      *
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     @Test
     public void testPasswordAuthenticationInvalidWrongType() throws Exception {
@@ -133,7 +133,7 @@ public abstract class AbstractPasswordAuthenticationTest {
      * Method providing a {@link PasswordAuthentication} instance with randomized pass phrase.
      *
      * @return the instance
-     * @throws Exception
+     * @throws Exception in case of an exception
      */
     private PasswordAuthentication getRandomPassphraseAuthentication() throws Exception {
         PasswordAuthentication instance = getPasswordAuthentication();
@@ -147,7 +147,7 @@ public abstract class AbstractPasswordAuthenticationTest {
     /**
      * Simple class needed for {@link AbstractPasswordAuthenticationTest#testPasswordAuthenticationInvalidWrongType()}.
      */
-    private class InvalidAuthenticationMethod extends AbstractChangeAwareAndIdentifiableClass implements AuthenticationMethod {
+    private static class InvalidAuthenticationMethod extends AbstractChangeAwareAndIdentifiableClass implements AuthenticationMethod {
 
         @Override
         public boolean authenticate(AuthenticationMethod authenticationMethod) {

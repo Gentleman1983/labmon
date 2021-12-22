@@ -30,7 +30,7 @@ import java.util.List;
  * A validator for the {@link Threema} entities.
  * <p>
  * Specifications for a given user entity:
- * - A Threema Id is an 8-digit alphanumeric string
+ * - A Threema id is an 8-digit alphanumeric string
  *
  * @author Christian Otto
  */
@@ -38,17 +38,17 @@ public interface ThreemaValidator extends ContactOptionValidator<Threema> {
     @Override
     default List<String> validate(Threema validationTarget) {
         if (null == validationTarget) {
-            return List.of("Expected threema entity not to be null.");
+            return List.of("Expected Threema entity not to be null.");
         }
 
         List<String> validationErrors = new ArrayList<>();
 
         if (StringUtils.isAllBlank(validationTarget.getThreemaId()) || validationTarget.getThreemaId().length() != 8) {
-            validationErrors.add("Expected the Threema Id to be exactly 8 digits.");
+            validationErrors.add("Expected the Threema id to be exactly 8 digits.");
         }
 
         if (!StringUtils.isAlphanumeric(validationTarget.getThreemaId())) {
-            validationErrors.add("Expected the Threema Id to be alphanumeric (A-Z0-9).");
+            validationErrors.add("Expected the Threema id to be alphanumeric (A-Z0-9).");
         }
 
         return Collections.unmodifiableList(validationErrors);

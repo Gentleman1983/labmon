@@ -27,7 +27,7 @@ import net.havox.labmon.model.impl.AbstractChangeAwareClass;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
  * This represents the functional entity of an {@link User}.
@@ -63,7 +63,7 @@ public class UserImpl extends AbstractChangeAwareClass<UserImpl> implements User
     /**
      * The user's contact options.
      */
-    private Set<ContactOption<?>> contactOptions = new CopyOnWriteArraySet<>();
+    private final Set<ContactOption<?>> contactOptions = new ConcurrentSkipListSet<>();
 
     @Override
     public String getFirstName() {

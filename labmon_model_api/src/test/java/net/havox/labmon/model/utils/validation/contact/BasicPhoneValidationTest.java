@@ -28,12 +28,12 @@ import net.havox.labmon.model.basic.contact.BasicPhone;
  */
 public class BasicPhoneValidationTest extends AbstractPhoneValidationTest {
     @Override
-    public Phone getPhone() throws Exception {
+    public Phone getPhone() {
         return new BasicPhone();
     }
 
     @Override
-    public PhoneValidator getPhoneValidator() throws Exception {
+    public PhoneValidator getPhoneValidator() {
         return new BasicPhoneValidator();
     }
 }
