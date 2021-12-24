@@ -18,24 +18,17 @@
 
 package net.havox.labmon.model.impl.booking;
 
-import net.havox.labmon.model.api.booking.BookingType;
-import net.havox.labmon.model.utils.validation.booking.AbstractBookingTypeValidationTest;
-import net.havox.labmon.model.utils.validation.booking.BookingTypeImplValidator;
-import net.havox.labmon.model.utils.validation.booking.BookingTypeValidator;
+import net.havox.labmon.model.api.booking.AbstractBookingReferenceTest;
+import net.havox.labmon.model.api.booking.BookingReference;
 
 /**
- * Validation test for {@link BookingTypeImpl}.
+ * API specific test for {@link BookingReference}.
  *
  * @author Christian Otto
  */
-public class BookingTypeValidationTest extends AbstractBookingTypeValidationTest { // NOSONAR Validation test is only inherited, so only derived test cases.
+public class BookingReferenceApiTest extends AbstractBookingReferenceTest {
     @Override
-    public BookingType getBookingType() throws Exception {
-        return new BookingTypeImpl();
-    }
-
-    @Override
-    public BookingTypeValidator getBookingTypeValidator() throws Exception {
-        return new BookingTypeImplValidator();
+    public BookingReference getBookingReference() { // NOSONAR API test is only inherited, so only derived test cases.
+        return new BookingReferenceImpl();
     }
 }

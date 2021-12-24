@@ -18,24 +18,24 @@
 
 package net.havox.labmon.model.impl.booking;
 
-import net.havox.labmon.model.api.booking.BookingType;
-import net.havox.labmon.model.utils.validation.booking.AbstractBookingTypeValidationTest;
-import net.havox.labmon.model.utils.validation.booking.BookingTypeImplValidator;
-import net.havox.labmon.model.utils.validation.booking.BookingTypeValidator;
+import net.havox.labmon.model.api.booking.BookingReference;
+import net.havox.labmon.model.utils.validation.booking.AbstractBookingReferenceValidationTest;
+import net.havox.labmon.model.utils.validation.booking.BookingReferenceImplValidator;
+import net.havox.labmon.model.utils.validation.booking.BookingReferenceValidator;
 
 /**
- * Validation test for {@link BookingTypeImpl}.
+ * Validation test for {@link BookingReferenceImpl}.
  *
  * @author Christian Otto
  */
-public class BookingTypeValidationTest extends AbstractBookingTypeValidationTest { // NOSONAR Validation test is only inherited, so only derived test cases.
+public class BookingReferenceValidationTest extends AbstractBookingReferenceValidationTest { // NOSONAR Validation test is only inherited, so only derived test cases.
     @Override
-    public BookingType getBookingType() throws Exception {
-        return new BookingTypeImpl();
+    public BookingReference getBookingReference() {
+        return new BookingReferenceImpl();
     }
 
     @Override
-    public BookingTypeValidator getBookingTypeValidator() throws Exception {
-        return new BookingTypeImplValidator();
+    public BookingReferenceValidator getBookingReferenceValidator() {
+        return new BookingReferenceImplValidator();
     }
 }

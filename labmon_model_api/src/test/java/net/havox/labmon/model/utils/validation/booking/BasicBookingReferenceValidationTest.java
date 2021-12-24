@@ -16,26 +16,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.havox.labmon.model.impl.booking;
+package net.havox.labmon.model.utils.validation.booking;
 
-import net.havox.labmon.model.api.booking.BookingType;
-import net.havox.labmon.model.utils.validation.booking.AbstractBookingTypeValidationTest;
-import net.havox.labmon.model.utils.validation.booking.BookingTypeImplValidator;
-import net.havox.labmon.model.utils.validation.booking.BookingTypeValidator;
+import net.havox.labmon.model.api.booking.BookingReference;
+import net.havox.labmon.model.basic.booking.BasicBookingReference;
 
 /**
- * Validation test for {@link BookingTypeImpl}.
+ * Basic implementation of {@link AbstractBookingReferenceValidationTest}.
  *
  * @author Christian Otto
  */
-public class BookingTypeValidationTest extends AbstractBookingTypeValidationTest { // NOSONAR Validation test is only inherited, so only derived test cases.
+public class BasicBookingReferenceValidationTest extends AbstractBookingReferenceValidationTest {
     @Override
-    public BookingType getBookingType() throws Exception {
-        return new BookingTypeImpl();
+    public BookingReference getBookingReference() {
+        return new BasicBookingReference();
     }
 
     @Override
-    public BookingTypeValidator getBookingTypeValidator() throws Exception {
-        return new BookingTypeImplValidator();
+    public BookingReferenceValidator getBookingReferenceValidator() {
+        return new BasicBookingReferenceValidator();
     }
 }
