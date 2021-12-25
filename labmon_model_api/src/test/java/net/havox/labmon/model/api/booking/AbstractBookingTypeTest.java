@@ -41,7 +41,7 @@ public abstract class AbstractBookingTypeTest {
     public abstract BookingType getBookingType() throws Exception;
 
     /**
-     * Tests the modification of the country name.
+     * Tests the modification of the name.
      * <p>
      * Given: A {@link BookingType} instance
      * When: modifying the name attribute ({@link BookingType#setName(String)})
@@ -68,7 +68,7 @@ public abstract class AbstractBookingTypeTest {
     }
 
     /**
-     * Tests the modification of the country name.
+     * Tests the modification of the multiplier.
      * <p>
      * Given: A {@link BookingType} instance
      * When: modifying the multiplier attribute ({@link BookingType#setMultiplier(BigDecimal)} )
