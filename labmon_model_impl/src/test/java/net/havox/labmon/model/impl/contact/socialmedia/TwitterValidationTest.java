@@ -30,12 +30,12 @@ import net.havox.labmon.model.utils.validation.contact.socialmedia.TwitterValida
  */
 public class TwitterValidationTest extends AbstractTwitterValidationTest { // NOSONAR Validation test is only inherited, so only derived test cases.
     @Override
-    public Twitter getTwitter() throws Exception {
+    public Twitter getTwitter() {
         return new TwitterImpl();
     }
 
     @Override
-    public TwitterValidator getTwitterValidator() throws Exception {
+    public TwitterValidator getTwitterValidator() {
         return new TwitterImplValidator();
     }
 }
