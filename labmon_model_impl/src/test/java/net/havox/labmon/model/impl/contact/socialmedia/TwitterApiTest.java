@@ -28,7 +28,7 @@ import net.havox.labmon.model.api.contact.socialmedia.Twitter;
  */
 public class TwitterApiTest extends AbstractTwitterTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
-    public Twitter getTwitter() throws Exception {
+    public Twitter getTwitter() {
         return new TwitterImpl();
     }
 }
