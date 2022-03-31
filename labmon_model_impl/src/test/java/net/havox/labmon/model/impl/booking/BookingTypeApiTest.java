@@ -20,7 +20,6 @@ package net.havox.labmon.model.impl.booking;
 
 import net.havox.labmon.model.api.booking.AbstractBookingTypeTest;
 import net.havox.labmon.model.api.booking.BookingType;
-import net.havox.labmon.model.api.employment.Employer;
 
 /**
  * API specific test for {@link BookingType}.
