@@ -28,7 +28,7 @@ import net.havox.labmon.model.api.contact.EMailAddress;
  */
 public class EMailAddressApiTest extends AbstractEMailAddressTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
-    public EMailAddress getEMailAddress() throws Exception {
+    public EMailAddress getEMailAddress() {
         return new EMailAddressImpl();
     }
 }
