@@ -21,7 +21,7 @@ package net.havox.labmon.model.impl.address;
 import net.havox.labmon.model.impl.AbstractChangeAwareClassTest;
 
 /**
- * Implemation specific test for {@link CityImpl}.
+ * Implementation specific test for {@link CityImpl}.
  *
  * @author Christian Otto
  */
