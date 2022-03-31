@@ -30,12 +30,12 @@ import net.havox.labmon.model.utils.validation.contact.messenger.ThreemaValidato
  */
 public class ThreemaValidationTest extends AbstractThreemaValidationTest { // NOSONAR Validation test is only inherited, so only derived test cases.
     @Override
-    public Threema getThreema() throws Exception {
+    public Threema getThreema() {
         return new ThreemaImpl();
     }
 
     @Override
-    public ThreemaValidator getThreemaValidator() throws Exception {
+    public ThreemaValidator getThreemaValidator() {
         return new ThreemaImplValidator();
     }
 }
