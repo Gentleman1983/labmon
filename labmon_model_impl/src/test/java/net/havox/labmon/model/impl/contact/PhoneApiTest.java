@@ -28,7 +28,7 @@ import net.havox.labmon.model.api.contact.Phone;
  */
 public class PhoneApiTest extends AbstractPhoneTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
-    public Phone getPhone() throws Exception {
+    public Phone getPhone() {
         return new PhoneImpl();
     }
 }
