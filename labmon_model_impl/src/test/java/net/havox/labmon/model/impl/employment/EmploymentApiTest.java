@@ -48,7 +48,7 @@ public class EmploymentApiTest extends AbstractEmploymentTest { // NOSONAR API t
     }
 
     @Override
-    public BookingType getBookingType() throws Exception {
+    public BookingType getBookingType() {
         return new BookingTypeImpl();
     }
 }
