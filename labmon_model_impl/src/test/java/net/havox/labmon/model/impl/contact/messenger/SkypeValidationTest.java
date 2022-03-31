@@ -30,12 +30,12 @@ import net.havox.labmon.model.utils.validation.contact.messenger.SkypeValidator;
  */
 public class SkypeValidationTest extends AbstractSkypeValidationTest { // NOSONAR Validation test is only inherited, so only derived test cases.
     @Override
-    public Skype getSkype() throws Exception {
+    public Skype getSkype() {
         return new SkypeImpl();
     }
 
     @Override
-    public SkypeValidator getSkypeValidator() throws Exception {
+    public SkypeValidator getSkypeValidator() {
         return new SkypeImplValidator();
     }
 }
