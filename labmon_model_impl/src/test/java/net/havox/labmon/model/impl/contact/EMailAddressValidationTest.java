@@ -30,12 +30,12 @@ import net.havox.labmon.model.utils.validation.contact.EMailAddressValidator;
  */
 public class EMailAddressValidationTest extends AbstractEMailAddressValidationTest { // NOSONAR Validation test is only inherited, so only derived test cases.
     @Override
-    public EMailAddress getEMailAddress() throws Exception {
+    public EMailAddress getEMailAddress() {
         return new EMailAddressImpl();
     }
 
     @Override
-    public EMailAddressValidator getEMailAddressValidator() throws Exception {
+    public EMailAddressValidator getEMailAddressValidator() {
         return new EMailAddressImplValidator();
     }
 }
