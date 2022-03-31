@@ -47,7 +47,7 @@ public class BasicUserTest extends AbstractUserTest {
     }
 
     @Override
-    public ContactOption getContactOption() throws Exception {
+    public ContactOption getContactOption() {
         return new BasicEMailAddress();
     }
 }
