@@ -78,7 +78,6 @@ public abstract class AbstractBookingTypeTest {
      */
     @RepeatedTest(25)
     public void testModifyMultiplier() throws Exception {
-        String alphabet = ModelRandomGenerator.ALPHABETIC_STRING + " -";
         BigDecimal multiplier = BigDecimal.valueOf(ModelRandomGenerator.randomDouble());
 
         BookingType objectUnderTest = getBookingType();
