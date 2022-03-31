@@ -28,7 +28,7 @@ import net.havox.labmon.model.api.contact.messenger.Skype;
  */
 public class SkypeApiTest extends AbstractSkypeTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
-    public Skype getSkype() throws Exception {
+    public Skype getSkype() {
         return new SkypeImpl();
     }
 }
