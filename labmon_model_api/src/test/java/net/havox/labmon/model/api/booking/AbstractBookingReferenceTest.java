@@ -19,13 +19,11 @@
 package net.havox.labmon.model.api.booking;
 
 import net.havox.labmon.model.utils.validation.booking.BookingReferenceValidator;
-import net.havox.labmon.model.utils.validation.booking.BookingTypeValidator;
 import net.havox.labmon.testutils.random.ModelRandomGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
 import java.net.URL;
 
 /**
@@ -135,7 +133,7 @@ public abstract class AbstractBookingReferenceTest {
      */
     @RepeatedTest(25)
     public void testModifyBookingReferenceSubUrl() throws Exception {
-        String alphabet = ModelRandomGenerator.ALPHABETIC_STRING + "?=#§{}";
+        String alphabet = ModelRandomGenerator.ALPHABETIC_STRING + "?=#&{}";
         String subUrl = ModelRandomGenerator.randomString(ModelRandomGenerator.randomIntInRange(10, 50), alphabet);
 
         BookingReference objectUnderTest = getBookingReference();

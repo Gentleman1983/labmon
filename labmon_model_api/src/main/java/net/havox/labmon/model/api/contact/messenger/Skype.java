@@ -19,7 +19,7 @@
 package net.havox.labmon.model.api.contact.messenger;
 
 /**
- * This interface represents a skype account.
+ * This interface represents a Skype account.
  *
  * @author Christian Otto
  */
