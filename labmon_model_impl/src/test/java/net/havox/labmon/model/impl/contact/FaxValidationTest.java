@@ -30,12 +30,12 @@ import net.havox.labmon.model.utils.validation.contact.FaxValidator;
  */
 public class FaxValidationTest extends AbstractFaxValidationTest { // NOSONAR Validation test is only inherited, so only derived test cases.
     @Override
-    public Fax getFax() throws Exception {
+    public Fax getFax() {
         return new FaxImpl();
     }
 
     @Override
-    public FaxValidator getFaxValidator() throws Exception {
+    public FaxValidator getFaxValidator() {
         return new FaxImplValidator();
     }
 }
