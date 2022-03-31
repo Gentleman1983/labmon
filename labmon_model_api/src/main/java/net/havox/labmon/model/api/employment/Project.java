@@ -101,7 +101,7 @@ public interface Project extends ChangeAware, Serializable {
      * Adds a booking type.
      *
      * @param type the booking type
-     * @return true if everything works allright
+     * @return true if everything works all right
      */
     default boolean addBookingType(BookingType type) {
         return addBookingTypes(type);
@@ -111,7 +111,7 @@ public interface Project extends ChangeAware, Serializable {
      * Adds several booking types.
      *
      * @param types the booking types
-     * @return true if everything works allright
+     * @return true if everything works all right
      */
     default boolean addBookingTypes(BookingType... types) {
         return addBookingTypes(List.of(types));
@@ -121,7 +121,7 @@ public interface Project extends ChangeAware, Serializable {
      * Adds several booking types.
      *
      * @param types the booking types
-     * @return true if everything works allright
+     * @return true if everything works all right
      */
     boolean addBookingTypes(Collection<BookingType> types);
 
@@ -129,7 +129,7 @@ public interface Project extends ChangeAware, Serializable {
      * Removes a booking type.
      *
      * @param type the booking type
-     * @return true if everything works allright
+     * @return true if everything works all right
      */
     default boolean removeBookingType(BookingType type) {
         return removeBookingTypes(type);
@@ -139,7 +139,7 @@ public interface Project extends ChangeAware, Serializable {
      * Removes several booking types.
      *
      * @param types the booking types
-     * @return true if everything works allright
+     * @return true if everything works all right
      */
     default boolean removeBookingTypes(BookingType... types) {
         return removeBookingTypes(List.of(types));
@@ -149,7 +149,7 @@ public interface Project extends ChangeAware, Serializable {
      * Removes several booking types.
      *
      * @param types the booking types
-     * @return true if everything works allright
+     * @return true if everything works all right
      */
     boolean removeBookingTypes(Collection<BookingType> types);
 
