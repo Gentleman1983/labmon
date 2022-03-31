@@ -30,12 +30,12 @@ import net.havox.labmon.model.utils.validation.booking.BookingTypeValidator;
  */
 public class BookingTypeValidationTest extends AbstractBookingTypeValidationTest { // NOSONAR Validation test is only inherited, so only derived test cases.
     @Override
-    public BookingType getBookingType() throws Exception {
+    public BookingType getBookingType() {
         return new BookingTypeImpl();
     }
 
     @Override
-    public BookingTypeValidator getBookingTypeValidator() throws Exception {
+    public BookingTypeValidator getBookingTypeValidator() {
         return new BookingTypeImplValidator();
     }
 }
