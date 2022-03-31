@@ -30,27 +30,27 @@ import net.havox.labmon.model.utils.validation.address.*;
  */
 public class AddressValidationTest extends AbstractAddressValidationTest { // NOSONAR Validation test is only inherited, so only derived test cases.
     @Override
-    public Address getAddress() throws Exception {
+    public Address getAddress() {
         return new AddressImpl();
     }
 
     @Override
-    public City getCity() throws Exception {
+    public City getCity() {
         return new CityImpl();
     }
 
     @Override
-    public Country getCountry() throws Exception {
+    public Country getCountry() {
         return new CountryImpl();
     }
 
     @Override
-    public AddressValidator getAddressValidator() throws Exception {
+    public AddressValidator getAddressValidator() {
         return new AddressImplValidator();
     }
 
     @Override
-    public CityValidator getCityValidator() throws Exception {
+    public CityValidator getCityValidator() {
         return new CityImplValidator();
     }
 }
