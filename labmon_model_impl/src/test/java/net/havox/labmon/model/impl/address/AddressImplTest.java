@@ -21,7 +21,7 @@ package net.havox.labmon.model.impl.address;
 import net.havox.labmon.model.impl.AbstractChangeAwareClassTest;
 
 /**
- * Implemation specific test for {@link AddressImpl}.
+ * Implementation specific test for {@link AddressImpl}.
  *
  * @author Christian Otto
  */
