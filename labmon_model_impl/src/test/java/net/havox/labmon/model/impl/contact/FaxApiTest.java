@@ -28,7 +28,7 @@ import net.havox.labmon.model.api.contact.Fax;
  */
 public class FaxApiTest extends AbstractFaxTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
-    public Fax getFax() throws Exception {
+    public Fax getFax() {
         return new FaxImpl();
     }
 }
