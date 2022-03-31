@@ -30,12 +30,12 @@ import net.havox.labmon.model.impl.address.AddressImpl;
  */
 public class MailAddressApiTest extends AbstractMailAddressTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
-    public MailAddress getMailAddress() throws Exception {
+    public MailAddress getMailAddress() {
         return new MailAddressImpl();
     }
 
     @Override
-    public Address getAddress() throws Exception {
+    public Address getAddress() {
         return new AddressImpl();
     }
 }
