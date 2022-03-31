@@ -30,12 +30,12 @@ import net.havox.labmon.model.utils.validation.address.CountryValidator;
  */
 public class CountryValidationTest extends AbstractCountryValidationTest { // NOSONAR Validation test is only inherited, so only derived test cases.
     @Override
-    public Country getCountry() throws Exception {
+    public Country getCountry() {
         return new CountryImpl();
     }
 
     @Override
-    public CountryValidator getCountryValidator() throws Exception {
+    public CountryValidator getCountryValidator() {
         return new CountryImplValidator();
     }
 }
