@@ -30,12 +30,12 @@ import net.havox.labmon.model.utils.validation.contact.PhoneValidator;
  */
 public class PhoneValidationTest extends AbstractPhoneValidationTest { // NOSONAR Validation test is only inherited, so only derived test cases.
     @Override
-    public Phone getPhone() throws Exception {
+    public Phone getPhone() {
         return new PhoneImpl();
     }
 
     @Override
-    public PhoneValidator getPhoneValidator() throws Exception {
+    public PhoneValidator getPhoneValidator() {
         return new PhoneImplValidator();
     }
 }
