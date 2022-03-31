@@ -41,7 +41,7 @@ public class ProjectApiTest extends AbstractProjectTest { // NOSONAR API test is
     }
 
     @Override
-    public BookingType getBookingType() throws Exception {
+    public BookingType getBookingType() {
         return new BookingTypeImpl();
     }
 }
