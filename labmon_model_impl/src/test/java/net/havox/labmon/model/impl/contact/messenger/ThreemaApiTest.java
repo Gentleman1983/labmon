@@ -28,7 +28,7 @@ import net.havox.labmon.model.api.contact.messenger.Threema;
  */
 public class ThreemaApiTest extends AbstractThreemaTest { // NOSONAR API test is only inherited, so only derived test cases.
     @Override
-    public Threema getThreema() throws Exception {
+    public Threema getThreema() {
         return new ThreemaImpl();
     }
 }
