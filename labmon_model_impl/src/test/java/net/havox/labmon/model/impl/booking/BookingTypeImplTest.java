@@ -21,7 +21,7 @@ package net.havox.labmon.model.impl.booking;
 import net.havox.labmon.model.impl.AbstractChangeAwareClassTest;
 
 /**
- * Implemation specific test for {@link BookingTypeImpl}.
+ * Implementation specific test for {@link BookingTypeImpl}.
  *
  * @author Christian Otto
  */
